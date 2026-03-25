@@ -6,11 +6,15 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     public UnityAction<Vector2> MoveEvent;
+    public UnityAction MoveEndedEvent;
     public UnityAction AttackEvent;
+    public UnityAction AttackEndedEvent;
 
     private PlayerInput input;
 
     public bool debug = false;
+
+    public int PlayerIndex => input.user.index + 1;
 
     private void Awake()
     {
@@ -19,11 +23,16 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (!context.started) return;
-        AttackEvent?.Invoke();
+        if (context.started)
+        {
+            AttackEvent?.Invoke();
 
-        if(debug)
-            Debug.Log($"Player {(input.user.index + 1)} Attacked");
+            if (debug)
+                Debug.Log($"Player {(input.user.index + 1)} Attacked");
+        }
+
+
+        if(context.canceled) AttackEndedEvent?.Invoke();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -32,5 +41,7 @@ public class PlayerInputHandler : MonoBehaviour
 
         if(debug)
             Debug.Log($"Player {(input.user.index + 1)} Moving");
+
+        if(context.canceled) MoveEndedEvent?.Invoke();
     }
 }

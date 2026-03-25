@@ -58,7 +58,7 @@ public class PlayerDeviceHandler : MonoBehaviour
 
         if (Player1.currentControlScheme.Equals("Gamepad"))
             input = Player2;
-        else if (Player2.currentControlScheme.Equals("Gamepad"))
+        else if (Player2.currentControlScheme.Equals("Gamepad") && input == Player2)
         {
             if(debug)
                 Debug.LogWarning("Only supports up to 2 Gamepads");
