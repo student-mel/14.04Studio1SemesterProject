@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +7,7 @@ using UnityEngine.InputSystem.Utilities;
 public class PlayerDeviceHandler : MonoBehaviour
 {
     public PlayerInput prefab;
+    public InputActionAsset action;
 
     public PlayerInput Player1 { get; private set; }
     public PlayerInput Player2 { get; private set; }
@@ -40,10 +42,8 @@ public class PlayerDeviceHandler : MonoBehaviour
     {
         InputDevice device = _control.device;
 
-        if (_control.Equals(Player1JoinKey.controls[0]))
-            JoinKeyboardP1();
-        else if(_control.Equals(Player2JoinKey.controls[0]))
-            JoinKeyboardP2();
+        if (_control.Equals(Player1JoinKey.controls[0])) { JoinKeyboardP1(); }
+        else if (_control.Equals(Player2JoinKey.controls[0])) { JoinKeyboardP2(); }
 
         if (device is not Gamepad) return;
 
@@ -92,12 +92,26 @@ public class PlayerDeviceHandler : MonoBehaviour
             GameObject player = Instantiate(prefab.gameObject, transform);
             Player1 = player.GetComponent<PlayerInput>();
         }
-        if (Player1.currentControlScheme.Equals("Gamepad"))
-            claimedDevices.Remove(Player1.devices[0]);
+
+        Player1.enabled = false;
+        Player1.actions = action;
+
+        Player1.defaultActionMap = "Gameplay";
+        Player1.actions.FindActionMap("Gameplay").Enable();
+
+        Player1.defaultControlScheme = "Keyboard_P1";
+
+        Player1.enabled = true;
+
+        Player1.ActivateInput();
+
+        if (Player1.currentControlScheme != null)
+            if (Player1.currentControlScheme.Equals("Gamepad"))
+                claimedDevices.Remove(Player1.devices[0]);
 
         Player1.SwitchCurrentControlScheme("Keyboard_P1", Keyboard.current);
 
-        if(debug)
+        if (debug)
             Debug.Log($"Player 1 joined with {Keyboard.current}");
     }
     private void JoinKeyboardP2()
@@ -111,12 +125,26 @@ public class PlayerDeviceHandler : MonoBehaviour
             GameObject player = Instantiate(prefab.gameObject, transform);
             Player2 = player.GetComponent<PlayerInput>();
         }
-        if (Player2.currentControlScheme.Equals("Gamepad"))
-            claimedDevices.Remove(Player2.devices[0]);
+
+        Player2.enabled = false;
+        Player2.actions = action;
+
+        Player2.defaultActionMap = "Gameplay";
+        Player2.actions.FindActionMap("Gameplay").Enable();
+
+        Player2.defaultControlScheme = "Keyboard_P2";
+
+        Player2.enabled = true;
+
+        Player2.ActivateInput();
+
+        if (Player2.currentControlScheme != null)
+            if (Player2.currentControlScheme.Equals("Gamepad"))
+                claimedDevices.Remove(Player2.devices[0]);
 
         Player2.SwitchCurrentControlScheme("Keyboard_P2", Keyboard.current);
 
-        if(debug)
+        if (debug)
             Debug.Log($"Player 2 joined with {Keyboard.current}");
     }
 }

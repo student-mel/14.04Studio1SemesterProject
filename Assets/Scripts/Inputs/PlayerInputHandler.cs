@@ -14,11 +14,12 @@ public class PlayerInputHandler : MonoBehaviour
 
     public bool debug = false;
 
-    public int PlayerIndex => input.user.index + 1;
+    public int PlayerIndex { get; private set; }
 
-    private void Awake()
+    private void Start()
     {
         input = GetComponent<PlayerInput>();
+        PlayerIndex = input.user.index + 1;
     }
 
     public void OnAttack(InputAction.CallbackContext context)
