@@ -79,6 +79,10 @@ public class MoveUI : MonoBehaviour
     private List<int> textStack = new List<int>();
 
     private RectTransform rectTransform;
+    private PlayerInputHandler inputHandler;
+
+    private int inputIndex = 0;
+
 
     private void Awake()
     {
@@ -118,6 +122,11 @@ public class MoveUI : MonoBehaviour
         FadeValue = Fade;
     }
 
+    public void AssignInputHandler(PlayerInputHandler _handler)
+    {
+        inputHandler = _handler;
+    }
+
     public void AddMoveToQueue(int? attackSpriteIndex, int? dirSpriteIndex)
     {
         string newText = "";
@@ -142,7 +151,7 @@ public class MoveUI : MonoBehaviour
             else if (Index == 2)
                 lastMoveText = textList[0].text.Replace($"{textStack[0]} ", "");
 
-            if (!lastMoveText.Equals(newText))
+            if (!lastMoveText.Equals(newText) || inputIndex != inputHandler.inputIndex)
             {
                 for (int i = textList.Count - 1; i >= 1; i--)
                 {
@@ -151,6 +160,8 @@ public class MoveUI : MonoBehaviour
                 }
                 textList[0].text = newText;
                 textStack[0] = 1;
+
+                inputIndex = inputHandler.inputIndex;
             }
             else
             {

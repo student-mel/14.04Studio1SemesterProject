@@ -18,6 +18,11 @@ public class PlayerInputHandler : MonoBehaviour
 
     private MoveUI moveDisplay;
 
+    private InputBuffer buffer;
+    private TestClock clock;
+
+    public int inputIndex { get; private set; } = 0;
+
     public bool debug = false;
 
     public int PlayerIndex { get; private set; }
@@ -29,6 +34,30 @@ public class PlayerInputHandler : MonoBehaviour
 
         MoveUI[] moveUIs = FindObjectsByType<MoveUI>(FindObjectsSortMode.None);
         moveDisplay = moveUIs.FirstOrDefault(m => m.Index == PlayerIndex);
+        moveDisplay.AssignInputHandler(this);
+
+        buffer = new InputBuffer();
+        clock = new TestClock(0.05f);
+
+        clock.CustomUpdate += UpdateInput;
+        clock.CustomUpdate += ClearPastInputs;
+    }
+
+    private void OnEnable()
+    {
+        if(clock != null)
+        {
+            clock.CustomUpdate += UpdateInput;
+            clock.CustomUpdate += ClearPastInputs;
+        }
+    }
+    private void OnDisable()
+    {
+        if (clock != null)
+        {
+            clock.CustomUpdate -= UpdateInput;
+            clock.CustomUpdate -= ClearPastInputs;
+        }
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -43,12 +72,18 @@ public class PlayerInputHandler : MonoBehaviour
                 Debug.Log($"Player {(input.user.index + 1)} Attacked");
         }
 
-        if (context.canceled) AttackEndedEvent?.Invoke();
+        if (context.canceled)
+        {
+            AttackEndedEvent?.Invoke();
+            attackedThisFrame = false;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+
+        if (context.started) inputIndex++;
 
         if(Mathf.Abs(moveInput.x) > 0.1f)
             MoveEvent?.Invoke(moveInput);
@@ -58,13 +93,17 @@ public class PlayerInputHandler : MonoBehaviour
 
         if(context.canceled) MoveEndedEvent?.Invoke();
     }
-
-    private void FixedUpdate()
+    private void Update()
     {
-        DisplayMove();
+        clock.Update(Time.deltaTime);
     }
 
-    public void DisplayMove()
+    private void ClearPastInputs()
+    {
+        buffer.ClearPastInputs(Time.time);
+    }
+
+    public void UpdateInput()
     {
         if (attackedThisFrame)
         {
@@ -75,6 +114,8 @@ public class PlayerInputHandler : MonoBehaviour
             else
                 moveDisplay.AddMoveToQueue(2, null);
             attackedThisFrame = false;
+
+            buffer.AddInput(CombatActionType.LightAttack);
         }
         else
         {
