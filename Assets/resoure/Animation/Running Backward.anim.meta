@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ffc90e1feb10d4242a8f70776e97e45a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Animation/Running Backward.anim
+  uploadId: 708708

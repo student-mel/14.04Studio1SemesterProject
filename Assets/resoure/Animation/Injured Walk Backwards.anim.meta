@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a612d4033d45ec04e8f6121346520985
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Animation/Injured Walk Backwards.anim
+  uploadId: 708708

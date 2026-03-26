@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8eba0e9734d00a149a6bb1bd34562309
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Animation/walking.anim
+  uploadId: 708708

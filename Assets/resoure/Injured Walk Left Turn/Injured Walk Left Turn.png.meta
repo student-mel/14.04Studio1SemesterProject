@@ -1,0 +1,800 @@
+fileFormatVersion: 2
+guid: c493c96d24c9e934c9d42616b17653f1
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63232c182d5a0444f93d55e4f7e8701e
+      internalID: 995054200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_1
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31137a3f5f5ddb144a6bd2a4192a11ff
+      internalID: -1861078857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_2
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3817a35e4ed558d43be17910a2be2e7a
+      internalID: 1178918638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_3
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7eb5e4e7a675fa40b9ab1132362a295
+      internalID: -1646637855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_4
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdd2e094931dcc841aa0245dc470d7bc
+      internalID: 32954428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_5
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e5ced215d4ce84c8e481edc8049176
+      internalID: -428059194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_6
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fb386a4fc503bb4fb30a461605fefbe
+      internalID: -1418622909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_7
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6c5010ac7491e340aa1f68b9c6a2b4b
+      internalID: 2106904350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_8
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de78780541256e84dbfa1a397f954fcc
+      internalID: -760399357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_9
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f32ce90647b42a2478f53385d263d48d
+      internalID: 1865882689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_10
+      rect:
+        serializedVersion: 2
+        x: 2600
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a2b1c80292e90d4f99e4c8b44a9e6eb
+      internalID: -589694379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_11
+      rect:
+        serializedVersion: 2
+        x: 2860
+        y: 200
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b460448490403854e9639f062fc51977
+      internalID: -918247390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82aa61f574a8d11418fa884bc431911a
+      internalID: 940525910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_13
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb0148c5f1c0c84682be780ede6ef01
+      internalID: 1592328174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_14
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ef84ae97960589418fdbff17cfa636d
+      internalID: -1711033915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_15
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1f31166a5fea184ea0ad6ee578dfec0
+      internalID: 62034085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_16
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196c3751346edb84ba444c227adfec63
+      internalID: 534588654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_17
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd42dc03b9ae7844afd1ed81b36a1f4
+      internalID: -626284043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_18
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61f6bedc5a3c7e499d3feecf5646791
+      internalID: -374370112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_19
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb6310afe1b2b6c4cab4460a79f70bd2
+      internalID: 935412278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_20
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fa16447b8bd4b749a042129a48f7c25
+      internalID: -1084770539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_21
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c924bcc2d69244746bda9be3228db6d2
+      internalID: 1244110045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_22
+      rect:
+        serializedVersion: 2
+        x: 2600
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15363f21fd87cb5409cd73cbbb6a2b75
+      internalID: 302213625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_23
+      rect:
+        serializedVersion: 2
+        x: 2860
+        y: 100
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d52d0b3f9d7f3934ea61efae3a92aa27
+      internalID: -9682731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b03e31b7a1b8f946957831afc77f3bf
+      internalID: 1433777249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_25
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adfdc1f76239a8c47b29bb28f4d4bfc6
+      internalID: -856112072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_26
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33b7bbd2d350c6a44928c9b3d1388567
+      internalID: -2070329565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_27
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 0
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5862597df478f1e42bd45c4bf9349a5e
+      internalID: -1240282965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_28
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 0
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6edb1773ca98cb34f934797c9df19520
+      internalID: 873708952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_29
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 0
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65142062d6e7c6a42a26e89141f8da1c
+      internalID: -717823323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Injured Walk Left Turn_30
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 0
+        width: 260
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aada0253dc0ddbc4a828056d53f221a1
+      internalID: 1304163104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Injured Walk Left Turn_0: 995054200
+      Injured Walk Left Turn_1: -1861078857
+      Injured Walk Left Turn_10: -589694379
+      Injured Walk Left Turn_11: -918247390
+      Injured Walk Left Turn_12: 940525910
+      Injured Walk Left Turn_13: 1592328174
+      Injured Walk Left Turn_14: -1711033915
+      Injured Walk Left Turn_15: 62034085
+      Injured Walk Left Turn_16: 534588654
+      Injured Walk Left Turn_17: -626284043
+      Injured Walk Left Turn_18: -374370112
+      Injured Walk Left Turn_19: 935412278
+      Injured Walk Left Turn_2: 1178918638
+      Injured Walk Left Turn_20: -1084770539
+      Injured Walk Left Turn_21: 1244110045
+      Injured Walk Left Turn_22: 302213625
+      Injured Walk Left Turn_23: -9682731
+      Injured Walk Left Turn_24: 1433777249
+      Injured Walk Left Turn_25: -856112072
+      Injured Walk Left Turn_26: -2070329565
+      Injured Walk Left Turn_27: -1240282965
+      Injured Walk Left Turn_28: 873708952
+      Injured Walk Left Turn_29: -717823323
+      Injured Walk Left Turn_3: -1646637855
+      Injured Walk Left Turn_30: 1304163104
+      Injured Walk Left Turn_4: 32954428
+      Injured Walk Left Turn_5: -428059194
+      Injured Walk Left Turn_6: -1418622909
+      Injured Walk Left Turn_7: 2106904350
+      Injured Walk Left Turn_8: -760399357
+      Injured Walk Left Turn_9: 1865882689
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Injured Walk Left Turn/Injured Walk Left Turn.png
+  uploadId: 708708

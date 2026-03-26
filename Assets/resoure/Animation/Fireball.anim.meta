@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f6b30970a4cb7b84eb7f09609725f3f2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Animation/Fireball.anim
+  uploadId: 708708
