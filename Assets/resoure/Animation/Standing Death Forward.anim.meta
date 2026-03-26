@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9ce8984285d4eaf418f040376a70c745
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Animation/Standing Death Forward.anim
+  uploadId: 708708

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7290a6ed3b8c1514eb4040b97c964862
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Animation/Hit To Body.anim
+  uploadId: 708708

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f5b1d36ce2870ee449d575cebf33ee61
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Animation/Fast Run.anim
+  uploadId: 708708
