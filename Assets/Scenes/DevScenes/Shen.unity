@@ -526,7 +526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6701178202399697212, guid: 41e1d80ac2a1f294aa28dac2b8b4449a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -700,6 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDeviceHandler
   prefab: {fileID: 3318921445722754250, guid: 4f6bd67db4518bf4eb91f699f051b24b, type: 3}
+  action: {fileID: -944628639613478452, guid: 0aebf58394be34f4882138ffa5d0b336, type: 3}
   Player1JoinKey:
     m_Name: Player 1 Join Key
     m_Type: 0
@@ -923,7 +924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105764199541050963, guid: 64c86f615332e324bbcbf12939855bf7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
