@@ -1,9 +1,16 @@
 fileFormatVersion: 2
 guid: 3991655016828d54a9f5002903b8aae3
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Walking Backwards/Walking Backwards.png
+  uploadId: 708708
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +27,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,9 +71,10 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 4096
     resizeAlgorithm: 0
@@ -75,9 +84,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -87,6 +97,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -96,13 +107,14 @@ TextureImporter:
       name: Walking Backwards_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 100
-        width: 260
-        height: 100
+        x: 205
+        y: 102
+        width: 29
+        height: 88
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -117,13 +129,14 @@ TextureImporter:
       name: Walking Backwards_1
       rect:
         serializedVersion: 2
-        x: 260
-        y: 100
-        width: 260
-        height: 100
+        x: 467
+        y: 101
+        width: 26
+        height: 89
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -138,13 +151,14 @@ TextureImporter:
       name: Walking Backwards_2
       rect:
         serializedVersion: 2
-        x: 520
+        x: 726
         y: 100
-        width: 260
-        height: 100
+        width: 29
+        height: 89
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -159,13 +173,14 @@ TextureImporter:
       name: Walking Backwards_3
       rect:
         serializedVersion: 2
-        x: 780
+        x: 982
         y: 100
-        width: 260
-        height: 100
+        width: 34
+        height: 88
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -180,13 +195,14 @@ TextureImporter:
       name: Walking Backwards_4
       rect:
         serializedVersion: 2
-        x: 1040
-        y: 100
-        width: 260
-        height: 100
+        x: 1240
+        y: 101
+        width: 33
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -201,13 +217,14 @@ TextureImporter:
       name: Walking Backwards_5
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 100
-        width: 260
-        height: 100
+        x: 1501
+        y: 102
+        width: 33
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -222,13 +239,14 @@ TextureImporter:
       name: Walking Backwards_6
       rect:
         serializedVersion: 2
-        x: 1560
-        y: 100
-        width: 260
-        height: 100
+        x: 1763
+        y: 102
+        width: 30
+        height: 88
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -243,13 +261,14 @@ TextureImporter:
       name: Walking Backwards_7
       rect:
         serializedVersion: 2
-        x: 1820
-        y: 100
-        width: 260
-        height: 100
+        x: 2019
+        y: 101
+        width: 34
+        height: 89
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -264,13 +283,14 @@ TextureImporter:
       name: Walking Backwards_8
       rect:
         serializedVersion: 2
-        x: 2080
-        y: 100
-        width: 260
-        height: 100
+        x: 2276
+        y: 102
+        width: 39
+        height: 88
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -285,13 +305,14 @@ TextureImporter:
       name: Walking Backwards_9
       rect:
         serializedVersion: 2
-        x: 2340
-        y: 100
-        width: 260
-        height: 100
+        x: 2534
+        y: 102
+        width: 43
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -306,13 +327,14 @@ TextureImporter:
       name: Walking Backwards_10
       rect:
         serializedVersion: 2
-        x: 2600
-        y: 100
-        width: 260
-        height: 100
+        x: 2795
+        y: 102
+        width: 43
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -327,13 +349,14 @@ TextureImporter:
       name: Walking Backwards_11
       rect:
         serializedVersion: 2
-        x: 2860
-        y: 100
-        width: 260
-        height: 100
+        x: 3053
+        y: 102
+        width: 42
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -348,13 +371,14 @@ TextureImporter:
       name: Walking Backwards_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 260
-        height: 100
+        x: 192
+        y: 2
+        width: 43
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -369,13 +393,14 @@ TextureImporter:
       name: Walking Backwards_13
       rect:
         serializedVersion: 2
-        x: 260
-        y: 0
-        width: 260
-        height: 100
+        x: 456
+        y: 2
+        width: 39
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -386,91 +411,8 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Walking Backwards_14
-      rect:
-        serializedVersion: 2
-        x: 520
-        y: 0
-        width: 260
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e78f897ceb3938441abe6aa88776904d
-      internalID: -146905987
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walking Backwards_15
-      rect:
-        serializedVersion: 2
-        x: 780
-        y: 0
-        width: 260
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7244b8216768db4db9bfd4908c500a6
-      internalID: -177081756
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walking Backwards_16
-      rect:
-        serializedVersion: 2
-        x: 1040
-        y: 0
-        width: 260
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8112cf096cc43d428dd504df54a8439
-      internalID: 1521880575
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walking Backwards_17
-      rect:
-        serializedVersion: 2
-        x: 1820
-        y: 0
-        width: 260
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbf80cb3b71032c4f8559269867cb0ea
-      internalID: -2025539821
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -480,6 +422,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: True
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":true,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Walking Backwards_0: 87334018
       Walking Backwards_1: -614987257
@@ -487,10 +435,6 @@ TextureImporter:
       Walking Backwards_11: 461473566
       Walking Backwards_12: -537335264
       Walking Backwards_13: -1816577712
-      Walking Backwards_14: -146905987
-      Walking Backwards_15: -177081756
-      Walking Backwards_16: 1521880575
-      Walking Backwards_17: -2025539821
       Walking Backwards_2: -286788708
       Walking Backwards_3: -1600538049
       Walking Backwards_4: 1723763311
@@ -499,16 +443,8 @@ TextureImporter:
       Walking Backwards_7: -2087392819
       Walking Backwards_8: 1921212680
       Walking Backwards_9: -51620825
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 302530
-  packageName: Fighting Action Boxer
-  packageVersion: 1.0
-  assetPath: Assets/Scenes/resoure/Walking Backwards/Walking Backwards.png
-  uploadId: 708708
