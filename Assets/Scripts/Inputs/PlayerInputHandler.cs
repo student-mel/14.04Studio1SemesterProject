@@ -19,7 +19,6 @@ public class PlayerInputHandler : MonoBehaviour
     private MoveUI moveDisplay;
 
     private InputBuffer buffer;
-    private TestClock clock;
 
     public int inputIndex { get; private set; } = 0;
 
@@ -37,27 +36,11 @@ public class PlayerInputHandler : MonoBehaviour
         moveDisplay.AssignInputHandler(this);
 
         buffer = new InputBuffer();
-        clock = new TestClock(0.05f);
 
-        clock.CustomUpdate += UpdateInput;
-        clock.CustomUpdate += ClearPastInputs;
-    }
+        buffer.id = PlayerIndex;
+        buffer.playerIntent = new CombatIntent();
+        CombatResolver.i.SetInputBuffer(PlayerIndex, buffer);
 
-    private void OnEnable()
-    {
-        if(clock != null)
-        {
-            clock.CustomUpdate += UpdateInput;
-            clock.CustomUpdate += ClearPastInputs;
-        }
-    }
-    private void OnDisable()
-    {
-        if (clock != null)
-        {
-            clock.CustomUpdate -= UpdateInput;
-            clock.CustomUpdate -= ClearPastInputs;
-        }
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -95,12 +78,8 @@ public class PlayerInputHandler : MonoBehaviour
     }
     private void Update()
     {
-        clock.Update(Time.deltaTime);
-    }
-
-    private void ClearPastInputs()
-    {
-        buffer.ClearPastInputs(Time.time);
+        UpdateInput();
+        buffer.ClearExpiredInputs(Time.time);
     }
 
     public void UpdateInput()
@@ -115,7 +94,7 @@ public class PlayerInputHandler : MonoBehaviour
                 moveDisplay.AddMoveToQueue(2, null);
             attackedThisFrame = false;
 
-            buffer.AddInput(CombatActionType.LightAttack);
+            buffer.AddInput(CombatActionType.LightAttack, Time.time);
         }
         else
         {
