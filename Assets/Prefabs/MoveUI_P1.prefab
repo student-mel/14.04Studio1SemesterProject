@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveUI
   Index: 1
-  Length: 6
+  Length: 18
   Scale: 1
   Fade: 1
   StartPosition: {x: 300, y: 0, z: 0}

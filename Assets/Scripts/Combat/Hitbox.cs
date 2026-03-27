@@ -1,11 +1,15 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using System;
-using System.Collections.Generic;
+using UnityEngine.Rendering;
 
 [RequireComponent (typeof(BoxCollider))]
 public class Hitbox : MonoBehaviour
 {
+    [Range(1, 2)] public int Index;
     public float HitboxStartEdge;
     public float HitboxWidth;
     public float HitboxHeight;
@@ -18,6 +22,8 @@ public class Hitbox : MonoBehaviour
 
     BoxCollider hitbox;
 
+    PlayerInputHandler player;
+
     public void EnableHitbox() => hitbox.enabled = true;
     public void DisableHitbox() => hitbox.enabled = false;
 
@@ -27,14 +33,29 @@ public class Hitbox : MonoBehaviour
     {
         hitbox = GetComponent<BoxCollider>();
         hitbox.isTrigger = true;
-        EnableHitbox();
+        DisableHitbox();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(LateStart());
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
+        if (player == null)
+        {
+            PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
+            player = players.FirstOrDefault(p => p.PlayerIndex == Index);
+
+            player.AttackEvent += LightAttack;
+        }
     }
 
     private void Update()
     {
         UpdateHitbox();
-        hitbox.center = center;
-        hitbox.size = size;
     }
 
     private void UpdateHitbox()
@@ -42,6 +63,9 @@ public class Hitbox : MonoBehaviour
         direction = (facingLeft ? Vector3.left : Vector3.right);
         center = direction * (HitboxStartEdge + HitboxWidth / 2f);
         size = new Vector3(HitboxWidth, HitboxHeight, 0.5f);
+
+        hitbox.center = center;
+        hitbox.size = size;
     }
 
     private void OnTriggerStay(Collider other)
@@ -64,6 +88,30 @@ public class Hitbox : MonoBehaviour
         {
             Gizmos.DrawWireCube(center, size);
         }
+    }
+
+    Coroutine AttackRoutine;
+
+    public void LightAttack()
+    {
+        if (AttackRoutine != null) return;
+        AttackRoutine = StartCoroutine(ExecuteAttack());
+    }
+
+    IEnumerator ExecuteAttack()
+    {
+        yield return new WaitForSeconds(0.04f); //Startup
+
+        UpdateHitbox();
+        EnableHitbox();
+
+        yield return new WaitForSeconds(0.06f); //Active Frame
+
+        DisableHitbox();
+
+        yield return new WaitForSeconds(0.02f); //Recovery
+
+        AttackRoutine = null;
     }
 }
 

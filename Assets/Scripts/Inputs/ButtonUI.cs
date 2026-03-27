@@ -7,6 +7,8 @@ public class ButtonUI : MonoBehaviour
 {
     public Image[] Buttons;
 
+    public float heightOffset = 2.4f;
+
     public Color Default;
     public Color Pressed;
 
@@ -26,7 +28,7 @@ public class ButtonUI : MonoBehaviour
     {
         GameObject[] playerObjs = GameObject.FindGameObjectsWithTag("Player");
 
-        if (playerObjs.Length <= 0)
+        if (playerObjs.Length <= 1)
         {
             Debug.Log("No player found in scene");
             return;
@@ -47,9 +49,8 @@ public class ButtonUI : MonoBehaviour
 
         if (playerTransform != null)
         {
-            transform.parent = playerTransform;
-            transform.localPosition = playerTransform.localPosition;
-            transform.position += Vector3.up * 1.2f;
+            transform.position = playerTransform.position;
+            transform.position += Vector3.up * heightOffset;
         }
     }
 
@@ -66,6 +67,16 @@ public class ButtonUI : MonoBehaviour
             player.AttackEvent += AttackButtonPressed;
             player.AttackEndedEvent += AttackButtonUnpressed;
         }
+    }
+
+    private void Update()
+    {
+
+        if (playerTransform == null) return;
+
+        Vector3 newPos = transform.position;
+        newPos.x = playerTransform.position.x;
+        transform.position = newPos;
     }
 
     private void OnEnable()

@@ -12,7 +12,7 @@ public class MoveUI : MonoBehaviour
 
     [Header("UI Settings")]
 
-    [Range(1, 10)] public int Length;
+    [Range(1, 25)] public int Length;
     private int currLength;
 
     public event Action OnLengthChanged;
