@@ -49,6 +49,7 @@ public class ButtonUI : MonoBehaviour
 
         if (playerTransform != null)
         {
+            transform.SetParent(playerTransform);
             transform.position = playerTransform.position;
             transform.position += Vector3.up * heightOffset;
         }
@@ -72,11 +73,11 @@ public class ButtonUI : MonoBehaviour
     private void Update()
     {
 
-        if (playerTransform == null) return;
+        //if (playerTransform == null) return;
 
-        Vector3 newPos = transform.position;
-        newPos.x = playerTransform.position.x;
-        transform.position = newPos;
+        //Vector3 newPos = transform.position;
+        //newPos.x = playerTransform.position.x;
+        //transform.position = newPos;
     }
 
     private void OnEnable()

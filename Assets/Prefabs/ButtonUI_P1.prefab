@@ -197,7 +197,7 @@ MonoBehaviour:
   - {fileID: 8902093272495397173}
   - {fileID: 575967188270460266}
   - {fileID: 8879897885831248129}
-  heightOffset: 0
+  heightOffset: 1
   Default: {r: 1, g: 1, b: 1, a: 1}
   Pressed: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
   index: 1

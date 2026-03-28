@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 [RequireComponent (typeof(BoxCollider))]
-public class Hitbox : MonoBehaviour
+public class TestingHitbox : MonoBehaviour
 {
     [Range(1, 2)] public int Index;
     public float HitboxStartEdge;
@@ -77,10 +77,21 @@ public class Hitbox : MonoBehaviour
     {
         if (other.gameObject.layer != LayerMask.NameToLayer("Player")) return;
 
-        Debug.Log("Hit!");
+        List<AuthorisedAttack> aAttacks = CombatResolver.i.authorisedAttacks;
+        AuthorisedAttack hitAttack;
+        foreach (AuthorisedAttack attack in aAttacks)
+        {
+            if(!attack.hitApplied && attack.id == Index && attack.expiryTime < Time.time)
+            {
+                hitAttack = attack;
+                break;
+            }
+        }
+
+        Debug.Log($"Player {Index}'s attack hits");
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.matrix = transform.localToWorldMatrix;
 
@@ -100,18 +111,25 @@ public class Hitbox : MonoBehaviour
 
     IEnumerator ExecuteAttack()
     {
-        yield return new WaitForSeconds(0.04f); //Startup
+        DisableHitbox();
+
+        yield return new WaitForEndOfFrame();
+
+        player.LockAction();
+
+        yield return new WaitForSeconds(TestBeatClock.Interval * 0.2f); //Startup
 
         UpdateHitbox();
         EnableHitbox();
 
-        yield return new WaitForSeconds(0.06f); //Active Frame
+        yield return new WaitForSeconds(TestBeatClock.Interval * 0.3f); //Active Frame
 
         DisableHitbox();
 
-        yield return new WaitForSeconds(0.02f); //Recovery
+        yield return new WaitForSeconds(TestBeatClock.Interval * 0.1f); //Recovery
 
         AttackRoutine = null;
+        player.UnlockAction();
     }
 }
 

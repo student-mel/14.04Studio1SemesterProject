@@ -7,8 +7,6 @@ public class InputBuffer
 
     public CombatIntent playerIntent;
 
-    float maxLifeTime = 0.25f;
-
     public int id;
 
     public void AddInput(CombatActionType _action, float _time)
@@ -19,26 +17,26 @@ public class InputBuffer
             timeStamp = _time
         });
     }
-    public BufferedInput? GetInputForBeat(float _beatTime, float _window)
+    public BufferedInput? GetInputForBeat(float _beatTime)
     {
         foreach (BufferedInput input in inputs)
         {
-            if(Mathf.Abs(input.timeStamp - _beatTime) <= _window)
+            if(Mathf.Abs(input.timeStamp - _beatTime) <= TestBeatClock.Interval * 0.5f)
                 return input;
         }
         return null;
     }
 
-    public CombatIntent GetIntentForBeat(int _beatTime)
+    public CombatIntent GetIntentForBeat(float _beatTime)
     {
-        BufferedInput? _input = GetInputForBeat(_beatTime, 0.15f);
+        BufferedInput? _input = GetInputForBeat(_beatTime);
 
         playerIntent.id = id;
 
         if (!_input.HasValue)
         {
             playerIntent.action = CombatActionType.None;
-            playerIntent.beatIndex = _beatTime;
+            playerIntent.beatTime = _beatTime;
             playerIntent.timingOffset = 10;
 
             return playerIntent;
@@ -47,7 +45,7 @@ public class InputBuffer
         BufferedInput currInput = (BufferedInput)_input;
 
         playerIntent.action = currInput.action;
-        playerIntent.beatIndex = _beatTime;
+        playerIntent.beatTime = _beatTime;
         playerIntent.timingOffset = currInput.timeStamp - _beatTime;
 
         inputs.Remove(currInput);
@@ -57,7 +55,7 @@ public class InputBuffer
 
     public void ClearExpiredInputs(float time)
     {
-        inputs.RemoveAll(i => i.timeStamp < (time - maxLifeTime));
+        inputs.RemoveAll(i => i.timeStamp < (time - TestBeatClock.Interval));
     }
 }
 
