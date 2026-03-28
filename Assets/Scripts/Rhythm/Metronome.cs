@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Metronome : MonoBehaviour
 {
     private float _bpm;
@@ -18,6 +20,15 @@ public class Metronome : MonoBehaviour
 
     private int _currBeatIndex = 0;
     
+    AudioSource audioSource;
+    [SerializeField]
+    private AudioClip clip;
+
+    private void Awake()
+    {
+        audioSource =  GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         _bpm = RhythmStore.Instance.bgm.bpm;
@@ -56,6 +67,8 @@ public class Metronome : MonoBehaviour
                 Debug.Log($"beat = {_currBeatIndex}");
                 EventBus.Emit("beat", _currBeatIndex);
                 _nextBeatPosition += _beatDurationMs;
+                
+                audioSource.PlayOneShot(clip);
                 
                 RhythmStore.Instance.currentBeatIndex =  _currBeatIndex;
             }
