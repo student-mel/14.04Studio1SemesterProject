@@ -39,12 +39,7 @@ public class PlayerInputHandler : MonoBehaviour
         moveDisplay = moveUIs.FirstOrDefault(m => m.Index == PlayerIndex);
         moveDisplay.AssignInputHandler(this);
 
-        buffer = new InputBuffer();
-
-        buffer.id = PlayerIndex;
-        buffer.playerIntent = new CombatIntent();
-        CombatResolver.i.SetInputBuffer(PlayerIndex, buffer);
-
+        buffer = FindAnyObjectByType<InputBuffer>();
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -99,14 +94,21 @@ public class PlayerInputHandler : MonoBehaviour
         if (attackedThisFrame)
         {
             if (moveInput.x > 0.1f)
+            {
                 moveDisplay.AddMoveToQueue(2, 1);
+            }
             else if (moveInput.x < -0.1f)
+            {
                 moveDisplay.AddMoveToQueue(2, 0);
+            }
             else
+            {
                 moveDisplay.AddMoveToQueue(2, null);
+            }
+
             attackedThisFrame = false;
 
-            buffer.AddInput(CombatActionType.LightAttack, Time.time);
+            buffer.AddAttackInput(PlayerIndex, InputType.Light);
         }
         else
         {

@@ -49,7 +49,6 @@ public class TestingHitbox : MonoBehaviour
             PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
             player = players.FirstOrDefault(p => p.PlayerIndex == Index);
 
-            player.AttackEvent += LightAttack;
         }
     }
 
@@ -101,35 +100,5 @@ public class TestingHitbox : MonoBehaviour
         }
     }
 
-    Coroutine AttackRoutine;
-
-    public void LightAttack()
-    {
-        if (AttackRoutine != null) return;
-        AttackRoutine = StartCoroutine(ExecuteAttack());
-    }
-
-    IEnumerator ExecuteAttack()
-    {
-        DisableHitbox();
-
-        yield return new WaitForEndOfFrame();
-
-        player.LockAction();
-
-        yield return new WaitForSeconds(TestBeatClock.Interval * 0.2f); //Startup
-
-        UpdateHitbox();
-        EnableHitbox();
-
-        yield return new WaitForSeconds(TestBeatClock.Interval * 0.3f); //Active Frame
-
-        DisableHitbox();
-
-        yield return new WaitForSeconds(TestBeatClock.Interval * 0.1f); //Recovery
-
-        AttackRoutine = null;
-        player.UnlockAction();
-    }
 }
 
