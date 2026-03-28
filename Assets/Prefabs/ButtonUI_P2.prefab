@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 575967188270460266, guid: accfd98eba5bbb64d82a8915f0ebca5a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2abe5d275bbefcb4a938261f704f38ca, type: 3}
+      objectReference: {fileID: 21300000, guid: bc4d99c541828f64786117c366acdd76, type: 3}
     - target: {fileID: 3232791966352534986, guid: accfd98eba5bbb64d82a8915f0ebca5a, type: 3}
       propertyPath: m_Name
       value: ButtonUI_P2
@@ -139,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 8902093272495397173, guid: accfd98eba5bbb64d82a8915f0ebca5a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 03d7cae1403ca6e4ea5b18b235de2539, type: 3}
+      objectReference: {fileID: 21300000, guid: 9a5ffc5f43fd0ca42b5440a68d1ad5e5, type: 3}
     - target: {fileID: 9045449531615778250, guid: accfd98eba5bbb64d82a8915f0ebca5a, type: 3}
       propertyPath: index
       value: 2

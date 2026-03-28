@@ -7,6 +7,8 @@ public class TestBeatClock : MonoBehaviour
     public static TestClock Clock;
     public static float Interval = 0.5f;
 
+    public static float NextTick => Time.time + Interval;
+
     public Image BeatCue;
     private Color original;
 
@@ -35,15 +37,17 @@ public class TestBeatClock : MonoBehaviour
     {
         Clock.CustomUpdate -= Blink;
     }
-
     private void Blink()
     {
-        StartCoroutine(BlinkToBeat());
+        StartCoroutine(BlinkToBeat(NextTick));
     }
-    IEnumerator BlinkToBeat()
+
+    IEnumerator BlinkToBeat(float _nextTick)
     {
+        yield return new WaitWhile(() => Time.time < _nextTick - Interval * 0.2f);
+
         BeatCue.color = Color.crimson;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(Interval * 0.4f);
         BeatCue.color = original;
     }
 }

@@ -71,33 +71,7 @@ public class CombatResolver : MonoBehaviour
 
         CombatResult result = Resolve(p1, p2);
 
-        string debugResult = "";
-        debugResult += $"Beat{beatIndex}\n";
-        debugResult += $"Player 1 Intent: {p1.action} ; Player 2 Intent: {p2.action}\n";
-        if (result.idle)
-        {
-            debugResult += $"Players idling: {result.idle}\n";
-        }
-        else if (result.clash)
-        {
-            debugResult += $"Attacks clash: {result.clash}\n";
-        }
-        if (result.p1Hit)
-        {
-            debugResult += $"\nPlayer 2 hits {result.p2Beat.ToString()} beat\n";
-            debugResult += $"Player 1 should be hit\n";
-            debugResult += $"Player 1 should take {result.p1Damage} damage\n";
-            debugResult += $"Player 1 should be stunned for {result.p1Hitstun} beat(s)\n";
-        }
-        else if (result.p2Hit)
-        {
-            debugResult += $"\nPlayer 1 hits {result.p1Beat.ToString()} beat\n";
-            debugResult += $"Player 2 should be hit\n";
-            debugResult += $"Player 2 should take {result.p2Damage} damage\n";
-            debugResult += $"Player 2 should be stunned for {result.p2Hitstun} beat(s)\n";
-        }
-        if (debugResult != "" && debug)
-            Debug.Log(debugResult);
+        DebugResult(result);
 
         if (result.clash)
         {
@@ -113,7 +87,13 @@ public class CombatResolver : MonoBehaviour
     {
         CombatResult result = new CombatResult();
 
-        if(p1.action == CombatActionType.None && p2.action == CombatActionType.None)
+        BeatJudgement p1Beat = GetTiming(p1.timingOffset);
+        BeatJudgement p2Beat = GetTiming(p2.timingOffset);
+
+        result.p1Beat = p1Beat;
+        result.p2Beat = p2Beat;
+
+        if (p1.action == CombatActionType.None && p2.action == CombatActionType.None)
         {
             result.idle = true;
             return result;
@@ -124,9 +104,6 @@ public class CombatResolver : MonoBehaviour
 
         float p1Timing = GetTimingBonus(p1.timingOffset);
         float p2Timing = GetTimingBonus(p2.timingOffset);
-
-        BeatJudgement p1Beat = GetTiming(p1.timingOffset);
-        BeatJudgement p2Beat = GetTiming(p2.timingOffset);
 
         float p1Score = p1Priority * p1Timing;
         float p2Score = p2Priority * p2Timing;
@@ -142,8 +119,7 @@ public class CombatResolver : MonoBehaviour
         ApplyOutcome(
             _winner: p1Wins ? p1 : p2,
             _loser: p1Wins ? p2 : p1,
-            p1Wins ? p1Beat : p2Beat,
-            p1Wins ? p2Beat : p1Beat,
+            p1Wins ? p1Timing : p2Timing,
             ref result,
             p1Wins
         );
@@ -152,10 +128,9 @@ public class CombatResolver : MonoBehaviour
     }
 
     void ApplyOutcome(
-        CombatIntent _winner, 
-        CombatIntent _loser, 
-        BeatJudgement _winnerBeat,
-        BeatJudgement _loserBeat,
+        CombatIntent _winner,
+        CombatIntent _loser,
+        float _winnerTiming,
         ref CombatResult _result, 
         bool _p1Wins)
     {
@@ -163,12 +138,12 @@ public class CombatResolver : MonoBehaviour
 
         int damage = 1;
         if (heavyAttack) damage++;
-        if(_winnerBeat == BeatJudgement.Perfect) damage++;
+        if(_winnerTiming > 1.4f) damage++;
 
         int hitstun = 1;
         if (heavyAttack) hitstun++;
-        if (_winnerBeat == BeatJudgement.Perfect) hitstun++;
-        else if (_winnerBeat == BeatJudgement.Miss) hitstun = 0;
+        if (_winnerTiming > 1.4f) hitstun++;
+        else if (_winnerTiming < 0.8f) hitstun = 0;
 
 
         if (_p1Wins)
@@ -176,16 +151,12 @@ public class CombatResolver : MonoBehaviour
             _result.p2Hit = true;
             _result.p2Damage = damage;
             _result.p2Hitstun = hitstun;
-            _result.p2Beat = _loserBeat;
-            _result.p1Beat = _winnerBeat;
         }
         else
         {
             _result.p1Hit = true;
             _result.p1Damage = damage;
             _result.p1Hitstun = hitstun;
-            _result.p1Beat = _loserBeat;
-            _result.p2Beat = _winnerBeat;
         }
     }
 
@@ -230,6 +201,40 @@ public class CombatResolver : MonoBehaviour
         if (Mathf.Abs(_offset) < TestBeatClock.Interval * 0.066f) return BeatJudgement.Perfect;
         if (Mathf.Abs(_offset) < TestBeatClock.Interval * 0.22f) return BeatJudgement.Good;
         return BeatJudgement.Miss;
+    }
+
+    void DebugResult(CombatResult _result)
+    {
+        if (!debug) return;
+
+        string debugResult = "";
+        debugResult += $"Beat{beatIndex}\n";
+        debugResult += $"P1: {_result.p1Beat} ; P2: {_result.p2Beat}\n";
+        //debugResult += $"Player 1 Intent: {p1.action} ; Player 2 Intent: {p2.action}\n";
+        if (_result.idle)
+        {
+            debugResult += $"Players idling: {_result.idle}\n";
+        }
+        //else if (result.clash)
+        //{
+        //    debugResult += $"Attacks clash: {result.clash}\n";
+        //}
+        if (_result.p1Hit)
+        {
+            debugResult += $"\nPlayer 2 hits {_result.p2Beat.ToString()} beat\n";
+            debugResult += $"Player 1 should be hit\n";
+            debugResult += $"Player 1 should take {_result.p1Damage} damage\n";
+            debugResult += $"Player 1 should be stunned for {_result.p1Hitstun} beat(s)\n";
+        }
+        else if (_result.p2Hit)
+        {
+            debugResult += $"\nPlayer 1 hits {_result.p1Beat.ToString()} beat\n";
+            debugResult += $"Player 2 should be hit\n";
+            debugResult += $"Player 2 should take {_result.p2Damage} damage\n";
+            debugResult += $"Player 2 should be stunned for {_result.p2Hitstun} beat(s)\n";
+        }
+        if (debugResult != "")
+            Debug.Log(debugResult);
     }
 }
 

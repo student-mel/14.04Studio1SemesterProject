@@ -121,7 +121,7 @@ MonoBehaviour:
   StartPosition: {x: 300, y: 0, z: 0}
   AnchorPosition: {x: 0, y: 0.5}
   spriteNames:
-  - P1_LeftButton
-  - P1_RightButton
+  - ArrowLeft
+  - ArrowRight
   - P1_AttackButton
   textPrefab: {fileID: 1370607430349802469, guid: 6522add02a6cbb146bce14ed3585b047, type: 3}
