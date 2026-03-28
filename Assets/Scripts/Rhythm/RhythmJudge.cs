@@ -22,24 +22,21 @@ public class RhythmJudge : MonoBehaviour
         float beatOffset = RhythmStore.Instance.beatOffsetMs;
         float offbeatOffset = RhythmStore.Instance.offBeatOffsetMs;
 
-        float absBeat = Mathf.Abs(beatOffset);
-        float absOffbeat = Mathf.Abs(offbeatOffset);
-
         string result;
 
-        if (absOffbeat < absBeat && absOffbeat <= syncopatedWindow)
+        if (offbeatOffset < beatOffset && offbeatOffset <= syncopatedWindow)
         {
             result = "Syncopated";
         }
-        else if (absBeat <= perfectWindow)
+        else if (beatOffset <= perfectWindow)
         {
             result = "Perfect";
         }
-        else if (absBeat <= greatWindow)
+        else if (beatOffset <= greatWindow)
         {
             result = "Great";
         }
-        else if (absBeat <= goodWindow)
+        else if (beatOffset <= goodWindow)
         {
             result = "Good";
         }
@@ -49,5 +46,6 @@ public class RhythmJudge : MonoBehaviour
         }
 
         EventBus.Emit("actionResult", result);
+        Debug.Log(result);
     }
 }

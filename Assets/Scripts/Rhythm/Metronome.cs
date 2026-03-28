@@ -51,14 +51,14 @@ public class Metronome : MonoBehaviour
             float prevBeatTime = _nextBeatPosition - _beatDurationMs;
 
             // distance to nearest beat
-            float distToPrev = _currMusicTime - prevBeatTime;
-            float distToNext = _currMusicTime - _nextBeatPosition;
+            float distToPrev = Mathf.Abs(_currMusicTime - prevBeatTime);
+            float distToNext = Mathf.Abs(_currMusicTime - _nextBeatPosition);
 
-            float beatOffset = Mathf.Abs(distToPrev) < Mathf.Abs(distToNext) ? distToPrev : distToNext;
+            float beatOffset = distToPrev < distToNext ? distToPrev : distToNext;
 
             // off-beat (syncopated)
             float offBeatTime = prevBeatTime + (_beatDurationMs / 2f);
-            float offBeatOffset = _currMusicTime - offBeatTime;
+            float offBeatOffset = Mathf.Abs(_currMusicTime - offBeatTime);
 
             RhythmStore.Instance.beatOffsetMs = beatOffset;
             RhythmStore.Instance.offBeatOffsetMs = offBeatOffset;
@@ -80,7 +80,7 @@ public class Metronome : MonoBehaviour
             if (_currMusicTime >= _nextBeatPosition)
             {
                 _currBeatIndex = (_currBeatIndex + 1) % 4;
-                Debug.Log($"beat = {_currBeatIndex}");
+                //Debug.Log($"beat = {_currBeatIndex}");
                 EventBus.Emit("beat", _currBeatIndex);
                 _nextBeatPosition += _beatDurationMs;
                 
