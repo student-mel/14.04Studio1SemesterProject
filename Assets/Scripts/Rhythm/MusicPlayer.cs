@@ -1,16 +1,26 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class MusicPlayer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public AudioSource audioSource;
+
+    private void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = RhythmStore.Instance.bgm.clip;
+        audioSource.Play();
+        RhythmStore.Instance.isPlaying = true;
+        EventBus.Emit("song_started");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (!audioSource.isPlaying) return;
+
+        float timeMs = audioSource.time * 1000f;
+
+        RhythmStore.Instance.SetMusicTime(timeMs);
+        EventBus.Emit("music_time", timeMs);
     }
 }

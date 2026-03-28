@@ -5,16 +5,17 @@ public class RhythmStore : MonoBehaviour
     public static RhythmStore Instance;
 
     [Header("Music")]
+    public BGM_Rhythm bgm;
     public float musicTimeMs;
     public bool isPlaying;
 
-    [Header("Metronome")]
+    [Header("Metronome")] 
+    public int activeBeat;
     public int currentBeatIndex;
-    public float currentBeatTimeMs;
 
-    [Header("Judge")]
+    /*[Header("Judge")]
     public float lastTimingOffsetMs;
-    public string lastJudgement;
+    public string lastJudgement;*/
 
     /*[Header("Combat")]
     public float lastDamage;*/
@@ -33,14 +34,13 @@ public class RhythmStore : MonoBehaviour
     public void SetBeat(int beatIndex, float beatTime)
     {
         currentBeatIndex = beatIndex;
-        currentBeatTimeMs = beatTime;
     }
 
-    public void SetJudgement(string judgement, float offset)
+    /*public void SetJudgement(string judgement, float offset)
     {
         lastJudgement = judgement;
         lastTimingOffsetMs = offset;
-    }
+    }*/
 
     /*public void SetDamage(float dmg)
     {

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea30d4112cf57a94c8d9393ff2ed8fdf, type: 3}
   m_Name: ObjBGM_HarmfulOrFatal
   m_EditorClassIdentifier: Assembly-CSharp::BGM_Rhythm
-  clip: {fileID: 0}
-  bpm: 80
+  clip: {fileID: 8300000, guid: 5eacad8b653652c4e9a57dbcc3d260fc, type: 3}
+  bpm: 135
