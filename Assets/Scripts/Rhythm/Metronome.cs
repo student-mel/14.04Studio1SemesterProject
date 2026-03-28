@@ -48,6 +48,20 @@ public class Metronome : MonoBehaviour
         while (true)
         {
             _currMusicTime = RhythmStore.Instance.musicTimeMs;
+            float prevBeatTime = _nextBeatPosition - _beatDurationMs;
+
+            // distance to nearest beat
+            float distToPrev = _currMusicTime - prevBeatTime;
+            float distToNext = _currMusicTime - _nextBeatPosition;
+
+            float beatOffset = Mathf.Abs(distToPrev) < Mathf.Abs(distToNext) ? distToPrev : distToNext;
+
+            // off-beat (syncopated)
+            float offBeatTime = prevBeatTime + (_beatDurationMs / 2f);
+            float offBeatOffset = _currMusicTime - offBeatTime;
+
+            RhythmStore.Instance.beatOffsetMs = beatOffset;
+            RhythmStore.Instance.offBeatOffsetMs = offBeatOffset;
 
             if (_currMusicTime >= _activeBeatStartPos)
             {
@@ -76,5 +90,30 @@ public class Metronome : MonoBehaviour
             }
             yield return null;
         }
+    }
+    
+    public float GetOffsetToNearestBeat()
+    {
+        float musicTime = RhythmStore.Instance.musicTimeMs;
+
+        float prevBeatTime = _nextBeatPosition - _beatDurationMs;
+        float nextBeatTime = _nextBeatPosition;
+
+        float distToPrev = musicTime - prevBeatTime;
+        float distToNext = musicTime - nextBeatTime;
+
+        if (Mathf.Abs(distToPrev) < Mathf.Abs(distToNext))
+            return distToPrev;
+        
+        return distToNext;
+    }
+    
+    public float GetOffsetToNearestOffBeat()
+    {
+        float musicTime = RhythmStore.Instance.musicTimeMs;
+
+        float offBeatTime = _nextBeatPosition - (_beatDurationMs / 2f);
+
+        return musicTime - offBeatTime;
     }
 }

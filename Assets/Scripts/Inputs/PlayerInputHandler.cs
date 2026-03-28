@@ -60,6 +60,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (context.started)
         {
             AttackEvent?.Invoke();
+            EventBus.Emit("action", Time.time);
 
             attackedThisFrame = true;
 

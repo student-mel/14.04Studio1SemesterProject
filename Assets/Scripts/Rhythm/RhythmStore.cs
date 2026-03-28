@@ -15,9 +15,9 @@ public class RhythmStore : MonoBehaviour
     public int activeBeat;
     public int currentBeatIndex;
 
-    /*[Header("Judge")]
-    public float lastTimingOffsetMs;
-    public string lastJudgement;*/
+    [Header("Judge")]
+    public float beatOffsetMs;
+    public float offBeatOffsetMs;
 
     /*[Header("Combat")]
     public float lastDamage;*/
