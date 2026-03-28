@@ -56,10 +56,11 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         if (actionLocked) return;
-
+    
         if (context.started)
         {
             AttackEvent?.Invoke();
+            EventBus.Emit("action", input.user.index);
 
             attackedThisFrame = true;
 
@@ -87,11 +88,12 @@ public class PlayerInputHandler : MonoBehaviour
     private void Update()
     {
         UpdateInput();
-        buffer.ClearExpiredInputs(Time.time);
+        buffer?.ClearExpiredInputs(Time.time);
     }
 
     public void UpdateInput()
     {
+        if (!moveDisplay) return;
         if (actionLocked) return;
 
         if (attackedThisFrame)
