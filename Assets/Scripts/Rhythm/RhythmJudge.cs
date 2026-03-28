@@ -45,7 +45,24 @@ public class RhythmJudge : MonoBehaviour
             result = "Miss";
         }
 
-        EventBus.Emit("actionResult", result);
+        EventBus.Emit("actionResult", new PlayerResult((int)obj, result));
         Debug.Log(result);
+    }
+}
+
+class PlayerResult
+{
+    public string Result;
+    public int Index;
+    
+    public PlayerResult(int playerIndex, string playerResult)
+    {
+        Result = playerResult;
+        Index = playerIndex;
+    }
+
+    public override string ToString()
+    {
+        return Result;
     }
 }

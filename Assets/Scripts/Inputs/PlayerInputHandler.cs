@@ -56,11 +56,11 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         if (actionLocked) return;
-
+    
         if (context.started)
         {
             AttackEvent?.Invoke();
-            EventBus.Emit("action", Time.time);
+            EventBus.Emit("action", input.user.index);
 
             attackedThisFrame = true;
 

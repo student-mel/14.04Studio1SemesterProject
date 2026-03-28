@@ -5,7 +5,7 @@ public class RhythmStore : MonoBehaviour
     public static RhythmStore Instance;
 
     [Header("Music")]
-    public BGM_Rhythm bgm;
+    public SO_Bgm bgm;
 
     public float beatDuration;
     public float musicTimeMs;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RhythmBarPanelHandler : MonoBehaviour
+public class UI_RhythmBar : MonoBehaviour
 {
     [SerializeField]
     private RectTransform centerImg;

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class Metronome : MonoBehaviour
+public class RhythmMetronome : MonoBehaviour
 {
     private float _bpm;
     
