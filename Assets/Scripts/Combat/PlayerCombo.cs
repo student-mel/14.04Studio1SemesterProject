@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerCombo : MonoBehaviour
 {
     public ComboState CurrCombo;
-    private float currBeat;
 
     [Range(1, 2)] public int Index;
 
@@ -14,7 +13,6 @@ public class PlayerCombo : MonoBehaviour
 
     public void ChainCombo(CombatResult result)
     {
-        currBeat = result.beatTime;
 
         switch (Index)
         {
@@ -84,19 +82,17 @@ public class PlayerCombo : MonoBehaviour
     {
         CurrCombo.comboCount++;
         CurrCombo.currentStep++;
-        CurrCombo.lastHitBeat = currBeat;
     }
     private void StartCombo()
     {
         CurrCombo.isActive = true;
         CurrCombo.comboCount = 1;
         CurrCombo.currentStep = 0;
-        CurrCombo.lastHitBeat = currBeat;
     }
 
     private bool IsComboValid(CombatResult result)
     {
-        return CurrCombo.isActive && result.beatTime - CurrCombo.lastHitBeat <= 0.5f;
+        return false;
     }
 }
 

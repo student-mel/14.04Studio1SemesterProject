@@ -16,8 +16,6 @@ public class CombatResolver : MonoBehaviour
     CombatIntent p1Intent;
     CombatIntent p2Intent;
 
-    int beatIndex = 0;
-
     public bool debug;
 
     public List<AuthorisedAttack> authorisedAttacks { get; private set; } = new List<AuthorisedAttack>();
@@ -45,12 +43,7 @@ public class CombatResolver : MonoBehaviour
         CombatIntent p1 = intents.FirstOrDefault(i => i.player == 1);
         CombatIntent p2 = intents.FirstOrDefault(i => i.player == 2);
 
-        if (p1.Equals(p1Intent) && p2.Equals(p2Intent)) return;
-        else
-        {
-            p1Intent = p1;
-            p2Intent = p2;
-        }
+        if (p1.attack.action == CombatActionType.None && p2.attack.action == CombatActionType.None) return;
 
         CombatResult result = new CombatResult();
 
@@ -176,7 +169,7 @@ public class CombatResolver : MonoBehaviour
         if (!debug) return;
 
         string debugResult = "";
-        debugResult += $"Beat{beatIndex}\n";
+        //debugResult += $"Frame {GameClock.Frame}\n";
         //debugResult += $"Player 1 Intent: {p1.action} ; Player 2 Intent: {p2.action}\n";
         if (_result.idle)
         {
@@ -213,6 +206,7 @@ public enum CombatActionType
 
 public struct AttackData
 {
+    public InputType[] inputs;
     public CombatActionType action;
     public int frame;
     public int startupFrames;
