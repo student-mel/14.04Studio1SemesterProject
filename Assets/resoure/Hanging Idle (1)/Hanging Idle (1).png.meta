@@ -1,0 +1,866 @@
+fileFormatVersion: 2
+guid: 794ba69de5f028a4cbe031b86a75b54d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hanging Idle (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd2833e59e5b07489a03f5e9cb12d78
+      internalID: 1877479381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_1
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 600
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 006af10703dfb8d47b59ef1d9241ac83
+      internalID: -143332174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_2
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 600
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f4fc509a4ec9bd4ba8735dad26b1082
+      internalID: -1717988339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_3
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 600
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c93d6cd13660f6a4088d521072b6613a
+      internalID: 490913216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_4
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 600
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 659f4eeecfcab1640b6a99dfa619717f
+      internalID: 201517160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_5
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 600
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed1bdaf55a856e14fbb754125f752607
+      internalID: 1151512749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9092a0baace1eb449bc27fc7550a2410
+      internalID: 324730071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_7
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 480
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 173338d8d096e464ebdce2ecc786368a
+      internalID: -1289193718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_8
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 480
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf6a6cfe463ab604e9aecbcc36beda75
+      internalID: -1749436306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_9
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 480
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd76d4f25e7f7984e9fc9378b03490b4
+      internalID: 111351972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_10
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 480
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74628b6f56613314b98e6dec1ee2eff5
+      internalID: 5619640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_11
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 480
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce14258980ca2046a96200d61fb9b02
+      internalID: -6619332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2e2433f268a37a408a663643deb5f02
+      internalID: -83309805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_13
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 360
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c979114d593d6b47ab82f4d19f5a27d
+      internalID: 67213015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_14
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 360
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e49692568fc8664ea96b7964c553be3
+      internalID: -245079935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_15
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 360
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ad5340ff74002748be4e5287df4ca31
+      internalID: 1716441271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_16
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 360
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f370296244151a64497bc9bf2c8ffb9d
+      internalID: 974344529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_17
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 360
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da0a5ab0dbd8b3a4db9c315d51d4322d
+      internalID: -946721904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa4ed486975f5774888fb59471dbec37
+      internalID: -1387119172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_19
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 240
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d6d66a6a83842429222fdc9fb3639c
+      internalID: -369699785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_20
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 240
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d32d1003c4569a842a5573702ad5b6b5
+      internalID: -1357735051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_21
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 240
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 264181f0a5c579c4696f0e2d551253ce
+      internalID: -1323591061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_22
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 240
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2147a0cbe09673a45b8ad0f859d47f21
+      internalID: 231363512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_23
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 240
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8767e24daad131445910560f6af3d05e
+      internalID: 965698869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 563ddd53f76984142a4278782f3aa62d
+      internalID: 634427750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_25
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 120
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67eb5fe524786ec45997221b24751e7a
+      internalID: -1095011705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_26
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 120
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d5ab39cdd968c46bf7271b5cff1773
+      internalID: -2100741776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_27
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 120
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e8d18bd876ef2940a0121b3bed1ea6a
+      internalID: 661303132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_28
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 120
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b553995f21f12b346a7d24c36f0fa45f
+      internalID: 487590709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_29
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 120
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b475a68320575db4c9b4b3bd1c1cb9d7
+      internalID: 1927210032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73e00f377d609ff468a67e27d9cd4e20
+      internalID: -453670657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_31
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 956d70cd044a8954f9fb96dea94918b1
+      internalID: -1232561764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_32
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69840b32c5add3144a056ecf46ac9b25
+      internalID: -632249598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hanging Idle (1)_33
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 0
+        width: 260
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 872e48d2b1187bb4e9eab6e4b6b54295
+      internalID: -182359026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Hanging Idle (1)_0: 1877479381
+      Hanging Idle (1)_1: -143332174
+      Hanging Idle (1)_10: 5619640
+      Hanging Idle (1)_11: -6619332
+      Hanging Idle (1)_12: -83309805
+      Hanging Idle (1)_13: 67213015
+      Hanging Idle (1)_14: -245079935
+      Hanging Idle (1)_15: 1716441271
+      Hanging Idle (1)_16: 974344529
+      Hanging Idle (1)_17: -946721904
+      Hanging Idle (1)_18: -1387119172
+      Hanging Idle (1)_19: -369699785
+      Hanging Idle (1)_2: -1717988339
+      Hanging Idle (1)_20: -1357735051
+      Hanging Idle (1)_21: -1323591061
+      Hanging Idle (1)_22: 231363512
+      Hanging Idle (1)_23: 965698869
+      Hanging Idle (1)_24: 634427750
+      Hanging Idle (1)_25: -1095011705
+      Hanging Idle (1)_26: -2100741776
+      Hanging Idle (1)_27: 661303132
+      Hanging Idle (1)_28: 487590709
+      Hanging Idle (1)_29: 1927210032
+      Hanging Idle (1)_3: 490913216
+      Hanging Idle (1)_30: -453670657
+      Hanging Idle (1)_31: -1232561764
+      Hanging Idle (1)_32: -632249598
+      Hanging Idle (1)_33: -182359026
+      Hanging Idle (1)_4: 201517160
+      Hanging Idle (1)_5: 1151512749
+      Hanging Idle (1)_6: 324730071
+      Hanging Idle (1)_7: -1289193718
+      Hanging Idle (1)_8: -1749436306
+      Hanging Idle (1)_9: 111351972
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Hanging Idle (1)/Hanging Idle (1).png
+  uploadId: 708708

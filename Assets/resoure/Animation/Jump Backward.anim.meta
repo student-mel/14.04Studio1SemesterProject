@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aae47b0a960438641aa426c2010402bd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Animation/Jump Backward.anim
+  uploadId: 708708

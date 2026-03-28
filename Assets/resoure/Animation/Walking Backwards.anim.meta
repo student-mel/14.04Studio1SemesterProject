@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ab22d7bfcd0e57c4a83cb82cbd0e1b1c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Animation/Walking Backwards.anim
+  uploadId: 708708

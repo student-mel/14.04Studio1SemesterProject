@@ -1,10 +1,13 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class ButtonUI : MonoBehaviour
 {
     public Image[] Buttons;
+
+    public float heightOffset = 2.4f;
 
     public Color Default;
     public Color Pressed;
@@ -16,26 +19,22 @@ public class ButtonUI : MonoBehaviour
 
     private void Start()
     {
-        PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
-        player = players.FirstOrDefault(p => p.PlayerIndex == index);
+        LookForPlayers();
 
-        if(player != null)
-        {
-            player.MoveEvent += MoveButtonPressed;
-            player.MoveEndedEvent += MoveButtonUnpressed;
-            player.AttackEvent += AttackButtonPressed;
-            player.AttackEndedEvent += AttackButtonUnpressed;
-        }
+        StartCoroutine(LateStart());
+    }
 
+    void LookForPlayers()
+    {
         GameObject[] playerObjs = GameObject.FindGameObjectsWithTag("Player");
 
-        if( playerObjs.Length <= 0)
+        if (playerObjs.Length <= 1)
         {
             Debug.Log("No player found in scene");
             return;
         }
 
-        if(index == 1)
+        if (index == 1)
         {
             playerTransform = playerObjs[0].transform.position.x < playerObjs[1].transform.position.x ? playerObjs[0].transform : playerObjs[1].transform;
         }
@@ -48,12 +47,37 @@ public class ButtonUI : MonoBehaviour
             Debug.LogWarning("Player index under ButtonUI can only be 1 or 2");
         }
 
-        if(playerTransform != null)
+        if (playerTransform != null)
         {
-            transform.parent = playerTransform;
-            transform.localPosition = playerTransform.localPosition;
-            transform.position += Vector3.up * 1.2f;
+            transform.SetParent(playerTransform);
+            transform.position = playerTransform.position;
+            transform.position += Vector3.up * heightOffset;
         }
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
+        if (player == null)
+        {
+            PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
+            player = players.FirstOrDefault(p => p.PlayerIndex == index);
+
+            player.MoveEvent += MoveButtonPressed;
+            player.MoveEndedEvent += MoveButtonUnpressed;
+            player.AttackEvent += AttackButtonPressed;
+            player.AttackEndedEvent += AttackButtonUnpressed;
+        }
+    }
+
+    private void Update()
+    {
+
+        //if (playerTransform == null) return;
+
+        //Vector3 newPos = transform.position;
+        //newPos.x = playerTransform.position.x;
+        //transform.position = newPos;
     }
 
     private void OnEnable()
