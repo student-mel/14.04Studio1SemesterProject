@@ -6,6 +6,8 @@ public class RhythmStore : MonoBehaviour
 
     [Header("Music")]
     public BGM_Rhythm bgm;
+
+    public float beatDuration;
     public float musicTimeMs;
     public bool isPlaying;
 

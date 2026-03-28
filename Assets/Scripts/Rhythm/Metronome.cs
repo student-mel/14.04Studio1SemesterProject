@@ -33,6 +33,8 @@ public class Metronome : MonoBehaviour
     {
         _bpm = RhythmStore.Instance.bgm.bpm;
         _beatDurationMs = 60 / _bpm * 1000f;
+        RhythmStore.Instance.beatDuration = _beatDurationMs;
+        
         _nextBeatPosition = _beatDurationMs;
         
         _activeBeatStartPos = _nextBeatPosition - errorMarginMs;
