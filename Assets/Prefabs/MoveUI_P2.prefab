@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2352040281013049479, guid: 41e1d80ac2a1f294aa28dac2b8b4449a, type: 3}
       propertyPath: 'spriteNames.Array.data[0]'
-      value: P2_LeftButton
+      value: ArrowLeft
       objectReference: {fileID: 0}
     - target: {fileID: 2352040281013049479, guid: 41e1d80ac2a1f294aa28dac2b8b4449a, type: 3}
       propertyPath: 'spriteNames.Array.data[1]'
-      value: P2_RightButton
+      value: ArrowRight
       objectReference: {fileID: 0}
     - target: {fileID: 2352040281013049479, guid: 41e1d80ac2a1f294aa28dac2b8b4449a, type: 3}
       propertyPath: 'spriteNames.Array.data[2]'

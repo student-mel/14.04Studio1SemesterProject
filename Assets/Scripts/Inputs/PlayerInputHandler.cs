@@ -15,12 +15,20 @@ public class PlayerInputHandler : MonoBehaviour
     private Vector2 moveInput = new Vector2();
 
     private bool attackedThisFrame = false;
+    private bool actionLocked = false;
 
     private MoveUI moveDisplay;
+
+    private InputBuffer buffer;
+
+    public int inputIndex { get; private set; } = 0;
 
     public bool debug = false;
 
     public int PlayerIndex { get; private set; }
+
+    public void LockAction() => actionLocked = true;
+    public void UnlockAction() => actionLocked = false;
 
     private void Start()
     {
@@ -29,10 +37,26 @@ public class PlayerInputHandler : MonoBehaviour
 
         MoveUI[] moveUIs = FindObjectsByType<MoveUI>(FindObjectsSortMode.None);
         moveDisplay = moveUIs.FirstOrDefault(m => m.Index == PlayerIndex);
+        moveDisplay.AssignInputHandler(this);
+
+        buffer = new InputBuffer();
+
+        buffer.id = PlayerIndex;
+        buffer.playerIntent = new CombatIntent();
+        CombatResolver.i.SetInputBuffer(PlayerIndex, buffer);
+
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (context.canceled)
+        {
+            AttackEndedEvent?.Invoke();
+            attackedThisFrame = false;
+        }
+
+        if (actionLocked) return;
+
         if (context.started)
         {
             AttackEvent?.Invoke();
@@ -42,13 +66,15 @@ public class PlayerInputHandler : MonoBehaviour
             if (debug)
                 Debug.Log($"Player {(input.user.index + 1)} Attacked");
         }
-
-        if (context.canceled) AttackEndedEvent?.Invoke();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (actionLocked) return;
+
         moveInput = context.ReadValue<Vector2>();
+
+        if (context.started) inputIndex++;
 
         if(Mathf.Abs(moveInput.x) > 0.1f)
             MoveEvent?.Invoke(moveInput);
@@ -58,14 +84,16 @@ public class PlayerInputHandler : MonoBehaviour
 
         if(context.canceled) MoveEndedEvent?.Invoke();
     }
-
-    private void FixedUpdate()
+    private void Update()
     {
-        DisplayMove();
+        UpdateInput();
+        buffer.ClearExpiredInputs(Time.time);
     }
 
-    public void DisplayMove()
+    public void UpdateInput()
     {
+        if (actionLocked) return;
+
         if (attackedThisFrame)
         {
             if (moveInput.x > 0.1f)
@@ -75,6 +103,8 @@ public class PlayerInputHandler : MonoBehaviour
             else
                 moveDisplay.AddMoveToQueue(2, null);
             attackedThisFrame = false;
+
+            buffer.AddInput(CombatActionType.LightAttack, Time.time);
         }
         else
         {

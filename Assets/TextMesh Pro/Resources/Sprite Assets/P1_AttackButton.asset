@@ -104,8 +104,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: c6099d4e3c1826e41a79f05782f32e38, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets:
-  - {fileID: 11400000, guid: 2060cdc1108a355469e2499d60f5f6bb, type: 2}
-  - {fileID: 11400000, guid: 4a35d775650ca014ba991090b5c9584d, type: 2}
-  - {fileID: 11400000, guid: 2e52b6ded0b75a74887a92d52884a6da, type: 2}
-  - {fileID: 11400000, guid: b4d6ca4d840fc074790c4cc51ccb82e5, type: 2}
   - {fileID: 11400000, guid: f13a40a9534308d4a921a4fafdfc7aae, type: 2}
+  - {fileID: 11400000, guid: b526fd9e50ac8444c8b55d2ff607ab1e, type: 2}
+  - {fileID: 11400000, guid: 9b93e0d24e722c1488ed50d5862f9c9a, type: 2}

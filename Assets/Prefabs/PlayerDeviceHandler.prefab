@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7042467765305855433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2916768755533206614}
+  - component: {fileID: 180055849029039572}
+  m_Layer: 0
+  m_Name: PlayerDeviceHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2916768755533206614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042467765305855433}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &180055849029039572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042467765305855433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375e7d692ec2f904da9955b5777ae4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeviceHandler
+  prefab: {fileID: 3318921445722754250, guid: 4f6bd67db4518bf4eb91f699f051b24b, type: 3}
+  action: {fileID: -944628639613478452, guid: 0aebf58394be34f4882138ffa5d0b336, type: 3}
+  Player1JoinKey:
+    m_Name: Player 1 Join Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4957d613-a9d2-4007-81e2-922a83902243
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4ca9d36b-06db-4aef-aeff-b1b1c9af298b
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player 1 Join Key
+      m_Flags: 0
+    m_Flags: 0
+  Player2JoinKey:
+    m_Name: Player 2 Join Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 811fdfa5-08f4-408e-b26c-74f26497fd57
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4e68fd4d-e7f9-4845-a3ec-e801544022f8
+      m_Path: <Keyboard>/numpad4
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player 2 Join Key
+      m_Flags: 0
+    m_Flags: 0
+  debug: 1
