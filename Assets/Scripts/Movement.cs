@@ -6,11 +6,12 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private InputActionReference moveAction;
+
     [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
+    private bool isLight; //to check if light attack has been input
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,27 +21,57 @@ public class Movement : MonoBehaviour
 
     private void OnEnable()
     {
-            moveAction.action.Enable();
+        moveAction.action.Enable();
     }
 
     private void OnDisable()
     {
-            moveAction.action.Disable();
+        moveAction.action.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveInput = InputSystem.actions.FindAction("Move").ReadValue<Vector2>();
+        if (!isLight)
+        {
+            moveInput = moveAction.action.ReadValue<Vector2>();
+        }
+        else
+        {
+            moveInput = Vector2.zero;
+        }
 
         float horizontal = moveInput.x;
 
-        
+        bool isWalkingForward = !isLight && horizontal > 0.1f;
+        bool isWalkingBackward = !isLight && horizontal < -0.1f;
+
+        animator.SetBool("isWalkingForward", isWalkingForward);
+        animator.SetBool("isWalkingBackward", isWalkingBackward);
     }
+
 
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, 0f);
     }
+
+    public void StartLightAttack()
+    {
+        if (isLight) return;
+
+        isLight = true;
+
+        moveInput = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
+
+        animator.SetTrigger("isLight");
+    }
+
+    public void EndAttack()
+    {
+        isLight = false;
+    }
+
 }
 
