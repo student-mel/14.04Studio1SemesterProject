@@ -1,9 +1,16 @@
 fileFormatVersion: 2
 guid: 0c81578bf8f140247ad0f73c6fc98a86
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Kick (1)/Kick (1).png
+  uploadId: 708708
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +27,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,9 +71,10 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 4096
     resizeAlgorithm: 0
@@ -75,9 +84,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -87,6 +97,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -96,13 +107,14 @@ TextureImporter:
       name: Kick (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 100
-        width: 260
-        height: 100
+        x: 196
+        y: 102
+        width: 51
+        height: 85
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -117,13 +129,14 @@ TextureImporter:
       name: Kick (1)_1
       rect:
         serializedVersion: 2
-        x: 260
-        y: 100
-        width: 260
-        height: 100
+        x: 458
+        y: 102
+        width: 49
+        height: 85
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -138,13 +151,14 @@ TextureImporter:
       name: Kick (1)_2
       rect:
         serializedVersion: 2
-        x: 520
-        y: 100
-        width: 260
-        height: 100
+        x: 718
+        y: 101
+        width: 49
+        height: 86
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -159,13 +173,14 @@ TextureImporter:
       name: Kick (1)_3
       rect:
         serializedVersion: 2
-        x: 780
-        y: 100
-        width: 260
-        height: 100
+        x: 976
+        y: 102
+        width: 51
+        height: 85
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -180,13 +195,14 @@ TextureImporter:
       name: Kick (1)_4
       rect:
         serializedVersion: 2
-        x: 1040
-        y: 100
-        width: 260
-        height: 100
+        x: 1227
+        y: 102
+        width: 60
+        height: 85
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -201,13 +217,14 @@ TextureImporter:
       name: Kick (1)_5
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 100
-        width: 260
-        height: 100
+        x: 1489
+        y: 102
+        width: 58
+        height: 85
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -222,13 +239,14 @@ TextureImporter:
       name: Kick (1)_6
       rect:
         serializedVersion: 2
-        x: 1560
-        y: 100
-        width: 260
-        height: 100
+        x: 1754
+        y: 101
+        width: 52
+        height: 86
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -243,13 +261,14 @@ TextureImporter:
       name: Kick (1)_7
       rect:
         serializedVersion: 2
-        x: 1820
-        y: 100
-        width: 260
-        height: 100
+        x: 2013
+        y: 101
+        width: 50
+        height: 84
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -264,13 +283,14 @@ TextureImporter:
       name: Kick (1)_8
       rect:
         serializedVersion: 2
-        x: 2080
-        y: 100
-        width: 260
-        height: 100
+        x: 2266
+        y: 101
+        width: 49
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -285,13 +305,14 @@ TextureImporter:
       name: Kick (1)_9
       rect:
         serializedVersion: 2
-        x: 2340
+        x: 2527
         y: 100
-        width: 260
-        height: 100
+        width: 45
+        height: 84
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -306,13 +327,14 @@ TextureImporter:
       name: Kick (1)_10
       rect:
         serializedVersion: 2
-        x: 2600
+        x: 2783
         y: 100
-        width: 260
-        height: 100
+        width: 50
+        height: 84
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -327,13 +349,14 @@ TextureImporter:
       name: Kick (1)_11
       rect:
         serializedVersion: 2
-        x: 2860
-        y: 100
-        width: 260
-        height: 100
+        x: 3030
+        y: 101
+        width: 62
+        height: 79
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -348,13 +371,14 @@ TextureImporter:
       name: Kick (1)_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 260
-        height: 100
+        x: 162
+        y: 2
+        width: 67
+        height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -369,13 +393,14 @@ TextureImporter:
       name: Kick (1)_13
       rect:
         serializedVersion: 2
-        x: 260
-        y: 0
-        width: 260
-        height: 100
+        x: 425
+        y: 2
+        width: 65
+        height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -390,13 +415,14 @@ TextureImporter:
       name: Kick (1)_14
       rect:
         serializedVersion: 2
-        x: 520
-        y: 0
-        width: 260
-        height: 100
+        x: 701
+        y: 2
+        width: 54
+        height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -411,13 +437,14 @@ TextureImporter:
       name: Kick (1)_15
       rect:
         serializedVersion: 2
-        x: 780
-        y: 0
-        width: 260
-        height: 100
+        x: 968
+        y: 1
+        width: 52
+        height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -432,13 +459,14 @@ TextureImporter:
       name: Kick (1)_16
       rect:
         serializedVersion: 2
-        x: 1040
-        y: 0
-        width: 260
-        height: 100
+        x: 1227
+        y: 1
+        width: 52
+        height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -453,13 +481,14 @@ TextureImporter:
       name: Kick (1)_17
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 0
-        width: 260
-        height: 100
+        x: 1488
+        y: 1
+        width: 45
+        height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -474,13 +503,14 @@ TextureImporter:
       name: Kick (1)_18
       rect:
         serializedVersion: 2
-        x: 1560
-        y: 0
-        width: 260
-        height: 100
+        x: 1749
+        y: 1
+        width: 41
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -495,13 +525,14 @@ TextureImporter:
       name: Kick (1)_19
       rect:
         serializedVersion: 2
-        x: 1820
-        y: 0
-        width: 260
-        height: 100
+        x: 2013
+        y: 2
+        width: 36
+        height: 79
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -516,13 +547,14 @@ TextureImporter:
       name: Kick (1)_20
       rect:
         serializedVersion: 2
-        x: 2080
-        y: 0
-        width: 260
-        height: 100
+        x: 2277
+        y: 2
+        width: 32
+        height: 82
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -537,13 +569,14 @@ TextureImporter:
       name: Kick (1)_21
       rect:
         serializedVersion: 2
-        x: 2340
-        y: 0
-        width: 260
-        height: 100
+        x: 2538
+        y: 2
+        width: 39
+        height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -558,13 +591,14 @@ TextureImporter:
       name: Kick (1)_22
       rect:
         serializedVersion: 2
-        x: 2600
-        y: 0
-        width: 260
-        height: 100
+        x: 2798
+        y: 1
+        width: 47
+        height: 85
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -579,13 +613,14 @@ TextureImporter:
       name: Kick (1)_23
       rect:
         serializedVersion: 2
-        x: 2860
-        y: 0
-        width: 260
-        height: 100
+        x: 3058
+        y: 2
+        width: 49
+        height: 84
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -597,6 +632,7 @@ TextureImporter:
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -606,6 +642,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: True
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":true,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Kick (1)_0: 1321485895
       Kick (1)_1: 833560649
@@ -631,16 +673,8 @@ TextureImporter:
       Kick (1)_7: -622789688
       Kick (1)_8: 28077037
       Kick (1)_9: 754312383
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 302530
-  packageName: Fighting Action Boxer
-  packageVersion: 1.0
-  assetPath: Assets/Scenes/resoure/Kick (1)/Kick (1).png
-  uploadId: 708708

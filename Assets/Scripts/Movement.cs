@@ -8,12 +8,16 @@ public class Movement : MonoBehaviour
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private GameObject hitbox;
+    [SerializeField] private GameObject heavyHitbox;
+    [SerializeField] private Transform hitboxTransform;
+    [SerializeField] private float hitboxOffsetX = 0.8f;
     [SerializeField] private Animator animator;
     [SerializeField] private float hurtDuration = 0.7f;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private bool isLight; //to check if light attack has been input
+    private bool isHeavy; //to check if heavy attack has been input
     private bool isHurt;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,7 +44,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isLight && !isHurt)
+        if (!isLight && !isHeavy && !isHurt)
         {
             moveInput = moveAction.action.ReadValue<Vector2>();
         }
@@ -51,17 +55,30 @@ public class Movement : MonoBehaviour
 
         float horizontal = moveInput.x;
 
-        bool isWalkingForward = !isLight && !isHurt && horizontal > 0.1f;
-        bool isWalkingBackward = !isLight && !isHurt && horizontal < -0.1f;
+        bool isWalkingForward = !isLight && !isHeavy && !isHurt && horizontal > 0.1f;
+        bool isWalkingBackward = !isLight && !isHeavy && !isHurt && horizontal < -0.1f;
 
         animator.SetBool("isWalkingForward", isWalkingForward);
         animator.SetBool("isWalkingBackward", isWalkingBackward);
+
+        if (hitboxTransform != null)
+        {
+            Vector3 pos = hitboxTransform.localPosition;
+
+            if (horizontal > 0.1f)
+                pos.x = hitboxOffsetX;
+            else if (horizontal < -0.1f)
+                pos.x = -hitboxOffsetX;
+
+            hitboxTransform.localPosition = pos;
+        }
     }
 
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, 0f);
+        Vector2 targetPosition = rb.position + new Vector2(moveInput.x * moveSpeed * Time.fixedDeltaTime, 0f);
+        rb.MovePosition(targetPosition);
     }
 
     public void StartLightAttack()
@@ -107,5 +124,23 @@ public class Movement : MonoBehaviour
         isHurt = false;
     }
 
+    public void StartHeavyAttack()
+    {
+        if (isLight || isHeavy || isHurt) return;
+
+        isHeavy = true;
+        moveInput = Vector2.zero;
+
+        animator.ResetTrigger("isHeavy");
+        animator.SetTrigger("isHeavy");
+
+        heavyHitbox.SetActive(true);
+    }
+
+    public void EndHeavyAttack()
+    {
+        isHeavy = false;
+        heavyHitbox.SetActive(false);
+    }
 }
 

@@ -18,7 +18,7 @@ public class Hitbox : MonoBehaviour
         
     }
 
-    private void OnEnable()
+    private void OnDisable()
     {
         hasHit = false;
     }
@@ -27,7 +27,7 @@ public class Hitbox : MonoBehaviour
     {
         Debug.Log("Hitbox touched: " + other.name);
 
-        if (hasHit) return;
+            if (hasHit) return;
 
         Hurtbox hurtbox = other.GetComponent<Hurtbox>();
         if (hurtbox == null) return;
