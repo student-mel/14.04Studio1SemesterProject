@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private GameObject hitbox;
+    [SerializeField] private Transform hitboxTransform;
+    [SerializeField] private float hitboxOffsetX = 0.8f;
     [SerializeField] private Animator animator;
     [SerializeField] private float hurtDuration = 0.7f;
 
@@ -56,12 +58,25 @@ public class Movement : MonoBehaviour
 
         animator.SetBool("isWalkingForward", isWalkingForward);
         animator.SetBool("isWalkingBackward", isWalkingBackward);
+
+        if (hitboxTransform != null)
+        {
+            Vector3 pos = hitboxTransform.localPosition;
+
+            if (horizontal > 0.1f)
+                pos.x = hitboxOffsetX;
+            else if (horizontal < -0.1f)
+                pos.x = -hitboxOffsetX;
+
+            hitboxTransform.localPosition = pos;
+        }
     }
 
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, 0f);
+        Vector2 targetPosition = rb.position + new Vector2(moveInput.x * moveSpeed * Time.fixedDeltaTime, 0f);
+        rb.MovePosition(targetPosition);
     }
 
     public void StartLightAttack()
@@ -76,13 +91,13 @@ public class Movement : MonoBehaviour
         animator.ResetTrigger("isLight");
         animator.SetTrigger("isLight");
 
-        //hitbox.SetActive(true);
+        hitbox.SetActive(true);
     }
 
     public void EndAttack()
     {
         isLight = false;
-        //hitbox.SetActive(false);
+        hitbox.SetActive(false);
     }
 
     public void StartHurt()
