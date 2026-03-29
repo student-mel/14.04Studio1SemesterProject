@@ -18,7 +18,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private bool attackedThisFrame = false;
 
-    private MoveUI moveDisplay;
+    private InputDebug inputDisplay;
 
     private InputBuffer buffer;
 
@@ -34,9 +34,9 @@ public class PlayerInputHandler : MonoBehaviour
         input = GetComponent<PlayerInput>();
         PlayerIndex = input.user.index + 1;
 
-        MoveUI[] moveUIs = FindObjectsByType<MoveUI>(FindObjectsSortMode.None);
-        moveDisplay = moveUIs.FirstOrDefault(m => m.Index == PlayerIndex);
-        moveDisplay.AssignInputHandler(this);
+        InputDebug[] moveUIs = FindObjectsByType<InputDebug>(FindObjectsSortMode.None);
+        inputDisplay = moveUIs.FirstOrDefault(m => m.Index == PlayerIndex);
+        inputDisplay.AssignInputHandler(this);
 
         buffer = FindAnyObjectByType<InputBuffer>();
     }
@@ -104,21 +104,21 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void UpdateInput()
     {
-        if (!moveDisplay) return;
+        if (!inputDisplay) return;
 
         if (attackedThisFrame)
         {
             if (moveInput.x > 0.1f)
             {
-                moveDisplay.AddMoveToQueue(2, 1);
+                inputDisplay.AddMoveToQueue(2, 1);
             }
             else if (moveInput.x < -0.1f)
             {
-                moveDisplay.AddMoveToQueue(2, 0);
+                inputDisplay.AddMoveToQueue(2, 0);
             }
             else
             {
-                moveDisplay.AddMoveToQueue(2, null);
+                inputDisplay.AddMoveToQueue(2, null);
             }
 
             attackedThisFrame = false;
@@ -128,9 +128,9 @@ public class PlayerInputHandler : MonoBehaviour
         else
         {
             if (moveInput.x > 0.1f)
-                moveDisplay.AddMoveToQueue(null, 1);
+                inputDisplay.AddMoveToQueue(null, 1);
             else if (moveInput.x < -0.1f)
-                moveDisplay.AddMoveToQueue(null, 0);
+                inputDisplay.AddMoveToQueue(null, 0);
         }
     }
 }

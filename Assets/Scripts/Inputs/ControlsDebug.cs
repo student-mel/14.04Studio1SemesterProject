@@ -3,11 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class ButtonUI : MonoBehaviour
+public class ControlsDebug : MonoBehaviour
 {
     public Image[] Buttons;
-
-    public float heightOffset = 2.4f;
 
     public Color Default;
     public Color Pressed;
@@ -15,44 +13,9 @@ public class ButtonUI : MonoBehaviour
     public int index = 1;
     private PlayerInputHandler player;
 
-    private Transform playerTransform;
-
     private void Start()
     {
-        LookForPlayers();
-
         StartCoroutine(LateStart());
-    }
-
-    void LookForPlayers()
-    {
-        GameObject[] playerObjs = GameObject.FindGameObjectsWithTag("Player");
-
-        if (playerObjs.Length <= 1)
-        {
-            Debug.Log("No player found in scene");
-            return;
-        }
-
-        if (index == 1)
-        {
-            playerTransform = playerObjs[0].transform.position.x < playerObjs[1].transform.position.x ? playerObjs[0].transform : playerObjs[1].transform;
-        }
-        else if (index == 2)
-        {
-            playerTransform = playerObjs[0].transform.position.x > playerObjs[1].transform.position.x ? playerObjs[0].transform : playerObjs[1].transform;
-        }
-        else
-        {
-            Debug.LogWarning("Player index under ButtonUI can only be 1 or 2");
-        }
-
-        if (playerTransform != null)
-        {
-            transform.SetParent(playerTransform);
-            transform.position = playerTransform.position;
-            transform.position += Vector3.up * heightOffset;
-        }
     }
 
     IEnumerator LateStart()
@@ -68,16 +31,6 @@ public class ButtonUI : MonoBehaviour
             player.AttackEvent += AttackButtonPressed;
             player.AttackEndedEvent += AttackButtonUnpressed;
         }
-    }
-
-    private void Update()
-    {
-
-        //if (playerTransform == null) return;
-
-        //Vector3 newPos = transform.position;
-        //newPos.x = playerTransform.position.x;
-        //transform.position = newPos;
     }
 
     private void OnEnable()

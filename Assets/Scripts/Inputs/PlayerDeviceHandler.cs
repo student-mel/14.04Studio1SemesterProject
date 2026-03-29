@@ -6,6 +6,8 @@ using UnityEngine.InputSystem.Utilities;
 
 public class PlayerDeviceHandler : MonoBehaviour
 {
+    public static PlayerDeviceHandler i;
+
     public PlayerInput prefab;
     public InputActionAsset action;
 
@@ -21,6 +23,9 @@ public class PlayerDeviceHandler : MonoBehaviour
 
     private void Awake()
     {
+        if (i == null) { i = this; }
+        else if (i != this) { Destroy(gameObject); }
+
         JoinKeyboardP1();
         JoinKeyboardP2();
     }
@@ -89,8 +94,13 @@ public class PlayerDeviceHandler : MonoBehaviour
 
         if (Player1 == null)
         {
-            GameObject player = Instantiate(prefab.gameObject, transform);
-            Player1 = player.GetComponent<PlayerInput>();
+            Player1 = GetComponentInChildren<PlayerInput>();
+
+            if (Player1 == null)
+            {
+                GameObject player = Instantiate(prefab.gameObject, transform);
+                Player1 = player.GetComponent<PlayerInput>();
+            }
         }
 
         Player1.enabled = false;
@@ -122,8 +132,13 @@ public class PlayerDeviceHandler : MonoBehaviour
 
         if (Player2 == null)
         {
-            GameObject player = Instantiate(prefab.gameObject, transform);
-            Player2 = player.GetComponent<PlayerInput>();
+            Player2 = GetComponentInChildren<PlayerInput>();
+
+            if (Player2 == null)
+            {
+                GameObject player = Instantiate(prefab.gameObject, transform);
+                Player2 = player.GetComponent<PlayerInput>();
+            }
         }
 
         Player2.enabled = false;
