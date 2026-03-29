@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1307186511295c54a9ddcb9833ec33c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
-  damage: 10
+  damage: 5
 --- !u!61 &6507111087992371178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1307186511295c54a9ddcb9833ec33c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
-  damage: 20
+  damage: 10
 --- !u!61 &4596140903985019045
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -491,6 +491,8 @@ MonoBehaviour:
   flashDuration: 0.13
   flashCount: 3
   animator: {fileID: 6757610717931559260}
+  currentHealth: 0
+  healthUI: {fileID: 0}
 --- !u!114 &228138565151026549
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int flashCount = 3;
     [SerializeField] private Animator animator;
 
-    public int currentHealth;
+    public float currentHealth;
     private Color originalColor;
     private Coroutine flashCoroutine;
     private Movement movement;
@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
 
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
 

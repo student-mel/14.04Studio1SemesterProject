@@ -36,8 +36,27 @@ public class Hitbox : MonoBehaviour
         if (health == null) return;
 
         if (health == ownerHealth) return;
-
-        health.TakeDamage(damage);
+        
+        health.TakeDamage(damage * GetDamageMult(RhythmStore.Instance.result));
         hasHit = true;
+    }
+
+    float GetDamageMult(string result)
+    {
+        switch (result)
+        {
+            case "Perfect":
+                return 2f;
+            case "Great":
+                return 1.5f;
+            case "Good":
+                return 1.2f;
+            case "Syncopated":
+                return 1.75f;
+            case "Miss":
+                return 0.5f;
+        }
+        
+        return 1f;
     }
 }
