@@ -76,13 +76,13 @@ public class Movement : MonoBehaviour
         animator.ResetTrigger("isLight");
         animator.SetTrigger("isLight");
 
-        hitbox.SetActive(true);
+        //hitbox.SetActive(true);
     }
 
     public void EndAttack()
     {
         isLight = false;
-        hitbox.SetActive(false);
+        //hitbox.SetActive(false);
     }
 
     public void StartHurt()
