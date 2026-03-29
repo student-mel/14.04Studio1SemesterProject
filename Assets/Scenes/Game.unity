@@ -269,6 +269,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: goodWindow
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: greatWindow
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: syncopatedWindow
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8449223269488932504, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_Name
       value: RhythmPackage
