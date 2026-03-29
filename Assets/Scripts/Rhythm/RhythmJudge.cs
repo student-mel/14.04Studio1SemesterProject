@@ -47,7 +47,7 @@ public class RhythmJudge : MonoBehaviour
 
         EventBus.Emit("actionResult", new PlayerResult((int)obj, result));
         RhythmStore.Instance.result = result;
-        //Debug.Log(result);
+        Debug.Log($"Result = {result}");
     }
 }
 
