@@ -4,7 +4,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 
-public class MoveUI : MonoBehaviour
+public class InputDebug : MonoBehaviour
 {
     [Header("Player Setting")]
 
@@ -176,34 +176,21 @@ public class MoveUI : MonoBehaviour
     {
         for(int i = 0; i < textList.Count; i++)
         {
-            Vector3 newPos = new Vector3();
-
             int lastIndex = (i - 1) >= 0 ? i - 1 : i;
 
             if (Index == 1)
             {
-                newPos =    StartPosition                                   + 
-                            (Vector3.up * rectTransform.rect.height / 2)    + 
-                            Vector3.down * i * textList[0].fontSize;
-
                 textList[i].alignment = TextAlignmentOptions.MidlineLeft;
             }
             else if (Index == 2)
             {
-                newPos =    (Vector3.right * rectTransform.rect.width)      +
-                            StartPosition                                   + 
-                            (Vector3.up * rectTransform.rect.height / 2)    + 
-                            Vector3.down * i * textList[0].fontSize;
-
                 textList[i].alignment = TextAlignmentOptions.MidlineRight;
             }
 
             textList[i].rectTransform.anchorMin = AnchorPosition;
             textList[i].rectTransform.anchorMax = AnchorPosition;
-            textList[i].rectTransform.position = newPos;
-            if(i > 0)
-                textList[i].fontSize = textList[lastIndex].fontSize * Scale ;
 
+            if (i > 0) { textList[i].fontSize = textList[lastIndex].fontSize * Scale; }
             Color newColor = textList[i].color;
             newColor.a = Mathf.Pow(Fade, i);
             textList[i].color = newColor;
