@@ -241,6 +241,7 @@ public class MoveUI : MonoBehaviour
     }
 }
 
+/*
 [CustomEditor (typeof(MoveUI))]
 public class MoveUIEditor : Editor
 {
@@ -262,3 +263,4 @@ public class MoveUIEditor : Editor
         EditorGUI.EndDisabledGroup();
     }
 }
+*/
