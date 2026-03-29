@@ -62,4 +62,12 @@ public class AnimationScript : MonoBehaviour
         }
         isLight = false;
     }
+
+    public void EndHeavyAttack()
+    {
+        if (movement != null)
+        {
+            movement.EndHeavyAttack();
+        }
+    }
 }
