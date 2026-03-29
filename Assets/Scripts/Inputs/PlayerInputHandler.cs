@@ -15,7 +15,6 @@ public class PlayerInputHandler : MonoBehaviour
     private Vector2 moveInput = new Vector2();
 
     private bool attackedThisFrame = false;
-    private bool actionLocked = false;
 
     private MoveUI moveDisplay;
 
@@ -27,8 +26,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     public int PlayerIndex { get; private set; }
 
-    public void LockAction() => actionLocked = true;
-    public void UnlockAction() => actionLocked = false;
 
     private void Start()
     {
@@ -48,15 +45,14 @@ public class PlayerInputHandler : MonoBehaviour
         {
             AttackEndedEvent?.Invoke();
             attackedThisFrame = false;
+            return;
         }
 
-        if (actionLocked) return;
-    
         if (context.started)
         {
-            AttackEvent?.Invoke();
             EventBus.Emit("action", input.user.index);
 
+            AttackEvent?.Invoke();
             attackedThisFrame = true;
 
             if (debug)
@@ -66,8 +62,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (actionLocked) return;
-
         moveInput = context.ReadValue<Vector2>();
 
         if (context.started) inputIndex++;
@@ -89,7 +83,6 @@ public class PlayerInputHandler : MonoBehaviour
     public void UpdateInput()
     {
         if (!moveDisplay) return;
-        if (actionLocked) return;
 
         if (attackedThisFrame)
         {

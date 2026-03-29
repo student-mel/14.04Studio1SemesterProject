@@ -8,7 +8,6 @@ public class CombatResolver : MonoBehaviour
 {
     public static CombatResolver i;
 
-    public Action OnTick;
     public Action<CombatResult> OnCombatResolved;
 
     InputBuffer inputBuffer;

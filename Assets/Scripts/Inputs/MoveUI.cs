@@ -83,7 +83,6 @@ public class MoveUI : MonoBehaviour
 
     private int inputIndex = 0;
 
-
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();

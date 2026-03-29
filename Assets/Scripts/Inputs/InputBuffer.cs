@@ -13,9 +13,6 @@ public class InputBuffer : MonoBehaviour
     AttackData p1Attack;
     AttackData p2Attack;
 
-    public CombatIntent P1Intent;
-    public CombatIntent P2Intent;
-
     const int INPUT_BUFFER_FRAME = 6;
     const int SIMULTANEOUS_FRAMES = 2;
     const int VALID_INPUTS_ARRAY_SIZE = 6;
@@ -152,6 +149,7 @@ public class InputBuffer : MonoBehaviour
                 }
 
                 AddValidMoves(1, P1Inputs_Direction, tempAttackInputs);
+                ConsumeInputs(1, ref P1Inputs_Direction, tempAttackInputs);
             }
         }
         if (P2Inputs_Attack.Count > 0)
@@ -174,6 +172,27 @@ public class InputBuffer : MonoBehaviour
                 }
 
                 AddValidMoves(2, P2Inputs_Direction, tempAttackInputs);
+                ConsumeInputs(2, ref P2Inputs_Direction, tempAttackInputs);
+            }
+        }
+    }
+
+    private void ConsumeInputs(int _playerIndex, ref List<BufferedInput> _dir, List<BufferedInput> _att)
+    {
+        _dir.Clear();
+
+        if (_playerIndex == 1)
+        {
+            foreach (BufferedInput a in _att)
+            {
+                P1Inputs_Attack.Remove(a);
+            }
+        }
+        else if(_playerIndex == 2)
+        {
+            foreach (BufferedInput a in _att)
+            {
+                P2Inputs_Attack.Remove(a);
             }
         }
     }
