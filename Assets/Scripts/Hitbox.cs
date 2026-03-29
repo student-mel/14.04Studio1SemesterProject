@@ -46,13 +46,13 @@ public class Hitbox : MonoBehaviour
         switch (result)
         {
             case "Perfect":
-                return 2f;
-            case "Great":
-                return 1.5f;
-            case "Good":
-                return 1.2f;
-            case "Syncopated":
                 return 1.75f;
+            case "Great":
+                return 1.3f;
+            case "Good":
+                return 1.15f;
+            case "Syncopated":
+                return 2f;
             case "Miss":
                 return 0.5f;
         }
