@@ -14,6 +14,11 @@ public class Movement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private float hurtDuration = 0.7f;
 
+    [SerializeField] private float lightStartupTime = 0.25f;
+    [SerializeField] private float lightActiveTime = 0.08f;
+    [SerializeField] private float heavyStartupTime = 0.65f;
+    [SerializeField] private float heavyActiveTime = 0.12f;
+
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private bool isLight; //to check if light attack has been input
@@ -83,7 +88,7 @@ public class Movement : MonoBehaviour
 
     public void StartLightAttack()
     {
-        if (isLight || isHurt) return;
+        if (isLight || isHeavy || isHurt) return;
 
         isLight = true;
 
@@ -93,7 +98,23 @@ public class Movement : MonoBehaviour
         animator.ResetTrigger("isLight");
         animator.SetTrigger("isLight");
 
-        hitbox.SetActive(true);
+        StartCoroutine(LightAttackHitTiming());
+    }
+
+    private IEnumerator LightAttackHitTiming()
+    {
+        if (hitbox != null)
+            hitbox.SetActive(false);
+
+        yield return new WaitForSeconds(lightStartupTime);
+
+        if (hitbox != null)
+            hitbox.SetActive(true);
+
+        yield return new WaitForSeconds(lightActiveTime);
+
+        if (hitbox != null)
+            hitbox.SetActive(false);
     }
 
     public void EndAttack()
@@ -108,10 +129,14 @@ public class Movement : MonoBehaviour
 
         isHurt = true;
         isLight = false;
+        isHeavy = false;
 
         moveInput = Vector2.zero;
         rb.linearVelocity = Vector2.zero;
 
+        StopAllCoroutines();
+
+        heavyHitbox.SetActive(false);
         hitbox.SetActive(false);
 
         StopCoroutine("EndHurtAfterTime");
@@ -134,7 +159,23 @@ public class Movement : MonoBehaviour
         animator.ResetTrigger("isHeavy");
         animator.SetTrigger("isHeavy");
 
-        heavyHitbox.SetActive(true);
+        StartCoroutine(HeavyAttackHitTiming());
+    }
+
+    private IEnumerator HeavyAttackHitTiming()
+    {
+        if (heavyHitbox != null)
+            heavyHitbox.SetActive(false);
+
+        yield return new WaitForSeconds(heavyStartupTime);
+
+        if (heavyHitbox != null)
+            heavyHitbox.SetActive(true);
+
+        yield return new WaitForSeconds(heavyActiveTime);
+
+        if (heavyHitbox != null)
+            heavyHitbox.SetActive(false);
     }
 
     public void EndHeavyAttack()
