@@ -7,7 +7,7 @@
             "id": "cab96682-017f-4570-9a3d-bd70d11e92c7",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "P1 Move",
                     "type": "Value",
                     "id": "6c94194f-62bd-44ba-9eb8-6a00cd66b0bb",
                     "expectedControlType": "Vector2",
@@ -16,9 +16,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "LightAttack",
+                    "name": "P2 Move",
+                    "type": "Value",
+                    "id": "1efc35b4-1dec-45b7-a652-ee1ca876bb74",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LightAttack P1",
                     "type": "Button",
                     "id": "61522540-1a92-49a6-b42d-ac0b471da842",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LightAttack P2",
+                    "type": "Button",
+                    "id": "44e3a962-466e-4ad1-b539-842ce462e65d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -33,7 +51,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "P1 Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -44,7 +62,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "P1 Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -55,7 +73,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "P1 Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "0b1670b8-b2ec-4c86-9200-2142a5ad9a76",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "P2 Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "53ffc523-e95b-423c-a90e-b369be54723e",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "P2 Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "ec9165cb-3114-4999-a47d-ecd01081294a",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "P2 Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -66,7 +117,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LightAttack",
+                    "action": "LightAttack P1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "34a99b97-d9e2-498c-86e2-286a85560e3a",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LightAttack P2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

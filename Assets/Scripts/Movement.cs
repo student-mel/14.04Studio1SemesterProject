@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Movement : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private GameObject hitbox;
     [SerializeField] private Animator animator;
+    [SerializeField] private float hurtDuration = 0.7f;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private bool isLight; //to check if light attack has been input
+    private bool isHurt;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,7 +40,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isLight)
+        if (!isLight && !isHurt)
         {
             moveInput = moveAction.action.ReadValue<Vector2>();
         }
@@ -48,8 +51,8 @@ public class Movement : MonoBehaviour
 
         float horizontal = moveInput.x;
 
-        bool isWalkingForward = !isLight && horizontal > 0.1f;
-        bool isWalkingBackward = !isLight && horizontal < -0.1f;
+        bool isWalkingForward = !isLight && !isHurt && horizontal > 0.1f;
+        bool isWalkingBackward = !isLight && !isHurt && horizontal < -0.1f;
 
         animator.SetBool("isWalkingForward", isWalkingForward);
         animator.SetBool("isWalkingBackward", isWalkingBackward);
@@ -63,7 +66,7 @@ public class Movement : MonoBehaviour
 
     public void StartLightAttack()
     {
-        if (isLight) return;
+        if (isLight || isHurt) return;
 
         isLight = true;
 
@@ -80,6 +83,28 @@ public class Movement : MonoBehaviour
     {
         isLight = false;
         hitbox.SetActive(false);
+    }
+
+    public void StartHurt()
+    {
+        if (isHurt) return;
+
+        isHurt = true;
+        isLight = false;
+
+        moveInput = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
+
+        hitbox.SetActive(false);
+
+        StopCoroutine("EndHurtAfterTime");
+        StartCoroutine("EndHurtAfterTime");
+    }
+
+    private IEnumerator EndHurtAfterTime()
+    {
+        yield return new WaitForSeconds(hurtDuration);
+        isHurt = false;
     }
 
 }

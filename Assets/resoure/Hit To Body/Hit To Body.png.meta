@@ -1,9 +1,16 @@
 fileFormatVersion: 2
 guid: d71309db1bd2a294090658541209c3a3
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302530
+  packageName: Fighting Action Boxer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/resoure/Hit To Body/Hit To Body.png
+  uploadId: 708708
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +27,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,9 +71,10 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 4096
     resizeAlgorithm: 0
@@ -75,9 +84,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -87,6 +97,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -96,13 +107,14 @@ TextureImporter:
       name: Hit To Body_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 100
-        width: 260
-        height: 100
+        x: 198
+        y: 101
+        width: 48
+        height: 84
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -117,13 +129,14 @@ TextureImporter:
       name: Hit To Body_1
       rect:
         serializedVersion: 2
-        x: 260
-        y: 100
-        width: 260
-        height: 100
+        x: 458
+        y: 101
+        width: 48
+        height: 84
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -138,13 +151,14 @@ TextureImporter:
       name: Hit To Body_2
       rect:
         serializedVersion: 2
-        x: 520
-        y: 100
-        width: 260
-        height: 100
+        x: 716
+        y: 101
+        width: 50
+        height: 85
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -159,13 +173,14 @@ TextureImporter:
       name: Hit To Body_3
       rect:
         serializedVersion: 2
-        x: 780
+        x: 974
         y: 100
-        width: 260
-        height: 100
+        width: 52
+        height: 84
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -180,13 +195,14 @@ TextureImporter:
       name: Hit To Body_4
       rect:
         serializedVersion: 2
-        x: 1040
+        x: 1232
         y: 100
-        width: 260
-        height: 100
+        width: 54
+        height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -201,13 +217,14 @@ TextureImporter:
       name: Hit To Body_5
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 100
-        width: 260
-        height: 100
+        x: 1494
+        y: 102
+        width: 52
+        height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -222,13 +239,14 @@ TextureImporter:
       name: Hit To Body_6
       rect:
         serializedVersion: 2
-        x: 1560
-        y: 100
-        width: 260
-        height: 100
+        x: 1755
+        y: 102
+        width: 51
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -243,13 +261,14 @@ TextureImporter:
       name: Hit To Body_7
       rect:
         serializedVersion: 2
-        x: 1820
-        y: 100
-        width: 260
-        height: 100
+        x: 2016
+        y: 102
+        width: 50
+        height: 62
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -264,13 +283,14 @@ TextureImporter:
       name: Hit To Body_8
       rect:
         serializedVersion: 2
-        x: 2080
-        y: 100
-        width: 260
-        height: 100
+        x: 2275
+        y: 101
+        width: 51
+        height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -285,13 +305,14 @@ TextureImporter:
       name: Hit To Body_9
       rect:
         serializedVersion: 2
-        x: 2340
-        y: 100
-        width: 260
-        height: 100
+        x: 2535
+        y: 101
+        width: 51
+        height: 67
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -306,13 +327,14 @@ TextureImporter:
       name: Hit To Body_10
       rect:
         serializedVersion: 2
-        x: 2600
-        y: 100
-        width: 260
-        height: 100
+        x: 2795
+        y: 101
+        width: 50
+        height: 69
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -327,13 +349,14 @@ TextureImporter:
       name: Hit To Body_11
       rect:
         serializedVersion: 2
-        x: 2860
-        y: 100
-        width: 260
-        height: 100
+        x: 3055
+        y: 101
+        width: 50
+        height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -348,13 +371,14 @@ TextureImporter:
       name: Hit To Body_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 260
-        height: 100
+        x: 195
+        y: 1
+        width: 50
+        height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -369,13 +393,14 @@ TextureImporter:
       name: Hit To Body_13
       rect:
         serializedVersion: 2
-        x: 260
-        y: 0
-        width: 260
-        height: 100
+        x: 456
+        y: 1
+        width: 49
+        height: 76
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -390,13 +415,14 @@ TextureImporter:
       name: Hit To Body_14
       rect:
         serializedVersion: 2
-        x: 520
-        y: 0
-        width: 260
-        height: 100
+        x: 716
+        y: 1
+        width: 49
+        height: 78
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -411,13 +437,14 @@ TextureImporter:
       name: Hit To Body_15
       rect:
         serializedVersion: 2
-        x: 780
-        y: 0
-        width: 260
-        height: 100
+        x: 977
+        y: 1
+        width: 48
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -432,13 +459,14 @@ TextureImporter:
       name: Hit To Body_16
       rect:
         serializedVersion: 2
-        x: 1040
-        y: 0
-        width: 260
-        height: 100
+        x: 1237
+        y: 1
+        width: 49
+        height: 82
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -453,13 +481,14 @@ TextureImporter:
       name: Hit To Body_17
       rect:
         serializedVersion: 2
-        x: 1300
-        y: 0
-        width: 260
-        height: 100
+        x: 1498
+        y: 1
+        width: 48
+        height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -470,91 +499,8 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Hit To Body_18
-      rect:
-        serializedVersion: 2
-        x: 2080
-        y: 0
-        width: 260
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2091d349d2a3a24dbf08cdde340cd9a
-      internalID: -230402984
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hit To Body_19
-      rect:
-        serializedVersion: 2
-        x: 2340
-        y: 0
-        width: 260
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 759b23151e3f5b34da88db9aa608b3dc
-      internalID: -1452848247
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hit To Body_20
-      rect:
-        serializedVersion: 2
-        x: 2600
-        y: 0
-        width: 260
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1ef01b7d7c7e4c4e9d9088a7b563373
-      internalID: -1000838118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hit To Body_21
-      rect:
-        serializedVersion: 2
-        x: 2860
-        y: 0
-        width: 260
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 788144ad19904b74a87666cc7be51018
-      internalID: 1586406047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -564,6 +510,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: True
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":true,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Hit To Body_0: 182174352
       Hit To Body_1: 1438812660
@@ -575,11 +527,7 @@ TextureImporter:
       Hit To Body_15: 468810271
       Hit To Body_16: 768318416
       Hit To Body_17: 2038544837
-      Hit To Body_18: -230402984
-      Hit To Body_19: -1452848247
       Hit To Body_2: -1272274446
-      Hit To Body_20: -1000838118
-      Hit To Body_21: 1586406047
       Hit To Body_3: 489979301
       Hit To Body_4: -1198833191
       Hit To Body_5: -1128885259
@@ -587,16 +535,8 @@ TextureImporter:
       Hit To Body_7: 975225126
       Hit To Body_8: -1601542913
       Hit To Body_9: -250050497
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 302530
-  packageName: Fighting Action Boxer
-  packageVersion: 1.0
-  assetPath: Assets/Scenes/resoure/Hit To Body/Hit To Body.png
-  uploadId: 708708
