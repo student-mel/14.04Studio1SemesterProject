@@ -10,6 +10,8 @@ public class PlayerInputHandler : MonoBehaviour
     public UnityAction MoveEndedEvent;
     public UnityAction AttackEvent;
     public UnityAction AttackEndedEvent;
+    public UnityAction Attack2Event;
+    public UnityAction Attack2EndedEvent;
 
     private PlayerInput input;
     private Vector2 moveInput = new Vector2();
@@ -60,14 +62,34 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void OnAttack2(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            Attack2EndedEvent?.Invoke();
+            attackedThisFrame = false;
+            return;
+        }
+
+        if (context.started)
+        {
+            EventBus.Emit("action", input.user.index);
+
+            Attack2Event?.Invoke();
+            attackedThisFrame = true;
+
+            if (debug)
+                Debug.Log($"Player {(input.user.index + 1)} Heavy Attacked");
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
 
         if (context.started) inputIndex++;
 
-        if(Mathf.Abs(moveInput.x) > 0.1f)
-            MoveEvent?.Invoke(moveInput);
+        MoveEvent?.Invoke(moveInput);
 
         if(debug)
             Debug.Log($"Player {(input.user.index + 1)} Moving");

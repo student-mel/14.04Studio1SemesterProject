@@ -1,5 +1,7 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class AnimationScript : MonoBehaviour
 {
@@ -11,36 +13,52 @@ public class AnimationScript : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private bool isLight;
+
+    public PlayerInputHandler inputHandler { get; private set; }
+    [Range(1, 2)] public int PlayerIndex;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        StartCoroutine(LateStart());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator LateStart()
     {
+        yield return null;
+
+        if (inputHandler == null)
+        {
+            PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
+            inputHandler = players.FirstOrDefault(p => p.PlayerIndex == PlayerIndex);
+
+            inputHandler.AttackEvent += OnAttack;
+            inputHandler.Attack2Event += OnHeavyAttack;
+        }
     }
 
     private void OnEnable()
     {
-        attackAction.action.Enable();
-        attackAction.action.performed += OnAttack;
+        if (inputHandler == null)
+        {
+            PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
+            inputHandler = players.FirstOrDefault(p => p.PlayerIndex == PlayerIndex);
 
-        heavyAttackAction.action.Enable();
-        heavyAttackAction.action.performed += OnHeavyAttack;
+            if (inputHandler == null) return;
+        }
+        inputHandler.AttackEvent += OnAttack;
+        inputHandler.Attack2Event += OnHeavyAttack;
     }
 
     private void OnDisable()
     {
-        attackAction.action.performed -= OnAttack;
-        attackAction.action.Disable();
-
-        heavyAttackAction.action.performed -= OnHeavyAttack;
-        heavyAttackAction.action.Disable();
+        inputHandler.AttackEvent -= OnAttack;
+        inputHandler.Attack2Event -= OnHeavyAttack;
     }
 
-    private void OnAttack(InputAction.CallbackContext context)
+    private void OnAttack()
     {
         if (movement != null)
         {
@@ -48,7 +66,7 @@ public class AnimationScript : MonoBehaviour
         }
     }
 
-    private void OnHeavyAttack(InputAction.CallbackContext context)
+    private void OnHeavyAttack()
     {
         if (movement != null)
             movement.StartHeavyAttack();

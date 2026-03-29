@@ -80,4 +80,4 @@ MonoBehaviour:
       m_Action: Player 2 Join Key
       m_Flags: 0
     m_Flags: 0
-  debug: 1
+  debug: 0
