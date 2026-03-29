@@ -15,12 +15,20 @@ public class PlayerInputHandler : MonoBehaviour
     private Vector2 moveInput = new Vector2();
 
     private bool attackedThisFrame = false;
+    private bool actionLocked = false;
 
     private MoveUI moveDisplay;
+
+    private InputBuffer buffer;
+
+    public int inputIndex { get; private set; } = 0;
 
     public bool debug = false;
 
     public int PlayerIndex { get; private set; }
+
+    public void LockAction() => actionLocked = true;
+    public void UnlockAction() => actionLocked = false;
 
     private void Start()
     {
@@ -29,26 +37,40 @@ public class PlayerInputHandler : MonoBehaviour
 
         MoveUI[] moveUIs = FindObjectsByType<MoveUI>(FindObjectsSortMode.None);
         moveDisplay = moveUIs.FirstOrDefault(m => m.Index == PlayerIndex);
+        moveDisplay.AssignInputHandler(this);
+
+        buffer = FindAnyObjectByType<InputBuffer>();
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (context.canceled)
+        {
+            AttackEndedEvent?.Invoke();
+            attackedThisFrame = false;
+        }
+
+        if (actionLocked) return;
+    
         if (context.started)
         {
             AttackEvent?.Invoke();
+            EventBus.Emit("action", input.user.index);
 
             attackedThisFrame = true;
 
             if (debug)
                 Debug.Log($"Player {(input.user.index + 1)} Attacked");
         }
-
-        if (context.canceled) AttackEndedEvent?.Invoke();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (actionLocked) return;
+
         moveInput = context.ReadValue<Vector2>();
+
+        if (context.started) inputIndex++;
 
         if(Mathf.Abs(moveInput.x) > 0.1f)
             MoveEvent?.Invoke(moveInput);
@@ -58,23 +80,35 @@ public class PlayerInputHandler : MonoBehaviour
 
         if(context.canceled) MoveEndedEvent?.Invoke();
     }
-
-    private void FixedUpdate()
+    private void Update()
     {
-        DisplayMove();
+        UpdateInput();
+        buffer?.ClearExpiredInputs(Time.time);
     }
 
-    public void DisplayMove()
+    public void UpdateInput()
     {
+        if (!moveDisplay) return;
+        if (actionLocked) return;
+
         if (attackedThisFrame)
         {
             if (moveInput.x > 0.1f)
+            {
                 moveDisplay.AddMoveToQueue(2, 1);
+            }
             else if (moveInput.x < -0.1f)
+            {
                 moveDisplay.AddMoveToQueue(2, 0);
+            }
             else
+            {
                 moveDisplay.AddMoveToQueue(2, null);
+            }
+
             attackedThisFrame = false;
+
+            buffer.AddAttackInput(PlayerIndex, InputType.Light);
         }
         else
         {
