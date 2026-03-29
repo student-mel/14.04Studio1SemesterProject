@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e73181427928245857268ad5ef0ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  sfxSource: {fileID: 0}
-  voiceSource: {fileID: 0}
+  sfxSource: {fileID: 911556152}
+  voiceSource: {fileID: 911556152}
   hit: {fileID: 8300000, guid: b2bce36eb77854e3db26739a3f04a4b4, type: 3}
   ko: {fileID: 8300000, guid: 8d7dea035c3dc495886ae5531e92522b, type: 3}
   preRoundVoice: {fileID: 8300000, guid: 5a65dcc61ab1740da9783ff223fd944b, type: 3}
@@ -199,11 +199,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a98ebb9d230d64f9f71438ac7f151b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  player1: {fileID: 0}
-  player2: {fileID: 0}
+  player1: {fileID: 1510749864}
+  player2: {fileID: 1807007526}
   player1Rounds: 0
   player2Rounds: 0
   roundsToWin: 2
+  player1UI: {fileID: 1931009204}
+  player2UI: {fileID: 1931009203}
 --- !u!4 &205611216
 Transform:
   m_ObjectHideFlags: 0
@@ -310,6 +312,7 @@ GameObject:
   - component: {fileID: 911556150}
   - component: {fileID: 911556149}
   - component: {fileID: 911556148}
+  - component: {fileID: 911556152}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -435,6 +438,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &911556152
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911556147}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1036130683
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +820,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6896d3b6c179c4e8bf1c57459fabae, type: 3}
+--- !u!114 &1510749864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3415458329935601827, guid: 3c6896d3b6c179c4e8bf1c57459fabae, type: 3}
+  m_PrefabInstance: {fileID: 1510749863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc49cc4db0237b46a20520ae4521794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
 --- !u!114 &1717376717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 175702130399348286, guid: 2b3387e8576b58e4f8d9c72a568f54ae, type: 3}
@@ -800,6 +911,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc8f19fa09ec02a4d9ac9ae850643f49, type: 3}
+--- !u!114 &1807007526 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2819585243266868426, guid: bc8f19fa09ec02a4d9ac9ae850643f49, type: 3}
+  m_PrefabInstance: {fileID: 1807007525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc49cc4db0237b46a20520ae4521794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
 --- !u!1001 &1931009202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -909,6 +1031,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82176f483befb4cef81c62dce4b80977, type: 3}
+--- !u!114 &1931009203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4275633768526390579, guid: 82176f483befb4cef81c62dce4b80977, type: 3}
+  m_PrefabInstance: {fileID: 1931009202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b442b295580742baaf9ec441f9eecd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::roundCounters
+--- !u!114 &1931009204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4390822784332957582, guid: 82176f483befb4cef81c62dce4b80977, type: 3}
+  m_PrefabInstance: {fileID: 1931009202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b442b295580742baaf9ec441f9eecd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::roundCounters
 --- !u!1 &1937031940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7182045645148356605, guid: 82176f483befb4cef81c62dce4b80977, type: 3}

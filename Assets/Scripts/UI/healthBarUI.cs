@@ -37,6 +37,6 @@ public class healthBarUI : MonoBehaviour
 
     void Update()
     {
-        subtractHealth(0.1f);
+        subtractHealth(0f); //Is this meant to be .1, drains health but if its part of the rhythm then makes sense
     }
 }

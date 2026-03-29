@@ -3,13 +3,15 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerHealth player1;
-    public PlayerHealth player2;
+    public Health player1;
+    public Health player2;
 
     public int player1Rounds;
     public int player2Rounds;
 
     public int roundsToWin = 2;
+    public roundCounters player1UI;
+    public roundCounters player2UI;
 
     private bool roundActive = false;
 
@@ -20,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartRound()
     {
+        AudioManager.Instance?.PlayPreRound();
+
         yield return new WaitForSeconds(1f);
 
         roundActive = true;
@@ -41,14 +45,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void EndRound(PlayerHealth winner)
+    void EndRound(Health winner)
     {
         roundActive = false;
 
         if (winner == player1)
+        {
             player1Rounds++;
+            player1UI?.WinRound();
+        }
         else
+        {
             player2Rounds++;
+            player2UI?.WinRound();
+        }
 
         AudioManager.Instance?.PlayKO();
 

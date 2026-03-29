@@ -11,14 +11,24 @@ public class Health : MonoBehaviour
     [SerializeField] private int flashCount = 3;
     [SerializeField] private Animator animator;
 
-    private int currentHealth;
+    public int currentHealth;
     private Color originalColor;
     private Coroutine flashCoroutine;
     private Movement movement;
+
+    private Vector3 spawnPosition;
+
+    [SerializeField] private healthBarUI healthUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
+
+        if (healthUI != null)
+        {
+            healthUI.setMaxHealth(maxHealth);
+            healthUI.updateHealth(currentHealth);
+        }
     }
 
     // Update is called once per frame
@@ -34,13 +44,23 @@ public class Health : MonoBehaviour
         originalColor = spriteRenderer.color;
         animator = GetComponentInChildren<Animator>();
         movement = GetComponent<Movement>();
+        spawnPosition = transform.position;
 
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+
+        if (currentHealth < 0)
+            currentHealth = 0;
+
         Debug.Log(gameObject.name + " HP: " + currentHealth);
+
+        if (healthUI != null)
+            healthUI.updateHealth(currentHealth);
+
+        AudioManager.Instance?.PlayHit();
 
         movement.StartHurt();
         animator.ResetTrigger("isHit");
@@ -71,5 +91,14 @@ public class Health : MonoBehaviour
 
         spriteRenderer.color = originalColor;
         flashCoroutine = null;
+    }
+
+    public void ResetPlayer()
+    {
+        currentHealth = maxHealth;
+        transform.position = spawnPosition;
+
+        if (healthUI != null)
+            healthUI.updateHealth(currentHealth);
     }
 }
