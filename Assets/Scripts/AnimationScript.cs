@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class AnimationScript : MonoBehaviour
 {
     [SerializeField] private InputActionReference attackAction;
+    [SerializeField] private InputActionReference heavyAttackAction;
     [SerializeField] private Animator animator;
     [SerializeField] private Movement movement;
 
@@ -25,12 +26,18 @@ public class AnimationScript : MonoBehaviour
     {
         attackAction.action.Enable();
         attackAction.action.performed += OnAttack;
+
+        heavyAttackAction.action.Enable();
+        heavyAttackAction.action.performed += OnHeavyAttack;
     }
 
     private void OnDisable()
     {
         attackAction.action.performed -= OnAttack;
         attackAction.action.Disable();
+
+        heavyAttackAction.action.performed -= OnHeavyAttack;
+        heavyAttackAction.action.Disable();
     }
 
     private void OnAttack(InputAction.CallbackContext context)
@@ -39,6 +46,12 @@ public class AnimationScript : MonoBehaviour
         {
             movement.StartLightAttack();
         }
+    }
+
+    private void OnHeavyAttack(InputAction.CallbackContext context)
+    {
+        if (movement != null)
+            movement.StartHeavyAttack();
     }
 
     public void EndAttack()
