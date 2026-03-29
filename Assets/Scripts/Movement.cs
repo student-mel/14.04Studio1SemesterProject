@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private InputActionReference moveAction;
-
+    [SerializeField] private GameObject hitbox;
     [SerializeField] private Animator animator;
 
     private Rigidbody2D rb;
@@ -15,6 +15,11 @@ public class Movement : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
+    {
+       
+    }
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -65,12 +70,16 @@ public class Movement : MonoBehaviour
         moveInput = Vector2.zero;
         rb.linearVelocity = Vector2.zero;
 
+        animator.ResetTrigger("isLight");
         animator.SetTrigger("isLight");
+
+        hitbox.SetActive(true);
     }
 
     public void EndAttack()
     {
         isLight = false;
+        hitbox.SetActive(false);
     }
 
 }
