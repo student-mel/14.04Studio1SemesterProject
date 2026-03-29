@@ -131,6 +131,7 @@ MonoBehaviour:
   heavyAttackAction: {fileID: 6765437316873805341, guid: 4bedbd48ed5890e48ab0e73efaa4ffbc, type: 3}
   animator: {fileID: 6757610717931559260}
   movement: {fileID: 228138565151026549}
+  PlayerIndex: 2
 --- !u!1 &3029761477157169190
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +515,7 @@ MonoBehaviour:
   lightActiveTime: 0.08
   heavyStartupTime: 0.65
   heavyActiveTime: 0.12
+  PlayerIndex: 2
 --- !u!61 &3203095847249663384
 BoxCollider2D:
   m_ObjectHideFlags: 0

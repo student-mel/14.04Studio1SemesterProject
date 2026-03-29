@@ -115,10 +115,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveUI
   Index: 1
-  Length: 25
+  Length: 15
   Scale: 1
   Fade: 1
-  StartPosition: {x: 300, y: 350, z: 0}
+  StartPosition: {x: 300, y: -100, z: 0}
   AnchorPosition: {x: 0, y: 0.5}
   spriteNames:
   - ArrowLeft

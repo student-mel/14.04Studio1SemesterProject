@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Linq;
 
 public class Movement : MonoBehaviour
 {
@@ -25,10 +26,13 @@ public class Movement : MonoBehaviour
     private bool isHeavy; //to check if heavy attack has been input
     private bool isHurt;
 
+    public PlayerInputHandler inputHandler { get; private set; }
+    [Range(1, 2)] public int PlayerIndex;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+        StartCoroutine(LateStart());
     }
 
     void Awake()
@@ -36,27 +40,59 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
+
+        if (inputHandler == null)
+        {
+            PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
+            inputHandler = players.FirstOrDefault(p => p.PlayerIndex == PlayerIndex);
+
+            inputHandler.MoveEvent += OnMove;
+        }
+    }
+
     private void OnEnable()
     {
         moveAction.action.Enable();
+
+        if (inputHandler == null)
+        {
+            PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
+            inputHandler = players.FirstOrDefault(p => p.PlayerIndex == PlayerIndex);
+
+            if (inputHandler == null) return;
+            inputHandler.MoveEvent += OnMove;
+        }
+        else
+        {
+            inputHandler.MoveEvent += OnMove;
+        }
     }
 
     private void OnDisable()
     {
         moveAction.action.Disable();
+
+        inputHandler.MoveEvent -= OnMove;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnMove(Vector2 _input)
     {
         if (!isLight && !isHeavy && !isHurt)
         {
-            moveInput = moveAction.action.ReadValue<Vector2>();
+            moveInput = _input;
         }
         else
         {
             moveInput = Vector2.zero;
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         float horizontal = moveInput.x;
 

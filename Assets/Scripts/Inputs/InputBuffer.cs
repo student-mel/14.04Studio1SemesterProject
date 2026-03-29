@@ -98,7 +98,6 @@ public class InputBuffer : MonoBehaviour
 
         attack.inputs = currMove;
         attack = GetAttackForInput(ref attack);
-        Debug.Log(currMove[3]);
 
         if (_playerIndex == 1)
         {
