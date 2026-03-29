@@ -86,6 +86,11 @@ MonoBehaviour:
   hitboxOffsetX: 0.8
   animator: {fileID: 7917184833974290374}
   hurtDuration: 0.7
+  lightStartupTime: 0.25
+  lightActiveTime: 0.08
+  heavyStartupTime: 0.65
+  heavyActiveTime: 0.12
+  PlayerIndex: 1
 --- !u!114 &3415458329935601827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +377,7 @@ MonoBehaviour:
   heavyAttackAction: {fileID: 4652412472739852664, guid: 4bedbd48ed5890e48ab0e73efaa4ffbc, type: 3}
   animator: {fileID: 7917184833974290374}
   movement: {fileID: 7781316653371064441}
+  PlayerIndex: 1
 --- !u!1 &4984796902689064471
 GameObject:
   m_ObjectHideFlags: 0
