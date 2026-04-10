@@ -109,6 +109,8 @@ MonoBehaviour:
   flashDuration: 0.13
   flashCount: 3
   animator: {fileID: 7917184833974290374}
+  currentHealth: 0
+  healthUI: {fileID: 0}
 --- !u!61 &-3624916148256494624
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -423,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1307186511295c54a9ddcb9833ec33c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
-  damage: 10
+  damage: 5
 --- !u!61 &1662455134738011479
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -515,7 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1307186511295c54a9ddcb9833ec33c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
-  damage: 20
+  damage: 10
 --- !u!61 &1583486588998317940
 BoxCollider2D:
   m_ObjectHideFlags: 0

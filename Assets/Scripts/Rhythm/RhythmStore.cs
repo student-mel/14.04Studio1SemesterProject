@@ -18,6 +18,7 @@ public class RhythmStore : MonoBehaviour
     [Header("Judge")]
     public float beatOffsetMs;
     public float offBeatOffsetMs;
+    public string result;
 
     /*[Header("Combat")]
     public float lastDamage;*/
