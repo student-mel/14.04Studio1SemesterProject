@@ -27,7 +27,6 @@ public class CombatResolver : MonoBehaviour
 
     private void Update()
     {
-
         authorisedAttacks.RemoveAll(a => a.hitApplied || Time.time > a.expiryTime);
     }
     // private void FixedUpdate()

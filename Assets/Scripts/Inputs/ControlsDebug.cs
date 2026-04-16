@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,87 +11,68 @@ public class ControlsDebug : MonoBehaviour
     public Color Default;
     public Color Pressed;
 
-    public int index = 1;
-    private PlayerInputHandler player;
-
-    private void Start()
-    {
-        StartCoroutine(LateStart());
-    }
-
-    IEnumerator LateStart()
-    {
-        yield return new WaitForEndOfFrame();
-        if (player == null)
-        {
-            PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
-            player = players.FirstOrDefault(p => p.PlayerIndex == index);
-
-            player.MoveEvent += MoveButtonPressed;
-            player.MoveEndedEvent += MoveButtonUnpressed;
-            player.AttackEvent += AttackButtonPressed;
-            player.AttackEndedEvent += AttackButtonUnpressed;
-        }
-    }
+    [Range(1, 2)] public int index = 1;
 
     private void OnEnable()
     {
-        if(player != null)
+        if (index == 1)
         {
-            player.MoveEvent += MoveButtonPressed;
-            player.MoveEndedEvent += MoveButtonUnpressed;
-            player.AttackEvent += AttackButtonPressed;
-            player.AttackEndedEvent += AttackButtonUnpressed;
+            EventBus.Subscribe("on_p1_directional_input", OnDirectionPressed);
+            EventBus.Subscribe("on_p1_directional_input_cancelled", OnDirectionReleased);
+            EventBus.Subscribe("on_p1_attack_input", OnAttackPressed);
+            EventBus.Subscribe("on_p1_attack_input_cancelled", OnAttackReleased);
+        }
+        else if (index == 2)
+        {
+            EventBus.Subscribe("on_p2_directional_input", OnDirectionPressed);
+            EventBus.Subscribe("on_p2_directional_input_cancelled", OnDirectionReleased);
+            EventBus.Subscribe("on_p2_attack_input", OnAttackPressed);
+            EventBus.Subscribe("on_p2_attack_input_cancelled", OnAttackReleased);
         }
     }
     private void OnDisable()
     {
-        if(player != null)
+        if (index == 1)
         {
-            player.MoveEvent -= MoveButtonPressed;
-            player.MoveEndedEvent -= MoveButtonUnpressed;
-            player.AttackEvent -= AttackButtonPressed;
-            player.AttackEndedEvent -= AttackButtonUnpressed;
+            EventBus.Unsubscribe("on_p1_directional_input", OnDirectionPressed);
+            EventBus.Unsubscribe("on_p1_directional_input_cancelled", OnDirectionReleased);
+            EventBus.Unsubscribe("on_p1_attack_input", OnAttackPressed);
+            EventBus.Unsubscribe("on_p1_attack_input_cancelled", OnAttackReleased);
+        }
+        else if (index == 2)
+        {
+            EventBus.Unsubscribe("on_p2_directional_input", OnDirectionPressed);
+            EventBus.Unsubscribe("on_p2_directional_input_cancelled", OnDirectionReleased);
+            EventBus.Unsubscribe("on_p2_attack_input", OnAttackPressed);
+            EventBus.Unsubscribe("on_p2_attack_input_cancelled", OnAttackReleased);
         }
     }
 
-    private void OnButtonPressed(InputType input)
+    private void OnDirectionPressed(object input)
+    {
+        int i = (int)input;
+        Buttons[i].color = Pressed;
+
+        for (int b = 0; b < 8; b++)
+        {
+            if (i == b) continue;
+            Buttons[b].color = Default;
+        }
+    }
+
+    private void OnDirectionReleased(object nothing)
+    {
+        for (int b = 0; b < 8; b++)
+            Buttons[b].color = Default;
+    }    
+    private void OnAttackPressed(object input)
     {
         int i = (int)input;
         Buttons[i].color = Pressed;
     }
-
-    private void OnButtonReleased(InputType input)
+    private void OnAttackReleased(object input)
     {
         int i = (int)input;
         Buttons[i].color = Default;
-    }
-
-    public void MoveButtonPressed(Vector2 _input)
-    {
-        if(_input.x < -0.1)
-        {
-            Buttons[0].color = Pressed;
-            Buttons[1].color = Default;
-        }
-        else if(_input.x > 0.1)
-        {
-            Buttons[0].color = Default;
-            Buttons[1].color = Pressed;
-        }
-    }
-    public void MoveButtonUnpressed()
-    {
-        Buttons[0].color = Default;
-        Buttons[1].color = Default;
-    }
-
-    public void AttackButtonPressed()
-    {
-        Buttons[2].color = Pressed;
-    }
-    public void AttackButtonUnpressed()
-    {
-        Buttons[2].color = Default;
     }
 }

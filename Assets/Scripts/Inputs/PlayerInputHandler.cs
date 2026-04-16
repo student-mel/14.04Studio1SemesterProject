@@ -38,6 +38,7 @@ public class PlayerInputHandler : MonoBehaviour
         // inputDisplay.AssignInputHandler(this);
 
         buffer = GetComponent<InputBuffer>();
+        buffer.handler = this;
     }
 
     public void OnLightAttack(InputAction.CallbackContext context)
@@ -61,11 +62,16 @@ public class PlayerInputHandler : MonoBehaviour
             // if (debug)
             //     Debug.Log($"Player {(input.user.index + 1)} pressed Attack 1");
         }
+
+        if (context.canceled)
+            CancelAttack(InputType.LightAtt);
     }
 
     public void OnMediumAttack(InputAction.CallbackContext context)
     {
         if (context.started)buffer.AddInput(InputType.MediumAtt);
+        if (context.canceled)
+            CancelAttack(InputType.MediumAtt);
     }
     public void OnHeavyAttack(InputAction.CallbackContext context)
     {
@@ -92,6 +98,9 @@ public class PlayerInputHandler : MonoBehaviour
             // if (debug)
             //     Debug.Log($"Player {(input.user.index + 1)} pressed Attack 2");
         }
+
+        if (context.canceled)
+            CancelAttack(InputType.HeavyAtt);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -100,7 +109,8 @@ public class PlayerInputHandler : MonoBehaviour
 
         if (context.started) buffer.AddInputStart(moveInput);
         if (context.performed) buffer.AddInput(moveInput);
-        
+        if (context.canceled) CancelMovement();
+
         // if (context.started)
         //     inputIndex++;
         //
@@ -118,6 +128,37 @@ public class PlayerInputHandler : MonoBehaviour
         //     EventBus.Emit("on_move_ended");
         // }
     }
+
+    private void CancelAttack(InputType input)
+    {
+        switch (PlayerIndex)
+        {
+            case 1:
+                EventBus.Emit("on_p1_attack_input_cancelled", input);
+                break;
+            case 2:
+                EventBus.Emit("on_p2_attack_input_cancelled", input);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void CancelMovement()
+    {
+        switch (PlayerIndex)
+        {
+            case 1:
+                EventBus.Emit("on_p1_directional_input_cancelled");
+                break;
+            case 2:
+                EventBus.Emit("on_p2_directional_input_cancelled");
+                break;
+            default:
+                break;
+        }
+    }
+    
     private void Update()
     {
         //UpdateInput();

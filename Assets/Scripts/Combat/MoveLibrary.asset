@@ -15,61 +15,61 @@ MonoBehaviour:
   MoveList:
   - Name: Move Left
     moveType: 0
-    moveString: 01000000
+    moveString: 00000000
     priority: 0
   - Name: Move Right
     moveType: 0
-    moveString: 04000000
-    priority: 0
+    moveString: 03000000
+    priority: 1
   - Name: Dash Left
     moveType: 0
-    moveString: 0100000001000000
+    moveString: 0000000000000000
     priority: 0
   - Name: Dash Right
     moveType: 0
-    moveString: 0400000004000000
+    moveString: 0300000003000000
     priority: 0
   - Name: Jump Left
     moveType: 0
-    moveString: 02000000
+    moveString: 01000000
     priority: 0
   - Name: Jump Right
     moveType: 0
-    moveString: 05000000
+    moveString: 04000000
     priority: 0
   - Name: Jump Up
     moveType: 0
-    moveString: 07000000
+    moveString: 06000000
     priority: 0
   - Name: Crouch Left
     moveType: 0
-    moveString: 03000000
+    moveString: 02000000
     priority: 0
   - Name: Crouch Right
     moveType: 0
-    moveString: 06000000
+    moveString: 05000000
     priority: 0
   - Name: Crouch
     moveType: 0
-    moveString: 08000000
+    moveString: 07000000
     priority: 0
   - Name: Light Attack
     moveType: 1
-    moveString: 09000000
+    moveString: 08000000
     priority: 0
   - Name: Medium Attack
     moveType: 1
-    moveString: 0a000000
+    moveString: 09000000
     priority: 0
   - Name: Heavy Attack
     moveType: 1
-    moveString: 0b000000
+    moveString: 0a000000
     priority: 0
   - Name: Fire Ball Right
     moveType: 1
-    moveString: 08000000060000000400000009000000
+    moveString: 07000000050000000300000008000000
     priority: 0
   - Name: Fire Ball Left
     moveType: 1
-    moveString: 08000000030000000100000009000000
+    moveString: 07000000020000000000000008000000
     priority: 0

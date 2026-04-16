@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InputBuffer : MonoBehaviour
 {
     List<BufferedInput> bufferedInputs = new List<BufferedInput>();
     List<BufferedInput> bufferedInputDowns = new List<BufferedInput>();
+
+    public PlayerInputHandler handler;
     
     List<BufferedInput> P1Inputs_Direction = new List<BufferedInput>();
     List<BufferedInput> P2Inputs_Direction = new List<BufferedInput>();
@@ -74,7 +77,7 @@ public class InputBuffer : MonoBehaviour
             {
                 lastInput.frame = FrameClock.Frame;
                 lastInput.time = RhythmStore.Instance.musicTimeMs;
-                return;
+                goto OnInputAdded;
             }
         }
         bufferedInputs.Add(new BufferedInput
@@ -85,6 +88,19 @@ public class InputBuffer : MonoBehaviour
             priority = priority
         });
         SetBufferedInputsTime(bufferedInputs, RhythmStore.Instance.musicTimeMs);
+        
+        OnInputAdded:
+        switch (handler.PlayerIndex)
+        {
+            case 1:
+                EventBus.Emit("on_p1_directional_input", dirInput);
+                break;
+            case 2:
+                EventBus.Emit("on_p2_directional_input", dirInput);
+                break;
+            default:
+                break;
+        }
     }
     public void AddInput(InputType _input)
     {
@@ -99,6 +115,18 @@ public class InputBuffer : MonoBehaviour
             priority = 1
         });
         hasInputThisFrame = true;
+        
+        switch (handler.PlayerIndex)
+        {
+            case 1:
+                EventBus.Emit("on_p1_attack_input", _input);
+                break;
+            case 2:
+                EventBus.Emit("on_p2_attack_input", _input);
+                break;
+            default:
+                break;
+        }
     }
 
     private void LateUpdate()
