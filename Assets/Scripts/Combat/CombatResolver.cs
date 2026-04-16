@@ -27,40 +27,39 @@ public class CombatResolver : MonoBehaviour
 
     private void Update()
     {
-        GameClock.Tick();
 
         authorisedAttacks.RemoveAll(a => a.hitApplied || Time.time > a.expiryTime);
     }
-    private void FixedUpdate()
-    {
-        CombatResolve();
-    }
-
-    private void CombatResolve()
-    {
-        CombatIntent[] intents = inputBuffer.GetPendingIntents();
-        CombatIntent p1 = intents.FirstOrDefault(i => i.player == 1);
-        CombatIntent p2 = intents.FirstOrDefault(i => i.player == 2);
-
-        if (p1.attack.action == CombatActionType.None && p2.attack.action == CombatActionType.None) return;
-
-        CombatResult result = new CombatResult();
-
-        result = Resolve(p1, p2);
-
-        DebugResult(result);
-
-        if (result.clash)
-        {
-            //attacks clashes
-        }
-        else
-        {
-            NewAuthorisedAttack(result);
-        }
-
-        OnCombatResolved?.Invoke(result);
-    }
+    // private void FixedUpdate()
+    // {
+    //     CombatResolve();
+    // }
+    //
+    // private void CombatResolve()
+    // {
+    //     CombatIntent[] intents = inputBuffer.GetPendingIntents();
+    //     CombatIntent p1 = intents.FirstOrDefault(i => i.player == 1);
+    //     CombatIntent p2 = intents.FirstOrDefault(i => i.player == 2);
+    //
+    //     if (p1.attack.action == CombatActionType.None && p2.attack.action == CombatActionType.None) return;
+    //
+    //     CombatResult result = new CombatResult();
+    //
+    //     result = Resolve(p1, p2);
+    //
+    //     DebugResult(result);
+    //
+    //     if (result.clash)
+    //     {
+    //         //attacks clashes
+    //     }
+    //     else
+    //     {
+    //         NewAuthorisedAttack(result);
+    //     }
+    //
+    //     OnCombatResolved?.Invoke(result);
+    // }
 
     public void SetInputBuffer(InputBuffer _input)
     {

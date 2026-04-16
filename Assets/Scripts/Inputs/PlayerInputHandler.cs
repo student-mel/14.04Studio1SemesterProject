@@ -20,7 +20,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private InputDebug inputDisplay;
 
-    private InputBuffer buffer;
+    public InputBuffer buffer {get; private set;}
 
     public int inputIndex { get; private set; } = 0;
 
@@ -28,58 +28,69 @@ public class PlayerInputHandler : MonoBehaviour
 
     public int PlayerIndex { get; private set; }
 
-
     private void Start()
     {
         input = GetComponent<PlayerInput>();
         PlayerIndex = input.user.index + 1;
 
-        InputDebug[] moveUIs = FindObjectsByType<InputDebug>(FindObjectsSortMode.None);
-        inputDisplay = moveUIs.FirstOrDefault(m => m.Index == PlayerIndex);
-        inputDisplay.AssignInputHandler(this);
+        // InputDebug[] moveUIs = FindObjectsByType<InputDebug>(FindObjectsSortMode.None);
+        // inputDisplay = moveUIs.FirstOrDefault(m => m.Index == PlayerIndex);
+        // inputDisplay.AssignInputHandler(this);
 
-        buffer = FindAnyObjectByType<InputBuffer>();
+        buffer = GetComponent<InputBuffer>();
     }
 
-    public void OnAttack(InputAction.CallbackContext context)
+    public void OnLightAttack(InputAction.CallbackContext context)
     {
-        if (context.canceled)
-        {
-            AttackEndedEvent?.Invoke();
-            attackedThisFrame = false;
-            return;
-        }
+        // if (context.canceled)
+        // {
+        //     AttackEndedEvent?.Invoke();
+        //     attackedThisFrame = false;
+        //     return;
+        // }
 
         if (context.started)
         {
-            EventBus.Emit("action", input.user.index);
-
-            AttackEvent?.Invoke();
-            attackedThisFrame = true;
-
-            if (debug)
-                Debug.Log($"Player {(input.user.index + 1)} Attacked");
+            buffer.AddInput(InputType.LightAtt);
+            
+            // EventBus.Emit("action", input.user.index);
+            //
+            // AttackEvent?.Invoke();
+            // attackedThisFrame = true;
+            //
+            // if (debug)
+            //     Debug.Log($"Player {(input.user.index + 1)} pressed Attack 1");
         }
     }
 
-    public void OnAttack2(InputAction.CallbackContext context)
+    public void OnMediumAttack(InputAction.CallbackContext context)
     {
-        if (context.canceled)
-        {
-            Attack2EndedEvent?.Invoke();
-            attackedThisFrame = false;
-            return;
-        }
+        if (context.started)buffer.AddInput(InputType.MediumAtt);
+    }
+    public void OnHeavyAttack(InputAction.CallbackContext context)
+    {
+        // if (context.canceled)
+        // {
+        //     EventBus.Emit("on_heavy_attack_released");
+        //     
+        //     Attack2EndedEvent?.Invoke();
+        //     attackedThisFrame = false;
+        //     return;
+        // }
 
         if (context.started)
         {
-            EventBus.Emit("action", input.user.index);
-
-            Attack2Event?.Invoke();
-            attackedThisFrame = true;
-
-            if (debug)
-                Debug.Log($"Player {(input.user.index + 1)} Heavy Attacked");
+            buffer.AddInput(InputType.HeavyAtt);
+            
+            // EventBus.Emit("action", input.user.index);
+            //
+            // EventBus.Emit("on_heavy_attack_pressed");
+            //
+            // Attack2Event?.Invoke();
+            // attackedThisFrame = true;
+            //
+            // if (debug)
+            //     Debug.Log($"Player {(input.user.index + 1)} pressed Attack 2");
         }
     }
 
@@ -87,50 +98,76 @@ public class PlayerInputHandler : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
 
-        if (context.started) inputIndex++;
-
-        MoveEvent?.Invoke(moveInput);
-
-        if(debug)
-            Debug.Log($"Player {(input.user.index + 1)} Moving");
-
-        if(context.canceled) MoveEndedEvent?.Invoke();
+        if (context.started) buffer.AddInputStart(moveInput);
+        if (context.performed) buffer.AddInput(moveInput);
+        
+        // if (context.started)
+        //     inputIndex++;
+        //
+        // EventBus.Emit("on_move_value_changed", moveInput);
+        //
+        // MoveEvent?.Invoke(moveInput);
+        //
+        // if(debug)
+        //     Debug.Log($"Player {(input.user.index + 1)} Moving");
+        //
+        // if (context.canceled)
+        // {
+        //     MoveEndedEvent?.Invoke();
+        //     
+        //     EventBus.Emit("on_move_ended");
+        // }
     }
     private void Update()
     {
-        UpdateInput();
-        buffer?.ClearExpiredInputs(Time.time);
+        //UpdateInput();
+        // buffer?.ClearExpiredInputs(Time.time);
     }
 
     public void UpdateInput()
     {
-        if (!inputDisplay) return;
-
-        if (attackedThisFrame)
-        {
-            if (moveInput.x > 0.1f)
-            {
-                inputDisplay.AddMoveToQueue(2, 1);
-            }
-            else if (moveInput.x < -0.1f)
-            {
-                inputDisplay.AddMoveToQueue(2, 0);
-            }
-            else
-            {
-                inputDisplay.AddMoveToQueue(2, null);
-            }
-
-            attackedThisFrame = false;
-
-            buffer.AddAttackInput(PlayerIndex, InputType.Light);
-        }
-        else
-        {
-            if (moveInput.x > 0.1f)
-                inputDisplay.AddMoveToQueue(null, 1);
-            else if (moveInput.x < -0.1f)
-                inputDisplay.AddMoveToQueue(null, 0);
-        }
+        //buffer.AddInput(moveInput);
+        
+        // if (!inputDisplay) return;
+        //
+        // if (attackedThisFrame)
+        // {
+        //     if (moveInput.x > 0.1f)
+        //     {
+        //         inputDisplay.AddMoveToQueue(2, 1);
+        //     }
+        //     else if (moveInput.x < -0.1f)
+        //     {
+        //         inputDisplay.AddMoveToQueue(2, 0);
+        //     }
+        //     else
+        //     {
+        //         inputDisplay.AddMoveToQueue(2, null);
+        //     }
+        //
+        //     attackedThisFrame = false;
+        // }
+        // else
+        // {
+        //     if (moveInput.x > 0.1f)
+        //         inputDisplay.AddMoveToQueue(null, 1);
+        //     else if (moveInput.x < -0.1f)
+        //         inputDisplay.AddMoveToQueue(null, 0);
+        // }
     }
+}
+public enum InputType
+{
+    Left,
+    LeftUp,
+    LeftDown,
+    Right,
+    RightUp,
+    RightDown,
+    Up,
+    Down,
+    LightAtt,
+    MediumAtt,
+    HeavyAtt,
+    None
 }

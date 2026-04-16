@@ -54,6 +54,18 @@ public class ControlsDebug : MonoBehaviour
         }
     }
 
+    private void OnButtonPressed(InputType input)
+    {
+        int i = (int)input;
+        Buttons[i].color = Pressed;
+    }
+
+    private void OnButtonReleased(InputType input)
+    {
+        int i = (int)input;
+        Buttons[i].color = Default;
+    }
+
     public void MoveButtonPressed(Vector2 _input)
     {
         if(_input.x < -0.1)
