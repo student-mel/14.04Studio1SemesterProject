@@ -10,8 +10,9 @@ public class RhythmMetronome : MonoBehaviour
     private float _beatDurationMs;
 
     private float _nextBeatPosition;
-    
-    public float errorMarginMs = 80f;
+    private float _nextClickPosition;
+
+    public float errorMarginMs = 40f;
     private float _activeBeatStartPos, _activeBeatEndPos;
     private int _enterBeatIndex = 0;
     private int _exitBeatIndex = 0;
@@ -76,7 +77,13 @@ public class RhythmMetronome : MonoBehaviour
                 _activeBeatEndPos += _beatDurationMs;
                 RhythmStore.Instance.activeBeat =  -1;
             }
-            
+            // CLICK PLAYS HALF A BEAT EARLIER
+            if (_currMusicTime >= _nextClickPosition)
+            {
+                audioSource.PlayOneShot(clip);
+                _nextClickPosition += _beatDurationMs;
+            }
+
             if (_currMusicTime >= _nextBeatPosition)
             {
                 _currBeatIndex = (_currBeatIndex + 1) % 4;
@@ -84,7 +91,7 @@ public class RhythmMetronome : MonoBehaviour
                 EventBus.Emit("beat", _currBeatIndex);
                 _nextBeatPosition += _beatDurationMs;
                 
-                audioSource.PlayOneShot(clip);
+                //audioSource.PlayOneShot(clip);
                 
                 RhythmStore.Instance.currentBeatIndex =  _currBeatIndex;
             }
