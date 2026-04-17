@@ -14,9 +14,7 @@ public class PlayerInputHandler : MonoBehaviour
     public UnityAction Attack2EndedEvent;
 
     private PlayerInput input;
-    private Vector2 moveInput = new Vector2();
-
-    private bool attackedThisFrame = false;
+    private Vector2 movementInput = new Vector2();
 
     private InputDebug inputDisplay;
 
@@ -27,6 +25,16 @@ public class PlayerInputHandler : MonoBehaviour
     public bool debug = false;
 
     public int PlayerIndex { get; private set; }
+    
+    private bool moving = false;
+    private bool movementStartedThisFrame = false;
+
+    private bool attackingLight = false;
+    private bool lightAttackStartedThisFrame = false;
+    private bool attackingMedium = false;
+    private bool mediumAttackStartedThisFrame = false;
+    private bool attackingHeavy = false;
+    private bool heavyAttackStartedThisFrame = false;
 
     private void Start()
     {
@@ -43,17 +51,12 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnLightAttack(InputAction.CallbackContext context)
     {
-        // if (context.canceled)
-        // {
-        //     AttackEndedEvent?.Invoke();
-        //     attackedThisFrame = false;
-        //     return;
-        // }
-
         if (context.started)
         {
-            buffer.AddInput(InputType.LightAtt);
-            
+            buffer.AddInputStart(InputType.LightAtt);
+            attackingLight = true;
+            lightAttackStartedThisFrame = true;
+
             // EventBus.Emit("action", input.user.index);
             //
             // AttackEvent?.Invoke();
@@ -64,30 +67,35 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         if (context.canceled)
+        {
+            attackingLight = false;
             CancelAttack(InputType.LightAtt);
+        }
     }
 
     public void OnMediumAttack(InputAction.CallbackContext context)
     {
-        if (context.started)buffer.AddInput(InputType.MediumAtt);
+        if (context.started)
+        {
+            buffer.AddInputStart(InputType.MediumAtt);
+            attackingMedium = true;
+            mediumAttackStartedThisFrame = true;
+        }
+
         if (context.canceled)
+        {
+            attackingMedium = false;
             CancelAttack(InputType.MediumAtt);
+        }
     }
     public void OnHeavyAttack(InputAction.CallbackContext context)
     {
-        // if (context.canceled)
-        // {
-        //     EventBus.Emit("on_heavy_attack_released");
-        //     
-        //     Attack2EndedEvent?.Invoke();
-        //     attackedThisFrame = false;
-        //     return;
-        // }
-
         if (context.started)
         {
-            buffer.AddInput(InputType.HeavyAtt);
-            
+            buffer.AddInputStart(InputType.HeavyAtt);
+            attackingHeavy = true;
+            heavyAttackStartedThisFrame = true;
+
             // EventBus.Emit("action", input.user.index);
             //
             // EventBus.Emit("on_heavy_attack_pressed");
@@ -100,16 +108,28 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         if (context.canceled)
+        {
+            attackingHeavy = false;
             CancelAttack(InputType.HeavyAtt);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        movementInput = context.ReadValue<Vector2>();
 
-        if (context.started) buffer.AddInputStart(moveInput);
-        if (context.performed) buffer.AddInput(moveInput);
-        if (context.canceled) CancelMovement();
+        if (context.started)
+        {
+            buffer.AddInputStart(movementInput);
+            movementStartedThisFrame = true;
+            moving = true;
+        }
+
+        if (context.canceled)
+        {
+            moving = false;
+            CancelMovement();
+        }
 
         // if (context.started)
         //     inputIndex++;
@@ -161,12 +181,32 @@ public class PlayerInputHandler : MonoBehaviour
     
     private void Update()
     {
-        //UpdateInput();
+        UpdateInput();
         // buffer?.ClearExpiredInputs(Time.time);
     }
 
     public void UpdateInput()
     {
+        if (moving && !movementStartedThisFrame)
+            buffer.AddInput(movementInput);
+        else
+            movementStartedThisFrame = false;
+        
+        if(attackingLight && !lightAttackStartedThisFrame)
+            buffer.AddInput(InputType.LightAtt);
+        else
+            lightAttackStartedThisFrame = false;
+        
+        if(attackingMedium && !mediumAttackStartedThisFrame)
+            buffer.AddInput(InputType.MediumAtt);
+        else
+            mediumAttackStartedThisFrame = false;
+        
+        if(attackingHeavy && !heavyAttackStartedThisFrame)
+            buffer.AddInput(InputType.HeavyAtt);
+        else
+            heavyAttackStartedThisFrame = false;
+        
         //buffer.AddInput(moveInput);
         
         // if (!inputDisplay) return;

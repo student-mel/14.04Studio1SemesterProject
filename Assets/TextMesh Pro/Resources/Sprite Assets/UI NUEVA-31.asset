@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
-  m_Name: P1_RightButton
+  m_Name: UI NUEVA-31
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_SpriteAsset
   m_Version: 1.1.0
   m_FaceInfo:
@@ -35,41 +35,41 @@ MonoBehaviour:
     m_StrikethroughOffset: 0
     m_StrikethroughThickness: 0
     m_TabWidth: 0
-  m_Material: {fileID: 8689274501749942854}
-  spriteSheet: {fileID: 2800000, guid: fec4b276ac4087b48a25c60d02403bef, type: 3}
+  m_Material: {fileID: 2888977640869536220}
+  spriteSheet: {fileID: 2800000, guid: 96fabdd291a4d20458973753d431407b, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 0
     m_Scale: 1
-    m_Name: P1_RightButton
+    m_Name: UI NUEVA-31
   m_GlyphTable:
   - m_Index: 0
     m_Metrics:
-      m_Width: 88
-      m_Height: 88
-      m_HorizontalBearingX: 0
-      m_HorizontalBearingY: 80
-      m_HorizontalAdvance: 88
+      m_Width: 210
+      m_Height: 210
+      m_HorizontalBearingX: -105
+      m_HorizontalBearingY: 105
+      m_HorizontalAdvance: 210
     m_GlyphRect:
       m_X: 0
       m_Y: 0
-      m_Width: 88
-      m_Height: 88
+      m_Width: 210
+      m_Height: 210
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-    sprite: {fileID: 21300000, guid: fec4b276ac4087b48a25c60d02403bef, type: 3}
+    sprite: {fileID: 21300000, guid: 96fabdd291a4d20458973753d431407b, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
---- !u!21 &8689274501749942854
+--- !u!21 &2888977640869536220
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: P1_RightButton Material
+  m_Name: UI NUEVA-31 Material
   m_Shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -86,7 +86,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: fec4b276ac4087b48a25c60d02403bef, type: 3}
+        m_Texture: {fileID: 2800000, guid: 96fabdd291a4d20458973753d431407b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []

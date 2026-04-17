@@ -18,7 +18,7 @@ public class MoveMaster : MonoBehaviour
         moveList = new List<Move>(Library.MoveList);
     }
 
-    public void GetMove(List<BufferedInput> inputs)
+    public Move GetMove(List<BufferedInput> inputs)
     {
         foreach (Move move in moveList)
         {
@@ -49,32 +49,33 @@ public class MoveMaster : MonoBehaviour
                     }
                     else
                     {
-                        priority += inputs[p].priority;
+                        priority += playerInputStringIndex;
                         stringLength++;
                         playerInputStringIndex = p;
-                        
-                        if(stringLength == inputString.Count) break;
+
+                        if (stringLength == inputString.Count)
+                        {
+                            move.priority = priority;
+                            break;
+                        }
                     }
                 }
-                if(stringLength == inputString.Count)
-                    move.priority = priority;
             }
             moveList = moveList.OrderBy(i => i.priority).ToList();
             string debugString = "\n";
-            for (int i = moveList.Count - 1; i > 0; i--)
+            foreach (BufferedInput input in inputs)
+            {
+                debugString += input.input;
+                debugString += "\n";
+            }
+            for (int i = moveList.Count - 1; i >= 0; i--)
             {
                 debugString += $"{moveList[i].Name}: {moveList[i].priority}\n";
             }
             Debug.Log(debugString);
 
-            Move newMove = moveList[^1];
-            if (newMove.priority > 0)
-            {
-                if(newMove.moveType == MoveType.Attack)
-                    EventBus.Emit("attack", newMove);
-                else if(newMove.moveType == MoveType.Movement)
-                    EventBus.Emit("move", newMove);
-            }
         }
+        Move newMove = moveList[^1];
+        return newMove;
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine;
 public class InputBuffer : MonoBehaviour
 {
     List<BufferedInput> bufferedInputs = new List<BufferedInput>();
-    List<BufferedInput> bufferedInputDowns = new List<BufferedInput>();
 
     public PlayerInputHandler handler;
     
@@ -30,10 +29,14 @@ public class InputBuffer : MonoBehaviour
     public void ClearExpiredInputs()
     {
         bufferedInputs.RemoveAll(i => i.time < RhythmStore.Instance.musicTimeMs - INPUT_BUFFER_MS_TIME);
-        bufferedInputDowns.RemoveAll(i => i.time < RhythmStore.Instance.musicTimeMs - INPUT_BUFFER_MS_TIME);
     
         //if (IsExpired(1)) { p1Attack = new AttackData(); }
         //if (IsExpired(2)) { p2Attack = new AttackData(); }
+    }
+
+    public void ClearAllInputs()
+    {
+        bufferedInputs.Clear();
     }
     
     const float WHOLE = 360f;
@@ -48,17 +51,34 @@ public class InputBuffer : MonoBehaviour
         
         InputType dirInput = GetDirectionalInputType(_input);
         
-        if (bufferedInputDowns.Count > 0)
-            SetBufferedInputsTime(bufferedInputDowns, RhythmStore.Instance.musicTimeMs);
+        if (bufferedInputs.Count > 0)
+            SetBufferedInputsTime(bufferedInputs, RhythmStore.Instance.musicTimeMs);
         
-        bufferedInputDowns.Add(new BufferedInput
+        bufferedInputs.Add(new BufferedInput
         {
             input = dirInput,
+            type = MoveType.Movement,
             frame = FrameClock.Frame,
             time = RhythmStore.Instance.musicTimeMs,
-            priority = 1
         });
         hasInputThisFrame = true;
+        OnDirectionalInput(dirInput);
+    }
+    public void AddInputStart(InputType _input)
+    {
+        if (bufferedInputs.Count > 0)
+            SetBufferedInputsTime(bufferedInputs, RhythmStore.Instance.musicTimeMs);
+        
+        bufferedInputs.Add(new BufferedInput
+        {
+            input = _input,
+            type = MoveType.Attack,
+            frame = FrameClock.Frame,
+            time = RhythmStore.Instance.musicTimeMs,
+        });
+        hasInputThisFrame = true;
+
+        OnAttackInput(_input);
     }
     
     public void AddInput(Vector2 _input)
@@ -66,14 +86,52 @@ public class InputBuffer : MonoBehaviour
         if (Mathf.Abs(_input.x) < 0.01f && Mathf.Abs(_input.y) < 0.01f) return;
         
         InputType dirInput = GetDirectionalInputType(_input);
-        int priority = GetDirectionalInputPriority(dirInput);
 
         hasInputThisFrame = true;
         
         if (bufferedInputs.Count > 0)
         {
+            for (int i = bufferedInputs.Count - 1; i >= 0; i--)
+            {
+                BufferedInput input = bufferedInputs[i];
+                if(input.type == MoveType.Attack) continue;
+                else if (input.type == MoveType.Movement)
+                {
+                    if (input.input == dirInput)
+                    {
+                        input.frame = FrameClock.Frame;
+                        input.time = RhythmStore.Instance.musicTimeMs;
+                        goto OnInputAdded;
+                    }
+                    else
+                    {
+                        goto AddBufferedInput;
+                    }
+                }
+            }
+        }
+        AddBufferedInput:
+        bufferedInputs.Add(new BufferedInput
+        {
+            input = dirInput,
+            type = MoveType.Movement,
+            frame = FrameClock.Frame,
+            time = RhythmStore.Instance.musicTimeMs,
+        });
+        
+        SetBufferedInputsTime(bufferedInputs, RhythmStore.Instance.musicTimeMs);
+        
+        OnInputAdded:
+        OnDirectionalInput(dirInput);
+    }
+    public void AddInput(InputType _input)
+    {
+        hasInputThisFrame = true;
+        
+        if (bufferedInputs.Count > 0)
+        {
             BufferedInput lastInput = bufferedInputs[^1];
-            if (lastInput.input == dirInput)
+            if (lastInput.input == _input)
             {
                 lastInput.frame = FrameClock.Frame;
                 lastInput.time = RhythmStore.Instance.musicTimeMs;
@@ -82,65 +140,45 @@ public class InputBuffer : MonoBehaviour
         }
         bufferedInputs.Add(new BufferedInput
         {
-            input = dirInput,
+            input = _input,
+            type = MoveType.Attack,
             frame = FrameClock.Frame,
             time = RhythmStore.Instance.musicTimeMs,
-            priority = priority
         });
         SetBufferedInputsTime(bufferedInputs, RhythmStore.Instance.musicTimeMs);
         
         OnInputAdded:
-        switch (handler.PlayerIndex)
-        {
-            case 1:
-                EventBus.Emit("on_p1_directional_input", dirInput);
-                break;
-            case 2:
-                EventBus.Emit("on_p2_directional_input", dirInput);
-                break;
-            default:
-                break;
-        }
-    }
-    public void AddInput(InputType _input)
-    {
-        if (bufferedInputs.Count > 0)
-            SetBufferedInputsTime(bufferedInputs, RhythmStore.Instance.musicTimeMs);
-        
-        bufferedInputs.Add(new BufferedInput
-        {
-            input = _input,
-            frame = FrameClock.Frame,
-            time = RhythmStore.Instance.musicTimeMs,
-            priority = 1
-        });
-        hasInputThisFrame = true;
-        
-        switch (handler.PlayerIndex)
-        {
-            case 1:
-                EventBus.Emit("on_p1_attack_input", _input);
-                break;
-            case 2:
-                EventBus.Emit("on_p2_attack_input", _input);
-                break;
-            default:
-                break;
-        }
+        OnAttackInput((_input));
     }
 
     private void LateUpdate()
     {
-        ClearExpiredInputs();
-        
         if (hasInputThisFrame)
         {
-            if(bufferedInputs.Count > 0)
-                MoveMaster.i.GetMove(bufferedInputs);
-            if(bufferedInputDowns.Count > 0)
-                MoveMaster.i.GetMove(bufferedInputDowns);
+            if (bufferedInputs.Count > 0)
+            {
+                Move newMove = MoveMaster.i.GetMove(bufferedInputs);
+                if (newMove.priority > 0)
+                {
+                    if (handler.PlayerIndex == 1)
+                    {
+                        if(newMove.moveType == MoveType.Movement)
+                            EventBus.Emit("on_p1_move", newMove);
+                        else if(newMove.moveType == MoveType.Attack)
+                            EventBus.Emit("on_p1_attack", newMove);
+                    }
+                    else if (handler.PlayerIndex == 2)
+                    {
+                        if(newMove.moveType == MoveType.Movement)
+                            EventBus.Emit("on_p2_move", newMove);
+                        else if(newMove.moveType == MoveType.Attack)
+                            EventBus.Emit("on_p2_attack", newMove);
+                    }
+                }
+            }
+            hasInputThisFrame = false;
         }
-        hasInputThisFrame = false;
+        ClearExpiredInputs();
     }
 
     private InputType GetDirectionalInputType(Vector2 dir)
@@ -167,19 +205,36 @@ public class InputBuffer : MonoBehaviour
         return dirInput;
     }
 
-    private int GetDirectionalInputPriority(InputType dirInput)
+    private void OnAttackInput(InputType _input)
     {
-        switch (dirInput)
+        switch (handler.PlayerIndex)
         {
-            case InputType.LeftUp:
-            case InputType.LeftDown:
-            case InputType.RightUp:
-            case InputType.RightDown:
-                return 2;
+            case 1:
+                EventBus.Emit("on_p1_attack_input", _input);
+                break;
+            case 2:
+                EventBus.Emit("on_p2_attack_input", _input);
+                break;
             default:
-                return 1;
+                break;
         }
     }
+
+    private void OnDirectionalInput(InputType _input)
+    {
+        switch (handler.PlayerIndex)
+        {
+            case 1:
+                EventBus.Emit("on_p1_directional_input", _input);
+                break;
+            case 2:
+                EventBus.Emit("on_p2_directional_input", _input);
+                break;
+            default:
+                break;
+        }
+    }
+    
     private void SetBufferedInputsTime(List<BufferedInput> inputList, float msTime)
     {
         for (int i = 0; i < inputList.Count; i++)
@@ -360,9 +415,8 @@ public class InputBuffer : MonoBehaviour
 public struct BufferedInput
 {
     public InputType input;
+    public MoveType type;
     public int frame;
     public float time;
-    
-    public int priority;
 }
 
