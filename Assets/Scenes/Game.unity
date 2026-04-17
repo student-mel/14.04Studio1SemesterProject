@@ -299,15 +299,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: greatWindow
-      value: 55
+      value: 53
       objectReference: {fileID: 0}
     - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: perfectWindow
-      value: 35
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: syncopatedWindow
-      value: 35
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 7748341607150731990, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_Resource
