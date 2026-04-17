@@ -310,6 +310,10 @@ PrefabInstance:
       value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 7748341607150731990, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748341607150731990, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: 8c57c8a45521ad14d975d71f1c2cb03d, type: 3}
@@ -811,6 +815,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: hit
+      value: 
+      objectReference: {fileID: 8300000, guid: 4fc833567b1f613489c638b9e94d7098, type: 3}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 330585548}
@@ -818,6 +826,22 @@ PrefabInstance:
       propertyPath: voiceSource
       value: 
       objectReference: {fileID: 330585548}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: hit.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: 'hit.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b2bce36eb77854e3db26739a3f04a4b4, type: 3}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: impact.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: 'impact.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 4fc833567b1f613489c638b9e94d7098, type: 3}
     - target: {fileID: 6429238818009361133, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.43192
