@@ -36,7 +36,7 @@ public class RhythmMetronome : MonoBehaviour
         _beatDurationMs = 60 / _bpm * 1000f;
         RhythmStore.Instance.beatDuration = _beatDurationMs;
         
-        _nextBeatPosition = _beatDurationMs * 0.5f;
+        _nextBeatPosition = _beatDurationMs * 0.82f;
         
         _activeBeatStartPos = _nextBeatPosition - errorMarginMs;
         _activeBeatEndPos = _nextBeatPosition + errorMarginMs;
