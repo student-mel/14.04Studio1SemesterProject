@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour
@@ -13,7 +13,11 @@ public class GameManager : MonoBehaviour
     public roundCounters player1UI;
     public roundCounters player2UI;
 
+    public TimerUI timerUI;
+    public CountdownUI countdownUI;
+
     private bool roundActive = false;
+    public static bool InputLocked = true;
 
     void Start()
     {
@@ -22,18 +26,28 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartRound()
     {
+        roundActive = false;
+        InputLocked = true;
+
         AudioManager.Instance?.PlayPreRound();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
+        yield return StartCoroutine(countdownUI.PlayCountdown());
+
+        AudioManager.Instance?.PlayMusic();
+
+        timerUI?.StartTimer();
+
+        InputLocked = false;
         roundActive = true;
-
-        AudioManager.Instance?.PlayRoundStart();
     }
 
     void Update()
     {
         if (!roundActive) return;
+
+
 
         if (player1.currentHealth <= 0)
         {
@@ -48,6 +62,9 @@ public class GameManager : MonoBehaviour
     void EndRound(Health winner)
     {
         roundActive = false;
+        InputLocked = true;
+
+        timerUI?.StopTimer();
 
         if (winner == player1)
         {
