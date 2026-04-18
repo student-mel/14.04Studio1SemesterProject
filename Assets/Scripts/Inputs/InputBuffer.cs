@@ -18,11 +18,12 @@ public class InputBuffer : MonoBehaviour
     AttackData p1Attack;
     AttackData p2Attack;
 
-    const int INPUT_BUFFER_MS_TIME = 100;
+    const int INPUT_BUFFER_MS_TIME = 200;
     const int SIMULTANEOUS_FRAMES = 2;
     const int VALID_INPUTS_ARRAY_SIZE = 6;
 
     public bool hasInputThisFrame = false;
+    public bool movementStoppedThisFrame = false;
     private BufferedInput _bufferedInput1;
 
     //#region Input Handling
@@ -151,31 +152,42 @@ public class InputBuffer : MonoBehaviour
         OnAttackInput((_input));
     }
 
+    public void StopMovement()
+    {
+        movementStoppedThisFrame = true;
+    }
+
     private void LateUpdate()
     {
-        if (bufferedInputs.Count > 0)
-        {
-            CharacterMove newMove = MoveMaster.i.GetMove(bufferedInputs);
-            if (newMove.priority > 0)
-            {
-                if (handler.PlayerIndex == 1)
-                {
-                    if(newMove.moveType == MoveType.Movement)
-                        EventBus.Emit("p1_move", newMove);
-                    else if(newMove.moveType == MoveType.Attack)
-                        EventBus.Emit("p1_attack", newMove);
-                }
-                else if (handler.PlayerIndex == 2)
-                {
-                    if(newMove.moveType == MoveType.Movement)
-                        EventBus.Emit("p2_move", newMove);
-                    else if(newMove.moveType == MoveType.Attack)
-                        EventBus.Emit("p2_attack", newMove);
-                }
-            }
-        }
         if (hasInputThisFrame)
         {
+            if (bufferedInputs.Count > 0)
+            {
+                CharacterMove newMove = MoveMaster.i.GetMove(bufferedInputs);
+                if (newMove.priority > 0)
+                {
+                    if (handler.PlayerIndex == 1)
+                    {
+                        if(newMove.moveType == MoveType.Movement)
+                            if (!movementStoppedThisFrame)
+                                EventBus.Emit("p1_move", newMove);
+                            else
+                                movementStoppedThisFrame = false;
+                        else if(newMove.moveType == MoveType.Attack)
+                            EventBus.Emit("p1_attack", newMove);
+                    }
+                    else if (handler.PlayerIndex == 2)
+                    {
+                        if(newMove.moveType == MoveType.Movement)
+                            if (!movementStoppedThisFrame)
+                                EventBus.Emit("p2_move", newMove);
+                            else
+                                movementStoppedThisFrame = false;
+                        else if(newMove.moveType == MoveType.Attack)
+                            EventBus.Emit("p2_attack", newMove);
+                    }
+                }
+            }
             hasInputThisFrame = false;
         }
         ClearExpiredInputs();

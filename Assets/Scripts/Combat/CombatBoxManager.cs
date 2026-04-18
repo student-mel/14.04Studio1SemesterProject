@@ -6,7 +6,7 @@ public class CombatBoxManager : MonoBehaviour
     public TimingWindows testingWindows;
     public CombatBox hitbox;
     public CombatBox hurtbox;
-    public CombatBox thorwBox;
+    public CombatBox throwBox;
     public CombatBox projectionBox;
 
     private void OnEnable()
@@ -25,7 +25,10 @@ public class CombatBoxManager : MonoBehaviour
 
     private void ActivateHitboxesForFrame()
     {
-        
+        if (hitbox.combatData != null)
+        {
+            
+        }
     }
 }
 

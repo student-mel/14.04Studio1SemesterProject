@@ -16,6 +16,8 @@ public class CharacterMove
     [Tooltip("Inputs in sequence for this move to be valid")]
     public InputType[] moveString;
 
+    public Vector2 DirectionInput;
+
     [HideInInspector] public int priority;
 
     // public float TotalBeats;
