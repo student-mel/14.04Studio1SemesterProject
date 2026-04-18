@@ -16,11 +16,11 @@ MonoBehaviour:
   - Name: Move Left
     moveType: 0
     moveString: 00000000
-    priority: 0
+    priority: 4
   - Name: Move Right
     moveType: 0
     moveString: 03000000
-    priority: 1
+    priority: 0
   - Name: Dash Left
     moveType: 0
     moveString: 0000000000000000
@@ -44,7 +44,7 @@ MonoBehaviour:
   - Name: Crouch Left
     moveType: 0
     moveString: 02000000
-    priority: 0
+    priority: 2
   - Name: Crouch Right
     moveType: 0
     moveString: 05000000
@@ -52,11 +52,11 @@ MonoBehaviour:
   - Name: Crouch
     moveType: 0
     moveString: 07000000
-    priority: 0
+    priority: 1
   - Name: Light Attack
     moveType: 1
     moveString: 08000000
-    priority: 0
+    priority: 5
   - Name: Medium Attack
     moveType: 1
     moveString: 09000000
@@ -73,3 +73,7 @@ MonoBehaviour:
     moveType: 1
     moveString: 07000000020000000000000008000000
     priority: 0
+  - Name: Light Attack Left
+    moveType: 1
+    moveString: 0000000008000000
+    priority: 9

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1291277694336919160}
   - component: {fileID: 8924021221652888901}
-  - component: {fileID: 5322425327543048007}
   - component: {fileID: 1755180227364903966}
   m_Layer: 0
   m_Name: CombatManager
@@ -47,18 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatResolver
   debug: 0
---- !u!114 &5322425327543048007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5688053037529317674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7a681a9d871f6f40b2f0bdc578ecc56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputBuffer
 --- !u!114 &1755180227364903966
 MonoBehaviour:
   m_ObjectHideFlags: 0

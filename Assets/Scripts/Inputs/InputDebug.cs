@@ -114,13 +114,13 @@ public class InputDebug : MonoBehaviour
 
         if (Index == 1)
         {
-            EventBus.Subscribe("on_p1_move", AddMoveInputs);
-            EventBus.Subscribe("on_p1_attack", AddMoveInputs);
+            EventBus.Subscribe("p1_move", AddMoveInputs);
+            EventBus.Subscribe("p1_attack", AddMoveInputs);
         }
         else if (Index == 2)
         {
-            EventBus.Subscribe("on_p2_move", AddMoveInputs);
-            EventBus.Subscribe("on_p2_attack", AddMoveInputs);
+            EventBus.Subscribe("p2_move", AddMoveInputs);
+            EventBus.Subscribe("p2_attack", AddMoveInputs);
         }
     }
     private void OnDisable()
@@ -131,13 +131,13 @@ public class InputDebug : MonoBehaviour
         
         if (Index == 1)
         {
-            EventBus.Unsubscribe("on_p1_move", AddMoveInputs);
-            EventBus.Unsubscribe("on_p1_attack", AddMoveInputs);
+            EventBus.Unsubscribe("p1_move", AddMoveInputs);
+            EventBus.Unsubscribe("p1_attack", AddMoveInputs);
         }
         else if (Index == 2)
         {
-            EventBus.Unsubscribe("on_p2_move", AddMoveInputs);
-            EventBus.Unsubscribe("on_p2_attack", AddMoveInputs);
+            EventBus.Unsubscribe("p2_move", AddMoveInputs);
+            EventBus.Unsubscribe("p2_attack", AddMoveInputs);
         }
     }
 

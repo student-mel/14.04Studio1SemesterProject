@@ -18,7 +18,7 @@ public class InputBuffer : MonoBehaviour
     AttackData p1Attack;
     AttackData p2Attack;
 
-    const int INPUT_BUFFER_MS_TIME = 300;
+    const int INPUT_BUFFER_MS_TIME = 100;
     const int SIMULTANEOUS_FRAMES = 2;
     const int VALID_INPUTS_ARRAY_SIZE = 6;
 
@@ -153,29 +153,29 @@ public class InputBuffer : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (hasInputThisFrame)
+        if (bufferedInputs.Count > 0)
         {
-            if (bufferedInputs.Count > 0)
+            Move newMove = MoveMaster.i.GetMove(bufferedInputs);
+            if (newMove.priority > 0)
             {
-                Move newMove = MoveMaster.i.GetMove(bufferedInputs);
-                if (newMove.priority > 0)
+                if (handler.PlayerIndex == 1)
                 {
-                    if (handler.PlayerIndex == 1)
-                    {
-                        if(newMove.moveType == MoveType.Movement)
-                            EventBus.Emit("on_p1_move", newMove);
-                        else if(newMove.moveType == MoveType.Attack)
-                            EventBus.Emit("on_p1_attack", newMove);
-                    }
-                    else if (handler.PlayerIndex == 2)
-                    {
-                        if(newMove.moveType == MoveType.Movement)
-                            EventBus.Emit("on_p2_move", newMove);
-                        else if(newMove.moveType == MoveType.Attack)
-                            EventBus.Emit("on_p2_attack", newMove);
-                    }
+                    if(newMove.moveType == MoveType.Movement)
+                        EventBus.Emit("p1_move", newMove);
+                    else if(newMove.moveType == MoveType.Attack)
+                        EventBus.Emit("p1_attack", newMove);
+                }
+                else if (handler.PlayerIndex == 2)
+                {
+                    if(newMove.moveType == MoveType.Movement)
+                        EventBus.Emit("p2_move", newMove);
+                    else if(newMove.moveType == MoveType.Attack)
+                        EventBus.Emit("p2_attack", newMove);
                 }
             }
+        }
+        if (hasInputThisFrame)
+        {
             hasInputThisFrame = false;
         }
         ClearExpiredInputs();
@@ -210,10 +210,10 @@ public class InputBuffer : MonoBehaviour
         switch (handler.PlayerIndex)
         {
             case 1:
-                EventBus.Emit("on_p1_attack_input", _input);
+                EventBus.Emit("p1_attackinput", _input);
                 break;
             case 2:
-                EventBus.Emit("on_p2_attack_input", _input);
+                EventBus.Emit("p2_attackinput", _input);
                 break;
             default:
                 break;
@@ -225,10 +225,10 @@ public class InputBuffer : MonoBehaviour
         switch (handler.PlayerIndex)
         {
             case 1:
-                EventBus.Emit("on_p1_directional_input", _input);
+                EventBus.Emit("p1_moveinput", _input);
                 break;
             case 2:
-                EventBus.Emit("on_p2_directional_input", _input);
+                EventBus.Emit("p2_moveinput", _input);
                 break;
             default:
                 break;

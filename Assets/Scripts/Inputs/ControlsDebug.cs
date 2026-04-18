@@ -17,34 +17,34 @@ public class ControlsDebug : MonoBehaviour
     {
         if (index == 1)
         {
-            EventBus.Subscribe("on_p1_directional_input", OnDirectionPressed);
-            EventBus.Subscribe("on_p1_directional_input_cancelled", OnDirectionReleased);
-            EventBus.Subscribe("on_p1_attack_input", OnAttackPressed);
-            EventBus.Subscribe("on_p1_attack_input_cancelled", OnAttackReleased);
+            EventBus.Subscribe("p1_moveinput", OnDirectionPressed);
+            EventBus.Subscribe("p1_moveinput_cancelled", OnDirectionReleased);
+            EventBus.Subscribe("p1_attackinput", OnAttackPressed);
+            EventBus.Subscribe("p1_attackinput_cancelled", OnAttackReleased);
         }
         else if (index == 2)
         {
-            EventBus.Subscribe("on_p2_directional_input", OnDirectionPressed);
-            EventBus.Subscribe("on_p2_directional_input_cancelled", OnDirectionReleased);
-            EventBus.Subscribe("on_p2_attack_input", OnAttackPressed);
-            EventBus.Subscribe("on_p2_attack_input_cancelled", OnAttackReleased);
+            EventBus.Subscribe("p2_moveinput", OnDirectionPressed);
+            EventBus.Subscribe("p2_moveinput_cancelled", OnDirectionReleased);
+            EventBus.Subscribe("p2_attackinput", OnAttackPressed);
+            EventBus.Subscribe("p2_attackinput_cancelled", OnAttackReleased);
         }
     }
     private void OnDisable()
     {
         if (index == 1)
         {
-            EventBus.Unsubscribe("on_p1_directional_input", OnDirectionPressed);
-            EventBus.Unsubscribe("on_p1_directional_input_cancelled", OnDirectionReleased);
-            EventBus.Unsubscribe("on_p1_attack_input", OnAttackPressed);
-            EventBus.Unsubscribe("on_p1_attack_input_cancelled", OnAttackReleased);
+            EventBus.Unsubscribe("p1_moveinput", OnDirectionPressed);
+            EventBus.Unsubscribe("p1_moveinput_cancelled", OnDirectionReleased);
+            EventBus.Unsubscribe("p1_attackinput", OnAttackPressed);
+            EventBus.Unsubscribe("p1_attackinput_cancelled", OnAttackReleased);
         }
         else if (index == 2)
         {
-            EventBus.Unsubscribe("on_p2_directional_input", OnDirectionPressed);
-            EventBus.Unsubscribe("on_p2_directional_input_cancelled", OnDirectionReleased);
-            EventBus.Unsubscribe("on_p2_attack_input", OnAttackPressed);
-            EventBus.Unsubscribe("on_p2_attack_input_cancelled", OnAttackReleased);
+            EventBus.Unsubscribe("p2_moveinput", OnDirectionPressed);
+            EventBus.Unsubscribe("p2_moveinput_cancelled", OnDirectionReleased);
+            EventBus.Unsubscribe("p2_attackinput", OnAttackPressed);
+            EventBus.Unsubscribe("p2_attackinput_cancelled", OnAttackReleased);
         }
     }
 
