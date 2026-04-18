@@ -5,18 +5,19 @@ namespace Character
 {
     public class PlayerController : MonoBehaviour, IDamageable, IMoveable
     {
-        [field: SerializeField] public float MaxHealth { get; } = 100f;
+        [Header("Health")]
+        [field: SerializeField] public float MaxHealth { get; set; } = 100f;
         public float CurrentHealth { get; set; }
         
-        bool isGrounded = true;
-        bool isJumping = false;
-        
         public Vector2 MoveInput { get; private set; }
-        private Vector3 relativeDir;
+        bool isGrounded = true;
         public string[] actionStrs;
         
         Animator animator;
+        
+        private Vector3 relativeDir;
         public Rigidbody RB { get; set; }
+        [SerializeField] private Transform opponent;
         public bool IsFacingRight { get; set; }
         
         [Header("Player HFSM")]
@@ -35,7 +36,7 @@ namespace Character
         private void Awake()
         {
             RB = GetComponent<Rigidbody>();        
-            animator = GetComponent<Animator>();
+            animator = GetComponentInChildren<Animator>();
             InitialiseStateMachine();
         }
 
@@ -48,6 +49,9 @@ namespace Character
             stunState = new StateStun(this, StateMachine);
             
             StateMachine.Initialise(groundedState);
+            
+            IsFacingRight = opponent.position.x > transform.position.x;
+            Flip(false);
         }
 
         private void OnEnable()
@@ -75,11 +79,29 @@ namespace Character
 
         private void Update()
         {
+            CheckRelativeDir();
             StateMachine.CurrentState?.UpdateState();
         }
 
         public void CheckRelativeDir()
         {
+            if (opponent == null) return;
+
+            bool shouldFaceRight = opponent.position.x > transform.position.x;
+
+            if (shouldFaceRight != IsFacingRight)
+            {
+                Flip();
+            }
+        }
+        
+        void Flip(bool isFlipping = true)
+        {
+            if (isFlipping)
+                IsFacingRight = !IsFacingRight;
+
+            Quaternion rot = Quaternion.Euler(0, 90 * (IsFacingRight? 1 : -1), 0);
+            transform.GetChild(0).localRotation = rot;
         }
 
         public void OnMove(object obj)

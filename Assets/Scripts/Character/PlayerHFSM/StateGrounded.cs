@@ -4,6 +4,7 @@ using Character.PlayerHFSM;
 public class StateGrounded : PlayerState
 {
     private PlayerState IdleState, MoveState, CrouchState;
+    protected IMoveable Moveable;
     
     public StateGrounded(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
