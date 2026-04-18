@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2115740241475627095}
   - component: {fileID: 3318921445722754250}
   - component: {fileID: 606407845718446131}
+  - component: {fileID: 1345747099563411042}
   m_Layer: 0
   m_Name: PlayerInputHandler
   m_TagString: Untagged
@@ -78,7 +79,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 606407845718446131}
         m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: OnAttack
+        m_MethodName: OnLightAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -94,7 +95,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 606407845718446131}
         m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: OnAttack2
+        m_MethodName: OnMediumAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -106,6 +107,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 345dfe08-dab8-4dad-8340-4c46a42aaf8c
     m_ActionName: 'Gameplay/Attack2[/Keyboard/g,/Keyboard/numpad5,/DualShock4GamepadHID/buttonNorth]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 606407845718446131}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnHeavyAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f579c610-dad7-4926-b67d-acefd38b54c1
+    m_ActionName: 'Gameplay/Attack3[/Keyboard/h,/Keyboard/numpad6,/DualShock4GamepadHID/buttonEast]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
@@ -124,3 +141,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputHandler
   debug: 0
+--- !u!114 &1345747099563411042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199300086343810860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a681a9d871f6f40b2f0bdc578ecc56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputBuffer
+  hasInputThisFrame: 0

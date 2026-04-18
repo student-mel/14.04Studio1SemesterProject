@@ -46,56 +46,61 @@ public class InputDebug : MonoBehaviour
         }
     }
 
-    [Range(0.0f, 1.0f)] public float Fade;
-    private float currFade;
+    [Range(0.0f, 1.0f)] public float Opacity;
+    private float currOpacity;
 
-    public event Action OnFadeChanged;
+    public event Action OnOpacityChanged;
 
-    public float FadeValue
+    public float OpacityValue
     {
-        get => currFade;
+        get => currOpacity;
         set
         {
-            if (currFade == value) return;
-            float oldValue = currFade;
-            currFade = value;
-            OnFadeChanged?.Invoke();
+            if (currOpacity == value) return;
+            float oldValue = currOpacity;
+            currOpacity = value;
+            OnOpacityChanged?.Invoke();
         }
     }
 
-    [Header("Spawn Settings")]
-
-    public Vector3 StartPosition;
-    public Vector2 AnchorPosition;
-
+    const int MAX_DATA_SIZE = 25;
+    private float prevFrame;
+    
     [Tooltip("Do not touch unless you know what you are doing")]
     [Header("Reference Settings")]
 
-    public string[] spriteNames;
-
     public GameObject textPrefab;
+    
+    private List<TMP_Text> tmpTextList = new List<TMP_Text>();
+    private List<TMP_Text> tmpCountList = new List<TMP_Text>();
+    
+    private List<string> textList = new List<string>();
+    private List<int> countList = new List<int>();
 
-    private List<TMP_Text> textList = new List<TMP_Text>();
-    private List<int> textStack = new List<int>();
-
-    private RectTransform rectTransform;
-    private PlayerInputHandler inputHandler;
-
-    private int inputIndex = 0;
+    public Transform ButtonsTextParent;
+    public Transform CounterTextParent;
+    
+    public string[] InputTextNames;
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
-
+        for (int i = 0; i < MAX_DATA_SIZE; i++)
+        {
+            textList.Add("");
+            countList.Add(0);
+        }
+        
         currLength = Length;
         for (int i = 0; i < currLength; i++)
         {
-            GameObject textObj = Instantiate(textPrefab, transform);
+            GameObject textObj = Instantiate(textPrefab, ButtonsTextParent);
 
-            textList.Add(textObj.GetComponent<TMP_Text>());
-            textList[i].text = "";
-
-            textStack.Add(0);
+            tmpTextList.Add(textObj.GetComponent<TMP_Text>());
+            tmpTextList[i].text = textList[i];
+            
+            GameObject countObj = Instantiate(textPrefab, CounterTextParent);
+            tmpCountList.Add(countObj.GetComponent<TMP_Text>());
+            tmpCountList[i].text = "";
 
             UpdateTextPosition();
         }
@@ -105,124 +110,146 @@ public class InputDebug : MonoBehaviour
     {
         OnLengthChanged += UpdateTextList;
         OnScaleChanged += UpdateTextPosition;
-        OnFadeChanged += UpdateTextPosition;
+        OnOpacityChanged += UpdateTextPosition;
+
+        if (Index == 1)
+        {
+            EventBus.Subscribe("p1_move", AddMoveInputs);
+            EventBus.Subscribe("p1_attack", AddMoveInputs);
+        }
+        else if (Index == 2)
+        {
+            EventBus.Subscribe("p2_move", AddMoveInputs);
+            EventBus.Subscribe("p2_attack", AddMoveInputs);
+        }
     }
     private void OnDisable()
     {
         OnLengthChanged -= UpdateTextList;
         OnScaleChanged -= UpdateTextPosition;
-        OnFadeChanged -= UpdateTextPosition;
+        OnOpacityChanged -= UpdateTextPosition;
+        
+        if (Index == 1)
+        {
+            EventBus.Unsubscribe("p1_move", AddMoveInputs);
+            EventBus.Unsubscribe("p1_attack", AddMoveInputs);
+        }
+        else if (Index == 2)
+        {
+            EventBus.Unsubscribe("p2_move", AddMoveInputs);
+            EventBus.Unsubscribe("p2_attack", AddMoveInputs);
+        }
     }
 
     private void Update()
     {
         LengthValue = Length;
         ScaleValue = Scale;
-        FadeValue = Fade;
+        OpacityValue = Opacity;
     }
 
-    public void AssignInputHandler(PlayerInputHandler _handler)
+    private void AddMoveInputs(object move)
     {
-        inputHandler = _handler;
-    }
+        Move newMove = (Move)move;
+        string newButtons = "";
 
-    public void AddMoveToQueue(int? attackSpriteIndex, int? dirSpriteIndex)
-    {
-        string newText = "";
-
-        if (dirSpriteIndex != null)
+        foreach (InputType t in newMove.moveString)
         {
-            newText += $"<sprite name={spriteNames[(int)dirSpriteIndex]}>";
+            newButtons += $"<sprite name={InputTextNames[(int)t]}>";
         }
-        if(attackSpriteIndex != null)
+        
+        float time = Time.time;
+        
+        if (newButtons == textList[0] && Math.Abs(time - (prevFrame + Time.deltaTime)) < 0.001f)
         {
-            if (newText != "")
-                newText += "+";
-            newText += $"<sprite name={spriteNames[(int)attackSpriteIndex]}>";
+            countList[0]++;
+            tmpCountList[0].text = countList[0].ToString();
         }
-
-        if(newText != "")
+        else
         {
-            string lastMoveText = "";
-
-            if (Index == 1)
-                lastMoveText = textList[0].text.Replace($" {textStack[0]}", "");
-            else if (Index == 2)
-                lastMoveText = textList[0].text.Replace($"{textStack[0]} ", "");
-
-            if (!lastMoveText.Equals(newText) || inputIndex != inputHandler.inputIndex)
+            for (int i = MAX_DATA_SIZE - 1; i >= 1; i--)
             {
-                for (int i = textList.Count - 1; i >= 1; i--)
-                {
-                    textList[i].text = textList[i - 1].text;
-                    textStack[i] = textStack[i - 1];
-                }
-                textList[0].text = newText;
-                textStack[0] = 1;
-
-                inputIndex = inputHandler.inputIndex;
+                textList[i] = textList[i - 1];
+                countList[i] = countList[i - 1];
             }
-            else
+            textList[0] = newButtons;
+            countList[0] = 1;
+            
+            for (int i = 0; i < tmpTextList.Count; i++)
             {
-                textStack[0]++;
-                if (Index == 1)
-                    textList[0].text = newText + $" {textStack[0]}";
-                else if (Index == 2)
-                    textList[0].text = $"{textStack[0]} " + newText;
+                tmpTextList[i].text = textList[i];
+                if(countList[i] > 0)
+                    tmpCountList[i].text = countList[i].ToString();
             }
         }
+        prevFrame = time;
     }
     private void UpdateTextPosition()
     {
-        for(int i = 0; i < textList.Count; i++)
+        for(int i = 0; i < tmpTextList.Count; i++)
         {
-            int lastIndex = (i - 1) >= 0 ? i - 1 : i;
+            //int lastIndex = (i - 1) >= 0 ? i - 1 : i;
 
             if (Index == 1)
             {
-                textList[i].alignment = TextAlignmentOptions.MidlineLeft;
+                tmpTextList[i].alignment = TextAlignmentOptions.MidlineLeft;
+                tmpCountList[i].alignment = TextAlignmentOptions.MidlineRight;
             }
             else if (Index == 2)
-            {
-                textList[i].alignment = TextAlignmentOptions.MidlineRight;
+            {   
+                tmpTextList[i].alignment = TextAlignmentOptions.MidlineRight;
+                tmpCountList[i].alignment = TextAlignmentOptions.MidlineLeft;
             }
 
-            textList[i].rectTransform.anchorMin = AnchorPosition;
-            textList[i].rectTransform.anchorMax = AnchorPosition;
-
-            if (i > 0) { textList[i].fontSize = textList[lastIndex].fontSize * Scale; }
-            Color newColor = textList[i].color;
-            newColor.a = Mathf.Pow(Fade, i);
-            textList[i].color = newColor;
+            //if (i > 0) { tmpTextList[i].fontSize = tmpTextList[lastIndex].fontSize * Scale; }
+            tmpTextList[i].fontSize = 30f * Scale;
+            tmpCountList[i].fontSize = 30f * Scale;
+            
+            Color newColor = tmpTextList[i].color;
+            //newColor.a = Mathf.Pow(Fade, i);
+            newColor.a = Opacity;
+            tmpTextList[i].color = newColor;
+            
+            newColor = tmpCountList[i].color;
+            newColor.a = Opacity;
+            tmpCountList[i].color = newColor;
         }
     }
     private void UpdateTextList()
     {
-        if(LengthValue > textList.Count)
+        if(LengthValue > tmpTextList.Count)
         {
-            int diff = LengthValue - textList.Count;
+            int diff = LengthValue - tmpTextList.Count;
             for (int i = 0; i < diff; i++)
             {
-                GameObject textObj = Instantiate(textPrefab, transform);
+                GameObject textObj = Instantiate(textPrefab, ButtonsTextParent);
 
                 TMP_Text newText = textObj.GetComponent<TMP_Text>();
-                newText.text = "";
-                textList.Add(newText);
+                tmpTextList.Add(newText);
+                int index = tmpTextList.IndexOf(newText);
+                tmpTextList[index].text = textList[index];
 
-                textStack.Add(0);
+                textObj = Instantiate(textPrefab, CounterTextParent);
+
+                newText = textObj.GetComponent<TMP_Text>();
+                tmpCountList.Add(newText);
+                index = tmpCountList.IndexOf(newText);
+                tmpCountList[index].text = countList[index].ToString();
             }
             UpdateTextPosition();
         }
-        else if(LengthValue < textList.Count)
+        else if(LengthValue < tmpTextList.Count)
         {
-            int diff = textList.Count - LengthValue;
+            int diff = tmpTextList.Count - LengthValue;
             for (int i = 0; i < diff; i++)
             {
-                TMP_Text textObj = textList[textList.Count - 1 - i];
-
-                textList.Remove(textObj);
-
+                TMP_Text textObj = tmpTextList[tmpTextList.Count - 1 - i];
+                tmpTextList.Remove(textObj);
                 Destroy(textObj.gameObject);
+                
+                TMP_Text textObj2 = tmpCountList[tmpCountList.Count - 1 - i];
+                tmpCountList.Remove(textObj2);
+                Destroy(textObj2.gameObject);
             }
         }
     }

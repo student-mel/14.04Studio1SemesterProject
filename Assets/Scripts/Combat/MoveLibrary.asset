@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa27ee263d094145ab9e3b6d76b1c8a, type: 3}
+  m_Name: MoveLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::MoveLibrary
+  MoveList:
+  - Name: Move Left
+    moveType: 0
+    moveString: 00000000
+    priority: 4
+  - Name: Move Right
+    moveType: 0
+    moveString: 03000000
+    priority: 0
+  - Name: Dash Left
+    moveType: 0
+    moveString: 0000000000000000
+    priority: 0
+  - Name: Dash Right
+    moveType: 0
+    moveString: 0300000003000000
+    priority: 0
+  - Name: Jump Left
+    moveType: 0
+    moveString: 01000000
+    priority: 0
+  - Name: Jump Right
+    moveType: 0
+    moveString: 04000000
+    priority: 0
+  - Name: Jump Up
+    moveType: 0
+    moveString: 06000000
+    priority: 0
+  - Name: Crouch Left
+    moveType: 0
+    moveString: 02000000
+    priority: 2
+  - Name: Crouch Right
+    moveType: 0
+    moveString: 05000000
+    priority: 0
+  - Name: Crouch
+    moveType: 0
+    moveString: 07000000
+    priority: 1
+  - Name: Light Attack
+    moveType: 1
+    moveString: 08000000
+    priority: 5
+  - Name: Medium Attack
+    moveType: 1
+    moveString: 09000000
+    priority: 0
+  - Name: Heavy Attack
+    moveType: 1
+    moveString: 0a000000
+    priority: 0
+  - Name: Fire Ball Right
+    moveType: 1
+    moveString: 07000000050000000300000008000000
+    priority: 0
+  - Name: Fire Ball Left
+    moveType: 1
+    moveString: 07000000020000000000000008000000
+    priority: 0
+  - Name: Light Attack Left
+    moveType: 1
+    moveString: 0000000008000000
+    priority: 9
