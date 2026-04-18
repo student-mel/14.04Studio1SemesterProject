@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Player
+namespace Character.PlayerHFSM
 {
     public class PlayerStateMachine
     {

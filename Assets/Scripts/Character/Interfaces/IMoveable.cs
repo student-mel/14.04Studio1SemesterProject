@@ -2,8 +2,9 @@ using UnityEngine;
 
 public interface IMoveable
 {
-    Rigidbody RB { get; set; }
+    Rigidbody RB { get; }
     bool IsFacingRight { get; set; }
-    void OnMove(object obj);
+
+    Vector2 MoveInput { get; }
     void CheckRelativeDir();
 }

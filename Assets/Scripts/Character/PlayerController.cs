@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using Character.PlayerHFSM;
 
-namespace Player
+namespace Character
 {
     public class PlayerController : MonoBehaviour, IDamageable, IMoveable
     {
@@ -12,7 +11,7 @@ namespace Player
         bool isGrounded = true;
         bool isJumping = false;
         
-        private Vector2 moveVector;
+        public Vector2 MoveInput { get; private set; }
         private Vector3 relativeDir;
         public string[] actionStrs;
         
@@ -20,8 +19,14 @@ namespace Player
         public Rigidbody RB { get; set; }
         public bool IsFacingRight { get; set; }
         
+        [Header("Player HFSM")]
         public PlayerStateMachine StateMachine {get; set;}
 
+        private PlayerState groundedState, airborneState, stunState;
+        public PlayerState GroundedState => groundedState;
+        public PlayerState AirborneState => airborneState;
+        public PlayerState StunState => stunState;
+        
         public enum AnimationTriggerType
         {
             
@@ -31,6 +36,18 @@ namespace Player
         {
             RB = GetComponent<Rigidbody>();        
             animator = GetComponent<Animator>();
+            InitialiseStateMachine();
+        }
+
+        void InitialiseStateMachine()
+        {
+            StateMachine = new PlayerStateMachine();
+            
+            groundedState = new StateGrounded(this, StateMachine);
+            airborneState = new StateAirborne(this, StateMachine);
+            stunState = new StateStun(this, StateMachine);
+            
+            StateMachine.Initialise(groundedState);
         }
 
         private void OnEnable()
@@ -53,50 +70,28 @@ namespace Player
         void InitialisePlayer()
         {
             CurrentHealth = MaxHealth;
-            // set relative dir 
             CheckRelativeDir();
         }
 
         private void Update()
         {
-            if (Keyboard.current.aKey.isPressed)
-            {
-                moveVector.x = -1;
-            }
-
-            if (Keyboard.current.dKey.isPressed)
-            {
-                moveVector.x = 1;
-            }
-            if (Keyboard.current.sKey.isPressed)
-            {
-                moveVector.y = -1;
-            }
-            if (Keyboard.current.wKey.isPressed)
-            {
-                moveVector.y = 1;
-            }
-
-            if (moveVector.magnitude > 0)
-            {
-                OnMove(moveVector);
-            }
+            StateMachine.CurrentState?.UpdateState();
         }
-        
+
         public void CheckRelativeDir()
         {
         }
 
         public void OnMove(object obj)
         {
-            moveVector = (Vector2)obj;
-            if (!isGrounded) return;
-            if (moveVector.y > 0)
+            MoveInput = (Vector2)obj;
+            /*if (!isGrounded) return;
+            if (MoveInput.y > 0)
                 Jump();
             else if (moveVector.y == 0)
                 Walk();
             else
-                Crouch();
+                Crouch();*/
         }
         
         private void OnAttack(object obj)
@@ -104,20 +99,12 @@ namespace Player
             
         }
 
-        void Crouch()
-        {
-        }
-
+        
         void Jump()
         {
-            /*if (isJumping) return;
-            isJumping = true;*/
-            RB.AddForce(Vector3.up * 10f, ForceMode.Impulse);
-        }
-
-        void Walk()
-        {
-            
+            /*/*if (isJumping) return;
+            isJumping = true;#1#
+            RB.AddForce(Vector3.up * 10f, ForceMode.Impulse);*/
         }
 
         public void TakeDamage(float dmg)

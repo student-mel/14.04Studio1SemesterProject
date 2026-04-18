@@ -1,58 +1,56 @@
-using UnityEngine;
-
-namespace Player
+namespace Character.PlayerHFSM
 {
     public class PlayerState
     {
-        protected PlayerController player;
-        protected PlayerStateMachine stateMachine;
+        protected PlayerController Player;
+        protected PlayerStateMachine StateMachine;
         
-        private PlayerState currentSubState;
+        private PlayerState _currentSubState;
 
         public PlayerState(PlayerController player, PlayerStateMachine stateMachine)
         {
-            this.player = player;
-            this.stateMachine = stateMachine;
+            this.Player = player;
+            this.StateMachine = stateMachine;
         }
         
         public virtual void EnterState() {}
 
         public virtual void ExitState()
         {
-            currentSubState?.ExitState();
+            _currentSubState?.ExitState();
         }
 
         public virtual void UpdateState()
         {
-            currentSubState?.UpdateState();
+            _currentSubState?.UpdateState();
         }
 
         public virtual void FixedUpdateState()
         {
-            currentSubState?.FixedUpdateState();
+            _currentSubState?.FixedUpdateState();
         }
 
         public virtual void LateUpdateState()
         {
-            currentSubState?.LateUpdateState();
+            _currentSubState?.LateUpdateState();
         }
 
         public virtual void AnimationTriggerState(PlayerController.AnimationTriggerType trigger)
         {
-            currentSubState?.AnimationTriggerState(trigger);
+            _currentSubState?.AnimationTriggerState(trigger);
         }
         
         protected void SetSubState(PlayerState newSubState)
         {
-            currentSubState = newSubState;
-            currentSubState.EnterState();
+            _currentSubState = newSubState;
+            _currentSubState.EnterState();
         }
 
         protected void ChangeSubState(PlayerState newSubState)
         {
-            currentSubState?.ExitState();
-            currentSubState = newSubState;
-            currentSubState.EnterState();
+            _currentSubState?.ExitState();
+            _currentSubState = newSubState;
+            _currentSubState.EnterState();
         }
     }
 }
