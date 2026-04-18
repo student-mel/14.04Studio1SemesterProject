@@ -127,6 +127,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void CancelMovement()
     {
+        buffer.StopMovement();
         switch (PlayerIndex)
         {
             case 1:
