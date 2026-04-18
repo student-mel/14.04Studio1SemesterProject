@@ -6,6 +6,8 @@ public interface IMoveable
     bool IsFacingRight { get; set; }
 
     Vector3 RelativeDir { get; }
-    Vector2 MoveInput { get; }
+    //Vector2 MoveInput { get; }
     void CheckRelativeDir();
+    
+    float MoveSpeed { get; }
 }

@@ -45,14 +45,17 @@ namespace Character.PlayerHFSM
             _currentSubState?.AnimationTriggerState(trigger);
         }
         
-        protected void SetSubState(PlayerState newSubState)
+        /*protected void SetSubState(PlayerState newSubState)
         {
+            if (_currentSubState == newSubState) return;
             _currentSubState = newSubState;
             _currentSubState.EnterState();
-        }
+        }*/
 
         protected void ChangeSubState(PlayerState newSubState)
         {
+            if (_currentSubState == newSubState) return;
+            
             _currentSubState?.ExitState();
             _currentSubState = newSubState;
             _currentSubState.EnterState();

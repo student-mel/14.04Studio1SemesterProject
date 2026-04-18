@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Character.PlayerHFSM;
 
@@ -15,11 +16,20 @@ namespace Character
         [field: SerializeField] public float MaxHealth { get; set; } = 100f;
         public float CurrentHealth { get; set; }
         
-        public Vector2 MoveInput { get; private set; }
-        bool isGrounded = true;
-        public string[] actionStrs;
+        //bool isGrounded = true;
+        [SerializeField] private string nextMove = "Null";
         
-        Animator animator;
+        public enum MoveEnum {Null, MoveLeft, MoveRight,Crouch}
+
+        public MoveEnum moveenum;
+        private string moveName = "Null";
+        public string MoveName => moveName;
+        private string actionName;
+        public string ActionName => actionName;
+        
+        public Animator animator;
+
+        [field: SerializeField]public float MoveSpeed { get; set; } = 1.5f;
         
         public Vector3 RelativeDir {get; private set;}
         public Rigidbody RB { get; private set; }
@@ -38,6 +48,11 @@ namespace Character
         public enum AnimationTriggerType
         {
             
+        }
+
+        private void OnValidate()
+        {
+            nextMove = moveenum.ToString();
         }
 
         private void Awake()
@@ -66,7 +81,7 @@ namespace Character
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
             
             EventBus.Subscribe($"{p}move", OnMove);
-            EventBus.Subscribe($"{p}moveInput_cancelled" , OnMoveCancelled);
+            EventBus.Subscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
             EventBus.Subscribe($"{p}attack", OnAttack);
         }
 
@@ -74,18 +89,13 @@ namespace Character
         {
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
             EventBus.Unsubscribe($"{p}move", OnMove);
-            EventBus.Unsubscribe($"{p}moveInput_cancelled" , OnMoveCancelled);
+            EventBus.Unsubscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
             EventBus.Unsubscribe($"{p}attack", OnAttack);
         }
-        
-        private void OnMoveCancelled(object obj)
-        {
-            
-        }
-
+  
         private void OnEnable()
         {
-            SubscribeInputEvents();
+            //SubscribeInputEvents();
         }
 
         private void OnDisable()
@@ -107,7 +117,13 @@ namespace Character
         private void Update()
         {
             CheckRelativeDir();
+            moveName = nextMove;
             StateMachine.CurrentState?.UpdateState();
+        }
+
+        private void FixedUpdate()
+        {
+            StateMachine.CurrentState?.FixedUpdateState();
         }
 
         public void CheckRelativeDir()
@@ -136,21 +152,25 @@ namespace Character
 
         public void OnMove(object obj)
         {
-            MoveInput = (Vector2)obj;
-            /*if (!isGrounded) return;
-            if (MoveInput.y > 0)
-                Jump();
-            else if (moveVector.y == 0)
-                Walk();
-            else
-                Crouch();*/
+            CharacterMove move = obj as CharacterMove;
+            nextMove = move?.Name;
+            
+            Debug.LogWarning("Moving");
         }
-        
-        private void OnAttack(object obj)
+              
+        private void OnMoveCancelled(object obj)
         {
+            //Debug.Log("Cancelled");
+            nextMove = "Null";
+            Debug.LogWarning("Cancelled");
             
         }
 
+        private void OnAttack(object obj)
+        {
+            CharacterMove move = obj as CharacterMove;
+            actionName = move?.Name;
+        }
         
         void Jump()
         {

@@ -17,18 +17,21 @@ public class StateGrounded : PlayerState
     {
         base.EnterState();
         Player.canFlip = true;
-        SetSubState(IdleState);
+        ChangeSubState(IdleState);
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-        if (Player.MoveInput.y > 0)
-            Jump();
-        else if (Player.MoveInput.y == 0 &&  Player.MoveInput.x != 0)
-            Move();
-        else
-            Crouch();
+        if (Player.MoveName.StartsWith("Jump")) Jump();
+        else if (Player.MoveName.StartsWith("Move")) Move();
+        else if (Player.MoveName.StartsWith("Crouch")) Crouch();
+        else if (Player.MoveName.StartsWith("Null")) Idle();
+    }
+
+    void Idle()
+    {
+        ChangeSubState(IdleState);
     }
 
     void Jump()
@@ -38,11 +41,11 @@ public class StateGrounded : PlayerState
 
     void Move()
     {
-        SetSubState(MoveState);
+        ChangeSubState(MoveState);
     }
 
     void Crouch()
     {
-        SetSubState(CrouchState);
+        ChangeSubState(CrouchState);
     }
 }
