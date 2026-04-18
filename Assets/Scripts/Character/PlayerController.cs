@@ -5,6 +5,12 @@ namespace Character
 {
     public class PlayerController : MonoBehaviour, IDamageable, IMoveable
     {
+        [Header("Player")] public PlayerEnum player;
+        public enum PlayerEnum
+        {
+            PlayerOne,
+            PlayerTwo
+        };
         [Header("Health")]
         [field: SerializeField] public float MaxHealth { get; set; } = 100f;
         public float CurrentHealth { get; set; }
@@ -15,9 +21,10 @@ namespace Character
         
         Animator animator;
         
-        private Vector3 relativeDir;
-        public Rigidbody RB { get; set; }
+        public Vector3 RelativeDir {get; private set;}
+        public Rigidbody RB { get; private set; }
         [SerializeField] private Transform opponent;
+        public bool canFlip = true;
         public bool IsFacingRight { get; set; }
         
         [Header("Player HFSM")]
@@ -54,16 +61,36 @@ namespace Character
             Flip(false);
         }
 
+        void SubscribeInputEvents()
+        {
+            string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
+            
+            EventBus.Subscribe($"{p}move", OnMove);
+            EventBus.Subscribe($"{p}moveInput_cancelled" , OnMoveCancelled);
+            EventBus.Subscribe($"{p}attack", OnAttack);
+        }
+
+        void UnsubscribeInputEvents()
+        {
+            string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
+            EventBus.Unsubscribe($"{p}move", OnMove);
+            EventBus.Unsubscribe($"{p}moveInput_cancelled" , OnMoveCancelled);
+            EventBus.Unsubscribe($"{p}attack", OnAttack);
+        }
+        
+        private void OnMoveCancelled(object obj)
+        {
+            
+        }
+
         private void OnEnable()
         {
-            EventBus.Subscribe("on_move", OnMove);
-            EventBus.Subscribe("on_attack" , OnAttack);
+            SubscribeInputEvents();
         }
 
         private void OnDisable()
         {
-            EventBus.Subscribe("on_move", OnMove);
-            EventBus.Subscribe("on_attack" , OnAttack);
+            UnsubscribeInputEvents();
         }
 
         private void Start()
@@ -97,10 +124,13 @@ namespace Character
         
         void Flip(bool isFlipping = true)
         {
+            if (!canFlip) return;
+            
             if (isFlipping)
                 IsFacingRight = !IsFacingRight;
 
             Quaternion rot = Quaternion.Euler(0, 90 * (IsFacingRight? 1 : -1), 0);
+            RelativeDir = IsFacingRight ? Vector3.right : -Vector3.right;
             transform.GetChild(0).localRotation = rot;
         }
 

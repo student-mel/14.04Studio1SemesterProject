@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Character.PlayerHFSM
 {
     public class PlayerState
@@ -12,8 +14,11 @@ namespace Character.PlayerHFSM
             this.Player = player;
             this.StateMachine = stateMachine;
         }
-        
-        public virtual void EnterState() {}
+
+        public virtual void EnterState()
+        {
+            Debug.Log($"Entering {ToString()}");
+        }
 
         public virtual void ExitState()
         {

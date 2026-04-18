@@ -1,10 +1,10 @@
 using Character;
 using Character.PlayerHFSM;
+using RPGCharacterAnims.Actions;
 
 public class StateGrounded : PlayerState
 {
     private PlayerState IdleState, MoveState, CrouchState;
-    protected IMoveable Moveable;
     
     public StateGrounded(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
@@ -16,15 +16,33 @@ public class StateGrounded : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+        Player.canFlip = true;
+        SetSubState(IdleState);
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
+        if (Player.MoveInput.y > 0)
+            Jump();
+        else if (Player.MoveInput.y == 0 &&  Player.MoveInput.x != 0)
+            Move();
+        else
+            Crouch();
     }
 
-    public override void AnimationTriggerState(PlayerController.AnimationTriggerType trigger)
+    void Jump()
     {
-        base.AnimationTriggerState(trigger);
+        StateMachine.ChangeState(Player.AirborneState);
+    }
+
+    void Move()
+    {
+        SetSubState(MoveState);
+    }
+
+    void Crouch()
+    {
+        SetSubState(CrouchState);
     }
 }

@@ -561,9 +561,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6755de08f03b6a42934a661a3301e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterController
+  player: 0
   <MaxHealth>k__BackingField: 100
   actionStrs: []
   opponent: {fileID: 1597805330}
+  canFlip: 1
 --- !u!4 &981856762 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6826736137250854753, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
@@ -899,9 +901,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6755de08f03b6a42934a661a3301e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterController
+  player: 1
   <MaxHealth>k__BackingField: 100
   actionStrs: []
   opponent: {fileID: 981856762}
+  canFlip: 1
 --- !u!1001 &2071445443
 PrefabInstance:
   m_ObjectHideFlags: 0
