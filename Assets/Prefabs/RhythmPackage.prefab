@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1ea4e1c96c27742ae368722e233b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicPlayer
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 7748341607150731990}
 --- !u!82 &7748341607150731990
 AudioSource:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 8c57c8a45521ad14d975d71f1c2cb03d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1167,8 +1167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c85c3deeaa3c442a7372018e2bab4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Metronome
-  errorMarginMs: 80
-  clip: {fileID: 8300000, guid: 6221352722152264eb2036fc8758764d, type: 3}
+  errorMarginMs: 40
+  clip: {fileID: 8300000, guid: 566923b5c7b193b40b457af01dbfa002, type: 3}
 --- !u!82 &1677107159172822045
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1182,7 +1182,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.284
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1512,7 +1512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RhythmJudge
   perfectWindow: 40
   greatWindow: 80
-  goodWindow: 110
   syncopatedWindow: 80
 --- !u!1 &5634677127725694267
 GameObject:
@@ -1566,6 +1565,7 @@ MonoBehaviour:
   currentBeatIndex: 0
   beatOffsetMs: 0
   offBeatOffsetMs: 0
+  result: 
 --- !u!1 &5874631776581893410
 GameObject:
   m_ObjectHideFlags: 0

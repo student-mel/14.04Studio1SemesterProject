@@ -4,7 +4,7 @@ public class RhythmJudge : MonoBehaviour
 {
     public float perfectWindow = 30f;
     public float greatWindow = 60f;
-    public float goodWindow = 100f;
+    //public float goodWindow = 100f;
     public float syncopatedWindow = 80f;
 
     private void OnEnable()
@@ -36,10 +36,10 @@ public class RhythmJudge : MonoBehaviour
         {
             result = "Great";
         }
-        else if (beatOffset <= goodWindow)
-        {
-            result = "Good";
-        }
+        //else if (beatOffset <= goodWindow)
+        //{
+            //result = "Good";
+        //}
         else
         {
             result = "Miss";

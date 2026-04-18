@@ -93,6 +93,14 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.InputLocked) // So they cant move during countdown sequence
+        {
+            moveInput = Vector2.zero;
+
+            animator.SetBool("isWalkingForward", false);
+            animator.SetBool("isWalkingBackward", false);
+            return;
+        }
 
         float horizontal = moveInput.x;
 
