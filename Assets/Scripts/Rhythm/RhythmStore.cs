@@ -5,7 +5,8 @@ public class RhythmStore : MonoBehaviour
     public static RhythmStore Instance;
 
     [Header("Music")]
-    public SO_Bgm bgm;
+    //public SO_Bgm bgm;
+    public RockBGM bgm;
 
     public float beatDuration;
     public float musicTimeMs;
@@ -20,8 +21,16 @@ public class RhythmStore : MonoBehaviour
     public float offBeatOffsetMs;
     public string result;
 
-    /*[Header("Combat")]
-    public float lastDamage;*/
+    [Header("Combat")]
+    public bool actionQueued;
+    public bool actionActive;
+    public string currentMoveName;
+    public int currentMoveStartupBeats;
+    public int currentMoveActiveBeats;
+    public int currentMoveRecoveryBeats;
+    public int currentMovePhaseBeat;
+    public string currentMovePhase; 
+    public string lastActionJudgement;
 
     private void Awake()
     {

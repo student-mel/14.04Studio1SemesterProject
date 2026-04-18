@@ -1,22 +1,46 @@
 using UnityEngine;
 using TMPro;
-public class timerUI : MonoBehaviour
+
+public class TimerUI : MonoBehaviour
 {
     public TMP_Text timerText;
-    public int RoundTime;
-    private int CurrentTime;
 
-    private void CountDown()
+    public int roundTime = 60;
+    private float currentTime;
+
+    private bool isRunning = false;
+
+    void Start()
     {
-        CurrentTime -= 1;
+        currentTime = roundTime;
         UpdateText();
     }
 
-
-    private void UpdateText()
+    void Update()
     {
-        timerText.text = CurrentTime.ToString();
+        if (!isRunning) return;
+
+        currentTime -= Time.deltaTime;
+
+        if (currentTime < 0)
+            currentTime = 0;
+
+        UpdateText();
     }
 
-}
+    public void StartTimer()
+    {
+        currentTime = roundTime;
+        isRunning = true;
+    }
 
+    public void StopTimer()
+    {
+        isRunning = false;
+    }
+
+    void UpdateText()
+    {
+        timerText.text = Mathf.CeilToInt(currentTime).ToString();
+    }
+}

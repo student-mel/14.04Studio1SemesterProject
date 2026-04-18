@@ -42,7 +42,7 @@ public class UI_RhythmBar : MonoBehaviour
 
     private void BeatPulse(object obj)
     {
-        StartCoroutine(PulseImage(1.2f, 0.25f, (int)obj));
+        StartCoroutine(PulseImage(2.5f, 0.25f, (int)obj));
     }
 
     IEnumerator PulseImage(float scaleSize, float pulseDur, int beatIndex)
