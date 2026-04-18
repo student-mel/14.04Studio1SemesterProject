@@ -398,7 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9125bf5571507c64d9e6e46ebcc697b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoxMaster
-  PlayerIndex: 1
 --- !u!4 &294685311
 Transform:
   m_ObjectHideFlags: 0
@@ -518,6 +517,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Box
   boxType: 0
+  combatData:
+    StartFrame: 0
+    Windows:
+      startUp: 0
+      active: 0
+      recover: 0
+      chainStart: 0
+      chainEnd: 0
+    Translations: []
 --- !u!61 &801782227
 BoxCollider2D:
   m_ObjectHideFlags: 0
