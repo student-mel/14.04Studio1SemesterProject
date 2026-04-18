@@ -4,7 +4,10 @@ using UnityEngine;
 public class CombatBoxManager : MonoBehaviour
 {
     public TimingWindows testingWindows;
-    public CombatBox hitboxes;
+    public CombatBox hitbox;
+    public CombatBox hurtbox;
+    public CombatBox thorwBox;
+    public CombatBox projectionBox;
 
     private void OnEnable()
     {

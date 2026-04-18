@@ -150,7 +150,7 @@ public class InputDebug : MonoBehaviour
 
     private void AddMoveInputs(object move)
     {
-        Move newMove = (Move)move;
+        CharacterMove newMove = (CharacterMove)move;
         string newButtons = "";
 
         foreach (InputType t in newMove.moveString)

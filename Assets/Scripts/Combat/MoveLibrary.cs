@@ -3,11 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MoveLibrary", menuName = "Scriptable Objects/MoveLibrary")]
 public class MoveLibrary : ScriptableObject
 {
-    public Move[] MoveList;
+    public CharacterMove[] MoveList;
 }
 
 [System.Serializable]
-public class Move
+public class CharacterMove
 {
     [Tooltip("Name should match with animator parameters")]
     public string Name;
