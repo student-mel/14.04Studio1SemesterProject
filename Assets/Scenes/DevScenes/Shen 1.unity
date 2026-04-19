@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveMaster
   Library: {fileID: 11400000, guid: 2d97a084f1df8394dbe52bb32100631c, type: 2}
+  debug: 0
 --- !u!114 &13102556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1268,7 +1269,7 @@ PrefabInstance:
       objectReference: {fileID: 94943852}
     - target: {fileID: 1823053627152457160, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
       propertyPath: <JumpForce>k__BackingField
-      value: 70
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4420268442901444532, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
       propertyPath: m_Mass

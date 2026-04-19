@@ -38,6 +38,7 @@ public class SubStateFall: PlayerState
     {
         if (hasFallen) return;
         hasFallen = true;
+        Player.RB.GetComponent<CapsuleCollider>().height = 1.88f;
         Player.animator.SetTrigger(Fall);
         StateMachine.ChangeState(Player.GroundedState);
         Player.RB.position = new Vector3(

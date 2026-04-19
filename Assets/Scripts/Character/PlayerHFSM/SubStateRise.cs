@@ -1,3 +1,4 @@
+using System.Collections;
 using Character;
 using Character.PlayerHFSM;
 using UnityEngine;
@@ -13,22 +14,27 @@ public class SubStateRise : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        Player.RB.AddForce(Vector3.up * Player.JumpForce, ForceMode.Impulse);
+        AddJumpForce();
         Player.animator.SetTrigger(Jump);
     }
 
-    public override void ExitState()
+    void AddJumpForce()
     {
-        base.ExitState();
-    }
+        Vector3 force = Vector3.up;
+        
+        if (Player.MoveName.EndsWith("Up"))
+            Player.RB.AddForce(force * Player.JumpForce, ForceMode.Impulse);
+        else if (Player.MoveName.EndsWith("Left"))
+        {
+            force.x = -0.5f;
+            Player.RB.AddForce(force * Player.JumpForce, ForceMode.Impulse);
+        }
+        else if (Player.MoveName.EndsWith("Right"))
+        {
+            force.x = 0.5f;
+            Player.RB.AddForce(force * Player.JumpForce, ForceMode.Impulse);
+        }
 
-    public override void UpdateState()
-    {
-        base.UpdateState();
     }
-
-    public override void FixedUpdateState()
-    {
-        base.FixedUpdateState();
-    }
+   
 }

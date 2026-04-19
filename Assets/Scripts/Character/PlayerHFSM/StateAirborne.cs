@@ -18,12 +18,14 @@ public class StateAirborne : PlayerState
         base.EnterState();
         ChangeSubState(RiseState);
         isFalling = false;
+        Player.RB.GetComponent<CapsuleCollider>().height *= 0.5f;
     }
 
     public override void ExitState()
     {
         base.ExitState();
         isFalling = false;
+        Player.RB.GetComponent<CapsuleCollider>().height = 1.88f;
     }
 
     public override void FixedUpdateState()
