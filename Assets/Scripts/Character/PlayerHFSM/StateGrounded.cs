@@ -12,6 +12,8 @@ public class StateGrounded : PlayerState
         IdleState = new SubStateIdle(player, stateMachine);
         MoveState = new SubStateMove(player, stateMachine);
         CrouchState = new SubStateCrouch(player, stateMachine);
+        string p = Player.player ==  PlayerController.PlayerEnum.PlayerOne ? "p1_" : "p2_";
+        EventBus.Subscribe($"{p}attack", OnAttack);
     }
 
     public override void EnterState()
@@ -20,8 +22,13 @@ public class StateGrounded : PlayerState
         Player.canFlip = true;
         ChangeSubState(IdleState);
         
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
         string p = Player.player ==  PlayerController.PlayerEnum.PlayerOne ? "p1_" : "p2_";
-        EventBus.Subscribe($"{p}attack", OnAttack);
+        //EventBus.Unsubscribe($"{p}attack", OnAttack);
     }
 
     private void OnAttack(object obj)
@@ -60,6 +67,6 @@ public class StateGrounded : PlayerState
 
     void TryAttack(CharacterMove move)
     {
-        StateMachine.TryAttack(Player.AttackState, move);
+        StateMachine.TryAttack((StateAttack)Player.AttackState, move);
     }
 }

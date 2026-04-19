@@ -25,6 +25,10 @@ namespace Character
         private string moveName = "Null";
         public string MoveName => moveName;
         
+        private string nextAttack = "Null";
+        private string attackName = "Null";
+        public string AttackName => moveName;
+        
         public Animator animator;
 
         [field: SerializeField]public float MoveSpeed { get; set; } = 1.5f;

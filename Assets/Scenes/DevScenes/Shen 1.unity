@@ -877,6 +877,10 @@ PrefabInstance:
       propertyPath: opponent
       value: 
       objectReference: {fileID: 1313437517}
+    - target: {fileID: 1823053627152457160, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
+      propertyPath: <JumpForce>k__BackingField
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1996496552897838890, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -1263,6 +1267,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 687125655594154285, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
+      propertyPath: m_Radius
+      value: 0.38
+      objectReference: {fileID: 0}
     - target: {fileID: 1823053627152457160, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
       propertyPath: opponent
       value: 

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Character.PlayerHFSM
 {
     public class PlayerStateMachine
@@ -17,10 +19,12 @@ namespace Character.PlayerHFSM
             CurrentState.EnterState();
         }
 
-        public void TryAttack(PlayerState newState, CharacterMove move)
+        public void TryAttack(StateAttack newState, CharacterMove move)
         {
+            Debug.LogWarning("TryAttack");
             CurrentState?.ExitState();
             CurrentState = newState;
+            newState.move = move;
             CurrentState.EnterState();
         }
     }

@@ -18,6 +18,12 @@ public class SubStateRise : PlayerState
         Player.animator.SetTrigger(Jump);
     }
 
+    public override void ExitState()
+    {
+        base.ExitState();
+        Player.RB.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
     void AddJumpForce()
     {
         Vector3 force = Vector3.up;

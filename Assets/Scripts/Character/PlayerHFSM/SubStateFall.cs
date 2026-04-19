@@ -22,11 +22,13 @@ public class SubStateFall: PlayerState
     {
         base.ExitState();
         hasFallen = false;
+        Player.RB.GetComponent<CapsuleCollider>().enabled = true;
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
+        
         if (Physics.Raycast(Player.transform.position, Vector3.down, out var hit,0.2f, LayerMask.GetMask("Ground")))
         {
             HitGround(hit);
@@ -38,12 +40,11 @@ public class SubStateFall: PlayerState
     {
         if (hasFallen) return;
         hasFallen = true;
-        Player.RB.GetComponent<CapsuleCollider>().height = 1.88f;
         Player.animator.SetTrigger(Fall);
         StateMachine.ChangeState(Player.GroundedState);
         Player.RB.position = new Vector3(
             Player.RB.position.x,
-            hit.transform.position.y,
+            hit.transform.position.y + 0.1f,
             Player.RB.position.z);
     }
 
