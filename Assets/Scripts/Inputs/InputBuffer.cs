@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class InputBuffer : MonoBehaviour
 {
-    List<BufferedInput> bufferedInputs = new List<BufferedInput>();
+    List<BufferedInput> motionBufferedInputs = new List<BufferedInput>();
+    List<BufferedInput> attackBufferedInputs = new List<BufferedInput>();
 
     public PlayerInputHandler handler;
     
@@ -18,18 +19,21 @@ public class InputBuffer : MonoBehaviour
     AttackData p1Attack;
     AttackData p2Attack;
 
-    const int INPUT_BUFFER_MS_TIME = 200;
+    const int MOTION_INPUT_BUFFER_MS_TIME = 200;
+    const int ATTACK_INPUT_BUFFER_MS_TIME = 100;
     const int SIMULTANEOUS_FRAMES = 2;
     const int VALID_INPUTS_ARRAY_SIZE = 6;
 
     public bool hasInputThisFrame = false;
+    public bool hasAttackThisFrame = false;
     public bool movementStoppedThisFrame = false;
     private BufferedInput _bufferedInput1;
 
     //#region Input Handling
     public void ClearExpiredInputs()
     {
-        bufferedInputs.RemoveAll(i => i.time < RhythmStore.Instance.musicTimeMs - INPUT_BUFFER_MS_TIME);
+        motionBufferedInputs.RemoveAll(i => i.time < RhythmStore.Instance.musicTimeMs - MOTION_INPUT_BUFFER_MS_TIME);
+        attackBufferedInputs.RemoveAll(i => i.time < RhythmStore.Instance.musicTimeMs - ATTACK_INPUT_BUFFER_MS_TIME);
     
         //if (IsExpired(1)) { p1Attack = new AttackData(); }
         //if (IsExpired(2)) { p2Attack = new AttackData(); }
@@ -37,7 +41,7 @@ public class InputBuffer : MonoBehaviour
 
     public void ClearAllInputs()
     {
-        bufferedInputs.Clear();
+        motionBufferedInputs.Clear();
     }
     
     const float WHOLE = 360f;
@@ -52,10 +56,10 @@ public class InputBuffer : MonoBehaviour
         
         InputType dirInput = GetDirectionalInputType(_input);
         
-        if (bufferedInputs.Count > 0)
-            SetBufferedInputsTime(bufferedInputs, RhythmStore.Instance.musicTimeMs);
+        if (motionBufferedInputs.Count > 0)
+            SetBufferedInputsTime(motionBufferedInputs, RhythmStore.Instance.musicTimeMs);
         
-        bufferedInputs.Add(new BufferedInput
+        motionBufferedInputs.Add(new BufferedInput
         {
             input = dirInput,
             type = MoveType.Movement,
@@ -67,10 +71,10 @@ public class InputBuffer : MonoBehaviour
     }
     public void AddInputStart(InputType _input)
     {
-        if (bufferedInputs.Count > 0)
-            SetBufferedInputsTime(bufferedInputs, RhythmStore.Instance.musicTimeMs);
-        
-        bufferedInputs.Add(new BufferedInput
+        if (attackBufferedInputs.Count > 0)
+            SetBufferedInputsTime(attackBufferedInputs, RhythmStore.Instance.musicTimeMs);
+        hasAttackThisFrame = true;
+        attackBufferedInputs.Add(new BufferedInput
         {
             input = _input,
             type = MoveType.Attack,
@@ -81,89 +85,82 @@ public class InputBuffer : MonoBehaviour
 
         OnAttackInput(_input);
     }
-    
+
     public void AddInput(Vector2 _input)
     {
         if (Mathf.Abs(_input.x) < 0.01f && Mathf.Abs(_input.y) < 0.01f) return;
-        
+
         InputType dirInput = GetDirectionalInputType(_input);
 
         hasInputThisFrame = true;
-        
-        if (bufferedInputs.Count > 0)
+
+        if (motionBufferedInputs.Count > 0)
         {
-            for (int i = bufferedInputs.Count - 1; i >= 0; i--)
+            for (int i = motionBufferedInputs.Count - 1; i >= 0; i--)
             {
-                BufferedInput input = bufferedInputs[i];
-                if(input.type == MoveType.Attack) continue;
-                else if (input.type == MoveType.Movement)
+                BufferedInput input = motionBufferedInputs[i];
+                if (input.input == dirInput)
                 {
-                    if (input.input == dirInput)
-                    {
-                        input.frame = FrameClock.Frame;
-                        input.time = RhythmStore.Instance.musicTimeMs;
-                        goto OnInputAdded;
-                    }
-                    else
-                    {
-                        goto AddBufferedInput;
-                    }
+                    input.frame = FrameClock.Frame;
+                    input.time = RhythmStore.Instance.musicTimeMs;
+                    goto OnInputAdded;
+                }
+                else
+                {
+                    goto AddBufferedInput;
                 }
             }
         }
+
         AddBufferedInput:
-        bufferedInputs.Add(new BufferedInput
+        motionBufferedInputs.Add(new BufferedInput
         {
             input = dirInput,
             type = MoveType.Movement,
             frame = FrameClock.Frame,
             time = RhythmStore.Instance.musicTimeMs,
         });
-        
-        SetBufferedInputsTime(bufferedInputs, RhythmStore.Instance.musicTimeMs);
-        
+
+        SetBufferedInputsTime(motionBufferedInputs, RhythmStore.Instance.musicTimeMs);
+
         OnInputAdded:
         OnDirectionalInput(dirInput);
-    }
-    public void AddInput(InputType _input)
-    {
-        hasInputThisFrame = true;
-        
-        if (bufferedInputs.Count > 0)
-        {
-            BufferedInput lastInput = bufferedInputs[^1];
-            if (lastInput.input == _input)
-            {
-                lastInput.frame = FrameClock.Frame;
-                lastInput.time = RhythmStore.Instance.musicTimeMs;
-                goto OnInputAdded;
-            }
-        }
-        bufferedInputs.Add(new BufferedInput
-        {
-            input = _input,
-            type = MoveType.Attack,
-            frame = FrameClock.Frame,
-            time = RhythmStore.Instance.musicTimeMs,
-        });
-        SetBufferedInputsTime(bufferedInputs, RhythmStore.Instance.musicTimeMs);
-        
-        OnInputAdded:
-        OnAttackInput((_input));
     }
 
     public void StopMovement()
     {
         movementStoppedThisFrame = true;
     }
-
+    
+    List<BufferedInput> tempBufferedInputs = new List<BufferedInput>();
     private void LateUpdate()
     {
         if (hasInputThisFrame)
         {
-            if (bufferedInputs.Count > 0)
+            tempBufferedInputs.Clear();
+            if (motionBufferedInputs.Count > 0)
             {
-                CharacterMove newMove = MoveMaster.i.GetMove(bufferedInputs);
+                foreach (BufferedInput input in motionBufferedInputs)
+                {
+                    tempBufferedInputs.Add(input);
+                }
+            }
+            if (attackBufferedInputs.Count > 0)
+            {
+                if (tempBufferedInputs.Count > 0)
+                {
+                    if (!hasAttackThisFrame)
+                        goto GetMove;
+                }
+                foreach (BufferedInput input in attackBufferedInputs)
+                {
+                    tempBufferedInputs.Add(input);
+                }
+            }
+            GetMove:
+            if (tempBufferedInputs.Count > 0)
+            {
+                CharacterMove newMove = MoveMaster.i.GetMove(tempBufferedInputs);
                 if (newMove.priority > 0)
                 {
                     if (handler.PlayerIndex == 1)
@@ -188,6 +185,7 @@ public class InputBuffer : MonoBehaviour
                     }
                 }
             }
+            hasAttackThisFrame = false;
             hasInputThisFrame = false;
         }
         ClearExpiredInputs();
