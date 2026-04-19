@@ -8,7 +8,8 @@ public class MoveMaster : MonoBehaviour
     public static MoveMaster i;
     private List<CharacterMove> moveList;
     [SerializeField]private MoveLibrary Library;
-
+    
+    public bool debug = false;
     
     private void Awake()
     {
@@ -62,18 +63,20 @@ public class MoveMaster : MonoBehaviour
                 }
             }
             moveList = moveList.OrderBy(i => i.priority).ToList();
-            string debugString = "\n";
-            foreach (BufferedInput input in inputs)
+            if (debug)
             {
-                debugString += input.input;
-                debugString += "\n";
+                string debugString = "\n";
+                foreach (BufferedInput input in inputs)
+                {
+                    debugString += input.input;
+                    debugString += "\n";
+                }
+                for (int i = moveList.Count - 1; i >= 0; i--)
+                {
+                    debugString += $"{moveList[i].Name}: {moveList[i].priority}\n";
+                }
+                Debug.Log(debugString);
             }
-            for (int i = moveList.Count - 1; i >= 0; i--)
-            {
-                debugString += $"{moveList[i].Name}: {moveList[i].priority}\n";
-            }
-            Debug.Log(debugString);
-
         }
         CharacterMove newMove = moveList[^1];
         return newMove;

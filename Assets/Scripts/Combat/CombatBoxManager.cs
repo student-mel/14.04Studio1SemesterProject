@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatBoxManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class CombatBoxManager : MonoBehaviour
     public CombatBox hurtbox;
     public CombatBox throwBox;
     public CombatBox projectionBox;
+
+    public List<CombatBox> activeHitboxes =  new List<CombatBox>();
 
     private void OnEnable()
     {
@@ -20,14 +23,22 @@ public class CombatBoxManager : MonoBehaviour
 
     private void FixedGameUpdate(object frame)
     {
-        ActivateHitboxesForFrame();
+        int frameCount = (int)frame;
+        ActivateHitboxesForFrame(frameCount);
     }
 
-    private void ActivateHitboxesForFrame()
+    private void ActivateHitboxesForFrame(int frame)
     {
         if (hitbox.combatData != null)
         {
-            
+            if (hitbox.combatData.ActiveStarts >= frame && hitbox.combatData.ActiveEnds <= frame)
+            {
+                activeHitboxes.Add(hitbox);
+            }
+            else
+            {
+                activeHitboxes.Remove(hitbox);
+            }
         }
     }
 }
