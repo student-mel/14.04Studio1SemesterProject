@@ -1567,13 +1567,13 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 9100000}
   - m_Name: Trigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 9100000}
   - m_Name: TriggerNumber
     m_Type: 3
@@ -1584,13 +1584,13 @@ AnimatorController:
   - m_Name: Action
     m_Type: 3
     m_DefaultFloat: 0
-    m_DefaultInt: 0
+    m_DefaultInt: 1
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Jumping
     m_Type: 3
     m_DefaultFloat: 0
-    m_DefaultInt: 0
+    m_DefaultInt: 1
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Side
@@ -1643,7 +1643,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: Velocity X
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: 2
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -63246,7 +63246,7 @@ AnimatorStateMachine:
     m_Position: {x: 450, y: 190, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 110795260}
-    m_Position: {x: 230, y: -10, z: 0}
+    m_Position: {x: 230, y: 10, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 110732002}
     m_Position: {x: 450, y: 140, z: 0}
@@ -63255,7 +63255,7 @@ AnimatorStateMachine:
     m_Position: {x: 230, y: 190, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 110736930}
-    m_Position: {x: 450, y: 40, z: 0}
+    m_Position: {x: 430, y: -20, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 110786634}
     m_Position: {x: 450, y: 90, z: 0}
@@ -63290,10 +63290,10 @@ AnimatorStateMachine:
     - {fileID: 110973192}
     - {fileID: 8296522807890243291}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 250, y: 250, z: 0}
+  m_AnyStatePosition: {x: 250, y: 290, z: 0}
   m_EntryPosition: {x: 140, y: 100, z: 0}
   m_ExitPosition: {x: 250, y: -60, z: 0}
-  m_ParentStateMachinePosition: {x: 450, y: -10, z: 0}
+  m_ParentStateMachinePosition: {x: 450, y: 40, z: 0}
   m_DefaultState: {fileID: 110271068}
 --- !u!1107 &110790098
 AnimatorStateMachine:
@@ -65420,7 +65420,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 110212896}
-    m_Position: {x: -180, y: -50, z: 0}
+    m_Position: {x: -180, y: -70, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:
