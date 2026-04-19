@@ -4,7 +4,36 @@ using UnityEngine;
 
 public class StateAirborne : PlayerState
 {
+    private PlayerState RiseState, FallState;
+    bool isFalling;
+    
     public StateAirborne(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        RiseState = new SubStateRise(player, stateMachine);
+        FallState = new SubStateFall(player, stateMachine);
+    }
+
+    public override void EnterState()
+    {
+        base.EnterState();
+        ChangeSubState(RiseState);
+        isFalling = false;
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+        isFalling = false;
+    }
+
+    public override void FixedUpdateState()
+    {
+        base.FixedUpdateState();
+        //Debug.Log(Player.RB.linearVelocity.y);
+        if (Player.RB.linearVelocity.y < 0 && !isFalling)
+        {
+            isFalling = true;
+            ChangeSubState(FallState);
+        }
     }
 }

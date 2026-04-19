@@ -16,5 +16,12 @@ namespace Character.PlayerHFSM
             CurrentState = newState;
             CurrentState.EnterState();
         }
+
+        public void TryAttack(PlayerState newState, CharacterMove move)
+        {
+            CurrentState?.ExitState();
+            CurrentState = newState;
+            CurrentState.EnterState();
+        }
     }
 }

@@ -2,9 +2,9 @@ using Character;
 using Character.PlayerHFSM;
 using UnityEngine;
 
-public class SubStateGroundedAttack : PlayerState
+public class StateAttack : PlayerState
 {
-    public SubStateGroundedAttack(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public StateAttack(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
     }
 

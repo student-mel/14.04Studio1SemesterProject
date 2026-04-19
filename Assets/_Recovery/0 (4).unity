@@ -968,10 +968,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4420268442901444532, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4535720457970490278, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -1248,8 +1244,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3521439502054341140, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1266,14 +1261,6 @@ PrefabInstance:
       propertyPath: opponent
       value: 
       objectReference: {fileID: 94943852}
-    - target: {fileID: 1823053627152457160, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
-      propertyPath: <JumpForce>k__BackingField
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420268442901444532, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6577604146464603138, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1318,8 +1305,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3521439502054341140, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

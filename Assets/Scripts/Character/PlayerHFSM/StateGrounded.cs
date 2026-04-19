@@ -1,6 +1,7 @@
 using Character;
 using Character.PlayerHFSM;
 using RPGCharacterAnims.Actions;
+using UnityEngine;
 
 public class StateGrounded : PlayerState
 {
@@ -18,6 +19,14 @@ public class StateGrounded : PlayerState
         base.EnterState();
         Player.canFlip = true;
         ChangeSubState(IdleState);
+        
+        string p = Player.player ==  PlayerController.PlayerEnum.PlayerOne ? "p1_" : "p2_";
+        EventBus.Subscribe($"{p}attack", OnAttack);
+    }
+
+    private void OnAttack(object obj)
+    {
+        TryAttack(obj as CharacterMove);
     }
 
     public override void UpdateState()
@@ -47,5 +56,10 @@ public class StateGrounded : PlayerState
     void Crouch()
     {
         ChangeSubState(CrouchState);
+    }
+
+    void TryAttack(CharacterMove move)
+    {
+        StateMachine.TryAttack(Player.AttackState, move);
     }
 }

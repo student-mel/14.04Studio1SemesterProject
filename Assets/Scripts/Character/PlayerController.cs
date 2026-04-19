@@ -24,12 +24,11 @@ namespace Character
         public MoveEnum moveenum;
         private string moveName = "Null";
         public string MoveName => moveName;
-        private string actionName;
-        public string ActionName => actionName;
         
         public Animator animator;
 
         [field: SerializeField]public float MoveSpeed { get; set; } = 1.5f;
+        [field: SerializeField] public float JumpForce { get; set; } = 25f;
         
         public Vector3 RelativeDir {get; private set;}
         public Rigidbody RB { get; private set; }
@@ -40,10 +39,11 @@ namespace Character
         [Header("Player HFSM")]
         public PlayerStateMachine StateMachine {get; set;}
 
-        private PlayerState groundedState, airborneState, stunState;
+        private PlayerState groundedState, airborneState, stunState, attackState;
         public PlayerState GroundedState => groundedState;
         public PlayerState AirborneState => airborneState;
         public PlayerState StunState => stunState;
+        public PlayerState AttackState => attackState;
         
         public enum AnimationTriggerType
         {
@@ -69,6 +69,7 @@ namespace Character
             groundedState = new StateGrounded(this, StateMachine);
             airborneState = new StateAirborne(this, StateMachine);
             stunState = new StateStun(this, StateMachine);
+            attackState = new StateAttack(this, StateMachine);
             
             StateMachine.Initialise(groundedState);
             
@@ -82,7 +83,6 @@ namespace Character
             
             EventBus.Subscribe($"{p}move", OnMove);
             EventBus.Subscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
-            EventBus.Subscribe($"{p}attack", OnAttack);
         }
 
         void UnsubscribeInputEvents()
@@ -90,12 +90,11 @@ namespace Character
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
             EventBus.Unsubscribe($"{p}move", OnMove);
             EventBus.Unsubscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
-            EventBus.Unsubscribe($"{p}attack", OnAttack);
         }
   
         private void OnEnable()
         {
-            //SubscribeInputEvents();
+            SubscribeInputEvents();
         }
 
         private void OnDisable()
@@ -155,28 +154,15 @@ namespace Character
             CharacterMove move = obj as CharacterMove;
             nextMove = move?.Name;
             
-            Debug.LogWarning("Moving");
+            //Debug.LogWarning("Moving");
         }
               
         private void OnMoveCancelled(object obj)
         {
             //Debug.Log("Cancelled");
             nextMove = "Null";
-            Debug.LogWarning("Cancelled");
+            //Debug.LogWarning("Cancelled");
             
-        }
-
-        private void OnAttack(object obj)
-        {
-            CharacterMove move = obj as CharacterMove;
-            actionName = move?.Name;
-        }
-        
-        void Jump()
-        {
-            /*/*if (isJumping) return;
-            isJumping = true;#1#
-            RB.AddForce(Vector3.up * 10f, ForceMode.Impulse);*/
         }
 
         public void TakeDamage(float dmg)

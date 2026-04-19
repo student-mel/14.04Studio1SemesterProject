@@ -2325,9 +2325,9 @@ GameObject:
   - component: {fileID: 1823053627152457160}
   - component: {fileID: 4420268442901444532}
   - component: {fileID: 687125655594154285}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2366,6 +2366,7 @@ MonoBehaviour:
   moveenum: 0
   animator: {fileID: 0}
   <MoveSpeed>k__BackingField: 1.5
+  <JumpForce>k__BackingField: 10
   opponent: {fileID: 0}
   canFlip: 1
 --- !u!54 &4420268442901444532
@@ -2376,7 +2377,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6577604146464603138}
   serializedVersion: 5
-  m_Mass: 100
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

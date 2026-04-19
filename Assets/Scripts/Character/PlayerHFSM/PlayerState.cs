@@ -60,5 +60,10 @@ namespace Character.PlayerHFSM
             _currentSubState = newSubState;
             _currentSubState.EnterState();
         }
+
+        protected PlayerState GetSubState()
+        {
+            return _currentSubState;
+        }
     }
 }

@@ -11,6 +11,7 @@ public class SubStateIdle : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+        
     }
 
     public override void ExitState()

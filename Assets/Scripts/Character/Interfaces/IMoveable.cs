@@ -10,4 +10,5 @@ public interface IMoveable
     void CheckRelativeDir();
     
     float MoveSpeed { get; }
+    float JumpForce { get; }
 }
