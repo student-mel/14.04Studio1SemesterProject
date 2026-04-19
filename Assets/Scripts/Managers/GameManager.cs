@@ -3,6 +3,15 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    public bool InputLocked { get; private set; } = true;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public Health player1;
     public Health player2;
 
@@ -17,7 +26,6 @@ public class GameManager : MonoBehaviour
     public CountdownUI countdownUI;
 
     private bool roundActive = false;
-    public static bool InputLocked = true;
 
     void Start()
     {
@@ -26,8 +34,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartRound()
     {
-        roundActive = false;
         InputLocked = true;
+        roundActive = false;
 
         AudioManager.Instance?.PlayPreRound();
 
@@ -36,7 +44,6 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(countdownUI.PlayCountdown());
 
         AudioManager.Instance?.PlayMusic();
-
         timerUI?.StartTimer();
 
         InputLocked = false;

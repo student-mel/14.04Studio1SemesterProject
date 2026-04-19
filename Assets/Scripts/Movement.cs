@@ -93,7 +93,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.InputLocked) // So they cant move during countdown sequence
+        if (GameManager.Instance != null && GameManager.Instance.InputLocked) return; // So they cant move during countdown sequence
         {
             moveInput = Vector2.zero;
 
@@ -132,6 +132,7 @@ public class Movement : MonoBehaviour
 
     public void StartLightAttack()
     {
+        if (GameManager.Instance != null && GameManager.Instance.InputLocked) return;
         if (isLight || isHeavy || isHurt) return;
 
         isLight = true;
@@ -195,6 +196,7 @@ public class Movement : MonoBehaviour
 
     public void StartHeavyAttack()
     {
+        if (GameManager.Instance != null && GameManager.Instance.InputLocked) return;
         if (isLight || isHeavy || isHurt) return;
 
         isHeavy = true;
