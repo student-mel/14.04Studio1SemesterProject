@@ -15,6 +15,12 @@ public class StateStun : PlayerState
         base.EnterState();
         SetAnimation();
         Player.animator.SetTrigger(Hurt);
+        ApplyKnockback();
+    }
+
+    void ApplyKnockback()
+    {
+        Player.RB.AddForce(-Player.RelativeDir * 15f, ForceMode.Impulse);
     }
 
     void SetAnimation()
@@ -23,11 +29,14 @@ public class StateStun : PlayerState
         int i = 0;
         switch (Player.ReactionName)
         {
-            case "Hit Body":
+            case "Hit Heavy":
                 i = 0;
                 break;
-            case "Hit Head":
+            case "Hit Light":
                 i = 1;
+                break;
+            case  "Hit Medium":
+                i = 2;
                 break;
         }
         

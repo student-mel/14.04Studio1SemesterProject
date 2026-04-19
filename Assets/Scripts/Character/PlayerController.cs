@@ -187,7 +187,7 @@ namespace Character
         
         private void OnHurt(object obj)
         {
-            
+            nextReaction = (string) obj;
         }
 
         public void TakeDamage(float dmg)
