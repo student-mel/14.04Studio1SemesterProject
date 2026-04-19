@@ -12,7 +12,6 @@ public class StateGrounded : PlayerState
         IdleState = new SubStateIdle(player, stateMachine);
         MoveState = new SubStateMove(player, stateMachine);
         CrouchState = new SubStateCrouch(player, stateMachine);
-        
     }
 
     public override void EnterState()
@@ -23,15 +22,10 @@ public class StateGrounded : PlayerState
         
     }
 
-    public override void ExitState()
-    {
-        base.ExitState();
-    }
-
     public override void UpdateState()
     {
         base.UpdateState();
-        Debug.LogWarning(Player.AttackName);
+        //Debug.LogWarning(Player.AttackName);
         if (!Player.AttackName.StartsWith("Null")) TryAttack();
         else if (Player.MoveName.StartsWith("Jump")) Jump();
         else if (Player.MoveName.StartsWith("Move")) Move();

@@ -29,6 +29,10 @@ namespace Character
         private string attackName = "Null";
         public string AttackName => attackName;
         
+        public string nextReaction = "Null";
+        private string reactionName = "Null";
+        public string ReactionName => reactionName;
+        
         public Animator animator;
 
         [field: SerializeField]public float MoveSpeed { get; set; } = 1.5f;
@@ -61,8 +65,8 @@ namespace Character
 
         private void Awake()
         {
-            RB = GetComponent<Rigidbody>();        
-            animator = GetComponentInChildren<Animator>();
+            RB = GetComponent<Rigidbody>();   
+            animator = transform.GetChild(0).GetComponentInChildren<Animator>();
             InitialiseStateMachine();
         }
 
@@ -88,16 +92,16 @@ namespace Character
             EventBus.Subscribe($"{p}move", OnMove);
             EventBus.Subscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
             EventBus.Subscribe($"{p}attack", OnAttack);
+            EventBus.Subscribe($"{p}hurt", OnHurt);
         }
 
-        
         void UnsubscribeInputEvents()
         {
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
             EventBus.Unsubscribe($"{p}move", OnMove);
             EventBus.Unsubscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
             EventBus.Unsubscribe($"{p}attack", OnAttack);
-            
+            EventBus.Unsubscribe($"{p}hurt", OnHurt);
         }
   
         private void OnEnable()
@@ -174,8 +178,16 @@ namespace Character
         
         private void OnAttack(object obj)
         {
+            //Debug.LogWarning("OnAttack");
             CharacterMove move = obj as CharacterMove;
+            if (StateMachine.CurrentState == attackState)
+                return;
             nextAttack = move?.Name;
+        }
+        
+        private void OnHurt(object obj)
+        {
+            
         }
 
         public void TakeDamage(float dmg)

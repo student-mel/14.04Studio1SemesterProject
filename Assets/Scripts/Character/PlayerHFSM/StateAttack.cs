@@ -35,6 +35,8 @@ public class StateAttack : PlayerState
         }
         
         a.SetFloat(Attack, (int)i);
+
+        Player.nextAttack = "Null";
     }
 
     public override void ExitState()
