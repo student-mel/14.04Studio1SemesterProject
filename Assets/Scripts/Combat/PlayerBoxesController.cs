@@ -1,11 +1,23 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBoxesController : MonoBehaviour
 {
-    public CombatBox[] boxes;
+    public CombatBox[] hitboxes;
+    public CombatBox[] hurtboxes;
+
+    public List<CombatBox> activeHitboxes = new List<CombatBox>();
+    public List<CombatBox> activeHurtboxes = new List<CombatBox>();
+
+    public bool debug;
 
     private void Awake()
+    {
+        Init(ref hitboxes, BoxType.Hit);
+        Init(ref hurtboxes, BoxType.Hurt);
+    }
+
+    private void Init(ref CombatBox[] boxes, BoxType type)
     {
         if (boxes == null && boxes.Length > 0)
         {
@@ -13,48 +25,85 @@ public class PlayerBoxesController : MonoBehaviour
             {
                 CombatBox newBox = new CombatBox(transform, boxes[i]);
                 boxes[i] = newBox;
+                boxes[i].type = type;
             }
         }
     }
-
-    private void Update()
+    public void UpdateBoxes()
     {
-        foreach (CombatBox combatBox in boxes)
+        foreach (CombatBox combatBox in hitboxes)
         {
-            if (!combatBox.isActive) continue;
-            
+            combatBox.UpdateBox();
+        }
+        foreach (CombatBox combatBox in hurtboxes)
+        {
             combatBox.UpdateBox();
         }
     }
 
-    void OnDrawGizmos()
+    public void ActivateHurtboxes()
     {
-        if (boxes.Length > 0)
+        foreach (CombatBox hurtbox in hurtboxes)
         {
-            foreach (CombatBox box in boxes)
+            hurtbox.isActive = true;
+            if(!activeHurtboxes.Contains(hurtbox))
+                activeHurtboxes.Add(hurtbox);
+        }
+    }
+
+    public void ActivateHitboxes(int frame)
+    {
+        foreach (CombatBox hitbox in hitboxes)
+        {
+            if (frame >= hitbox.combatData.ActiveStarts && frame <= hitbox.combatData.ActiveEnds)
             {
-                if (!box.isActive) return;
-                switch (box.type)
-                {
-                    case BoxType.Hit:
-                        Gizmos.color = Color.red;
-                        break;
-                    case BoxType.Hurt:
-                        Gizmos.color = Color.green;
-                        break;
-                    case BoxType.Throw:
-                        Gizmos.color = Color.blue;
-                        break;
-                    case BoxType.Projection:
-                        Gizmos.color = Color.yellow;
-                        break;
-                    default:
-                        break;
-                }
-                DrawBox(box.worldBox);
+                if(!activeHitboxes.Contains(hitbox))
+                    activeHitboxes.Add(hitbox);
+                if(!debug)
+                    hitbox.isActive = true;
+            }
+            else
+            {
+                if(activeHitboxes.Contains(hitbox))
+                    activeHitboxes.Remove(hitbox);
+                if(!debug)
+                    hitbox.isActive = false;
             }
         }
+    }
 
+    void OnDrawGizmosSelected()
+    {
+        DrawBoxes(ref hitboxes);
+        DrawBoxes(ref hurtboxes);
+    }
+
+    private void DrawBoxes(ref CombatBox[] boxes)
+    {
+        foreach (CombatBox box in boxes)
+        {
+            if (!box.isActive) return;
+            switch (box.type)
+            {
+                case BoxType.Hit:
+                    Gizmos.color = Color.red;
+                    break;
+                case BoxType.Hurt:
+                    Gizmos.color = Color.green;
+                    break;
+                case BoxType.Throw:
+                    Gizmos.color = Color.blue;
+                    break;
+                case BoxType.Projection:
+                    Gizmos.color = Color.yellow;
+                    break;
+                default:
+                    break;
+            }
+            box.SetParent(transform);
+            box.UpdateBox();
+            DrawBox(box.worldBox);
+        }
     }
 
     private void DrawBox(Box box)
@@ -80,7 +129,6 @@ public struct Box
 [System.Serializable]
 public class CombatBox
 {
-    public string name;
     public BoxType type;
     public Box box;
     public Box worldBox{ get; private set; }
@@ -92,7 +140,6 @@ public class CombatBox
     public CombatBox(Transform parent, CombatBox combatBox)
     {
         this.parent = parent;
-        name = combatBox.name;
         type = combatBox.type;
         box = combatBox.box;
         worldBox = combatBox.worldBox;
@@ -103,7 +150,12 @@ public class CombatBox
 
     public void SetCombatData(CombatData combatData)
     {
-        this.combatData = combatData;
+        this.combatData = new CombatData(combatData);
+    }
+
+    public void SetParent(Transform parent)
+    {
+        this.parent = parent;
     }
 
     public void UpdateBox()
