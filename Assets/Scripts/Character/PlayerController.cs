@@ -25,9 +25,9 @@ namespace Character
         private string moveName = "Null";
         public string MoveName => moveName;
         
-        private string nextAttack = "Null";
+        public string nextAttack = "Null";
         private string attackName = "Null";
-        public string AttackName => moveName;
+        public string AttackName => attackName;
         
         public Animator animator;
 
@@ -87,13 +87,17 @@ namespace Character
             
             EventBus.Subscribe($"{p}move", OnMove);
             EventBus.Subscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
+            EventBus.Subscribe($"{p}attack", OnAttack);
         }
 
+        
         void UnsubscribeInputEvents()
         {
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
             EventBus.Unsubscribe($"{p}move", OnMove);
             EventBus.Unsubscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
+            EventBus.Unsubscribe($"{p}attack", OnAttack);
+            
         }
   
         private void OnEnable()
@@ -121,6 +125,7 @@ namespace Character
         {
             CheckRelativeDir();
             moveName = nextMove;
+            attackName = nextAttack;
             StateMachine.CurrentState?.UpdateState();
         }
 
@@ -163,10 +168,14 @@ namespace Character
               
         private void OnMoveCancelled(object obj)
         {
-            //Debug.Log("Cancelled");
             nextMove = "Null";
             //Debug.LogWarning("Cancelled");
-            
+        }
+        
+        private void OnAttack(object obj)
+        {
+            CharacterMove move = obj as CharacterMove;
+            nextAttack = move?.Name;
         }
 
         public void TakeDamage(float dmg)

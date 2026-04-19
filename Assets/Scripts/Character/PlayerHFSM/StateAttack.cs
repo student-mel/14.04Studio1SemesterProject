@@ -6,7 +6,6 @@ public class StateAttack : PlayerState
 {
     private static readonly int Action = Animator.StringToHash("action");
     private static readonly int Attack = Animator.StringToHash("attack");
-    public CharacterMove move;
     public StateAttack(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
     }
@@ -22,7 +21,7 @@ public class StateAttack : PlayerState
     {
         Animator a =  Player.animator;
         int i = 0;
-        switch (move.Name)
+        switch (Player.AttackName)
         {
             case "Light Attack":
                 i = 0;
@@ -46,6 +45,7 @@ public class StateAttack : PlayerState
     public override void UpdateState()
     {
         base.UpdateState();
+        Player.nextAttack = "Null";
         if (!Player.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack"))
             StateMachine.ChangeState(Player.GroundedState);
         //Debug.Log(Player.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);

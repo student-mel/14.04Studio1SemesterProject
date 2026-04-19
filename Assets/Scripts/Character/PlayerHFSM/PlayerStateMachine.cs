@@ -18,14 +18,5 @@ namespace Character.PlayerHFSM
             CurrentState = newState;
             CurrentState.EnterState();
         }
-
-        public void TryAttack(StateAttack newState, CharacterMove move)
-        {
-            Debug.LogWarning("TryAttack");
-            CurrentState?.ExitState();
-            CurrentState = newState;
-            newState.move = move;
-            CurrentState.EnterState();
-        }
     }
 }

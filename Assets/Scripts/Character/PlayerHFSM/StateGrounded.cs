@@ -12,8 +12,7 @@ public class StateGrounded : PlayerState
         IdleState = new SubStateIdle(player, stateMachine);
         MoveState = new SubStateMove(player, stateMachine);
         CrouchState = new SubStateCrouch(player, stateMachine);
-        string p = Player.player ==  PlayerController.PlayerEnum.PlayerOne ? "p1_" : "p2_";
-        EventBus.Subscribe($"{p}attack", OnAttack);
+        
     }
 
     public override void EnterState()
@@ -27,22 +26,18 @@ public class StateGrounded : PlayerState
     public override void ExitState()
     {
         base.ExitState();
-        string p = Player.player ==  PlayerController.PlayerEnum.PlayerOne ? "p1_" : "p2_";
-        //EventBus.Unsubscribe($"{p}attack", OnAttack);
-    }
-
-    private void OnAttack(object obj)
-    {
-        TryAttack(obj as CharacterMove);
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-        if (Player.MoveName.StartsWith("Jump")) Jump();
+        Debug.LogWarning(Player.AttackName);
+        if (!Player.AttackName.StartsWith("Null")) TryAttack();
+        else if (Player.MoveName.StartsWith("Jump")) Jump();
         else if (Player.MoveName.StartsWith("Move")) Move();
         else if (Player.MoveName.StartsWith("Crouch")) Crouch();
         else if (Player.MoveName.StartsWith("Null")) Idle();
+        
     }
 
     void Idle()
@@ -65,8 +60,9 @@ public class StateGrounded : PlayerState
         ChangeSubState(CrouchState);
     }
 
-    void TryAttack(CharacterMove move)
+    void TryAttack()
     {
-        StateMachine.TryAttack((StateAttack)Player.AttackState, move);
+        Debug.LogWarning("TryAttack");
+        StateMachine.ChangeState(Player.AttackState);
     }
 }
