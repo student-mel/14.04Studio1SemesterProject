@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
 
         yield return StartCoroutine(countdownUI.PlayCountdown());
 
-        AudioManager.Instance?.PlayMusic();
+        //AudioManager.Instance?.PlayMusic();
+        EventBus.Emit("start_rhythm");
 
         timerUI?.StartTimer();
 
