@@ -60,7 +60,11 @@ public class StateAttack : PlayerState
         base.UpdateState();
         Player.nextAttack = "Null";
         if (!Player.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack"))
+        {
             StateMachine.ChangeState(Player.GroundedState);
+            EventBus.Emit("attack_finished", Player.player);
+        }
+        
         //Debug.Log(Player.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
     }
 }
