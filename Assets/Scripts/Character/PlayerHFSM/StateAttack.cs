@@ -15,6 +15,7 @@ public class StateAttack : PlayerState
         base.EnterState();
         SetAnimation();
         Player.animator.SetTrigger(Action);
+        EventBus.Emit("start_action", (int)Player.player);
     }
 
     void SetAnimation()
@@ -25,18 +26,18 @@ public class StateAttack : PlayerState
         switch (Player.AttackName)
         {
             case "Light Attack":
-                Debug.LogWarning("Light Attack");
+                //Debug.LogWarning("Light Attack");
                 i = 0;
                 tempHitTrigger = "Light";
                 break;
             case "Medium Attack":
-                Debug.LogWarning("Medium Attack");
+               // Debug.LogWarning("Medium Attack");
                 
                 i = 1;
                 tempHitTrigger = "Medium";
                 break;
             case "Heavy Attack":
-                Debug.LogWarning("Heavy Attack");
+               // Debug.LogWarning("Heavy Attack");
                 
                 i = 2;
                 tempHitTrigger = "Heavy";
