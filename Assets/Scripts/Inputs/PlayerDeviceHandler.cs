@@ -94,7 +94,7 @@ public class PlayerDeviceHandler : MonoBehaviour
 
         if (Player1 == null)
         {
-            Player1 = GetComponentInChildren<PlayerInput>();
+            Player1 = GetComponentsInChildren<PlayerInput>()[0];
 
             if (Player1 == null)
             {
@@ -132,7 +132,7 @@ public class PlayerDeviceHandler : MonoBehaviour
 
         if (Player2 == null)
         {
-            Player2 = GetComponentInChildren<PlayerInput>();
+            Player2 = GetComponentsInChildren<PlayerInput>()[1];
 
             if (Player2 == null)
             {

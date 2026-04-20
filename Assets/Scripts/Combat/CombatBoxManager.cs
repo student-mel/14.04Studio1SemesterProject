@@ -27,14 +27,6 @@ public class CombatBoxManager : MonoBehaviour
         EventBus.Unsubscribe("fixed_game_update", FixedGameUpdate);
     }
 
-    private void Update()
-    {
-        if (Keyboard.current.tKey.wasPressedThisFrame)
-        {
-            
-        }
-    }
-
     private void FixedGameUpdate(object frame)
     {
         currFrame = (int)frame;
@@ -63,8 +55,13 @@ public class CombatBoxManager : MonoBehaviour
             {
                 if (Overlaps(hitbox.worldBox, hurtbox.worldBox))
                 {
-                    EventBus.Emit("p2_hurt");
-                    goto Next;
+                    if (hitbox.HitCount > 0)
+                    {
+                        hitbox.SetHitCount(hitbox.HitCount - 1);
+                        EventBus.Emit("p2_hurt");
+                        Debug.Log("player 2 hurt");
+                        goto Next;
+                    }
                 }
             }
         }
@@ -75,7 +72,12 @@ public class CombatBoxManager : MonoBehaviour
             {
                 if (Overlaps(hitbox.worldBox, hurtbox.worldBox))
                 {
-                    EventBus.Emit("p1_hurt");
+                    if (hitbox.HitCount > 0)
+                    {
+                        hitbox.SetHitCount(hitbox.HitCount - 1);
+                        EventBus.Emit("p1_hurt");
+                        Debug.Log("player 1 hurt");
+                    }
                 }
             }
         }

@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBoxesController : MonoBehaviour
 {
+    [Range(1, 2)] public int PlayerIndex;
+    
     public CombatBox[] hitboxes;
     public CombatBox[] hurtboxes;
 
@@ -16,7 +19,7 @@ public class PlayerBoxesController : MonoBehaviour
         Init(ref hitboxes, BoxType.Hit);
         Init(ref hurtboxes, BoxType.Hurt);
     }
-
+    
     private void Init(ref CombatBox[] boxes, BoxType type)
     {
         if (boxes == null && boxes.Length > 0)
@@ -29,6 +32,32 @@ public class PlayerBoxesController : MonoBehaviour
             }
         }
     }
+
+    private void OnEnable()
+    {
+        switch (PlayerIndex)
+        {
+            case 1:
+                EventBus.Subscribe("p1_attack", UpdateCombatData);
+                break;
+            case 2:
+                EventBus.Subscribe("p2_attack", UpdateCombatData);
+                break;
+        }
+    }
+    private void OnDisable()
+    {
+        switch (PlayerIndex)
+        {
+            case 1:
+                EventBus.Unsubscribe("p1_attack", UpdateCombatData);
+                break;
+            case 2:
+                EventBus.Unsubscribe("p2_attack", UpdateCombatData);
+                break;
+        }
+    }
+
     public void UpdateBoxes()
     {
         foreach (CombatBox combatBox in hitboxes)
@@ -69,6 +98,14 @@ public class PlayerBoxesController : MonoBehaviour
                 if(!debug)
                     hitbox.isActive = false;
             }
+        }
+    }
+
+    private void UpdateCombatData(object move)
+    {
+        foreach (CombatBox hitbox in hitboxes)
+        {
+            hitbox.SetCombatData(TimeManager.Frame);
         }
     }
 
@@ -137,6 +174,8 @@ public class CombatBox
 
     private Transform parent;
 
+    public int HitCount { get; private set; } = 0;
+
     public CombatBox(Transform parent, CombatBox combatBox)
     {
         this.parent = parent;
@@ -148,14 +187,20 @@ public class CombatBox
         UpdateBox();
     }
 
-    public void SetCombatData(CombatData combatData)
+    public void SetCombatData(int frame)
     {
-        this.combatData = new CombatData(combatData);
+        combatData.StartFrame = frame;
+        HitCount = 1;
     }
 
     public void SetParent(Transform parent)
     {
         this.parent = parent;
+    }
+
+    public void SetHitCount(int hitCount)
+    {
+        HitCount = hitCount;
     }
 
     public void UpdateBox()

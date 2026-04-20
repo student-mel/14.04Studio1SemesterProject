@@ -290,40 +290,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d28c0350d375d740841d5731d19cc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBoxesController
+  PlayerIndex: 2
   hitboxes:
   - type: 0
     box:
-      center: {x: 0.38, y: 0}
-      size: {x: 0.31, y: 0.25}
+      center: {x: 0.3, y: 0.2}
+      size: {x: 0.2, y: 0.1}
     combatData:
       StartFrame: 0
       Windows:
-        startUp: 0
-        active: 0
-        recover: 0
-        chainStart: 0
-        chainEnd: 0
+        startUp: 6
+        active: 3
+        recover: 8
+        chainStart: 7
+        chainEnd: 14
       Positions:
-      - center: {x: 0.38, y: 0}
-        size: {x: 0.31, y: 0.25}
+      - center: {x: 0.3, y: 0.2}
+        size: {x: 0.2, y: 0.1}
     isActive: 1
   hurtboxes:
-  - type: 0
+  - type: 1
     box:
       center: {x: 0, y: 0}
-      size: {x: 0, y: 0}
+      size: {x: 0.15, y: 0.5}
     combatData:
       StartFrame: 0
       Windows:
-        startUp: 0
-        active: 0
-        recover: 0
-        chainStart: 0
-        chainEnd: 0
+        startUp: 6
+        active: 3
+        recover: 8
+        chainStart: 7
+        chainEnd: 14
       Positions:
-      - center: {x: 1.18, y: 0.98}
-        size: {x: 1.02, y: 1.34}
-    isActive: 0
+      - center: {x: 0, y: 0}
+        size: {x: 0.15, y: 0.5}
+    isActive: 1
   activeHitboxes: []
   activeHurtboxes: []
   debug: 0
@@ -371,36 +372,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d28c0350d375d740841d5731d19cc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBoxesController
+  PlayerIndex: 1
   hitboxes:
   - type: 0
     box:
-      center: {x: 0, y: 0}
-      size: {x: 0, y: 0}
+      center: {x: 0.3, y: 0.2}
+      size: {x: 0.2, y: 0.1}
     combatData:
       StartFrame: 0
       Windows:
-        startUp: 0
-        active: 0
-        recover: 0
-        chainStart: 0
-        chainEnd: 0
-      Positions: []
-    isActive: 0
+        startUp: 6
+        active: 3
+        recover: 8
+        chainStart: 7
+        chainEnd: 14
+      Positions:
+      - center: {x: 0.3, y: 0.2}
+        size: {x: 0.2, y: 0.1}
+    isActive: 1
   hurtboxes:
   - type: 1
     box:
       center: {x: 0, y: 0}
-      size: {x: 0, y: 0}
+      size: {x: 0.15, y: 0.5}
     combatData:
       StartFrame: 0
       Windows:
-        startUp: 0
-        active: 0
-        recover: 0
-        chainStart: 0
-        chainEnd: 0
-      Positions: []
-    isActive: 0
+        startUp: 6
+        active: 3
+        recover: 8
+        chainStart: 7
+        chainEnd: 14
+      Positions:
+      - center: {x: 0, y: 0}
+        size: {x: 0.15, y: 0.5}
+    isActive: 1
   activeHitboxes: []
   activeHurtboxes: []
   debug: 0
