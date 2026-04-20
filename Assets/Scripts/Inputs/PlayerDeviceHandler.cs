@@ -28,6 +28,9 @@ public class PlayerDeviceHandler : MonoBehaviour
 
         JoinKeyboardP1();
         JoinKeyboardP2();
+
+        GetComponentsInChildren<PlayerInputHandler>()[0].Init();
+        GetComponentsInChildren<PlayerInputHandler>()[1].Init();
     }
 
     private void OnEnable()
