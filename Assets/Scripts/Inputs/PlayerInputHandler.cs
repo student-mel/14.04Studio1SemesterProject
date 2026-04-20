@@ -36,7 +36,7 @@ public class PlayerInputHandler : MonoBehaviour
     private bool attackingHeavy = false;
     private bool heavyAttackStartedThisFrame = false;
 
-    private void Start()
+    public void Init()
     {
         input = GetComponent<PlayerInput>();
         PlayerIndex = input.user.index + 1;
