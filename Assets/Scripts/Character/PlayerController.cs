@@ -184,6 +184,7 @@ namespace Character
 
         public void OnMove(object obj)
         {
+            if (GameManager.InputLocked) return;
             CharacterMove move = obj as CharacterMove;
             nextMove = move?.Name;
             
@@ -198,6 +199,8 @@ namespace Character
         
         private void OnAttack(object obj)
         {
+            if (GameManager.InputLocked) return;
+            
             //Debug.LogWarning("OnAttack");
             CharacterMove move = obj as CharacterMove;
             if (StateMachine.CurrentState == attackState)
