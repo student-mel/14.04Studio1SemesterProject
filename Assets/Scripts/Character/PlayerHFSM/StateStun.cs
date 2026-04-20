@@ -31,14 +31,19 @@ public class StateStun : PlayerState
         {
             case "Light":
                 i = 0;
+                Player.TakeDamage(5);
                 break;
             case "Medium":
                 i = 1;
                 f += 10;
+                Player.TakeDamage(7);
+                
                 break;
             case  "Heavy":
                 i = 2;
                 f += 20;
+                Player.TakeDamage(10);
+                
                 break;
         }
         

@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Character;
 
 public class GameManager : MonoBehaviour
 {
-    public Health player1;
-    public Health player2;
+    /*public Health player1;
+    public Health player2;*/
+    public PlayerController player1, player2;
 
     public int player1Rounds;
     public int player2Rounds;
@@ -49,17 +51,17 @@ public class GameManager : MonoBehaviour
 
 
 
-        if (player1.currentHealth <= 0)
+        if (player1.CurrentHealth <= 0)
         {
             EndRound(player2);
         }
-        else if (player2.currentHealth <= 0)
+        else if (player2.CurrentHealth <= 0)
         {
             EndRound(player1);
         }
     }
 
-    void EndRound(Health winner)
+    void EndRound(PlayerController winner)
     {
         roundActive = false;
         InputLocked = true;
@@ -102,7 +104,9 @@ public class GameManager : MonoBehaviour
 
     void ResetRound()
     {
-        player1.ResetPlayer();
-        player2.ResetPlayer();
+        //player1.ResetPlayer();
+        //player2.ResetPlayer();
+        player1.InitialisePlayer();
+        player2.InitialisePlayer();
     }
 }
