@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance?.PlayKO();
 
         StartCoroutine(HandleRoundEnd());
+        
+        EventBus.Emit("end_rhythm");
     }
 
     IEnumerator HandleRoundEnd()
