@@ -27,12 +27,12 @@ public class healthBarUI : MonoBehaviour
         EventBus.Unsubscribe($"{p}set_currenthealth", updateHealth);
     }
 
-    public void setMaxHealth(object maxHealth)
+    private void setMaxHealth(object maxHealth)
     {
         MaxHealth = (float)maxHealth;
     }
 
-    public void subtractHealth(float healthLost)
+    private void subtractHealth(float healthLost)
     {
         Health = Health - healthLost;
         float newWidth = (Health / MaxHealth) * Width;
@@ -40,7 +40,7 @@ public class healthBarUI : MonoBehaviour
         healthBar.sizeDelta = new Vector2(newWidth, Height);
     }
 
-    public void updateHealth(object newHealth)
+    private void updateHealth(object newHealth)
     {
         Health = (float)newHealth;
         float newWidth = (Health / MaxHealth) * Width;

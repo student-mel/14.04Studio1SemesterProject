@@ -26,8 +26,8 @@ public class Health : MonoBehaviour
 
         if (healthUI != null)
         {
-            healthUI.setMaxHealth(maxHealth);
-            healthUI.updateHealth(currentHealth);
+            /*healthUI.setMaxHealth(maxHealth);
+            healthUI.updateHealth(currentHealth);*/
         }
     }
 
@@ -57,8 +57,9 @@ public class Health : MonoBehaviour
 
         Debug.Log(gameObject.name + " HP: " + currentHealth);
 
-        if (healthUI != null)
+        /*if (healthUI != null)
             healthUI.updateHealth(currentHealth);
+            */
 
         AudioManager.Instance?.PlayHit();
 
@@ -98,7 +99,7 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
         transform.position = spawnPosition;
 
-        if (healthUI != null)
-            healthUI.updateHealth(currentHealth);
+        /*if (healthUI != null)
+            healthUI.updateHealth(currentHealth);*/
     }
 }

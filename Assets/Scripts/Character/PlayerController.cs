@@ -213,7 +213,7 @@ namespace Character
         public void TakeDamage(float dmg)
         {
             CurrentHealth -= dmg * GetDamageMult(rhythmResults);
-            EventBus.Emit($"p{(int)player+1}_takedamage", CurrentHealth);
+            EventBus.Emit($"p{(int)player+1}_set_currenthealth", CurrentHealth);
             if (CurrentHealth <= 0f)
             {
                 Die();

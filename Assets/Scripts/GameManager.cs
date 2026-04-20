@@ -49,8 +49,6 @@ public class GameManager : MonoBehaviour
     {
         if (!roundActive) return;
 
-
-
         if (player1.CurrentHealth <= 0)
         {
             EndRound(player2);
