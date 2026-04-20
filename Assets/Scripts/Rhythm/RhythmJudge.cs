@@ -9,12 +9,12 @@ public class RhythmJudge : MonoBehaviour
 
     private void OnEnable()
     {
-        EventBus.Subscribe("action", OnAction);
+        EventBus.Subscribe("start_action", OnAction);
     }
 
     private void OnDisable()
     {
-        EventBus.Unsubscribe("action", OnAction);
+        EventBus.Unsubscribe("start_action", OnAction);
     }
 
     private void OnAction(object obj)
@@ -46,8 +46,8 @@ public class RhythmJudge : MonoBehaviour
         }
 
         EventBus.Emit("actionResult", new PlayerResult((int)obj, result));
-        RhythmStore.Instance.result = result;
-        Debug.Log($"Result = {result}");
+        //RhythmStore.Instance.result = result;
+        //Debug.Log($"Result = {result}");
     }
 }
 

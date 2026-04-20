@@ -586,6 +586,7 @@ MonoBehaviour:
   Width: 400
   Height: 35
   healthBar: {fileID: 9073952565283121133}
+  playerEnum: 1
 --- !u!1 &3979602796804103865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,7 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208a660f8fefc455ea5fc9704f3b070f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  timerText: {fileID: 0}
+  timerText: {fileID: 4981720452559480151}
   roundTime: 60
 --- !u!1 &5149023405959488506
 GameObject:
@@ -2221,6 +2222,7 @@ MonoBehaviour:
   Width: 400
   Height: 35
   healthBar: {fileID: 4929006077496274971}
+  playerEnum: 0
 --- !u!1 &9040677276625039888
 GameObject:
   m_ObjectHideFlags: 0

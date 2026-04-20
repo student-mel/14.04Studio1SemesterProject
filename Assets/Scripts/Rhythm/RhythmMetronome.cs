@@ -30,6 +30,16 @@ public class RhythmMetronome : MonoBehaviour
         audioSource =  GetComponent<AudioSource>();
     }
 
+    private void OnEnable()
+    {
+        EventBus.Subscribe("song_started", StartMetronome);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.Unsubscribe("song_started", StartMetronome);
+    }
+
     private void Start()
     {
         _bpm = RhythmStore.Instance.bgm.bpm;
@@ -40,9 +50,13 @@ public class RhythmMetronome : MonoBehaviour
         
         _activeBeatStartPos = _nextBeatPosition - errorMarginMs;
         _activeBeatEndPos = _nextBeatPosition + errorMarginMs;
+    }
 
+    void StartMetronome(object obj)
+    {
         StartCoroutine(MetronomeRoutine());
     }
+    
 
     IEnumerator MetronomeRoutine()
     {

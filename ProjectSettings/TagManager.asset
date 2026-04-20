@@ -11,11 +11,11 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - HurtBox1
+  - HurtBox2
+  - HitBox1
+  - HitBox2
   - 
   - 
   - 
