@@ -12,37 +12,39 @@ namespace Character
             PlayerOne,
             PlayerTwo
         };
-        [Header("Health")]
-        [field: SerializeField] public float MaxHealth { get; set; } = 100f;
+        
+        [field: SerializeField, Header("Health")] public float MaxHealth { get; set; } = 100f;
         public float CurrentHealth { get; set; }
         
         //bool isGrounded = true;
-        [SerializeField] private string nextMove = "Null";
+        private string nextMove = "Null";
         
         public enum MoveEnum {Null, MoveLeft, MoveRight,Crouch}
-
+        
+        [Header("Move Input Debug")] 
         public MoveEnum moveenum;
         private string moveName = "Null";
         public string MoveName => moveName;
-        
+        [Header("Attack Input")] 
         public string nextAttack = "Null";
         private string attackName = "Null";
         public string AttackName => attackName;
-        
+        [Header("Reaction Input")] 
         public string nextReaction = "Null";
         private string reactionName = "Null";
         public string ReactionName => reactionName;
-        
+        [Header("Character Animator")]
         public Animator animator;
+        public Animator hitboxDebugAnimator;
 
-        [field: SerializeField]public float MoveSpeed { get; set; } = 1.5f;
+        [field: SerializeField, Header("Movement Settings")]public float MoveSpeed { get; set; } = 1.5f;
         [field: SerializeField] public float JumpForce { get; set; } = 25f;
-        
-        public Vector3 RelativeDir {get; private set;}
-        public Rigidbody RB { get; private set; }
-        [SerializeField] private Transform opponent;
-        public bool canFlip = true;
+        [HideInInspector] public bool canFlip = true;
         public bool IsFacingRight { get; set; }
+        public Vector3 RelativeDir {get; private set;}
+        
+        public Rigidbody RB { get; private set; }
+        [SerializeField, Header("Opponent")] private Transform opponent;
         
         [Header("Player HFSM")]
         public PlayerStateMachine StateMachine {get; set;}
@@ -130,6 +132,7 @@ namespace Character
             CheckRelativeDir();
             moveName = nextMove;
             attackName = nextAttack;
+            reactionName = nextReaction;
             StateMachine.CurrentState?.UpdateState();
         }
 

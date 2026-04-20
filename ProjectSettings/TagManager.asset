@@ -12,10 +12,10 @@ TagManager:
   - Water
   - UI
   - Ground
-  - HitBox
-  - HurtBox
-  - 
-  - 
+  - HurtBox1
+  - HurtBox2
+  - HitBox1
+  - HitBox2
   - 
   - 
   - 

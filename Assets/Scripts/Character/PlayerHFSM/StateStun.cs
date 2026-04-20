@@ -15,32 +15,36 @@ public class StateStun : PlayerState
         base.EnterState();
         SetAnimation();
         Player.animator.SetTrigger(Hurt);
-        ApplyKnockback();
     }
 
-    void ApplyKnockback()
+    void ApplyKnockback(float force)
     {
-        Player.RB.AddForce(-Player.RelativeDir * 15f, ForceMode.Impulse);
+        Player.RB.AddForce(-Player.RelativeDir * force, ForceMode.Impulse);
     }
 
     void SetAnimation()
     {
         Animator a =  Player.animator;
         int i = 0;
+        float f = 20;
         switch (Player.ReactionName)
         {
-            case "Hit Heavy":
+            case "Light":
                 i = 0;
                 break;
-            case "Hit Light":
+            case "Medium":
                 i = 1;
+                f += 10;
                 break;
-            case  "Hit Medium":
+            case  "Heavy":
                 i = 2;
+                f += 20;
                 break;
         }
         
         a.SetFloat(Reaction, (int)i);
+        Player.nextReaction = "Null";
+        ApplyKnockback(f);
     }
 
     public override void ExitState()
