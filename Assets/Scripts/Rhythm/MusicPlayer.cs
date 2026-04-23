@@ -28,7 +28,7 @@ public class MusicPlayer : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = RhythmStore.Instance.bgm.clip;
+        //audioSource.clip = RhythmStore.Instance.bgm.clip;
     }
 
     public void PlaySong(object obj)
