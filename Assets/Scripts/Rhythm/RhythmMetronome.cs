@@ -61,7 +61,7 @@ public class RhythmMetronome : MonoBehaviour
 
     void Initialise()
     {
-        //_nextBeatPosition = _beatDurationMs * 0.82f;
+        _nextBeatPosition = _beatDurationMs * 0.5f;
         
         _activeBeatStartPos = _nextBeatPosition - errorMarginMs;
         _activeBeatEndPos = _nextBeatPosition + errorMarginMs;

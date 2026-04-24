@@ -638,9 +638,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: greatWindow
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: perfectWindow
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: syncopatedWindow
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 7748341607150731990, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_Volume
-      value: 0.732
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748341607150731990, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_PlayOnAwake
@@ -2388,6 +2400,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1480446073}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: hitEvent.Path
+      value: event:/Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: hit.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2398,6 +2414,22 @@ PrefabInstance:
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: impact.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: hitEvent.Guid.Data1
+      value: 153351518
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: hitEvent.Guid.Data2
+      value: 1080322836
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: hitEvent.Guid.Data3
+      value: 1814450056
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: hitEvent.Guid.Data4
+      value: -1283012569
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: 'impact.Array.data[0]'
