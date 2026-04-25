@@ -14,7 +14,7 @@ namespace Character
         };
         
         [field: SerializeField, Header("Health")] public float MaxHealth { get; set; } = 100f;
-        public float CurrentHealth { get; set; }
+        public float CurrentHealth { get; private set; }
         
         //bool isGrounded = true;
         private string nextMove = "Null";
@@ -42,6 +42,8 @@ namespace Character
         [HideInInspector] public bool canFlip = true;
         public bool IsFacingRight { get; set; }
         public Vector3 RelativeDir {get; private set;}
+
+        private Vector3 spawnPosition;
         
         public Rigidbody RB { get; private set; }
         [SerializeField, Header("Opponent")] private Transform opponent;
@@ -59,6 +61,8 @@ namespace Character
         {
             
         }
+        
+        [Header("Results")] public string rhythmResults;
 
         private void OnValidate()
         {
@@ -95,6 +99,15 @@ namespace Character
             EventBus.Subscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
             EventBus.Subscribe($"{p}attack", OnAttack);
             EventBus.Subscribe($"{p}hurt", OnHurt);
+            EventBus.Subscribe("actionResult", GetActionResult);
+
+            void GetActionResult(object obj)
+            {
+                PlayerResult result = (PlayerResult)obj;
+                if (result.Index != (int)player) return;
+
+                this.rhythmResults = result.Result;
+            }
         }
 
         void UnsubscribeInputEvents()
@@ -118,13 +131,21 @@ namespace Character
 
         private void Start()
         {
+            spawnPosition = transform.position;
             InitialisePlayer();
+            EventBus.Emit("set_maxhealth", MaxHealth);
         }
         
-        void InitialisePlayer()
+        public void InitialisePlayer()
         {
             CurrentHealth = MaxHealth;
+            transform.position = spawnPosition;
             CheckRelativeDir();
+            StateMachine.Initialise(groundedState);
+            
+            IsFacingRight = opponent.position.x > transform.position.x;
+            Flip(false);
+            EventBus.Emit($"p{(int)player+1}_set_currenthealth", CurrentHealth);
         }
 
         private void Update()
@@ -167,6 +188,7 @@ namespace Character
 
         public void OnMove(object obj)
         {
+            if (GameManager.InputLocked) return;
             CharacterMove move = obj as CharacterMove;
             nextMove = move?.Name;
             
@@ -181,6 +203,8 @@ namespace Character
         
         private void OnAttack(object obj)
         {
+            if (GameManager.InputLocked) return;
+            
             //Debug.LogWarning("OnAttack");
             CharacterMove move = obj as CharacterMove;
             if (StateMachine.CurrentState == attackState)
@@ -195,7 +219,12 @@ namespace Character
 
         public void TakeDamage(float dmg)
         {
-            CurrentHealth -= dmg;
+            int otherPlayer = player ==  PlayerEnum.PlayerOne ? 1 : 0;
+            string oppResult = opponent.GetComponent<PlayerController>().rhythmResults;
+            EventBus.Emit("hit_result", new PlayerResult(otherPlayer, oppResult, true));
+            
+            CurrentHealth -= dmg * GetDamageMult(oppResult);
+            EventBus.Emit($"p{(int)player+1}_set_currenthealth", CurrentHealth);
             if (CurrentHealth <= 0f)
             {
                 Die();
@@ -204,6 +233,26 @@ namespace Character
 
         public void Die()
         {
+            animator.SetTrigger("die");
+        }
+        
+        float GetDamageMult(string result)
+        {
+            switch (result)
+            {
+                case "Perfect":
+                    return 1.75f;
+                case "Great":
+                    return 1.3f;
+                /*case "Good":
+                    return 1.15f;*/
+                case "Syncopated":
+                    return 2f;
+                case "Miss":
+                    return 0.5f;
+            }
+        
+            return 1f;
         }
      }
 }

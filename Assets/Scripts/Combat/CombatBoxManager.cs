@@ -1,50 +1,30 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class CombatBoxManager : MonoBehaviour
 {
-    public CombatBox p1Hurtbox;
-    public CombatBox p2Hurtbox;
-    public CombatBox p1Hitbox;
-    public CombatBox p2Hitbox;
-    public CombatBox p1ThrowBox;
-    public CombatBox p2ThrowBox;
-    public CombatBox p1ProjectionBox;
-    public CombatBox p2ProjectionBox;
-
-    public List<CombatBox> activeHitboxes =  new List<CombatBox>();
-    public List<CombatBox> activeHurtboxes =  new List<CombatBox>();
+    public PlayerBoxesController player1;
+    public PlayerBoxesController player2;
 
     private int currFrame;
 
     private void Start()
     {
-        p1Hurtbox.isActive = true;
-        p2Hurtbox.isActive = true;
-
-        p1Hitbox.isActive = false;
-        p2Hitbox.isActive = false;
+        player1.ActivateHurtboxes();
+        player2.ActivateHurtboxes();
     }
 
     private void OnEnable()
     {
         EventBus.Subscribe("fixed_game_update", FixedGameUpdate);
-        
-        activeHurtboxes.Add(p2Hurtbox);
     }
     private void OnDisable()
     {
         EventBus.Unsubscribe("fixed_game_update", FixedGameUpdate);
-    }
-
-    private void Update()
-    {
-        if (Keyboard.current.tKey.wasPressedThisFrame)
-        {
-            p1Hitbox.combatData.StartFrame = currFrame;
-        }
     }
 
     private void FixedGameUpdate(object frame)
@@ -57,38 +37,48 @@ public class CombatBoxManager : MonoBehaviour
 
     private void ActivateHitboxesForFrame(int frame)
     {
-        if (p1Hitbox.combatData != null)
-        {
-            if (frame >= p1Hitbox.combatData.ActiveStarts && frame <= p1Hitbox.combatData.ActiveEnds)
-            {
-                if(!activeHitboxes.Contains(p1Hitbox))
-                    activeHitboxes.Add(p1Hitbox);
-                p1Hitbox.isActive = true;
-            }
-            else
-            {
-                if(activeHitboxes.Contains(p1Hitbox))
-                    activeHitboxes.Remove(p1Hitbox);
-                p1Hitbox.isActive = false;
-            }
-        }
+        player1.ActivateHitboxes(frame);
+        player2.ActivateHitboxes(frame);
     }
 
     private void TransformBoxesToWorldSpace(int frame)
     {
-        p1Hitbox.ToWorld(frame);
+        player1.UpdateBoxes();
+        player2.UpdateBoxes();
     }
 
     private void CheckOverlaps()
     {
-        foreach (CombatBox hitbox in activeHitboxes)
+        foreach (CombatBox hitbox in player1.activeHitboxes)
         {
-            foreach (CombatBox hurtbox in activeHurtboxes)
+            foreach (CombatBox hurtbox in player2.activeHurtboxes)
             {
-                // if (Overlaps(hitbox.worldBox, hurtbox.worldBox))
-                // {
-                //     Debug.Log("Player overlaps");
-                // }
+                if (Overlaps(hitbox.worldBox, hurtbox.worldBox))
+                {
+                    if (hitbox.HitCount > 0)
+                    {
+                        hitbox.SetHitCount(hitbox.HitCount - 1);
+                        EventBus.Emit("p2_hurt");
+                        Debug.Log("player 2 hurt");
+                        goto Next;
+                    }
+                }
+            }
+        }
+        Next:
+        foreach (CombatBox hitbox in player2.activeHitboxes)
+        {
+            foreach (CombatBox hurtbox in player1.activeHurtboxes)
+            {
+                if (Overlaps(hitbox.worldBox, hurtbox.worldBox))
+                {
+                    if (hitbox.HitCount > 0)
+                    {
+                        hitbox.SetHitCount(hitbox.HitCount - 1);
+                        EventBus.Emit("p1_hurt");
+                        Debug.Log("player 1 hurt");
+                    }
+                }
             }
         }
     }
@@ -121,6 +111,15 @@ public class TimingWindows
 [System.Serializable]
 public class CombatData
 {
+    public CombatData(){}
+
+    public CombatData(CombatData data)
+    {
+        StartFrame = data.StartFrame;
+        Windows =  data.Windows;
+        Positions =  data.Positions;
+    }
+    
     public int StartFrame;
     public TimingWindows Windows;
     [Tooltip("positions of box during active frames")]

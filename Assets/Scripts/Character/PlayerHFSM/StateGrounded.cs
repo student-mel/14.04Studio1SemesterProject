@@ -26,7 +26,7 @@ public class StateGrounded : PlayerState
     {
         base.UpdateState();
         //Debug.LogWarning(Player.AttackName);
-        Debug.LogWarning(Player.ReactionName);
+//        Debug.LogWarning(Player.ReactionName);
         if (!Player.ReactionName.StartsWith("Null")) TryStun();
         else if (!Player.AttackName.StartsWith("Null")) TryAttack();
         else if (Player.MoveName.StartsWith("Jump")) Jump();

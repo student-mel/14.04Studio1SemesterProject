@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Character;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +11,28 @@ public class healthBarUI : MonoBehaviour
     [SerializeField]
     private RectTransform healthBar;
 
-    public void setMaxHealth(float maxHealth)
+    public PlayerController.PlayerEnum playerEnum;
+
+    private void OnEnable()
     {
-        MaxHealth = maxHealth;
+        string p = $"p{(int)playerEnum + 1}_";
+        EventBus.Subscribe("set_maxhealth", setMaxHealth);
+        EventBus.Subscribe($"{p}set_currenthealth", updateHealth);
     }
 
-    public void subtractHealth(float healthLost)
+    private void OnDisable()
+    {
+        string p = $"p{(int)playerEnum + 1}_";
+        EventBus.Unsubscribe("set_maxhealth", setMaxHealth);
+        EventBus.Unsubscribe($"{p}set_currenthealth", updateHealth);
+    }
+
+    private void setMaxHealth(object maxHealth)
+    {
+        MaxHealth = (float)maxHealth;
+    }
+
+    private void subtractHealth(float healthLost)
     {
         Health = Health - healthLost;
         float newWidth = (Health / MaxHealth) * Width;
@@ -22,9 +40,9 @@ public class healthBarUI : MonoBehaviour
         healthBar.sizeDelta = new Vector2(newWidth, Height);
     }
 
-    public void updateHealth(float newHealth)
+    private void updateHealth(object newHealth)
     {
-        Health = newHealth;
+        Health = (float)newHealth;
         float newWidth = (Health / MaxHealth) * Width;
 
         healthBar.sizeDelta = new Vector2(newWidth, Height);
