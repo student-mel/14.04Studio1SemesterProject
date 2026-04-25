@@ -55,11 +55,13 @@ class PlayerResult
 {
     public string Result;
     public int Index;
+    public bool IsHit = false;
     
-    public PlayerResult(int playerIndex, string playerResult)
+    public PlayerResult(int playerIndex, string playerResult, bool isHit = false)
     {
         Result = playerResult;
         Index = playerIndex;
+        IsHit = isHit;
     }
 
     public override string ToString()

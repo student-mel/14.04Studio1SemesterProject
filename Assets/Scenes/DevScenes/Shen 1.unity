@@ -592,11 +592,23 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 50bd04a646115f94788b9b59791df2f2, type: 2}
     - target: {fileID: 1302613136041670248, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677107159172822045, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: Loop
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1677107159172822045, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_Volume
-      value: 0.422
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677107159172822045, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 566923b5c7b193b40b457af01dbfa002, type: 3}
+    - target: {fileID: 1677107159172822045, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3846310818125768887, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_LocalPosition.x
@@ -640,8 +652,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7748341607150731990, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_Volume
-      value: 0.732
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7748341607150731990, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748341607150731990, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 8c57c8a45521ad14d975d71f1c2cb03d, type: 3}
     - target: {fileID: 7748341607150731990, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -653,7 +673,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8449223269488932504, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1646516734}
   m_SourcePrefab: {fileID: 100100000, guid: 5b8047c260d132a459099d20fc767086, type: 3}
 --- !u!1 &787375708 stripped
 GameObject:
@@ -1202,9 +1225,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1480446077}
   - component: {fileID: 1480446076}
-  - component: {fileID: 1480446075}
   - component: {fileID: 1480446074}
   - component: {fileID: 1480446073}
+  - component: {fileID: 1480446078}
+  - component: {fileID: 1480446079}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -1353,14 +1377,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &1480446075
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480446072}
-  m_Enabled: 1
 --- !u!20 &1480446076
 Camera:
   m_ObjectHideFlags: 0
@@ -1427,6 +1443,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1480446078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480446072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
+--- !u!81 &1480446079
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480446072}
+  m_Enabled: 1
 --- !u!114 &1571154953 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2727459740273783626, guid: 82176f483befb4cef81c62dce4b80977, type: 3}
@@ -1438,6 +1476,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04cca82b2c480ef41a3e270a8de6a1c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CountdownUI
+--- !u!1 &1646516732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8449223269488932504, guid: 5b8047c260d132a459099d20fc767086, type: 3}
+  m_PrefabInstance: {fileID: 764238623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1646516734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646516732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f4605557787a39478dfd5e7b98d2b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FmodBGM
+  musicEvent:
+    Guid:
+      Data1: -1911599181
+      Data2: 1239964024
+      Data3: -1518951013
+      Data4: 503799795
+    Path: event:/Rock
 --- !u!1001 &1796378469
 PrefabInstance:
   m_ObjectHideFlags: 0

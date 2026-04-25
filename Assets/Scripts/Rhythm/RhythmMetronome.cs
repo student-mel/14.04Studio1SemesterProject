@@ -24,6 +24,8 @@ public class RhythmMetronome : MonoBehaviour
     AudioSource audioSource;
     [SerializeField]
     private AudioClip clip;
+    
+    Coroutine MetronomeCoroutine;
 
     private void Awake()
     {
@@ -33,11 +35,19 @@ public class RhythmMetronome : MonoBehaviour
     private void OnEnable()
     {
         EventBus.Subscribe("song_started", StartMetronome);
+        EventBus.Subscribe("song_stopped", StopMetronome);
+    }
+
+    private void StopMetronome(object obj)
+    {
+        if (MetronomeCoroutine != null)
+            StopCoroutine(MetronomeCoroutine);
     }
 
     private void OnDisable()
     {
         EventBus.Unsubscribe("song_started", StartMetronome);
+        EventBus.Unsubscribe("song_stopped", StopMetronome);
     }
 
     private void Start()
@@ -46,7 +56,12 @@ public class RhythmMetronome : MonoBehaviour
         _beatDurationMs = 60 / _bpm * 1000f;
         RhythmStore.Instance.beatDuration = _beatDurationMs;
         
-        _nextBeatPosition = _beatDurationMs * 0.82f;
+        Initialise();
+    }
+
+    void Initialise()
+    {
+        //_nextBeatPosition = _beatDurationMs * 0.82f;
         
         _activeBeatStartPos = _nextBeatPosition - errorMarginMs;
         _activeBeatEndPos = _nextBeatPosition + errorMarginMs;
@@ -54,7 +69,9 @@ public class RhythmMetronome : MonoBehaviour
 
     void StartMetronome(object obj)
     {
-        StartCoroutine(MetronomeRoutine());
+        Initialise();
+
+        MetronomeCoroutine = StartCoroutine(MetronomeRoutine());
     }
     
 

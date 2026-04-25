@@ -141,6 +141,10 @@ namespace Character
             CurrentHealth = MaxHealth;
             transform.position = spawnPosition;
             CheckRelativeDir();
+            StateMachine.Initialise(groundedState);
+            
+            IsFacingRight = opponent.position.x > transform.position.x;
+            Flip(false);
             EventBus.Emit($"p{(int)player+1}_set_currenthealth", CurrentHealth);
         }
 
@@ -215,7 +219,11 @@ namespace Character
 
         public void TakeDamage(float dmg)
         {
-            CurrentHealth -= dmg * GetDamageMult(rhythmResults);
+            int otherPlayer = player ==  PlayerEnum.PlayerOne ? 1 : 0;
+            string oppResult = opponent.GetComponent<PlayerController>().rhythmResults;
+            EventBus.Emit("hit_result", new PlayerResult(otherPlayer, oppResult, true));
+            
+            CurrentHealth -= dmg * GetDamageMult(oppResult);
             EventBus.Emit($"p{(int)player+1}_set_currenthealth", CurrentHealth);
             if (CurrentHealth <= 0f)
             {
@@ -225,7 +233,7 @@ namespace Character
 
         public void Die()
         {
-            animator.SetTrigger("Die");
+            animator.SetTrigger("die");
         }
         
         float GetDamageMult(string result)
