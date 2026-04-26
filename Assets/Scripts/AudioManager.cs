@@ -43,7 +43,7 @@ public class AudioManager : MonoBehaviour
     public void PlayHit(GameObject hitTarget)
     {
         Debug.Log("FMOD PlayHit called on: " + hitTarget.name);
-        RuntimeManager.PlayOneShotAttached(hitEvent, hitTarget);
+        RuntimeManager.PlayOneShot(hitEvent);
     }
 
 

@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7476714585756747656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/kick
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/kick
+  Guid:
+    Data1: -717450527
+    Data2: 1193518357
+    Data3: -1456174971
+    Data4: -1683642514
+  Banks:
+  - {fileID: -4052246196327375515}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 78
 --- !u!114 &-6288045021010285123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,10 +42,30 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639122182929090731
+  lastModified: 639128350099935359
   FileSizes:
   - Name: Desktop
-    Value: 894
+    Value: 964
+  Exists: 1
+--- !u!114 &-4052246196327375515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Kick.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: ../../new/Build/Desktop/Kick.bank
+  Name: Kick
+  StudioPath: bank:/Kick
+  lastModified: 639128403529998104
+  FileSizes:
+  - Name: Desktop
+    Value: 3360
   Exists: 1
 --- !u!114 &-3712547849877933611
 MonoBehaviour:
@@ -46,7 +93,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 247110
+  Length: 247123
 --- !u!114 &-1853409170582770861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +109,7 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639122182929075653
+  lastModified: 639128350099925311
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -84,21 +131,25 @@ MonoBehaviour:
   - {fileID: 5615264252165931157}
   - {fileID: -1853409170582770861}
   - {fileID: 8144147001361662328}
+  - {fileID: -4052246196327375515}
   EditorEvents:
   - {fileID: 6653997846657162676}
   - {fileID: -3712547849877933611}
+  - {fileID: -7476714585756747656}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1853409170582770861}
   StringsBanks:
   - {fileID: -6288045021010285123}
   cacheVersion: 131859
-  cacheTime: 639126614910399488
+  cacheTime: 639128403529998104
   SerializableEventsDict:
   - key: event:/Hit
     index: 0
   - key: event:/Rock
     index: 1
+  - key: event:/kick
+    index: 2
 --- !u!114 &5615264252165931157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,10 +165,10 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Hit.bank
   Name: Hit
   StudioPath: bank:/Hit
-  lastModified: 639126614910399488
+  lastModified: 639128348062247543
   FileSizes:
   - Name: Desktop
-    Value: 7424
+    Value: 7968
   Exists: 1
 --- !u!114 &6653997846657162676
 MonoBehaviour:
@@ -145,7 +196,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 480
+  Length: 190
 --- !u!114 &8144147001361662328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +212,7 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639126614837606935
+  lastModified: 639128347742168960
   FileSizes:
   - Name: Desktop
     Value: 1635328

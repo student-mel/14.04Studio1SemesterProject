@@ -596,7 +596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677107159172822045, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_Volume
-      value: 0.422
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3846310818125768887, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_LocalPosition.x
@@ -640,15 +640,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: greatWindow
-      value: 55
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: perfectWindow
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5126832101342477896, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: syncopatedWindow
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7748341607150731990, guid: 5b8047c260d132a459099d20fc767086, type: 3}
       propertyPath: m_Volume
@@ -2401,7 +2401,7 @@ PrefabInstance:
       objectReference: {fileID: 1480446073}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: hitEvent.Path
-      value: event:/Hit
+      value: event:/kick
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: hit.Array.size
@@ -2417,19 +2417,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: hitEvent.Guid.Data1
-      value: 153351518
+      value: -717450527
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: hitEvent.Guid.Data2
-      value: 1080322836
+      value: 1193518357
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: hitEvent.Guid.Data3
-      value: 1814450056
+      value: -1456174971
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: hitEvent.Guid.Data4
-      value: -1283012569
+      value: -1683642514
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: 'impact.Array.data[0]'
