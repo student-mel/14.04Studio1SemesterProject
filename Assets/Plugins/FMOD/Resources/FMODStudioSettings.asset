@@ -489,8 +489,9 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Attack
   - Hit
-  - Kick
+  - Jump
   - Theme
   BanksToLoad: []
   LiveUpdatePort: 9264

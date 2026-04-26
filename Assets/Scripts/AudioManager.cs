@@ -27,6 +27,10 @@ public class AudioManager : MonoBehaviour
 
     [Header("FMOD")]
     [SerializeField] private EventReference hitEvent;
+    [SerializeField] private EventReference jumpEvent;
+    [SerializeField] private EventReference lightAttackEvent;
+    [SerializeField] private EventReference mediumAttackEvent;
+    [SerializeField] private EventReference heavyAttackEvent;
 
     void Awake()
     {
@@ -42,10 +46,28 @@ public class AudioManager : MonoBehaviour
 
     public void PlayHit(GameObject hitTarget)
     {
-        Debug.Log("FMOD PlayHit called on: " + hitTarget.name);
         RuntimeManager.PlayOneShot(hitEvent);
     }
 
+    public void PlayJump(GameObject jumper)
+    {
+        RuntimeManager.PlayOneShot(jumpEvent);
+    }
+
+    public void PlayLightAttack(GameObject target)
+    {
+        RuntimeManager.PlayOneShot(lightAttackEvent);
+    }
+
+    public void PlayMediumAttack(GameObject target)
+    {
+        RuntimeManager.PlayOneShot(mediumAttackEvent);
+    }
+
+    public void PlayHeavyAttack(GameObject target)
+    {
+        RuntimeManager.PlayOneShot(heavyAttackEvent);
+    }
 
     public void PlayKO()
     {

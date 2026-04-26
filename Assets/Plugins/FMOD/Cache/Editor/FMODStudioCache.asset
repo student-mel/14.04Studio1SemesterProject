@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7476714585756747656
+--- !u!114 &-9147773359475004240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/kick
+  m_Name: event:/Hit/HeavyHit
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/kick
+  Path: event:/Hit/HeavyHit
   Guid:
-    Data1: -717450527
-    Data2: 1193518357
-    Data3: -1456174971
-    Data4: -1683642514
+    Data1: 639912823
+    Data2: 1076500512
+    Data3: -1477492045
+    Data4: -1347498563
   Banks:
-  - {fileID: -4052246196327375515}
+  - {fileID: 5615264252165931157}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 78
+--- !u!114 &-9064056010662128649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Jump/Jump1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Jump/Jump1
+  Guid:
+    Data1: -599208538
+    Data2: 1326737359
+    Data3: 530220456
+    Data4: 41735445
+  Banks:
+  - {fileID: -3823610201682345472}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 485
 --- !u!114 &-6288045021010285123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,12 +69,39 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639128350099935359
+  lastModified: 639128481776482994
   FileSizes:
   - Name: Desktop
-    Value: 964
+    Value: 1316
   Exists: 1
---- !u!114 &-4052246196327375515
+--- !u!114 &-6241565975495758698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Jump/Jump_Master
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Jump/Jump_Master
+  Guid:
+    Data1: -1040726199
+    Data2: 1114147865
+    Data3: -272585290
+    Data4: -629928246
+  Banks:
+  - {fileID: -3823610201682345472}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &-3823610201682345472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,15 +111,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Kick.bank
+  m_Name: bank:/Jump.bank
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: ../../new/Build/Desktop/Kick.bank
-  Name: Kick
-  StudioPath: bank:/Kick
-  lastModified: 639128403529998104
+  Path: ../../new/Build/Desktop/Jump.bank
+  Name: Jump
+  StudioPath: bank:/Jump
+  lastModified: 639128471345080118
   FileSizes:
   - Name: Desktop
-    Value: 3360
+    Value: 204672
   Exists: 1
 --- !u!114 &-3712547849877933611
 MonoBehaviour:
@@ -94,6 +148,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 247123
+--- !u!114 &-3201975955832566567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hit/LightHit
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Hit/LightHit
+  Guid:
+    Data1: -717450527
+    Data2: 1193518357
+    Data3: -1456174971
+    Data4: -1683642514
+  Banks:
+  - {fileID: 5615264252165931157}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 78
 --- !u!114 &-1853409170582770861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,11 +190,38 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639128350099925311
+  lastModified: 639128481776482994
   FileSizes:
   - Name: Desktop
     Value: 1074
   Exists: 1
+--- !u!114 &-1135561799591333396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hit/MediumHit
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Hit/MediumHit
+  Guid:
+    Data1: -1030368230
+    Data2: 1291027503
+    Data3: -1160642881
+    Data4: -1256973507
+  Banks:
+  - {fileID: 5615264252165931157}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 78
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,25 +239,128 @@ MonoBehaviour:
   - {fileID: 5615264252165931157}
   - {fileID: -1853409170582770861}
   - {fileID: 8144147001361662328}
-  - {fileID: -4052246196327375515}
+  - {fileID: -3823610201682345472}
+  - {fileID: 6412396560753465020}
   EditorEvents:
-  - {fileID: 6653997846657162676}
   - {fileID: -3712547849877933611}
-  - {fileID: -7476714585756747656}
+  - {fileID: -6241565975495758698}
+  - {fileID: -9064056010662128649}
+  - {fileID: 4334520522276741746}
+  - {fileID: -1135561799591333396}
+  - {fileID: -9147773359475004240}
+  - {fileID: -3201975955832566567}
+  - {fileID: 3024683962452503471}
+  - {fileID: 1228234254813778767}
+  - {fileID: 8881837592999423142}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1853409170582770861}
   StringsBanks:
   - {fileID: -6288045021010285123}
   cacheVersion: 131859
-  cacheTime: 639128403529998104
+  cacheTime: 639128499987297271
   SerializableEventsDict:
-  - key: event:/Hit
-    index: 0
   - key: event:/Rock
+    index: 0
+  - key: event:/Jump/Jump_Master
     index: 1
-  - key: event:/kick
+  - key: event:/Jump/Jump1
     index: 2
+  - key: event:/Jump/Jump2
+    index: 3
+  - key: event:/Hit/MediumHit
+    index: 4
+  - key: event:/Hit/HeavyHit
+    index: 5
+  - key: event:/Hit/LightHit
+    index: 6
+  - key: event:/Attack/Light
+    index: 7
+  - key: event:/Attack/Medium
+    index: 8
+  - key: event:/Attack/Heavy
+    index: 9
+--- !u!114 &1228234254813778767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Attack/Medium
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Attack/Medium
+  Guid:
+    Data1: -1579380084
+    Data2: 1277586449
+    Data3: 392270008
+    Data4: -708964087
+  Banks:
+  - {fileID: 6412396560753465020}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 190
+--- !u!114 &3024683962452503471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Attack/Light
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Attack/Light
+  Guid:
+    Data1: 153351518
+    Data2: 1080322836
+    Data3: 1814450056
+    Data4: -1283012569
+  Banks:
+  - {fileID: 6412396560753465020}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 270
+--- !u!114 &4334520522276741746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Jump/Jump2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Jump/Jump2
+  Guid:
+    Data1: -1884888102
+    Data2: 1189841579
+    Data3: 1994745484
+    Data4: 686336424
+  Banks:
+  - {fileID: -3823610201682345472}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 385
 --- !u!114 &5615264252165931157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,12 +376,12 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Hit.bank
   Name: Hit
   StudioPath: bank:/Hit
-  lastModified: 639128348062247543
+  lastModified: 639128499987109621
   FileSizes:
   - Name: Desktop
-    Value: 7968
+    Value: 5920
   Exists: 1
---- !u!114 &6653997846657162676
+--- !u!114 &6412396560753465020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,24 +390,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Hit
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Hit
-  Guid:
-    Data1: 153351518
-    Data2: 1080322836
-    Data3: 1814450056
-    Data4: -1283012569
-  Banks:
-  - {fileID: 5615264252165931157}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 190
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Attack.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: ../../new/Build/Desktop/Attack.bank
+  Name: Attack
+  StudioPath: bank:/Attack
+  lastModified: 639128499987297271
+  FileSizes:
+  - Name: Desktop
+    Value: 11008
+  Exists: 1
 --- !u!114 &8144147001361662328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,3 +421,30 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1635328
   Exists: 1
+--- !u!114 &8881837592999423142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Attack/Heavy
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Attack/Heavy
+  Guid:
+    Data1: 787591163
+    Data2: 1169340041
+    Data3: 1366700434
+    Data4: 1127787895
+  Banks:
+  - {fileID: 6412396560753465020}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 190
