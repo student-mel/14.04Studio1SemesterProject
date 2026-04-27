@@ -50,6 +50,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log(gameObject.name + " TakeDamage called");
         currentHealth -= damage;
 
         if (currentHealth < 0)
@@ -61,7 +62,7 @@ public class Health : MonoBehaviour
             healthUI.updateHealth(currentHealth);
             */
 
-        AudioManager.Instance?.PlayHit();
+        AudioManager.Instance?.PlayHit(gameObject);
 
         movement.StartHurt();
         animator.ResetTrigger("isHit");

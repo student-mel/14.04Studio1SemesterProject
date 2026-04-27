@@ -17,12 +17,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Debug.Log(gameObject.name + " TakeDamage called");
         if (currentHealth <= 0) return;
 
         currentHealth -= damage;
 
         OnHit?.Invoke();
-        AudioManager.Instance?.PlayHit();
+        AudioManager.Instance?.PlayHit(gameObject);
 
         if (currentHealth <= 0)
         {
