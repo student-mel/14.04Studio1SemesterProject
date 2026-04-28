@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     IEnumerator StartRound()
     {
         roundActive = false;
-        InputLocked = true;
+        //InputLocked = true;
 
         AudioManager.Instance?.PlayPreRound();
 
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
         timerUI?.StartTimer();
 
-        InputLocked = false;
+        //InputLocked = false;
         roundActive = true;
     }
 
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     void EndRound(PlayerController winner)
     {
         roundActive = false;
-        InputLocked = true;
+        //InputLocked = true;
 
         timerUI?.StopTimer();
 

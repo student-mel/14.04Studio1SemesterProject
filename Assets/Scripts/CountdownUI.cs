@@ -10,16 +10,16 @@ public class CountdownUI : MonoBehaviour
     {
         countdownText.gameObject.SetActive(true);
 
-        countdownText.text = "3";
+        countdownText.text = "Ready";
         yield return new WaitForSeconds(1f);
 
-        countdownText.text = "2";
-        yield return new WaitForSeconds(1f);
+        countdownText.text = "GO!";
+        /*yield return new WaitForSeconds(1f);
 
         countdownText.text = "1";
         yield return new WaitForSeconds(1f);
 
-        countdownText.text = "FIGHT!";
+        countdownText.text = "FIGHT!";*/
         yield return new WaitForSeconds(0.5f);
 
         countdownText.gameObject.SetActive(false);
