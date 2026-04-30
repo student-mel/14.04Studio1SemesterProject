@@ -6,13 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    public UnityAction<Vector2> MoveEvent;
-    public UnityAction MoveEndedEvent;
-    public UnityAction AttackEvent;
-    public UnityAction AttackEndedEvent;
-    public UnityAction Attack2Event;
-    public UnityAction Attack2EndedEvent;
-
     private PlayerInput input;
     private Vector2 movementInput = new Vector2();
 
@@ -29,13 +22,6 @@ public class PlayerInputHandler : MonoBehaviour
     private bool moving = false;
     private bool movementStartedThisFrame = false;
 
-    private bool attackingLight = false;
-    private bool lightAttackStartedThisFrame = false;
-    private bool attackingMedium = false;
-    private bool mediumAttackStartedThisFrame = false;
-    private bool attackingHeavy = false;
-    private bool heavyAttackStartedThisFrame = false;
-
     public void Init()
     {
         input = GetComponent<PlayerInput>();
@@ -51,13 +37,10 @@ public class PlayerInputHandler : MonoBehaviour
         if (context.started)
         {
             buffer.AddInputStart(InputType.LightAtt);
-            // attackingLight = true;
-            // lightAttackStartedThisFrame = true;
         }
 
         if (context.canceled)
         {
-            attackingLight = false;
             CancelAttack(InputType.LightAtt);
         }
     }
@@ -67,13 +50,10 @@ public class PlayerInputHandler : MonoBehaviour
         if (context.started)
         {
             buffer.AddInputStart(InputType.MediumAtt);
-            // attackingMedium = true;
-            // mediumAttackStartedThisFrame = true;
         }
 
         if (context.canceled)
         {
-            attackingMedium = false;
             CancelAttack(InputType.MediumAtt);
         }
     }
@@ -82,13 +62,10 @@ public class PlayerInputHandler : MonoBehaviour
         if (context.started)
         {
             buffer.AddInputStart(InputType.HeavyAtt);
-            // attackingHeavy = true;
-            // heavyAttackStartedThisFrame = true;
         }
 
         if (context.canceled)
         {
-            attackingHeavy = false;
             CancelAttack(InputType.HeavyAtt);
         }
     }
@@ -132,10 +109,10 @@ public class PlayerInputHandler : MonoBehaviour
         switch (PlayerIndex)
         {
             case 1:
-                EventBus.Emit("p1_moveinput_cancelled");
+                EventBus.Emit("p1_dirinput_cancelled");
                 break;
             case 2:
-                EventBus.Emit("p2_moveinput_cancelled");
+                EventBus.Emit("p2_dirinput_cancelled");
                 break;
             default:
                 break;
@@ -147,27 +124,12 @@ public class PlayerInputHandler : MonoBehaviour
         UpdateInput();
     }
 
-    public void UpdateInput()
+    private void UpdateInput()
     {
         if (moving && !movementStartedThisFrame)
             buffer.AddInput(movementInput);
         else
             movementStartedThisFrame = false;
-        
-        // if(attackingLight && !lightAttackStartedThisFrame)
-        //     buffer.AddInput(InputType.LightAtt);
-        // else
-        //     lightAttackStartedThisFrame = false;
-        //
-        // if(attackingMedium && !mediumAttackStartedThisFrame)
-        //     buffer.AddInput(InputType.MediumAtt);
-        // else
-        //     mediumAttackStartedThisFrame = false;
-        //
-        // if(attackingHeavy && !heavyAttackStartedThisFrame)
-        //     buffer.AddInput(InputType.HeavyAtt);
-        // else
-        //     heavyAttackStartedThisFrame = false;
     }
 }
 public enum InputType
