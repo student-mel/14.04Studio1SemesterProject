@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMODUnity;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource voiceSource;
 
     [Header("SFX")]
-    public AudioClip[] hit;
-    public AudioClip[] impact;
+    //public AudioClip[] hit;
+    //public AudioClip[] impact;
     public AudioClip ko;
     // public AudioClip block;   
     // public AudioClip whiff;   
@@ -24,6 +25,13 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource;
     public AudioClip fightMusic;
 
+    [Header("FMOD")]
+    [SerializeField] private EventReference hitEvent;
+    [SerializeField] private EventReference jumpEvent;
+    [SerializeField] private EventReference lightAttackEvent;
+    [SerializeField] private EventReference mediumAttackEvent;
+    [SerializeField] private EventReference heavyAttackEvent;
+
     void Awake()
     {
         if (Instance == null)
@@ -36,34 +44,29 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayHit()
+    public void PlayHit(GameObject hitTarget)
     {
-        if (sfxSource == null) return;
-
-        bool playHitType = Random.value < 0.5f;
-
-        if (playHitType && hit.Length > 0)
-        {
-            AudioClip clip = hit[Random.Range(0, hit.Length)];
-
-            sfxSource.pitch = Random.Range(0.4f, 0.9f);
-            sfxSource.PlayOneShot(clip);
-        }
-        else if (impact.Length > 0)
-        {
-            AudioClip clip = impact[Random.Range(0, impact.Length)];
-
-            sfxSource.pitch = Random.Range(2f, 3f);
-            sfxSource.PlayOneShot(clip);
-        }
-
-        // reset pitch 
-        Invoke(nameof(ResetPitch), 0.5f);
+        RuntimeManager.PlayOneShot(hitEvent);
     }
-    private void ResetPitch()
+
+    public void PlayJump(GameObject jumper)
     {
-        if (sfxSource != null)
-            sfxSource.pitch = 1f;
+        RuntimeManager.PlayOneShot(jumpEvent);
+    }
+
+    public void PlayLightAttack(GameObject target)
+    {
+        RuntimeManager.PlayOneShot(lightAttackEvent);
+    }
+
+    public void PlayMediumAttack(GameObject target)
+    {
+        RuntimeManager.PlayOneShot(mediumAttackEvent);
+    }
+
+    public void PlayHeavyAttack(GameObject target)
+    {
+        RuntimeManager.PlayOneShot(heavyAttackEvent);
     }
 
     public void PlayKO()
@@ -100,13 +103,13 @@ public class AudioManager : MonoBehaviour
             voiceSource.PlayOneShot(roundStartVoice);
     }
 
-    public void PlayMusic()
-    {
-        if (musicSource != null && fightMusic != null)
-        {
-            musicSource.clip = fightMusic;
-            musicSource.Play();
-        }
-    }
-
+    //public void PlayMusic()
+    //{
+    //    if (musicSource != null && fightMusic != null)
+    //    {
+    //        musicSource.clip = fightMusic;
+    //        musicSource.Play();
+    //    }
+    //}
+    
 }
