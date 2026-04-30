@@ -2409,7 +2409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: jumpEvent.Path
-      value: event:/Jump_Master
+      value: event:/Jump/Jump_Master
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: 'hit.Array.data[0]'
