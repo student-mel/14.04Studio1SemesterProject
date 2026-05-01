@@ -38,6 +38,7 @@ public class Hitbox : MonoBehaviour
         if (health == ownerHealth) return;
         
         health.TakeDamage(damage * GetDamageMult(RhythmStore.Instance.result));
+        AudioManager.Instance?.PlayHit(health.gameObject);
         hasHit = true;
     }
 
