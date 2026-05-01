@@ -46,44 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   sfxSource: {fileID: 0}
   voiceSource: {fileID: 0}
+  hit: {fileID: 8300000, guid: b2bce36eb77854e3db26739a3f04a4b4, type: 3}
   ko: {fileID: 8300000, guid: 8d7dea035c3dc495886ae5531e92522b, type: 3}
   preRoundVoice: {fileID: 8300000, guid: 5a65dcc61ab1740da9783ff223fd944b, type: 3}
   roundStartVoice: {fileID: 8300000, guid: 9e9db7aa50f8a416492dbfa98d07f42f, type: 3}
   koVoice: {fileID: 8300000, guid: d93082e6a0c45475b979504b81c6aed3, type: 3}
-  musicSource: {fileID: 0}
-  fightMusic: {fileID: 0}
-  hitEvent:
-    Guid:
-      Data1: -1030368230
-      Data2: 1291027503
-      Data3: -1160642881
-      Data4: -1256973507
-    Path: event:/Hit/MediumHit
-  jumpEvent:
-    Guid:
-      Data1: -1040726199
-      Data2: 1114147865
-      Data3: -272585290
-      Data4: -629928246
-    Path: event:/Jump/Jump_Master
-  lightAttackEvent:
-    Guid:
-      Data1: 153351518
-      Data2: 1080322836
-      Data3: 1814450056
-      Data4: -1283012569
-    Path: event:/Attack/Light
-  mediumAttackEvent:
-    Guid:
-      Data1: -1579380084
-      Data2: 1277586449
-      Data3: 392270008
-      Data4: -708964087
-    Path: event:/Attack/Medium
-  heavyAttackEvent:
-    Guid:
-      Data1: 787591163
-      Data2: 1169340041
-      Data3: 1366700434
-      Data4: 1127787895
-    Path: event:/Attack/Heavy

@@ -27,7 +27,7 @@ public class SubStateRise : PlayerState
     void AddJumpForce()
     {
         Vector3 force = Vector3.up;
-        AudioManager.Instance?.PlayJump(Player.gameObject);
+        
         if (Player.MoveName.EndsWith("Up"))
             Player.RB.AddForce(force * Player.JumpForce, ForceMode.Impulse);
         else if (Player.MoveName.EndsWith("Left"))

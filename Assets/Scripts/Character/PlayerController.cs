@@ -224,8 +224,6 @@ namespace Character
             EventBus.Emit("hit_result", new PlayerResult(otherPlayer, oppResult, true));
             
             CurrentHealth -= dmg * GetDamageMult(oppResult);
-            AudioManager.Instance?.PlayHit(gameObject);
-
             EventBus.Emit($"p{(int)player+1}_set_currenthealth", CurrentHealth);
             if (CurrentHealth <= 0f)
             {

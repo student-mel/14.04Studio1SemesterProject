@@ -151,7 +151,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 8c57c8a45521ad14d975d71f1c2cb03d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6b095f650314b4abcdea99ad2c4d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RhythmStore
-  bgm: {fileID: 0}
+  bgm: {fileID: 11400000, guid: 9ba392b87245d27428eedf5cb8c5fb71, type: 2}
   beatDuration: 0
   musicTimeMs: 0
   isPlaying: 0
@@ -1566,15 +1566,6 @@ MonoBehaviour:
   beatOffsetMs: 0
   offBeatOffsetMs: 0
   result: 
-  actionQueued: 0
-  actionActive: 0
-  currentMoveName: 
-  currentMoveStartupBeats: 0
-  currentMoveActiveBeats: 0
-  currentMoveRecoveryBeats: 0
-  currentMovePhaseBeat: 0
-  currentMovePhase: 
-  lastActionJudgement: 
 --- !u!1 &5874631776581893410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,7 +2044,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3846310818125768887}
-  - component: {fileID: 3509205877711118161}
   m_Layer: 0
   m_Name: RhythmPackage
   m_TagString: Untagged
@@ -2081,22 +2071,3 @@ Transform:
   - {fileID: 7661958999532695888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3509205877711118161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8449223269488932504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f4605557787a39478dfd5e7b98d2b0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FmodBGM
-  musicEvent:
-    Guid:
-      Data1: -1911599181
-      Data2: 1239964024
-      Data3: -1518951013
-      Data4: 503799795
-    Path: event:/Rock

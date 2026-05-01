@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class RhythmJudge : MonoBehaviour
 {
-    public float perfectWindow = 50f;
+    public float perfectWindow = 30f;
     public float greatWindow = 60f;
     //public float goodWindow = 100f;
-    public float syncopatedWindow = 50f;
+    public float syncopatedWindow = 80f;
 
     private void OnEnable()
     {

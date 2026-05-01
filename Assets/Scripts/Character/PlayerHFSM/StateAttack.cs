@@ -29,21 +29,18 @@ public class StateAttack : PlayerState
                 //Debug.LogWarning("Light Attack");
                 i = 0;
                 tempHitTrigger = "Light";
-                AudioManager.Instance?.PlayLightAttack(Player.gameObject);
                 break;
             case "Medium Attack":
                // Debug.LogWarning("Medium Attack");
                 
                 i = 1;
                 tempHitTrigger = "Medium";
-                AudioManager.Instance?.PlayMediumAttack(Player.gameObject);
                 break;
             case "Heavy Attack":
                // Debug.LogWarning("Heavy Attack");
                 
                 i = 2;
                 tempHitTrigger = "Heavy";
-                AudioManager.Instance?.PlayHeavyAttack(Player.gameObject);
                 break;
         }
         
