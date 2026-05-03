@@ -127,7 +127,7 @@ public class PlayerBoxes : MonoBehaviour
             case 2:
                 EventBus.Unsubscribe("p2_do_move", SetCurrentMove);
                 EventBus.Unsubscribe("p2_update_boxes", SetActiveBoxes);
-                EventBus.Unsubscribe("p1_update_hits", SetActiveHits);
+                EventBus.Unsubscribe("p2_update_hits", SetActiveHits);
                 break;
         }
     }
