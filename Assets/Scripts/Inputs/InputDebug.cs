@@ -150,10 +150,10 @@ public class InputDebug : MonoBehaviour
 
     private void AddMoveInputs(object move)
     {
-        CharacterMove newMove = (CharacterMove)move;
+        Moveset newMove = (Moveset)move;
         string newButtons = "";
 
-        foreach (InputType t in newMove.moveString)
+        foreach (InputType t in newMove.inputString)
         {
             newButtons += $"<sprite name={InputTextNames[(int)t]}>";
         }

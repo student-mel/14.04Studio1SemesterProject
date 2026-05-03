@@ -152,7 +152,7 @@ public class InputBuffer : MonoBehaviour
             GetMove:
             if (tempBufferedInputs.Count > 0)
             {
-                CharacterMove newMove = moveMaster.GetMove(tempBufferedInputs);
+                Moveset newMove = moveMaster.GetMove(tempBufferedInputs);
                 if (newMove.priority > 0)
                 {
                     if (handler.PlayerIndex == 1)

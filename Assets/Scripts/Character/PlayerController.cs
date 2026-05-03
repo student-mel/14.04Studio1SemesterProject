@@ -189,7 +189,7 @@ namespace Character
         public void OnMove(object obj)
         {
             if (GameManager.InputLocked) return;
-            CharacterMove move = obj as CharacterMove;
+            Moveset move = obj as Moveset;
             nextMove = move?.Name;
             
             //Debug.LogWarning("Moving");
@@ -206,7 +206,7 @@ namespace Character
             if (GameManager.InputLocked) return;
             
             //Debug.LogWarning("OnAttack");
-            CharacterMove move = obj as CharacterMove;
+            Moveset move = obj as Moveset;
             if (StateMachine.CurrentState == attackState)
                 return;
             nextAttack = move?.Name;

@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoveMaster : MonoBehaviour
 {
     public static MoveMaster i;
-    private List<CharacterMove> moveList;
+    private List<Moveset> moveList;
     [SerializeField]private MoveLibrary Library;
     
     public bool debug = false;
@@ -16,23 +16,23 @@ public class MoveMaster : MonoBehaviour
         if (i == null) i = this;
         else if (i != this) Destroy(gameObject);
 
-        moveList = new List<CharacterMove>(Library.MoveList);
+        moveList = new List<Moveset>(Library.MoveList);
     }
 
-    public CharacterMove GetMove(List<BufferedInput> inputs)
+    public Moveset GetMove(List<BufferedInput> inputs)
     {
-        foreach (CharacterMove move in moveList)
+        foreach (Moveset move in moveList)
         {
             move.priority = 0;
         }
         if (inputs.Count > 0)
         {
-            foreach (CharacterMove move in moveList)
+            foreach (Moveset move in moveList)
             {
                 int priority = 0;
                 int stringLength = 0;
                 int playerInputStringIndex = inputs.Count;
-                List<InputType> inputString = new List<InputType>(move.moveString);
+                List<InputType> inputString = new List<InputType>(move.inputString);
                 
                 MoveStringLoop:
                 for(int i = inputString.Count - 1; i >= 0; i--)
@@ -78,7 +78,7 @@ public class MoveMaster : MonoBehaviour
                 Debug.Log(debugString);
             }
         }
-        CharacterMove newMove = moveList[^1];
+        Moveset newMove = moveList[^1];
         return newMove;
     }
 }
