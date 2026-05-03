@@ -922,7 +922,6 @@ GameObject:
   - component: {fileID: 3971546998340946791}
   - component: {fileID: 625437632973107661}
   - component: {fileID: 9216198488520168858}
-  - component: {fileID: 7452201654833190738}
   m_Layer: 5
   m_Name: CountdownUI
   m_TagString: Untagged
@@ -1049,20 +1048,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7452201654833190738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4703092753195183515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 208a660f8fefc455ea5fc9704f3b070f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  timerText: {fileID: 4981720452559480151}
-  roundTime: 60
 --- !u!1 &5149023405959488506
 GameObject:
   m_ObjectHideFlags: 0
