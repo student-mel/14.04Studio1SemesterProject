@@ -5,6 +5,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
+    private bool walkSoundPlaying = false;
+
     [Header("Audio Sources")]
     public AudioSource sfxSource;
     public AudioSource voiceSource;
@@ -31,6 +33,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private EventReference lightAttackEvent;
     [SerializeField] private EventReference mediumAttackEvent;
     [SerializeField] private EventReference heavyAttackEvent;
+    [SerializeField] private EventReference walkEvent;
+    private FMOD.Studio.EventInstance walkInstance;
 
     void Awake()
     {
@@ -103,6 +107,26 @@ public class AudioManager : MonoBehaviour
             voiceSource.PlayOneShot(roundStartVoice);
     }
 
+    public void PlayWalk()
+    {
+        if (walkSoundPlaying) return;
+
+        walkInstance = RuntimeManager.CreateInstance(walkEvent);
+        walkInstance.start();
+
+        walkSoundPlaying = true;
+    }
+
+    public void StopWalk()
+    {
+        if (!walkSoundPlaying) return;
+
+        walkInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        walkInstance.release();
+
+        walkSoundPlaying = false;
+    }
+
     //public void PlayMusic()
     //{
     //    if (musicSource != null && fightMusic != null)
@@ -111,5 +135,5 @@ public class AudioManager : MonoBehaviour
     //        musicSource.Play();
     //    }
     //}
-    
+
 }
