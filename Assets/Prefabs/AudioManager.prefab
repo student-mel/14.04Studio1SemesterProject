@@ -87,3 +87,10 @@ MonoBehaviour:
       Data3: 1366700434
       Data4: 1127787895
     Path: event:/Attack/Heavy
+  walkEvent:
+    Guid:
+      Data1: -1328150793
+      Data2: 1271791802
+      Data3: 1726218928
+      Data4: 503196956
+    Path: event:/Walk/Walk
