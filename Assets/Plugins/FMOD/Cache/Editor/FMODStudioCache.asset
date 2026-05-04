@@ -908,7 +908,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Walk.bank
   Name: Walk
   StudioPath: bank:/Walk
-  lastModified: 639135350265974447
+  lastModified: 639135358863957321
   FileSizes: []
   Exists: 1
 --- !u!114 &-1275691794484395726
@@ -1027,7 +1027,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Attack.bank
   Name: Attack
   StudioPath: bank:/Attack
-  lastModified: 639135356655194206
+  lastModified: 639135358805271136
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -1068,7 +1068,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 8532514220461156958}
   cacheVersion: 131859
-  cacheTime: 639135356655194206
+  cacheTime: 639135361471126387
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639135350265101596
+  lastModified: 639135361471126387
   FileSizes: []
   Exists: 1
 --- !u!114 &8054229900923478452
@@ -2149,7 +2149,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Jump.bank
   Name: Jump
   StudioPath: bank:/Jump
-  lastModified: 639135350242030461
+  lastModified: 639135359793638359
   FileSizes: []
   Exists: 1
 --- !u!114 &8881837592999423142
