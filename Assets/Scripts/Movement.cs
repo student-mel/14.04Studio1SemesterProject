@@ -49,7 +49,6 @@ public class Movement : MonoBehaviour
             PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
             inputHandler = players.FirstOrDefault(p => p.PlayerIndex == PlayerIndex);
 
-            inputHandler.MoveEvent += OnMove;
         }
     }
 
@@ -63,11 +62,9 @@ public class Movement : MonoBehaviour
             inputHandler = players.FirstOrDefault(p => p.PlayerIndex == PlayerIndex);
 
             if (inputHandler == null) return;
-            inputHandler.MoveEvent += OnMove;
         }
         else
         {
-            inputHandler.MoveEvent += OnMove;
         }
     }
 
@@ -75,7 +72,6 @@ public class Movement : MonoBehaviour
     {
         moveAction.action.Disable();
 
-        inputHandler.MoveEvent -= OnMove;
     }
 
     void OnMove(Vector2 _input)

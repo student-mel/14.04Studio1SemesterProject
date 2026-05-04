@@ -16,7 +16,7 @@ MonoBehaviour:
   - Name: Move Left
     moveType: 0
     moveString: 00000000
-    priority: 4
+    priority: 1
   - Name: Move Right
     moveType: 0
     moveString: 03000000
@@ -44,7 +44,7 @@ MonoBehaviour:
   - Name: Crouch Left
     moveType: 0
     moveString: 02000000
-    priority: 2
+    priority: 0
   - Name: Crouch Right
     moveType: 0
     moveString: 05000000
@@ -52,11 +52,11 @@ MonoBehaviour:
   - Name: Crouch
     moveType: 0
     moveString: 07000000
-    priority: 1
+    priority: 0
   - Name: Light Attack
     moveType: 1
     moveString: 08000000
-    priority: 5
+    priority: 2
   - Name: Medium Attack
     moveType: 1
     moveString: 09000000
@@ -65,15 +65,15 @@ MonoBehaviour:
     moveType: 1
     moveString: 0a000000
     priority: 0
-  - Name: Fire Ball Right
+  - Name: Special 1 Right
     moveType: 1
     moveString: 07000000050000000300000008000000
     priority: 0
-  - Name: Fire Ball Left
+  - Name: Special 1 Left
     moveType: 1
     moveString: 07000000020000000000000008000000
     priority: 0
   - Name: Light Attack Left
     moveType: 1
     moveString: 0000000008000000
-    priority: 9
+    priority: 3

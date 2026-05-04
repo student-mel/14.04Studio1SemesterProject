@@ -33,9 +33,7 @@ public class AnimationScript : MonoBehaviour
         {
             PlayerInputHandler[] players = FindObjectsByType<PlayerInputHandler>(FindObjectsSortMode.None);
             inputHandler = players.FirstOrDefault(p => p.PlayerIndex == PlayerIndex);
-
-            inputHandler.AttackEvent += OnAttack;
-            inputHandler.Attack2Event += OnHeavyAttack;
+            
         }
     }
 
@@ -48,14 +46,11 @@ public class AnimationScript : MonoBehaviour
 
             if (inputHandler == null) return;
         }
-        inputHandler.AttackEvent += OnAttack;
-        inputHandler.Attack2Event += OnHeavyAttack;
     }
 
     private void OnDisable()
     {
-        inputHandler.AttackEvent -= OnAttack;
-        inputHandler.Attack2Event -= OnHeavyAttack;
+
     }
 
     private void OnAttack()

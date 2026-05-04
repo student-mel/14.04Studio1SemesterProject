@@ -96,7 +96,7 @@ namespace Character
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
             
             EventBus.Subscribe($"{p}move", OnMove);
-            EventBus.Subscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
+            EventBus.Subscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
             EventBus.Subscribe($"{p}attack", OnAttack);
             EventBus.Subscribe($"{p}hurt", OnHurt);
             EventBus.Subscribe("actionResult", GetActionResult);
@@ -114,7 +114,7 @@ namespace Character
         {
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
             EventBus.Unsubscribe($"{p}move", OnMove);
-            EventBus.Unsubscribe($"{p}moveinput_cancelled" , OnMoveCancelled);
+            EventBus.Unsubscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
             EventBus.Unsubscribe($"{p}attack", OnAttack);
             EventBus.Unsubscribe($"{p}hurt", OnHurt);
         }
@@ -189,7 +189,7 @@ namespace Character
         public void OnMove(object obj)
         {
             if (GameManager.InputLocked) return;
-            CharacterMove move = obj as CharacterMove;
+            Moveset move = obj as Moveset;
             nextMove = move?.Name;
             
             //Debug.LogWarning("Moving");
@@ -206,7 +206,7 @@ namespace Character
             if (GameManager.InputLocked) return;
             
             //Debug.LogWarning("OnAttack");
-            CharacterMove move = obj as CharacterMove;
+            Moveset move = obj as Moveset;
             if (StateMachine.CurrentState == attackState)
                 return;
             nextAttack = move?.Name;

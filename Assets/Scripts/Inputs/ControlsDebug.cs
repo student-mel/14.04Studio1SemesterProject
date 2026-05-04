@@ -17,15 +17,15 @@ public class ControlsDebug : MonoBehaviour
     {
         if (index == 1)
         {
-            EventBus.Subscribe("p1_moveinput", OnDirectionPressed);
-            EventBus.Subscribe("p1_moveinput_cancelled", OnDirectionReleased);
+            EventBus.Subscribe("p1_dirinput", OnDirectionPressed);
+            EventBus.Subscribe("p1_dirinput_cancelled", OnDirectionReleased);
             EventBus.Subscribe("p1_attackinput", OnAttackPressed);
             EventBus.Subscribe("p1_attackinput_cancelled", OnAttackReleased);
         }
         else if (index == 2)
         {
-            EventBus.Subscribe("p2_moveinput", OnDirectionPressed);
-            EventBus.Subscribe("p2_moveinput_cancelled", OnDirectionReleased);
+            EventBus.Subscribe("p2_dirinput", OnDirectionPressed);
+            EventBus.Subscribe("p2_dirinput_cancelled", OnDirectionReleased);
             EventBus.Subscribe("p2_attackinput", OnAttackPressed);
             EventBus.Subscribe("p2_attackinput_cancelled", OnAttackReleased);
         }
@@ -34,15 +34,15 @@ public class ControlsDebug : MonoBehaviour
     {
         if (index == 1)
         {
-            EventBus.Unsubscribe("p1_moveinput", OnDirectionPressed);
-            EventBus.Unsubscribe("p1_moveinput_cancelled", OnDirectionReleased);
+            EventBus.Unsubscribe("p1_dirinput", OnDirectionPressed);
+            EventBus.Unsubscribe("p1_dirinput_cancelled", OnDirectionReleased);
             EventBus.Unsubscribe("p1_attackinput", OnAttackPressed);
             EventBus.Unsubscribe("p1_attackinput_cancelled", OnAttackReleased);
         }
         else if (index == 2)
         {
-            EventBus.Unsubscribe("p2_moveinput", OnDirectionPressed);
-            EventBus.Unsubscribe("p2_moveinput_cancelled", OnDirectionReleased);
+            EventBus.Unsubscribe("p2_dirinput", OnDirectionPressed);
+            EventBus.Unsubscribe("p2_dirinput_cancelled", OnDirectionReleased);
             EventBus.Unsubscribe("p2_attackinput", OnAttackPressed);
             EventBus.Unsubscribe("p2_attackinput_cancelled", OnAttackReleased);
         }

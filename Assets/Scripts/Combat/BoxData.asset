@@ -12,3 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3166ec347f7aeda45b4de98a9fa02c97, type: 3}
   m_Name: BoxData
   m_EditorClassIdentifier: Assembly-CSharp::BoxData
+  Presets:
+  - name: 'Preset 1: Idle & Walking'
+    presetName: Idle & Walking
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0}
+      size: {x: 0.5, y: 1.5}
+  - name: 'Preset 2: Light Attack 1'
+    presetName: Light Attack 1
+    Preview: 1
+    needsUpdate: 0
+    hitboxes:
+    - name: Hitbox 1
+      center: {x: 0.5, y: 0.3}
+      size: {x: 0.5, y: 0.2}
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0}
+      size: {x: 0.5, y: 1.5}
