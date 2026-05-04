@@ -16,6 +16,7 @@ public class SubStateMove : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+        AudioManager.Instance?.PlayWalk();
     }
 
     public override void ExitState()
@@ -29,8 +30,21 @@ public class SubStateMove : PlayerState
     public override void UpdateState()
     {
         base.UpdateState();
-        if (Player.MoveName.EndsWith("Left")) AnimateMove(false);
-        else if (Player.MoveName.EndsWith("Right")) AnimateMove(true);
+        bool isMoving = Player.MoveName.EndsWith("Left") || Player.MoveName.EndsWith("Right");
+
+        if (isMoving)
+        {
+            AudioManager.Instance?.PlayWalk();
+
+            if (Player.MoveName.EndsWith("Left"))
+                AnimateMove(false);
+            else if (Player.MoveName.EndsWith("Right"))
+                AnimateMove(true);
+        }
+        else
+        {
+            AudioManager.Instance?.StopWalk();
+        }
     }
 
     public override void FixedUpdateState()

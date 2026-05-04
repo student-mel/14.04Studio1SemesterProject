@@ -493,6 +493,7 @@ MonoBehaviour:
   - Hit
   - Jump
   - Theme
+  - Walk
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

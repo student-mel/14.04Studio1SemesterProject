@@ -2412,6 +2412,10 @@ PrefabInstance:
       value: event:/Jump/Jump_Master
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: walkEvent.Path
+      value: event:/Walk/Walk
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: 'hit.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: b2bce36eb77854e3db26739a3f04a4b4, type: 3}
@@ -2454,6 +2458,22 @@ PrefabInstance:
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: jumpEvent.Guid.Data4
       value: -629928246
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: walkEvent.Guid.Data1
+      value: -1328150793
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: walkEvent.Guid.Data2
+      value: 1271791802
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: walkEvent.Guid.Data3
+      value: 1726218928
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
+      propertyPath: walkEvent.Guid.Data4
+      value: 503196956
       objectReference: {fileID: 0}
     - target: {fileID: 4460338758466581429, guid: 839e42cefa705a8479a03dbb14b8cf7e, type: 3}
       propertyPath: heavyAttackEvent.Path

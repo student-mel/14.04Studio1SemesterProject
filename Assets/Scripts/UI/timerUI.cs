@@ -5,7 +5,7 @@ public class TimerUI : MonoBehaviour
 {
     public TMP_Text timerText;
 
-    public int roundTime = 60;
+    public int roundTime = 99;
     private float currentTime;
 
     private bool isRunning = false;

@@ -54,6 +54,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 485
+--- !u!114 &-8311987801876294693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Walk.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: ../../new/Build/Desktop/Walk.bank
+  Name: Walk
+  StudioPath: bank:/Walk
+  lastModified: 639134367887372561
+  FileSizes:
+  - Name: Desktop
+    Value: 10368
+  Exists: 1
 --- !u!114 &-6288045021010285123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,10 +89,10 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639128481776482994
+  lastModified: 639134290368888525
   FileSizes:
   - Name: Desktop
-    Value: 1316
+    Value: 1392
   Exists: 1
 --- !u!114 &-6241565975495758698
 MonoBehaviour:
@@ -116,7 +136,7 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Jump.bank
   Name: Jump
   StudioPath: bank:/Jump
-  lastModified: 639131569381019333
+  lastModified: 639134290368806190
   FileSizes:
   - Name: Desktop
     Value: 204672
@@ -190,7 +210,7 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639128481776482994
+  lastModified: 639134290368888525
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -241,6 +261,7 @@ MonoBehaviour:
   - {fileID: 8144147001361662328}
   - {fileID: -3823610201682345472}
   - {fileID: 6412396560753465020}
+  - {fileID: -8311987801876294693}
   EditorEvents:
   - {fileID: -3712547849877933611}
   - {fileID: -6241565975495758698}
@@ -252,13 +273,14 @@ MonoBehaviour:
   - {fileID: 3024683962452503471}
   - {fileID: 1228234254813778767}
   - {fileID: 8881837592999423142}
+  - {fileID: 4840574970367330279}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1853409170582770861}
   StringsBanks:
   - {fileID: -6288045021010285123}
   cacheVersion: 131859
-  cacheTime: 639131570437540941
+  cacheTime: 639134370402428879
   SerializableEventsDict:
   - key: event:/Rock
     index: 0
@@ -280,6 +302,8 @@ MonoBehaviour:
     index: 8
   - key: event:/Attack/Heavy
     index: 9
+  - key: event:/Walk/Walk
+    index: 10
 --- !u!114 &1228234254813778767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +385,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 385
+--- !u!114 &4840574970367330279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Walk/Walk
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Walk/Walk
+  Guid:
+    Data1: -1328150793
+    Data2: 1271791802
+    Data3: 1726218928
+    Data4: 503196956
+  Banks:
+  - {fileID: -8311987801876294693}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 800
 --- !u!114 &5615264252165931157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,10 +427,10 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Hit.bank
   Name: Hit
   StudioPath: bank:/Hit
-  lastModified: 639131569380708536
+  lastModified: 639134370402428879
   FileSizes:
   - Name: Desktop
-    Value: 5920
+    Value: 6432
   Exists: 1
 --- !u!114 &6412396560753465020
 MonoBehaviour:
@@ -396,10 +447,10 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Attack.bank
   Name: Attack
   StudioPath: bank:/Attack
-  lastModified: 639131570437540941
+  lastModified: 639134368512887192
   FileSizes:
   - Name: Desktop
-    Value: 11008
+    Value: 699424
   Exists: 1
 --- !u!114 &8144147001361662328
 MonoBehaviour:
@@ -416,7 +467,7 @@ MonoBehaviour:
   Path: ../../new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639131568621270358
+  lastModified: 639134369443656384
   FileSizes:
   - Name: Desktop
     Value: 1635328
@@ -441,10 +492,10 @@ MonoBehaviour:
     Data4: 1127787895
   Banks:
   - {fileID: 6412396560753465020}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 190
+  Length: 500
