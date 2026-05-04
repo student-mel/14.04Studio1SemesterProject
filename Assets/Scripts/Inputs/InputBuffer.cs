@@ -61,8 +61,10 @@ public class InputBuffer : MonoBehaviour
             time = RhythmStore.Instance.musicTimeMs,
         });
         hasInputThisFrame = true;
-        OnDirectionalInput(_input);
+        //OnDirectionalInput(_input);
         OnDirectionalInput(dirInput);
+        
+        //GetMove();
     }
     public void AddInputStart(InputType _input)
     {
@@ -79,7 +81,7 @@ public class InputBuffer : MonoBehaviour
         hasAttackThisFrame = true;
         OnAttackInput(_input);
 
-        GetMove();
+        //GetMove();
     }
 
     public void AddInput(Vector2 _input)
@@ -111,18 +113,20 @@ public class InputBuffer : MonoBehaviour
 
         SetBufferedInputsTime(motionBufferedInputs, RhythmStore.Instance.musicTimeMs);
 
-        OnDirectionalInput(_input);
+        //OnDirectionalInput(_input);
         OnDirectionalInput(dirInput);
+        
+        //GetMove();  
     }
 
     public void StopMovement()
     {
         movementStoppedThisFrame = true;
-        OnDirectionalInput(Vector2.zero);
+        //OnDirectionalInput(Vector2.zero);
     }
     
     List<BufferedInput> tempBufferedInputs = new List<BufferedInput>();
-    private void GetMove()
+    private void LateUpdate()
     {
         if (hasInputThisFrame)
         {
@@ -157,22 +161,30 @@ public class InputBuffer : MonoBehaviour
                 {
                     if (handler.PlayerIndex == 1)
                     {
-                        if (newMove.moveType == MoveType.Movement && movementStoppedThisFrame)
-                            movementStoppedThisFrame = false;
+                        if (newMove.moveType == MoveType.Movement)
+                            if(movementStoppedThisFrame)
+                                movementStoppedThisFrame = false;
+                            else
+                                EventBus.Emit("p1_move", newMove);
                         else
                         {
-                            EventBus.Emit("p1_do_move", newMove);
-                            Debug.Log($"P1: {newMove.Name}");
+                            EventBus.Emit("p1_attack", newMove);
+                            //EventBus.Emit("p1_do_move", newMove);
+                            //Debug.Log($"P1: {newMove.Name}");
                         }
                     }
                     else if (handler.PlayerIndex == 2)
                     {
-                        if (newMove.moveType == MoveType.Movement && movementStoppedThisFrame)
-                            movementStoppedThisFrame = false;
+                        if (newMove.moveType == MoveType.Movement)
+                            if(movementStoppedThisFrame)
+                                movementStoppedThisFrame = false;
+                            else
+                                EventBus.Emit("p2_move", newMove);
                         else
                         {
-                            EventBus.Emit("p2_do_move", newMove);
-                            Debug.Log($"P2: {newMove.Name}");
+                            EventBus.Emit("p2_attack", newMove);
+                            //EventBus.Emit("p2_do_move", newMove);
+                            //Debug.Log($"P2: {newMove.Name}");
                         }
                     }
                 }
@@ -181,10 +193,6 @@ public class InputBuffer : MonoBehaviour
             hasAttackThisFrame = false;
             hasInputThisFrame = false;
         }
-    }
-
-    private void LateUpdate()
-    {
         ClearExpiredInputs();
     }
 

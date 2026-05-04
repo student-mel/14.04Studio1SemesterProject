@@ -29,7 +29,7 @@ public class PlayerInputHandler : MonoBehaviour
         
         buffer = GetComponent<InputBuffer>();
         buffer.handler = this;
-        Debug.Log(buffer);
+        //Debug.Log(buffer);
     }
 
     public void OnLightAttack(InputAction.CallbackContext context)
