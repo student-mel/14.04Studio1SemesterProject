@@ -461,10 +461,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: FMODUnity::FMODUnity.Settings
   switchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: Assets/new/new.fspro
-  sourceBankPath: Assets/new/Build
+  sourceBankPath: Assets/StreamingAssets
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
@@ -489,6 +489,7 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Attack
   - Attack
   - Hit
   - Jump

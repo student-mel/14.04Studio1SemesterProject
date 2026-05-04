@@ -120,7 +120,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1392
-  Exists: 1
+  Exists: 0
 --- !u!114 &-6288045021010285123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1635328
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5420834330266211281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +288,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 1074
-  Exists: 1
+  Exists: 0
 --- !u!114 &-3823610201682345472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 10368
-  Exists: 1
+  Exists: 0
 --- !u!114 &-1853409170582770861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +450,8 @@ MonoBehaviour:
   - {fileID: -4317013904852482305}
   - {fileID: -6091854911419574372}
   - {fileID: -1855069081913642338}
+  - {fileID: 33760938284761122}
+  - {fileID: 5732198616392644931}
   EditorEvents:
   - {fileID: 4101646466002707920}
   - {fileID: -6103039308324626445}
@@ -467,8 +469,9 @@ MonoBehaviour:
   - {fileID: -4317013904852482305}
   StringsBanks:
   - {fileID: -6359564775603516522}
+  - {fileID: 33760938284761122}
   cacheVersion: 131859
-  cacheTime: 639134370402428879
+  cacheTime: 639134908448487542
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -492,6 +495,26 @@ MonoBehaviour:
     index: 9
   - key: event:/Walk/Walk
     index: 10
+--- !u!114 &33760938284761122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/StreamingAssets/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639132506329007587
+  FileSizes:
+  - Name: 
+    Value: 894
+  Exists: 1
 --- !u!114 &1228234254813778767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,7 +561,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 204672
-  Exists: 1
+  Exists: 0
 --- !u!114 &3024683962452503471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,7 +608,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 699424
-  Exists: 1
+  Exists: 0
 --- !u!114 &4101646466002707920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,7 +655,7 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 6432
-  Exists: 1
+  Exists: 0
 --- !u!114 &4334520522276741746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +756,24 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 6432
+  Exists: 1
+--- !u!114 &5732198616392644931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Attack.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/StreamingAssets/Attack.bank
+  Name: Attack
+  StudioPath: 
+  lastModified: 639132514863489899
+  FileSizes: []
   Exists: 1
 --- !u!114 &6134381751277445373
 MonoBehaviour:
