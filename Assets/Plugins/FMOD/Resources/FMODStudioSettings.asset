@@ -463,8 +463,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../new/new.fspro
-  sourceBankPath: ../../new/Build
+  sourceProjectPath: Assets/new/new.fspro
+  sourceBankPath: Assets/new/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
