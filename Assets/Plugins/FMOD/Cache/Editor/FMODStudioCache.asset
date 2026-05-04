@@ -908,7 +908,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Walk.bank
   Name: Walk
   StudioPath: bank:/Walk
-  lastModified: 639135358863957321
+  lastModified: 639135366237943464
   FileSizes: []
   Exists: 1
 --- !u!114 &-1275691794484395726
@@ -1027,7 +1027,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Attack.bank
   Name: Attack
   StudioPath: bank:/Attack
-  lastModified: 639135358805271136
+  lastModified: 639135366747412182
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -1068,7 +1068,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 8532514220461156958}
   cacheVersion: 131859
-  cacheTime: 639135361471126387
+  cacheTime: 639135368013067644
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Hit.bank
   Name: Hit
   StudioPath: bank:/Hit
-  lastModified: 639135350239500099
+  lastModified: 639135368013067644
   FileSizes: []
   Exists: 1
 --- !u!114 &3476097655517539951
@@ -1448,7 +1448,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2000
+  Length: 340
 --- !u!114 &3603908848502624371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639135361471126387
+  lastModified: 639135366237397295
   FileSizes: []
   Exists: 1
 --- !u!114 &8054229900923478452
@@ -2149,7 +2149,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Jump.bank
   Name: Jump
   StudioPath: bank:/Jump
-  lastModified: 639135359793638359
+  lastModified: 639135367542636935
   FileSizes: []
   Exists: 1
 --- !u!114 &8881837592999423142
