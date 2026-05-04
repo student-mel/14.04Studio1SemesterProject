@@ -1,0 +1,12 @@
+{993b75e3-af57-43ba-9ac3-71fcbd39d2a2} bank:/Hit
+{3da39c4b-e22b-4b87-bfff-732e0c84e521} bank:/Jump
+{435d2d5e-732e-4332-b749-33c86d65701e} bank:/Kick
+{4b16c973-7b16-4465-9bea-d6193e5d5a70} bank:/Master
+{d30be9a7-0a6d-0827-1da3-5ce7cfae5ce8} bank:/Master.strings
+{219e4057-fc7e-4a6d-8213-b1332c951f40} bank:/Theme
+{4830b2b6-4a75-48be-b9e0-2c4347067dc0} bus:/
+{e796aa0d-7f3a-4b1c-9bcb-57d9187302e1} bus:/Reverb
+{0923f55e-6b14-4064-884f-266c27c886b3} event:/Hit
+{dc48cda6-67cf-4f14-a885-9a1f15d57c02} event:/Jump
+{8e0f4fb3-5978-49e8-9ba5-76a5f35f071e} event:/Rock
+{d53c92e1-a515-4723-8588-34a96ea7a59b} event:/kick

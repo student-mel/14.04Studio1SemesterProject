@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{e34944bf-7a47-46fe-bdda-ad8c4c4f0ebc}">
+		<property name="assetPath">
+			<value>Effort.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>64.723832199546479</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{94f76f44-f642-43ae-928c-448836063f2e}</destination>
+		</relationship>
+	</object>
+</objects>

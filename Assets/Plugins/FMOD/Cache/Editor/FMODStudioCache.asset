@@ -74,6 +74,53 @@ MonoBehaviour:
   - Name: Desktop
     Value: 10368
   Exists: 1
+--- !u!114 &-6418044777564059299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hit/LightHit
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Hit/LightHit
+  Guid:
+    Data1: -717450527
+    Data2: 1193518357
+    Data3: -1456174971
+    Data4: -1683642514
+  Banks:
+  - {fileID: 4184533429107035414}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 78
+--- !u!114 &-6359564775603516522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/new/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639134290368888525
+  FileSizes:
+  - Name: Desktop
+    Value: 1392
+  Exists: 1
 --- !u!114 &-6288045021010285123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +141,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1392
   Exists: 1
+--- !u!114 &-6274456316047099500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Walk/Walk
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Walk/Walk
+  Guid:
+    Data1: -1328150793
+    Data2: 1271791802
+    Data3: 1726218928
+    Data4: 503196956
+  Banks:
+  - {fileID: -1855069081913642338}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 800
 --- !u!114 &-6241565975495758698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +195,100 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &-6103039308324626445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Attack/Medium
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Attack/Medium
+  Guid:
+    Data1: -1579380084
+    Data2: 1277586449
+    Data3: 392270008
+    Data4: -708964087
+  Banks:
+  - {fileID: 3476097655517539951}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 190
+--- !u!114 &-6091854911419574372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Theme.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/new/Build/Desktop/Theme.bank
+  Name: Theme
+  StudioPath: bank:/Theme
+  lastModified: 639134369443656384
+  FileSizes:
+  - Name: Desktop
+    Value: 1635328
+  Exists: 1
+--- !u!114 &-5420834330266211281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Attack/Heavy
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Attack/Heavy
+  Guid:
+    Data1: 787591163
+    Data2: 1169340041
+    Data3: 1366700434
+    Data4: 1127787895
+  Banks:
+  - {fileID: 3476097655517539951}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &-4317013904852482305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/new/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639134290368888525
+  FileSizes:
+  - Name: Desktop
+    Value: 1074
+  Exists: 1
 --- !u!114 &-3823610201682345472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +363,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 78
+--- !u!114 &-1855069081913642338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Walk.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/new/Build/Desktop/Walk.bank
+  Name: Walk
+  StudioPath: bank:/Walk
+  lastModified: 639134367887372561
+  FileSizes:
+  - Name: Desktop
+    Value: 10368
+  Exists: 1
 --- !u!114 &-1853409170582770861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,52 +443,52 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
   EditorBanks:
-  - {fileID: -6288045021010285123}
-  - {fileID: 5615264252165931157}
-  - {fileID: -1853409170582770861}
-  - {fileID: 8144147001361662328}
-  - {fileID: -3823610201682345472}
-  - {fileID: 6412396560753465020}
-  - {fileID: -8311987801876294693}
+  - {fileID: -6359564775603516522}
+  - {fileID: 3476097655517539951}
+  - {fileID: 4184533429107035414}
+  - {fileID: 1432641324836375485}
+  - {fileID: -4317013904852482305}
+  - {fileID: -6091854911419574372}
+  - {fileID: -1855069081913642338}
   EditorEvents:
-  - {fileID: -3712547849877933611}
-  - {fileID: -6241565975495758698}
-  - {fileID: -9064056010662128649}
-  - {fileID: 4334520522276741746}
-  - {fileID: -1135561799591333396}
-  - {fileID: -9147773359475004240}
-  - {fileID: -3201975955832566567}
-  - {fileID: 3024683962452503471}
-  - {fileID: 1228234254813778767}
-  - {fileID: 8881837592999423142}
-  - {fileID: 4840574970367330279}
+  - {fileID: 4101646466002707920}
+  - {fileID: -6103039308324626445}
+  - {fileID: -5420834330266211281}
+  - {fileID: 7097917152517573445}
+  - {fileID: 6134381751277445373}
+  - {fileID: -6418044777564059299}
+  - {fileID: 8054229900923478452}
+  - {fileID: 6587021080403285438}
+  - {fileID: 4952110903426514481}
+  - {fileID: 7159790046173876955}
+  - {fileID: -6274456316047099500}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -1853409170582770861}
+  - {fileID: -4317013904852482305}
   StringsBanks:
-  - {fileID: -6288045021010285123}
+  - {fileID: -6359564775603516522}
   cacheVersion: 131859
   cacheTime: 639134370402428879
   SerializableEventsDict:
-  - key: event:/Rock
-    index: 0
-  - key: event:/Jump/Jump_Master
-    index: 1
-  - key: event:/Jump/Jump1
-    index: 2
-  - key: event:/Jump/Jump2
-    index: 3
-  - key: event:/Hit/MediumHit
-    index: 4
-  - key: event:/Hit/HeavyHit
-    index: 5
-  - key: event:/Hit/LightHit
-    index: 6
   - key: event:/Attack/Light
-    index: 7
+    index: 0
   - key: event:/Attack/Medium
-    index: 8
+    index: 1
   - key: event:/Attack/Heavy
+    index: 2
+  - key: event:/Hit/MediumHit
+    index: 3
+  - key: event:/Hit/HeavyHit
+    index: 4
+  - key: event:/Hit/LightHit
+    index: 5
+  - key: event:/Jump/Jump_Master
+    index: 6
+  - key: event:/Jump/Jump1
+    index: 7
+  - key: event:/Jump/Jump2
+    index: 8
+  - key: event:/Rock
     index: 9
   - key: event:/Walk/Walk
     index: 10
@@ -331,6 +519,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 190
+--- !u!114 &1432641324836375485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Jump.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/new/Build/Desktop/Jump.bank
+  Name: Jump
+  StudioPath: bank:/Jump
+  lastModified: 639134290368806190
+  FileSizes:
+  - Name: Desktop
+    Value: 204672
+  Exists: 1
 --- !u!114 &3024683962452503471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +566,73 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 270
+--- !u!114 &3476097655517539951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Attack.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/new/Build/Desktop/Attack.bank
+  Name: Attack
+  StudioPath: bank:/Attack
+  lastModified: 639134368512887192
+  FileSizes:
+  - Name: Desktop
+    Value: 699424
+  Exists: 1
+--- !u!114 &4101646466002707920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Attack/Light
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Attack/Light
+  Guid:
+    Data1: 153351518
+    Data2: 1080322836
+    Data3: 1814450056
+    Data4: -1283012569
+  Banks:
+  - {fileID: 3476097655517539951}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 270
+--- !u!114 &4184533429107035414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Hit.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/new/Build/Desktop/Hit.bank
+  Name: Hit
+  StudioPath: bank:/Hit
+  lastModified: 639134370402428879
+  FileSizes:
+  - Name: Desktop
+    Value: 6432
+  Exists: 1
 --- !u!114 &4334520522276741746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +687,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 800
+--- !u!114 &4952110903426514481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Jump/Jump2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Jump/Jump2
+  Guid:
+    Data1: -1884888102
+    Data2: 1189841579
+    Data3: 1994745484
+    Data4: 686336424
+  Banks:
+  - {fileID: 1432641324836375485}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 385
 --- !u!114 &5615264252165931157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +734,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 6432
   Exists: 1
+--- !u!114 &6134381751277445373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hit/HeavyHit
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Hit/HeavyHit
+  Guid:
+    Data1: 639912823
+    Data2: 1076500512
+    Data3: -1477492045
+    Data4: -1347498563
+  Banks:
+  - {fileID: 4184533429107035414}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 78
 --- !u!114 &6412396560753465020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +781,114 @@ MonoBehaviour:
   - Name: Desktop
     Value: 699424
   Exists: 1
+--- !u!114 &6587021080403285438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Jump/Jump1
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Jump/Jump1
+  Guid:
+    Data1: -599208538
+    Data2: 1326737359
+    Data3: 530220456
+    Data4: 41735445
+  Banks:
+  - {fileID: 1432641324836375485}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 485
+--- !u!114 &7097917152517573445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hit/MediumHit
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Hit/MediumHit
+  Guid:
+    Data1: -1030368230
+    Data2: 1291027503
+    Data3: -1160642881
+    Data4: -1256973507
+  Banks:
+  - {fileID: 4184533429107035414}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 78
+--- !u!114 &7159790046173876955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Rock
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Rock
+  Guid:
+    Data1: -1911599181
+    Data2: 1239964024
+    Data3: -1518951013
+    Data4: 503799795
+  Banks:
+  - {fileID: -6091854911419574372}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 247123
+--- !u!114 &8054229900923478452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Jump/Jump_Master
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Jump/Jump_Master
+  Guid:
+    Data1: -1040726199
+    Data2: 1114147865
+    Data3: -272585290
+    Data4: -629928246
+  Banks:
+  - {fileID: 1432641324836375485}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &8144147001361662328
 MonoBehaviour:
   m_ObjectHideFlags: 0
