@@ -15,65 +15,69 @@ MonoBehaviour:
   MoveList:
   - Name: Move Left
     moveType: 0
-    moveString: 00000000
-    priority: 1
+    inputString: 00000000
+    priority: 0
   - Name: Move Right
     moveType: 0
-    moveString: 03000000
+    inputString: 03000000
     priority: 0
   - Name: Dash Left
     moveType: 0
-    moveString: 0000000000000000
+    inputString: 
     priority: 0
   - Name: Dash Right
     moveType: 0
-    moveString: 0300000003000000
+    inputString: 
     priority: 0
   - Name: Jump Left
     moveType: 0
-    moveString: 01000000
+    inputString: 01000000
     priority: 0
   - Name: Jump Right
     moveType: 0
-    moveString: 04000000
+    inputString: 04000000
     priority: 0
   - Name: Jump Up
     moveType: 0
-    moveString: 06000000
+    inputString: 06000000
     priority: 0
   - Name: Crouch Left
     moveType: 0
-    moveString: 02000000
+    inputString: 02000000
     priority: 0
   - Name: Crouch Right
     moveType: 0
-    moveString: 05000000
+    inputString: 05000000
     priority: 0
   - Name: Crouch
     moveType: 0
-    moveString: 07000000
+    inputString: 07000000
     priority: 0
   - Name: Light Attack
     moveType: 1
-    moveString: 08000000
-    priority: 2
+    inputString: 08000000
+    priority: 0
   - Name: Medium Attack
     moveType: 1
-    moveString: 09000000
+    inputString: 09000000
     priority: 0
   - Name: Heavy Attack
     moveType: 1
-    moveString: 0a000000
+    inputString: 0a000000
     priority: 0
   - Name: Special 1 Right
     moveType: 1
-    moveString: 07000000050000000300000008000000
+    inputString: 07000000050000000300000008000000
     priority: 0
   - Name: Special 1 Left
     moveType: 1
-    moveString: 07000000020000000000000008000000
+    inputString: 07000000020000000000000008000000
     priority: 0
   - Name: Light Attack Left
     moveType: 1
-    moveString: 0000000008000000
-    priority: 3
+    inputString: 0000000008000000
+    priority: 0
+  - Name: Light Attack Right
+    moveType: 1
+    inputString: 0300000008000000
+    priority: 0

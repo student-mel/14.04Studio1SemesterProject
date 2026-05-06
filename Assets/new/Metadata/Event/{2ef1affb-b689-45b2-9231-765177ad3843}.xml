@@ -173,7 +173,6 @@
 			<destination>{a8315084-2853-4d0b-ae31-a5735831a870}</destination>
 			<destination>{cec8f24a-cd73-4753-9b7b-3722e7f51fc7}</destination>
 			<destination>{25c296fc-bb47-466f-bd7c-ccb045e11ca0}</destination>
-			<destination>{435da752-cff0-4f23-a877-d5c7eb92d826}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{3d831736-2f78-4019-aa29-151021074399}" />
@@ -221,11 +220,6 @@
 	<object class="DistortionEffect" id="{25c296fc-bb47-466f-bd7c-ccb045e11ca0}">
 		<property name="level">
 			<value>0.239999995</value>
-		</property>
-	</object>
-	<object class="GainEffect" id="{435da752-cff0-4f23-a877-d5c7eb92d826}">
-		<property name="gain">
-			<value>10</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{c52c434a-b302-46ce-9a12-bc125cb21f2a}" />
