@@ -2,6 +2,7 @@ using Character;
 using Character.PlayerHFSM;
 using RPGCharacterAnims.Actions;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class StateGrounded : PlayerState
 {
@@ -25,6 +26,13 @@ public class StateGrounded : PlayerState
     public override void UpdateState()
     {
         base.UpdateState();
+
+        if (Player.MoveDir.y > 0) Jump();
+        else if (Player.MoveDir.y < 0) Crouch();
+        else if (Mathf.Abs(Player.MoveDir.x) > 0) Move();
+        else if (Player.MoveDir == Vector2.zero) Idle();
+        return;
+
         //Debug.LogWarning(Player.AttackName);
 //        Debug.LogWarning(Player.ReactionName);
         /*if (!Player.ReactionName.StartsWith("Null")) TryStun();

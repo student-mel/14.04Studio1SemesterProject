@@ -22,6 +22,7 @@ namespace Character.PlayerHFSM
 
         public virtual void ExitState()
         {
+            StateMachine.LastState = this;
             _currentSubState?.ExitState();
         }
 

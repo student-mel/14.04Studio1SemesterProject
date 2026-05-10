@@ -42,7 +42,7 @@ namespace Character
         [HideInInspector] public bool canFlip = true;
         public bool IsFacingRight { get; set; }
         public Vector3 RelativeDir {get; private set;}
-
+        public Vector2 MoveDir {get; private set;}
         private Vector3 spawnPosition;
         
         public Rigidbody RB { get; private set; }
@@ -94,7 +94,7 @@ namespace Character
         {
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
             
-            EventBus.Subscribe($"{p}move", OnMove);
+            EventBus.Subscribe($"{p}dirinput_vector", OnMove);
             EventBus.Subscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
             EventBus.Subscribe($"{p}attack", OnAttack);
             EventBus.Subscribe($"{p}hurt", OnHurt);
@@ -190,7 +190,7 @@ namespace Character
         public void OnMove(object obj)
         {
             if (GameManager.InputLocked) return;
-            Vector2 moveDir = (Vector2)obj;
+            MoveDir = (Vector2)obj;
             
             return;
             //Moveset move = obj as Moveset;
