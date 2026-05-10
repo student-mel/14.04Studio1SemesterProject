@@ -15,8 +15,6 @@ public class BoxesResolver : MonoBehaviour
     public PlayerBoxes player1;
     public PlayerBoxes player2;
 
-    private int currFrame;
-
     private void OnEnable()
     {
         EventBus.Subscribe("fixed_game_update", FixedGameUpdate);
@@ -28,7 +26,6 @@ public class BoxesResolver : MonoBehaviour
 
     private void FixedGameUpdate(object frame)
     {
-        currFrame = (int)frame;
         CheckOverlaps();
     }
     

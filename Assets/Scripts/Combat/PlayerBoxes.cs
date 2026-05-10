@@ -12,6 +12,8 @@ public class PlayerBoxes : MonoBehaviour
     public Moveset currMove { get; private set; }
     public int activeHits { get; private set; }
 
+    public bool visual;
+    
     private int presetIndex
     {
         get => currPresetIndex;
@@ -44,13 +46,14 @@ public class PlayerBoxes : MonoBehaviour
 
     private void SetActiveBoxes(object index)
     {
+        Debug.Log("Active Boxes: " + index);
         PresetIndex = (int)index;
         presetIndex = PresetIndex;
     }
 
     private void UpdateBoxes()
     {
-        if (currPresetIndex <= 0 && currPresetIndex > BoxesResolver.i.PresetData.Presets.Length)
+        if (currPresetIndex <= 0 || currPresetIndex > BoxesResolver.i.PresetData.Presets.Length)
         {
             activeBoxes = null;
         }
@@ -96,8 +99,6 @@ public class PlayerBoxes : MonoBehaviour
             hurtboxes = worldHurtboxes
         };
     }
-
-    //public bool debug;
 
     private void OnEnable()
     {
@@ -145,12 +146,14 @@ public class PlayerBoxes : MonoBehaviour
         Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
         foreach (Box box in worldBoxes.hitboxes)
         {
-            Gizmos.DrawCube(box.center, box.size);
+            Vector3 center = new Vector3(box.center.x, box.center.y, -1f);
+            Gizmos.DrawCube(center, box.size);
         }
         Gizmos.color = new Color(0f, 1f, 0f, 0.5f);
         foreach (Box box in worldBoxes.hurtboxes)
         {
-            Gizmos.DrawCube(box.center, box.size);
+            Vector3 center = new Vector3(box.center.x, box.center.y, -1f);
+            Gizmos.DrawCube(center, box.size);
         }
     }
 }
