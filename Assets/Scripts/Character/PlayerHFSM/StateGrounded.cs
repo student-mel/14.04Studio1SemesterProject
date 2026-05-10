@@ -27,12 +27,12 @@ public class StateGrounded : PlayerState
         base.UpdateState();
         //Debug.LogWarning(Player.AttackName);
 //        Debug.LogWarning(Player.ReactionName);
-        if (!Player.ReactionName.StartsWith("Null")) TryStun();
+        /*if (!Player.ReactionName.StartsWith("Null")) TryStun();
         else if (!Player.AttackName.StartsWith("Null")) TryAttack();
         else if (Player.MoveName.StartsWith("Jump")) Jump();
         else if (Player.MoveName.StartsWith("Move")) Move();
         else if (Player.MoveName.StartsWith("Crouch")) Crouch();
-        else if (Player.MoveName.StartsWith("Null")) Idle();
+        else if (Player.MoveName.StartsWith("Null")) Idle();*/
 
     }
 

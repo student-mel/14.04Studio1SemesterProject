@@ -22,7 +22,6 @@ public class SubStateFall: PlayerState
     {
         base.ExitState();
         hasFallen = false;
-        Player.RB.GetComponent<CapsuleCollider>().enabled = true;
     }
 
     public override void UpdateState()

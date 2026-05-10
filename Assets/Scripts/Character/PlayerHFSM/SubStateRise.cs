@@ -21,7 +21,6 @@ public class SubStateRise : PlayerState
     public override void ExitState()
     {
         base.ExitState();
-        Player.RB.GetComponent<CapsuleCollider>().enabled = true;
     }
 
     void AddJumpForce()

@@ -47,12 +47,6 @@ public class SubStateMove : PlayerState
         }
     }
 
-    public override void FixedUpdateState()
-    {
-        base.FixedUpdateState();
-        //Move();
-    }
-
     void Move()
     {
         Debug.Log("Move");

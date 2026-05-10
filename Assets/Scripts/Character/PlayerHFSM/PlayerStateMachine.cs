@@ -17,7 +17,7 @@ namespace Character.PlayerHFSM
             if (CurrentState == newState) return;
             CurrentState?.ExitState();
             CurrentState = newState;
-            CurrentState.EnterState();
+                CurrentState.EnterState();
         }
     }
 }

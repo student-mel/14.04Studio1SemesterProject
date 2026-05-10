@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 824534407}
   - component: {fileID: 824534406}
   - component: {fileID: 824534410}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +760,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -856,7 +856,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.000002, y: 2.47, z: 10}
+  m_Size: {x: 10.000002, y: 2.2204466e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &982290909
 GameObject:
@@ -870,7 +870,7 @@ GameObject:
   - component: {fileID: 982290912}
   - component: {fileID: 982290911}
   - component: {fileID: 982290910}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Plane (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1397,7 @@ PrefabInstance:
     - target: {fileID: 1823053627152457160, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
       propertyPath: opponent
       value: 
-      objectReference: {fileID: 1313437521}
+      objectReference: {fileID: 1313437517}
     - target: {fileID: 1823053627152457160, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
       propertyPath: <JumpForce>k__BackingField
       value: 60
@@ -1867,7 +1867,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1796378469}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb40a47c02fdfee45880ddf14f0fa442, type: 3}
   m_Name: 
@@ -1903,7 +1903,7 @@ PrefabInstance:
     - target: {fileID: 1823053627152457160, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
       propertyPath: opponent
       value: 
-      objectReference: {fileID: 600895810}
+      objectReference: {fileID: 94943852}
     - target: {fileID: 2002428480413329996, guid: 90ef32e024baf9b49b0084356c8c5077, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 0
@@ -2029,7 +2029,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1800639605}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb40a47c02fdfee45880ddf14f0fa442, type: 3}
   m_Name: 
@@ -2058,7 +2058,7 @@ GameObject:
   - component: {fileID: 1916974141}
   - component: {fileID: 1916974140}
   - component: {fileID: 1916974144}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2082,7 +2082,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -2178,7 +2178,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.000002, y: 2.47, z: 10}
+  m_Size: {x: 10.000002, y: 2.2204466e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1937224621
 GameObject:
