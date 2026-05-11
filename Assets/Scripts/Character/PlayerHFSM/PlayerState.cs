@@ -61,6 +61,7 @@ namespace Character.PlayerHFSM
             if (_currentSubState == newSubState) return;
             
             _currentSubState?.ExitState();
+            StateMachine.PreviousSubState = _currentSubState;
             _currentSubState = newSubState;
             _currentSubState.EnterState();
             StateMachine.CurrentSubState = _currentSubState;
@@ -69,6 +70,11 @@ namespace Character.PlayerHFSM
         protected PlayerState GetSubState()
         {
             return _currentSubState;
+        }
+
+        public string ToString()
+        {
+            return this.GetType().Name;
         }
     }
 }

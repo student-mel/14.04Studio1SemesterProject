@@ -12,8 +12,6 @@ public class PlayerBoxes : MonoBehaviour
     public Moveset currMove { get; private set; }
     public int activeHits { get; private set; }
 
-    public bool visual;
-    
     private int presetIndex
     {
         get => currPresetIndex;
@@ -46,7 +44,6 @@ public class PlayerBoxes : MonoBehaviour
 
     private void SetActiveBoxes(object index)
     {
-        Debug.Log("Active Boxes: " + index);
         PresetIndex = (int)index;
         presetIndex = PresetIndex;
     }
@@ -105,12 +102,12 @@ public class PlayerBoxes : MonoBehaviour
         switch (PlayerIndex)
         {
             case 1:
-                EventBus.Subscribe("p1_do_move", SetCurrentMove);
+                EventBus.Subscribe("p1_attack", SetCurrentMove);
                 EventBus.Subscribe("p1_update_boxes", SetActiveBoxes);
                 EventBus.Subscribe("p1_update_hits", SetActiveHits);
                 break;
             case 2:
-                EventBus.Subscribe("p2_do_move", SetCurrentMove);
+                EventBus.Subscribe("p2_attack", SetCurrentMove);
                 EventBus.Subscribe("p2_update_boxes", SetActiveBoxes);
                 EventBus.Subscribe("p2_update_hits", SetActiveHits);
                 break;
@@ -121,12 +118,12 @@ public class PlayerBoxes : MonoBehaviour
         switch (PlayerIndex)
         {
             case 1:
-                EventBus.Unsubscribe("p1_do_move", SetCurrentMove);
+                EventBus.Unsubscribe("p1_attack", SetCurrentMove);
                 EventBus.Unsubscribe("p1_update_boxes", SetActiveBoxes);
                 EventBus.Unsubscribe("p1_update_hits", SetActiveHits);
                 break;
             case 2:
-                EventBus.Unsubscribe("p2_do_move", SetCurrentMove);
+                EventBus.Unsubscribe("p2_attack", SetCurrentMove);
                 EventBus.Unsubscribe("p2_update_boxes", SetActiveBoxes);
                 EventBus.Unsubscribe("p2_update_hits", SetActiveHits);
                 break;

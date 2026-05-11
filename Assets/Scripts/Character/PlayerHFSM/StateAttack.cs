@@ -27,26 +27,62 @@ public class StateAttack : PlayerState
         {
             case "Light Attack":
                 //Debug.LogWarning("Light Attack");
-                i = 0;
+                switch (StateMachine.PreviousSubState.ToString())
+                {
+                    case "SubStateCrouch":
+                        i = 3;
+                        break;
+                    case "SubStateRise":
+                        i = 6;
+                        break;
+                    case "StateAirborne":
+                        goto case "SubStateRise";
+                    default:
+                        i = 0;
+                        break;
+                }
                 tempHitTrigger = "Light";
                 AudioManager.Instance?.PlayLightAttack(Player.gameObject);
                 break;
             case "Medium Attack":
                // Debug.LogWarning("Medium Attack");
-                
-                i = 1;
+               switch (StateMachine.PreviousSubState.ToString())
+               {
+                   case "SubStateCrouch":
+                       i = 4;
+                       break;
+                   case "SubStateRise":
+                       i = 7;
+                       break;
+                   case "StateAirborne":
+                       goto case "SubStateRise";
+                   default:
+                       i = 1;
+                       break;
+               }
                 tempHitTrigger = "Medium";
                 AudioManager.Instance?.PlayMediumAttack(Player.gameObject);
                 break;
             case "Heavy Attack":
                // Debug.LogWarning("Heavy Attack");
-                
-                i = 2;
+               switch (StateMachine.PreviousSubState.ToString())
+               {
+                   case "SubStateCrouch":
+                       i = 5;
+                       break;
+                   case "SubStateRise":
+                       i = 8;
+                       break;
+                   case "StateAirborne":
+                       goto case "SubStateRise";
+                   default:
+                       i = 2;
+                       break;
+               }
                 tempHitTrigger = "Heavy";
                 AudioManager.Instance?.PlayHeavyAttack(Player.gameObject);
                 break;
         }
-        
         a.SetFloat(Attack, (int)i);
         Player.hitboxDebugAnimator.SetTrigger(tempHitTrigger);
 

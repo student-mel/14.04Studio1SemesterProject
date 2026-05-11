@@ -153,8 +153,8 @@ namespace Character
         {
             CheckRelativeDir();
             moveName = nextMove;
-            attackName = nextAttack;
-            reactionName = nextReaction;
+            //attackName = nextAttack;
+            //reactionName = nextReaction;
             StateMachine.CurrentState?.UpdateState();
         }
 
@@ -214,12 +214,14 @@ namespace Character
                 return;
             if (!StateMachine.CurrentSubState.canAttack)
                 return;
-            nextAttack = move?.Name;
+            attackName = move?.Name;
+            StateMachine.ChangeState(AttackState);
         }
         
         private void OnHurt(object obj)
         {
-            nextReaction = (string) obj;
+            reactionName = (string) obj;
+            StateMachine.ChangeState(StunState);
         }
 
         public void TakeDamage(float dmg)
