@@ -8,6 +8,8 @@ public class StateGrounded : PlayerState
 {
     private PlayerState IdleState, MoveState, CrouchState;
     
+    bool jumpConsumed = false;
+    
     public StateGrounded(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
         IdleState = new SubStateIdle(player, stateMachine);
@@ -20,17 +22,19 @@ public class StateGrounded : PlayerState
         base.EnterState();
         Player.canFlip = true;
         ChangeSubState(IdleState);
-        
+        //jumped = false;
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-
-        if (Player.MoveDir.y > 0) Jump();
+        
+        bool jumpHeld = Player.MoveDir.y > 0;
+        if (jumpHeld && !jumpConsumed) Jump();
         else if (Player.MoveDir.y < 0) Crouch();
         else if (Mathf.Abs(Player.MoveDir.x) > 0) Move();
         else if (Player.MoveDir == Vector2.zero) Idle();
+        if (!jumpHeld) jumpConsumed = false;
         return;
 
         //Debug.LogWarning(Player.AttackName);
@@ -41,7 +45,6 @@ public class StateGrounded : PlayerState
         else if (Player.MoveName.StartsWith("Move")) Move();
         else if (Player.MoveName.StartsWith("Crouch")) Crouch();
         else if (Player.MoveName.StartsWith("Null")) Idle();*/
-
     }
 
     private void TryStun()
@@ -56,6 +59,7 @@ public class StateGrounded : PlayerState
 
     void Jump()
     {
+        jumpConsumed = true;
         StateMachine.ChangeState(Player.AirborneState);
     }
 

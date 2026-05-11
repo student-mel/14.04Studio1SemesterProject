@@ -28,7 +28,7 @@ public class SubStateFall: PlayerState
     {
         base.UpdateState();
         
-        if (Physics.Raycast(Player.transform.position, Vector3.down, out var hit,0.2f, LayerMask.GetMask("Ground")))
+        if (Physics.Raycast(Player.transform.position, Vector3.down, out var hit,0.15f, LayerMask.GetMask("Ground")))
         {
             HitGround(hit);
         }

@@ -32,7 +32,6 @@ public class SubStateMove : PlayerState
     {
         base.UpdateState();
         
-    
         AudioManager.Instance?.PlayWalk();
         AnimateMove(Player.MoveDir.x > 0);
         
@@ -53,13 +52,13 @@ public class SubStateMove : PlayerState
         }*/
     }
 
-    void Move()
+    /*void Move()
     {
         Debug.Log("Move");
         Vector3 displacement = Player.RelativeDir * Player.MoveSpeed * (isMovingRight?1:-1) * Time.fixedDeltaTime;
     
         Player.RB.MovePosition(Player.RB.position + displacement);
-    }
+    }*/
 
     private void AnimateMove(bool isRight)
     {
