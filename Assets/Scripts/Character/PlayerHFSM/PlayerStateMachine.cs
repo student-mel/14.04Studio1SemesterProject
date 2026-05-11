@@ -4,7 +4,7 @@ namespace Character.PlayerHFSM
 {
     public class PlayerStateMachine
     {
-        public PlayerState LastState { get; set; }
+        public PlayerState CurrentSubState { get; set; }
         public PlayerState CurrentState {get; private set;}
         
         public void Initialise(PlayerState state)

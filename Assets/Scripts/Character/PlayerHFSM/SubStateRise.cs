@@ -9,6 +9,7 @@ public class SubStateRise : PlayerState
 
     public SubStateRise(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        canAttack = true;
     }
 
     public override void EnterState()

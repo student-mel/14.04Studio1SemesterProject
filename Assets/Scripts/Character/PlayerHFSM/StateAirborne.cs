@@ -16,6 +16,7 @@ public class StateAirborne : PlayerState
         FallState = new SubStateFall(player, stateMachine);
         playerCollider = player.RB.GetComponent<CapsuleCollider>();
         enemyCollider = player.opponent.RB.GetComponent<CapsuleCollider>();
+        canAttack = true;
     }
 
     public override void EnterState()

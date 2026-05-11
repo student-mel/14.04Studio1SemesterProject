@@ -15,6 +15,7 @@ public class StateGrounded : PlayerState
         IdleState = new SubStateIdle(player, stateMachine);
         MoveState = new SubStateMove(player, stateMachine);
         CrouchState = new SubStateCrouch(player, stateMachine);
+        canAttack = true;
     }
 
     public override void EnterState()

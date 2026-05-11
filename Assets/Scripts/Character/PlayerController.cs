@@ -208,10 +208,11 @@ namespace Character
         private void OnAttack(object obj)
         {
             if (GameManager.InputLocked) return;
-            
             //Debug.LogWarning("OnAttack");
             Moveset move = obj as Moveset;
             if (StateMachine.CurrentState == attackState)
+                return;
+            if (!StateMachine.CurrentSubState.canAttack)
                 return;
             nextAttack = move?.Name;
         }

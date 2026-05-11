@@ -9,6 +9,7 @@ public class SubStateFall: PlayerState
 
     public SubStateFall(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        
     }
 
     public override void EnterState()

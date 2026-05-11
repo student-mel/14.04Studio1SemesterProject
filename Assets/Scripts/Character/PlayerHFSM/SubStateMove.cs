@@ -11,6 +11,7 @@ public class SubStateMove : PlayerState
 
     public SubStateMove(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        canAttack = true;
     }
 
     public override void EnterState()
