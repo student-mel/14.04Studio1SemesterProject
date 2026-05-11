@@ -9,6 +9,8 @@ namespace Character.PlayerHFSM
         
         private PlayerState _currentSubState;
 
+        public bool canAttack = false;
+
         public PlayerState(PlayerController player, PlayerStateMachine stateMachine)
         {
             this.Player = player;
@@ -18,6 +20,8 @@ namespace Character.PlayerHFSM
         public virtual void EnterState()
         {
             Debug.Log($"Entering {ToString()}");
+            StateMachine.CurrentSubState = _currentSubState;
+            
         }
 
         public virtual void ExitState()
@@ -57,13 +61,20 @@ namespace Character.PlayerHFSM
             if (_currentSubState == newSubState) return;
             
             _currentSubState?.ExitState();
+            StateMachine.PreviousSubState = _currentSubState;
             _currentSubState = newSubState;
             _currentSubState.EnterState();
+            StateMachine.CurrentSubState = _currentSubState;
         }
 
         protected PlayerState GetSubState()
         {
             return _currentSubState;
+        }
+
+        public string ToString()
+        {
+            return this.GetType().Name;
         }
     }
 }

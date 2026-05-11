@@ -28,4 +28,17 @@ public class AnimationEvents : MonoBehaviour
                 break;
         }
     }
+
+    public void OnAttackEnded()
+    {
+        switch (PlayerIndex)
+        {
+            case 1:
+                EventBus.Emit("p1_attack_ended", null);
+                break;
+            case 2:
+                EventBus.Emit("p2_attack_ended", null);
+                break;
+        }
+    }
 }

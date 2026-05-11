@@ -7,10 +7,16 @@ public class StateAirborne : PlayerState
     private PlayerState RiseState, FallState;
     bool isFalling;
     
+    CapsuleCollider playerCollider;
+    CapsuleCollider enemyCollider;
+    
     public StateAirborne(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
         RiseState = new SubStateRise(player, stateMachine);
         FallState = new SubStateFall(player, stateMachine);
+        playerCollider = player.RB.GetComponent<CapsuleCollider>();
+        enemyCollider = player.opponent.RB.GetComponent<CapsuleCollider>();
+        canAttack = true;
     }
 
     public override void EnterState()
@@ -19,14 +25,15 @@ public class StateAirborne : PlayerState
         Player.canFlip = false;
         ChangeSubState(RiseState);
         isFalling = false;
-        Player.RB.GetComponent<CapsuleCollider>().enabled = false;
-        //Player.RB.GetComponent<CapsuleCollider>().height *= 0.5f;
+        
+        Physics.IgnoreCollision(playerCollider, enemyCollider, true);
     }
 
     public override void ExitState()
     {
         base.ExitState();
         isFalling = false;
+        Physics.IgnoreCollision(playerCollider, enemyCollider, false);
     }
 
     public override void FixedUpdateState()

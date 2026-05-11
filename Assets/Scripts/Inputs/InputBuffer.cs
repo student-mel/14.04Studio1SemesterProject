@@ -61,7 +61,7 @@ public class InputBuffer : MonoBehaviour
             time = RhythmStore.Instance.musicTimeMs,
         });
         hasInputThisFrame = true;
-        //OnDirectionalInput(_input);
+        OnDirectionalInput(_input);
         OnDirectionalInput(dirInput);
         
         //GetMove();
@@ -92,6 +92,7 @@ public class InputBuffer : MonoBehaviour
 
         hasInputThisFrame = true;
 
+        OnDirectionalInput(_input);
         if (motionBufferedInputs.Count > 0)
         {
             BufferedInput input = motionBufferedInputs[^1];
@@ -113,7 +114,6 @@ public class InputBuffer : MonoBehaviour
 
         SetBufferedInputsTime(motionBufferedInputs, RhythmStore.Instance.musicTimeMs);
 
-        //OnDirectionalInput(_input);
         OnDirectionalInput(dirInput);
         
         //GetMove();  
@@ -122,7 +122,7 @@ public class InputBuffer : MonoBehaviour
     public void StopMovement()
     {
         movementStoppedThisFrame = true;
-        //OnDirectionalInput(Vector2.zero);
+        OnDirectionalInput(Vector2.zero);
     }
     
     List<BufferedInput> tempBufferedInputs = new List<BufferedInput>();

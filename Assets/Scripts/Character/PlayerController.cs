@@ -42,11 +42,11 @@ namespace Character
         [HideInInspector] public bool canFlip = true;
         public bool IsFacingRight { get; set; }
         public Vector3 RelativeDir {get; private set;}
-
+        public Vector2 MoveDir {get; private set;}
         private Vector3 spawnPosition;
         
         public Rigidbody RB { get; private set; }
-        [SerializeField, Header("Opponent")] private Transform opponent;
+        [SerializeField, Header("Opponent")] public PlayerController opponent;
         
         [Header("Player HFSM")]
         public PlayerStateMachine StateMachine {get; set;}
@@ -73,7 +73,6 @@ namespace Character
         {
             RB = GetComponent<Rigidbody>();   
             animator = transform.GetChild(0).GetComponentInChildren<Animator>();
-            InitialiseStateMachine();
         }
 
         void InitialiseStateMachine()
@@ -87,7 +86,7 @@ namespace Character
             
             StateMachine.Initialise(groundedState);
             
-            IsFacingRight = opponent.position.x > transform.position.x;
+            IsFacingRight = opponent.transform.position.x > transform.position.x;
             Flip(false);
         }
 
@@ -95,7 +94,7 @@ namespace Character
         {
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
             
-            EventBus.Subscribe($"{p}move", OnMove);
+            EventBus.Subscribe($"{p}dirinput_vector", OnMove);
             EventBus.Subscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
             EventBus.Subscribe($"{p}attack", OnAttack);
             EventBus.Subscribe($"{p}hurt", OnHurt);
@@ -113,7 +112,7 @@ namespace Character
         void UnsubscribeInputEvents()
         {
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
-            EventBus.Unsubscribe($"{p}move", OnMove);
+            EventBus.Unsubscribe($"{p}dirinput_vector", OnMove);
             EventBus.Unsubscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
             EventBus.Unsubscribe($"{p}attack", OnAttack);
             EventBus.Unsubscribe($"{p}hurt", OnHurt);
@@ -131,6 +130,8 @@ namespace Character
 
         private void Start()
         {
+            InitialiseStateMachine();
+            
             spawnPosition = transform.position;
             InitialisePlayer();
             EventBus.Emit("set_maxhealth", MaxHealth);
@@ -143,7 +144,7 @@ namespace Character
             CheckRelativeDir();
             StateMachine.Initialise(groundedState);
             
-            IsFacingRight = opponent.position.x > transform.position.x;
+            IsFacingRight = opponent.transform.position.x > transform.position.x;
             Flip(false);
             EventBus.Emit($"p{(int)player+1}_set_currenthealth", CurrentHealth);
         }
@@ -152,8 +153,8 @@ namespace Character
         {
             CheckRelativeDir();
             moveName = nextMove;
-            attackName = nextAttack;
-            reactionName = nextReaction;
+            //attackName = nextAttack;
+            //reactionName = nextReaction;
             StateMachine.CurrentState?.UpdateState();
         }
 
@@ -166,7 +167,7 @@ namespace Character
         {
             if (opponent == null) return;
 
-            bool shouldFaceRight = opponent.position.x > transform.position.x;
+            bool shouldFaceRight = opponent.transform.position.x > transform.position.x;
 
             if (shouldFaceRight != IsFacingRight)
             {
@@ -189,9 +190,12 @@ namespace Character
         public void OnMove(object obj)
         {
             if (GameManager.InputLocked) return;
-            Moveset move = obj as Moveset;
-            nextMove = move?.Name;
+            MoveDir = (Vector2)obj;
             
+            return;
+            //Moveset move = obj as Moveset;
+            //nextMove = move?.Name;
+
             //Debug.LogWarning("Moving");
         }
               
@@ -204,23 +208,26 @@ namespace Character
         private void OnAttack(object obj)
         {
             if (GameManager.InputLocked) return;
-            
             //Debug.LogWarning("OnAttack");
             Moveset move = obj as Moveset;
             if (StateMachine.CurrentState == attackState)
                 return;
-            nextAttack = move?.Name;
+            if (!StateMachine.CurrentSubState.canAttack)
+                return;
+            attackName = move?.Name;
+            StateMachine.ChangeState(AttackState);
         }
         
         private void OnHurt(object obj)
         {
-            nextReaction = (string) obj;
+            reactionName = (string) obj;
+            StateMachine.ChangeState(StunState);
         }
 
         public void TakeDamage(float dmg)
         {
             int otherPlayer = player ==  PlayerEnum.PlayerOne ? 1 : 0;
-            string oppResult = opponent.GetComponent<PlayerController>().rhythmResults;
+            string oppResult = opponent.rhythmResults;
             EventBus.Emit("hit_result", new PlayerResult(otherPlayer, oppResult, true));
             
             CurrentHealth -= dmg * GetDamageMult(oppResult);

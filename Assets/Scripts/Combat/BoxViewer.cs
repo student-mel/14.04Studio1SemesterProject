@@ -16,6 +16,7 @@ public class BoxViewer : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (Application.isPlaying) return;
+        presets = PresetData.Presets;
         foreach (Boxes preset in presets)
         {
             if (!preset.Preview) continue;
