@@ -9,6 +9,7 @@ public class SubStateRise : PlayerState
 
     public SubStateRise(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        canAttack = true;
     }
 
     public override void EnterState()
@@ -21,21 +22,20 @@ public class SubStateRise : PlayerState
     public override void ExitState()
     {
         base.ExitState();
-        Player.RB.GetComponent<CapsuleCollider>().enabled = true;
     }
 
     void AddJumpForce()
     {
         Vector3 force = Vector3.up;
         AudioManager.Instance?.PlayJump(Player.gameObject);
-        if (Player.MoveName.EndsWith("Up"))
+        if (Player.MoveDir.x == 0)
             Player.RB.AddForce(force * Player.JumpForce, ForceMode.Impulse);
-        else if (Player.MoveName.EndsWith("Left"))
+        else if (Player.MoveDir.x < 0)
         {
             force.x = -0.5f;
             Player.RB.AddForce(force * Player.JumpForce, ForceMode.Impulse);
         }
-        else if (Player.MoveName.EndsWith("Right"))
+        else
         {
             force.x = 0.5f;
             Player.RB.AddForce(force * Player.JumpForce, ForceMode.Impulse);

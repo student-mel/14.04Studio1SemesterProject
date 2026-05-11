@@ -908,7 +908,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Walk.bank
   Name: Walk
   StudioPath: bank:/Walk
-  lastModified: 639139319630811813
+  lastModified: 639136896061890904
   FileSizes: []
   Exists: 1
 --- !u!114 &-1275691794484395726
@@ -1027,7 +1027,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Attack.bank
   Name: Attack
   StudioPath: bank:/Attack
-  lastModified: 639139319630668690
+  lastModified: 639136896061329989
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -1068,7 +1068,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 8532514220461156958}
   cacheVersion: 131859
-  cacheTime: 639139319630811813
+  cacheTime: 639136896061890904
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -1163,7 +1163,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639139319630714027
+  lastModified: 639136896061505519
   FileSizes: []
   Exists: 1
 --- !u!114 &1228234254813778767
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Hit.bank
   Name: Hit
   StudioPath: bank:/Hit
-  lastModified: 639139319630689508
+  lastModified: 639136896061340002
   FileSizes: []
   Exists: 1
 --- !u!114 &3476097655517539951
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639139319630811813
+  lastModified: 639136896061770881
   FileSizes: []
   Exists: 1
 --- !u!114 &8054229900923478452
@@ -2129,7 +2129,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639139319630714027
+  lastModified: 639136896061515514
   FileSizes:
   - Name: 
     Value: 1392
@@ -2149,7 +2149,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Jump.bank
   Name: Jump
   StudioPath: bank:/Jump
-  lastModified: 639139319630714027
+  lastModified: 639136896061485484
   FileSizes: []
   Exists: 1
 --- !u!114 &8881837592999423142

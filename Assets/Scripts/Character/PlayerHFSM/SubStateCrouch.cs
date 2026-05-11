@@ -9,6 +9,7 @@ public class SubStateCrouch : PlayerState
 
     public SubStateCrouch(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        canAttack = true;
     }
 
     public override void EnterState()

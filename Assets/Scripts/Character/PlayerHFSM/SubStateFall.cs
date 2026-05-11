@@ -9,6 +9,7 @@ public class SubStateFall: PlayerState
 
     public SubStateFall(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        
     }
 
     public override void EnterState()
@@ -22,14 +23,13 @@ public class SubStateFall: PlayerState
     {
         base.ExitState();
         hasFallen = false;
-        Player.RB.GetComponent<CapsuleCollider>().enabled = true;
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
         
-        if (Physics.Raycast(Player.transform.position, Vector3.down, out var hit,0.2f, LayerMask.GetMask("Ground")))
+        if (Physics.Raycast(Player.transform.position, Vector3.down, out var hit,0.15f, LayerMask.GetMask("Ground")))
         {
             HitGround(hit);
         }

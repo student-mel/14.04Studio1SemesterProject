@@ -11,6 +11,7 @@ public class SubStateMove : PlayerState
 
     public SubStateMove(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        canAttack = true;
     }
 
     public override void EnterState()
@@ -25,12 +26,17 @@ public class SubStateMove : PlayerState
         Player.animator.SetBool(MoveForward, false);
         Player.animator.SetBool(MoveBackward, false);
         Player.RB.linearVelocity = Vector3.zero;
+        AudioManager.Instance?.StopWalk();
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-        bool isMoving = Player.MoveName.EndsWith("Left") || Player.MoveName.EndsWith("Right");
+        
+        AudioManager.Instance?.PlayWalk();
+        AnimateMove(Player.MoveDir.x > 0);
+        
+        /*bool isMoving = Player.MoveName.EndsWith("Left") || Player.MoveName.EndsWith("Right");
 
         if (isMoving)
         {
@@ -44,22 +50,16 @@ public class SubStateMove : PlayerState
         else
         {
             AudioManager.Instance?.StopWalk();
-        }
+        }*/
     }
 
-    public override void FixedUpdateState()
-    {
-        base.FixedUpdateState();
-        //Move();
-    }
-
-    void Move()
+    /*void Move()
     {
         Debug.Log("Move");
         Vector3 displacement = Player.RelativeDir * Player.MoveSpeed * (isMovingRight?1:-1) * Time.fixedDeltaTime;
     
         Player.RB.MovePosition(Player.RB.position + displacement);
-    }
+    }*/
 
     private void AnimateMove(bool isRight)
     {

@@ -6,6 +6,7 @@ public class SubStateIdle : PlayerState
 {
     public SubStateIdle(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        canAttack = true;
     }
 
     public override void EnterState()
