@@ -5,6 +5,8 @@ namespace Character.PlayerHFSM
     public class PlayerStateMachine
     {
         public PlayerState CurrentSubState { get; set; }
+        public PlayerState PreviousSubState { get; set; }
+        public PlayerState PreviousState { get; set; }
         public PlayerState CurrentState {get; private set;}
         
         public void Initialise(PlayerState state)
@@ -16,9 +18,12 @@ namespace Character.PlayerHFSM
         public void ChangeState(PlayerState newState)
         {
             if (CurrentState == newState) return;
+            PreviousState = CurrentState;
+            Debug.Log(PreviousState);
             CurrentState?.ExitState();
             CurrentState = newState;
-                CurrentState.EnterState();
+            CurrentState.EnterState();
+            Debug.Log(CurrentState);
         }
     }
 }

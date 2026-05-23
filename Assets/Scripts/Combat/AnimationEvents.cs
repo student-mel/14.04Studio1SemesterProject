@@ -1,31 +1,27 @@
+using System;
 using UnityEngine;
 
 public class AnimationEvents : MonoBehaviour
 {
     [Range(1, 2)] public int PlayerIndex;
 
+    private string player;
+
+    private void Awake()
+    {
+        player = $"p{PlayerIndex}";
+    }
+
     public void UpdateFightingBoxes(int presetIndex)
     {
-        switch (PlayerIndex)
-        {
-            case 1:
-                EventBus.Emit("p1_update_boxes", presetIndex);
-                break;
-            case 2:
-                EventBus.Emit("p2_update_boxes", presetIndex);
-                break;
-        }
+        EventBus.Emit($"{player}_update_boxes", presetIndex);
     }
     public void UpdateMovesetHits(int hits)
     {
-        switch (PlayerIndex)
-        {
-            case 1:
-                EventBus.Emit("p1_update_hits", hits);
-                break;
-            case 2:
-                EventBus.Emit("p2_update_hits", hits);
-                break;
-        }
+        EventBus.Emit($"{player}_update_hits", hits);
+    }
+    public void OnAttackEnded()
+    {
+        EventBus.Emit($"{player}_attack_ended", null);
     }
 }

@@ -27,10 +27,14 @@ public class RhythmJudge : MonoBehaviour
         if (offbeatOffset < beatOffset && offbeatOffset <= syncopatedWindow)
         {
             result = "Syncopated";
+            EventBus.Emit("syncopated_action", obj);
+
         }
         else if (beatOffset <= perfectWindow)
         {
             result = "Perfect";
+            EventBus.Emit("perfect_action", obj);
+
         }
         /*else if (beatOffset <= greatWindow)
         {
@@ -38,11 +42,12 @@ public class RhythmJudge : MonoBehaviour
         }*/
         //else if (beatOffset <= goodWindow)
         //{
-            //result = "Good";
+        //result = "Good";
         //}
         else
         {
             result = "Miss";
+            EventBus.Emit("miss_action", obj);
         }
 
         EventBus.Emit("actionResult", new PlayerResult((int)obj, result));

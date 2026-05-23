@@ -50,7 +50,7 @@ public class PlayerBoxes : MonoBehaviour
 
     private void UpdateBoxes()
     {
-        if (currPresetIndex <= 0 && currPresetIndex > BoxesResolver.i.PresetData.Presets.Length)
+        if (currPresetIndex <= 0 || currPresetIndex > BoxesResolver.i.PresetData.Presets.Length)
         {
             activeBoxes = null;
         }
@@ -77,6 +77,7 @@ public class PlayerBoxes : MonoBehaviour
 
         Box[] worldHitboxes = new Box[activeBoxes.hitboxes.Length];
         Box[] worldHurtboxes = new Box[activeBoxes.hurtboxes.Length];
+        Box[] worldProximityboxes = new Box[activeBoxes.proximityboxes.Length];
 
         if (activeBoxes.hitboxes.Length > 0)
             for(int i = 0; i < activeBoxes.hitboxes.Length; i++)
@@ -89,27 +90,32 @@ public class PlayerBoxes : MonoBehaviour
             {
                 worldHurtboxes[i] = activeBoxes.hurtboxes[i].ToWorld(transform);
             }
+        
+        if (activeBoxes.proximityboxes.Length > 0) 
+            for(int i = 0; i < activeBoxes.proximityboxes.Length; i++)
+            {
+                worldProximityboxes[i] = activeBoxes.proximityboxes[i].ToWorld(transform);
+            }
 
         return new Boxes
         {
             hitboxes = worldHitboxes,
-            hurtboxes = worldHurtboxes
+            hurtboxes = worldHurtboxes,
+            proximityboxes = worldProximityboxes
         };
     }
-
-    //public bool debug;
 
     private void OnEnable()
     {
         switch (PlayerIndex)
         {
             case 1:
-                EventBus.Subscribe("p1_do_move", SetCurrentMove);
+                EventBus.Subscribe("p1_attack", SetCurrentMove);
                 EventBus.Subscribe("p1_update_boxes", SetActiveBoxes);
                 EventBus.Subscribe("p1_update_hits", SetActiveHits);
                 break;
             case 2:
-                EventBus.Subscribe("p2_do_move", SetCurrentMove);
+                EventBus.Subscribe("p2_attack", SetCurrentMove);
                 EventBus.Subscribe("p2_update_boxes", SetActiveBoxes);
                 EventBus.Subscribe("p2_update_hits", SetActiveHits);
                 break;
@@ -120,12 +126,12 @@ public class PlayerBoxes : MonoBehaviour
         switch (PlayerIndex)
         {
             case 1:
-                EventBus.Unsubscribe("p1_do_move", SetCurrentMove);
+                EventBus.Unsubscribe("p1_attack", SetCurrentMove);
                 EventBus.Unsubscribe("p1_update_boxes", SetActiveBoxes);
                 EventBus.Unsubscribe("p1_update_hits", SetActiveHits);
                 break;
             case 2:
-                EventBus.Unsubscribe("p2_do_move", SetCurrentMove);
+                EventBus.Unsubscribe("p2_attack", SetCurrentMove);
                 EventBus.Unsubscribe("p2_update_boxes", SetActiveBoxes);
                 EventBus.Unsubscribe("p2_update_hits", SetActiveHits);
                 break;
@@ -141,16 +147,23 @@ public class PlayerBoxes : MonoBehaviour
     {
         Boxes worldBoxes = ToWorld();
         if (worldBoxes == null) return;
-        
+        Gizmos.color = new Color(1f, 1f, 0f, 0.5f);
+        foreach (Box box in worldBoxes.proximityboxes)
+        {
+            Vector3 center = new Vector3(box.center.x, box.center.y, -1f);
+            Gizmos.DrawCube(center, box.size);
+        }
         Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
         foreach (Box box in worldBoxes.hitboxes)
         {
-            Gizmos.DrawCube(box.center, box.size);
+            Vector3 center = new Vector3(box.center.x, box.center.y, -1f);
+            Gizmos.DrawCube(center, box.size);
         }
         Gizmos.color = new Color(0f, 1f, 0f, 0.5f);
         foreach (Box box in worldBoxes.hurtboxes)
         {
-            Gizmos.DrawCube(box.center, box.size);
+            Vector3 center = new Vector3(box.center.x, box.center.y, -1f);
+            Gizmos.DrawCube(center, box.size);
         }
     }
 }

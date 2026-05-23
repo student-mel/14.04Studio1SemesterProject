@@ -61,6 +61,9 @@ public class StateGrounded : PlayerState
     void Jump()
     {
         jumpConsumed = true;
+        
+        // tutorial emits
+        EventBus.Emit("p1_jump", Player.player);
         StateMachine.ChangeState(Player.AirborneState);
     }
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7184083476172110317}
   - component: {fileID: 6479140539949859780}
+  - component: {fileID: 3734336135011925802}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -57,6 +58,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3734336135011925802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180500054947373773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923e93264e89dc34386eb65adabbad5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEvents
+  PlayerIndex: 0
 --- !u!1 &285077232754430344
 GameObject:
   m_ObjectHideFlags: 0

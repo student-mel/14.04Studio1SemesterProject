@@ -64,7 +64,7 @@ MonoBehaviour:
   - Name: Heavy Attack
     moveType: 1
     inputString: 0a000000
-    priority: 0
+    priority: 1
   - Name: Special 1 Right
     moveType: 1
     inputString: 07000000050000000300000008000000
@@ -72,12 +72,4 @@ MonoBehaviour:
   - Name: Special 1 Left
     moveType: 1
     inputString: 07000000020000000000000008000000
-    priority: 0
-  - Name: Light Attack Left
-    moveType: 1
-    inputString: 0000000008000000
-    priority: 0
-  - Name: Light Attack Right
-    moveType: 1
-    inputString: 0300000008000000
     priority: 0

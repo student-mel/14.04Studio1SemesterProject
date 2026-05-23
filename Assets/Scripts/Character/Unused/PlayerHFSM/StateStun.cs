@@ -29,17 +29,17 @@ public class StateStun : PlayerState
         float f = 20;
         switch (Player.ReactionName)
         {
-            case "Light":
+            case "Light Attack":
                 i = 0;
                 Player.TakeDamage(5);
                 break;
-            case "Medium":
+            case "Medium Attack":
                 i = 1;
                 f += 10;
                 Player.TakeDamage(7);
                 
                 break;
-            case  "Heavy":
+            case  "Heavy Attack":
                 i = 2;
                 f += 20;
                 Player.TakeDamage(10);

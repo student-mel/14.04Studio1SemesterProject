@@ -154,8 +154,8 @@ namespace Character
         {
             CheckRelativeDir();
             moveName = nextMove;
-            attackName = nextAttack;
-            reactionName = nextReaction;
+            //attackName = nextAttack;
+            //reactionName = nextReaction;
             StateMachine.CurrentState?.UpdateState();
         }
 
@@ -192,7 +192,14 @@ namespace Character
         {
             if (GameManager.InputLocked) return;
             MoveDir = (Vector2)obj;
-            
+
+            // tutorial movement event
+            if (MoveDir.x > 0.1f)
+                EventBus.Emit("player_move_right", player);
+
+            else if (MoveDir.x < -0.1f)
+                EventBus.Emit("player_move_left", player);
+
             return;
             //Moveset move = obj as Moveset;
             //nextMove = move?.Name;
@@ -215,12 +222,18 @@ namespace Character
                 return;
             if (!StateMachine.CurrentSubState.canAttack)
                 return;
-            nextAttack = move?.Name;
+            attackName = move?.Name;
+
+            // tutorial emit
+            EventBus.Emit("player_attack", attackName);
+
+            StateMachine.ChangeState(AttackState);
         }
         
         private void OnHurt(object obj)
         {
-            nextReaction = (string) obj;
+            reactionName = (string) obj;
+            StateMachine.ChangeState(StunState);
         }
 
         public void TakeDamage(float dmg)

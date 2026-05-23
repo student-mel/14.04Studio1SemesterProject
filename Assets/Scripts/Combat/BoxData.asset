@@ -13,24 +13,337 @@ MonoBehaviour:
   m_Name: BoxData
   m_EditorClassIdentifier: Assembly-CSharp::BoxData
   Presets:
-  - name: 'Preset 1: Idle & Walking'
-    presetName: Idle & Walking
+  - name: 'Preset 1: Crouch Idle'
+    presetName: Crouch Idle
     Preview: 0
     needsUpdate: 0
     hitboxes: []
     hurtboxes:
     - name: Hurtbox 1
-      center: {x: 0, y: 0}
-      size: {x: 0.5, y: 1.5}
-  - name: 'Preset 2: Light Attack 1'
-    presetName: Light Attack 1
+      center: {x: 0, y: 0.625}
+      size: {x: 0.65, y: 1.25}
+    proximityboxes: []
+  - name: 'Preset 2: Crouch Heavy Attack Startup'
+    presetName: Crouch Heavy Attack Startup
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.625}
+      size: {x: 0.65, y: 1.25}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.43, y: 0.35}
+      size: {x: 2.5, y: 0.8}
+  - name: 'Preset 3: Crouch Heavy Attack'
+    presetName: Crouch Heavy Attack
+    Preview: 0
+    needsUpdate: 0
+    hitboxes:
+    - name: Hitbox 1
+      center: {x: 0.675, y: 0.35}
+      size: {x: 1, y: 0.5}
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: -0.22, y: 0.5}
+      size: {x: 0.8, y: 1}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.43, y: 0.35}
+      size: {x: 2.5, y: 0.8}
+  - name: 'Preset 4: Crouch Heavy Attack Recover 1'
+    presetName: Crouch Heavy Attack Recover 1
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: -0.1, y: 0.5}
+      size: {x: 0.6, y: 1}
+    proximityboxes: []
+  - name: 'Preset 5: Crouch Heavy Attack Recover 2'
+    presetName: Crouch Heavy Attack Recover 2
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.5}
+      size: {x: 0.6, y: 1}
+    proximityboxes: []
+  - name: 'Preset 6: Crouch Light Attack Startup'
+    presetName: Crouch Light Attack Startup
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.625}
+      size: {x: 0.65, y: 1.25}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.075, y: 0.95}
+      size: {x: 1.75, y: 0.4}
+  - name: 'Preset 7: Crouch Light Attack'
+    presetName: Crouch Light Attack
+    Preview: 0
+    needsUpdate: 0
+    hitboxes:
+    - name: Hitbox 1
+      center: {x: 0.55, y: 0.95}
+      size: {x: 0.7, y: 0.2}
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.65}
+      size: {x: 0.65, y: 1.3}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.075, y: 0.95}
+      size: {x: 1.75, y: 0.4}
+  - name: 'Preset 8: Crouch Light Attack Recover'
+    presetName: Crouch Light Attack Recover
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.65}
+      size: {x: 0.65, y: 1.3}
+    proximityboxes: []
+  - name: 'Preset 9: Crouch Medium Attack Startup'
+    presetName: Crouch Medium Attack Startup
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: -0.05, y: 0.65}
+      size: {x: 0.6, y: 1.2}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.2, y: 0.2}
+      size: {x: 2, y: 0.45}
+  - name: 'Preset 10: Crouch Medium Attack'
+    presetName: Crouch Medium Attack
+    Preview: 0
+    needsUpdate: 0
+    hitboxes:
+    - name: Hitbox 1
+      center: {x: 0.6, y: 0.2}
+      size: {x: 0.8, y: 0.3}
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: -0.05, y: 0.65}
+      size: {x: 0.6, y: 1.2}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.2, y: 0.2}
+      size: {x: 2, y: 0.45}
+  - name: 'Preset 11: Crouch Medium Attack Recover'
+    presetName: Crouch Medium Attack Recover
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.65}
+      size: {x: 0.6, y: 1.2}
+    proximityboxes: []
+  - name: 'Preset 12: Jump Heavy Attack'
+    presetName: Jump Heavy Attack
+    Preview: 0
+    needsUpdate: 0
+    hitboxes:
+    - name: Hitbox 1
+      center: {x: 0.75, y: 0.15}
+      size: {x: 1, y: 0.3}
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.25}
+      size: {x: 2, y: 0.5}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.5, y: 0.15}
+      size: {x: 2.5, y: 0.45}
+  - name: 'Preset 13: Jump Light Attack'
+    presetName: Jump Light Attack
+    Preview: 0
+    needsUpdate: 0
+    hitboxes:
+    - name: Hitbox 1
+      center: {x: 0.2, y: 0.5}
+      size: {x: 0.7, y: 0.5}
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 1}
+      size: {x: 0.65, y: 1.4}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 0.725, y: 0.375}
+      size: {x: 1.75, y: 0.75}
+  - name: 'Preset 14: Jump Medium Attack'
+    presetName: Jump Medium Attack
+    Preview: 0
+    needsUpdate: 0
+    hitboxes:
+    - name: Hitbox 1
+      center: {x: 0.55, y: 0.4}
+      size: {x: 0.6, y: 0.65}
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0.25, y: 0.725}
+      size: {x: 0.8, y: 0.75}
+    - name: Hurtbox 2
+      center: {x: -0.15, y: 0.1}
+      size: {x: 0.8, y: 0.5}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1, y: 0.2375}
+      size: {x: 1.5, y: 0.975}
+  - name: 'Preset 15: Stand Idle'
+    presetName: Stand Idle
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.85}
+      size: {x: 0.5, y: 1.7}
+    proximityboxes: []
+  - name: 'Preset 16: Stand Heavy Attack Startup'
+    presetName: Stand Heavy Attack Startup
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.9}
+      size: {x: 0.7, y: 1.5}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.06, y: 0.525}
+      size: {x: 1.875, y: 1.05}
+  - name: 'Preset 17: Stand Heavy Attack'
+    presetName: Stand Heavy Attack
+    Preview: 0
+    needsUpdate: 0
+    hitboxes:
+    - name: Hitbox 1
+      center: {x: 0.5, y: 0.35}
+      size: {x: 0.75, y: 0.7}
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0.075, y: 0.3}
+      size: {x: 1.6, y: 0.6}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.06, y: 0.525}
+      size: {x: 1.875, y: 1.05}
+  - name: 'Preset 18: Stand Heavy Attack Recover'
+    presetName: Stand Heavy Attack Recover
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0.075, y: 0.3}
+      size: {x: 1.6, y: 0.6}
+    proximityboxes: []
+  - name: 'Preset 19: Stand Attack Startup'
+    presetName: Stand Attack Startup
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.85}
+      size: {x: 0.5, y: 1.7}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.075, y: 1.4}
+      size: {x: 1.75, y: 0.4}
+  - name: 'Preset 20: Stand Attack'
+    presetName: Stand Attack
+    Preview: 0
+    needsUpdate: 0
+    hitboxes:
+    - name: Hitbox 1
+      center: {x: 0.55, y: 1.4}
+      size: {x: 0.7, y: 0.2}
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.85}
+      size: {x: 0.5, y: 1.7}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.075, y: 1.4}
+      size: {x: 1.75, y: 0.4}
+  - name: 'Preset 21: Stand Light String 3rd Attack Startup'
+    presetName: Stand Light String 3rd Attack Startup
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.85}
+      size: {x: 0.7, y: 1.7}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 0.65, y: 1.45}
+      size: {x: 1, y: 0.4}
+  - name: 'Preset 22: Stand Light String 3rd Attack'
+    presetName: Stand Light String 3rd Attack
+    Preview: 0
+    needsUpdate: 0
+    hitboxes:
+    - name: Hitbox 1
+      center: {x: 0.35, y: 1.45}
+      size: {x: 0.4, y: 0.2}
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.85}
+      size: {x: 0.7, y: 1.7}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 0.65, y: 1.45}
+      size: {x: 1, y: 0.4}
+  - name: 'Preset 23: Stand Light String 3rd Attack Recover'
+    presetName: Stand Light String 3rd Attack Recover
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0, y: 0.85}
+      size: {x: 0.7, y: 1.7}
+    proximityboxes: []
+  - name: 'Preset 24: Stand Light String End Attack Startup'
+    presetName: Stand Light String End Attack Startup
+    Preview: 0
+    needsUpdate: 0
+    hitboxes: []
+    hurtboxes:
+    - name: Hurtbox 1
+      center: {x: 0.06, y: 0.85}
+      size: {x: 0.6, y: 1.7}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.125, y: 1.45}
+      size: {x: 1.75, y: 0.4}
+  - name: 'Preset 25: Stand Light String End Attack'
+    presetName: Stand Light String End Attack
     Preview: 1
     needsUpdate: 0
     hitboxes:
     - name: Hitbox 1
-      center: {x: 0.5, y: 0.3}
-      size: {x: 0.5, y: 0.2}
+      center: {x: 0.6, y: 1.45}
+      size: {x: 0.7, y: 0.2}
     hurtboxes:
     - name: Hurtbox 1
-      center: {x: 0, y: 0}
-      size: {x: 0.5, y: 1.5}
+      center: {x: 0.06, y: 0.85}
+      size: {x: 0.6, y: 1.7}
+    proximityboxes:
+    - name: Proximitybox 1
+      center: {x: 1.125, y: 1.45}
+      size: {x: 1.75, y: 0.4}
