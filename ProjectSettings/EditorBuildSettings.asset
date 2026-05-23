@@ -5,6 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: bf09d584daafcac4798bb9a797aa067a
+  - enabled: 1
+    path: Assets/Scenes/DevScenes/Mel.unity
+    guid: 36ec17fdf5e022044a83a1bf9fb42b9a
   - enabled: 0
     path: Assets/Scenes/Sprint1-2Game.unity
     guid: d8ec2a8123e3f7a41834ac803170f179
@@ -14,9 +20,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: 09e36c29f377c6941be363b8eb4c9a11
-  - enabled: 1
-    path: Assets/Scenes/DevScenes/Mel.unity
-    guid: 36ec17fdf5e022044a83a1bf9fb42b9a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
