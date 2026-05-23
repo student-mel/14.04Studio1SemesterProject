@@ -15,6 +15,8 @@ public class SubStateCrouch : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+
+        EventBus.Emit("tutorial_crouch", Player.player);
         AnimateCrouching(true);
     }
 
@@ -36,6 +38,7 @@ public class SubStateCrouch : PlayerState
 
     void AnimateBlock()
     {
+        //EventBus.Emit("p1_block", Player.player);
         Player.animator.SetTrigger(Block);
     }
 }
