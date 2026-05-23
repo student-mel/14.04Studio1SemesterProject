@@ -20,6 +20,11 @@ public class BoxViewer : MonoBehaviour
         foreach (Boxes preset in presets)
         {
             if (!preset.Preview) continue;
+            Gizmos.color = new Color(1f, 1f, 0f, 0.5f);
+            foreach (Box box in preset.proximityboxes)
+            {
+                Gizmos.DrawCube(box.center, box.size);
+            }
             Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
             foreach (Box box in preset.hitboxes)
             {

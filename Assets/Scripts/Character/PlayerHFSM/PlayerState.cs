@@ -19,7 +19,7 @@ namespace Character.PlayerHFSM
 
         public virtual void EnterState()
         {
-            Debug.Log($"Entering {ToString()}");
+            //Debug.Log($"Entering {ToString()}");
             StateMachine.CurrentSubState = _currentSubState;
             
         }
@@ -61,7 +61,7 @@ namespace Character.PlayerHFSM
             if (_currentSubState == newSubState) return;
             
             _currentSubState?.ExitState();
-            StateMachine.PreviousSubState = _currentSubState;
+            StateMachine.PreviousSubState = _currentSubState ?? newSubState;
             _currentSubState = newSubState;
             _currentSubState.EnterState();
             StateMachine.CurrentSubState = _currentSubState;

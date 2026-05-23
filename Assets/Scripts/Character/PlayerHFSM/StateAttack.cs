@@ -27,6 +27,7 @@ public class StateAttack : PlayerState
         {
             case "Light Attack":
                 //Debug.LogWarning("Light Attack");
+                Debug.LogWarning(StateMachine.PreviousSubState);
                 switch (StateMachine.PreviousSubState.ToString())
                 {
                     case "SubStateCrouch":
@@ -35,7 +36,7 @@ public class StateAttack : PlayerState
                     case "SubStateRise":
                         i = 6;
                         break;
-                    case "StateAirborne":
+                    case "SubStateFall":
                         goto case "SubStateRise";
                     default:
                         i = 0;
@@ -100,7 +101,8 @@ public class StateAttack : PlayerState
         Player.nextAttack = "Null";
         if (!Player.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("Attack"))
         {
-            StateMachine.ChangeState(Player.GroundedState);
+            //StateMachine.ChangeState(Player.GroundedState);
+            StateMachine.ChangeState(StateMachine.PreviousState);
             EventBus.Emit("attack_finished", Player.player);
         }
         
