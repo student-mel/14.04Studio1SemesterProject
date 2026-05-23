@@ -74,8 +74,6 @@ public class StateGrounded : PlayerState
 
     void Crouch()
     {
-        // tutorial emits
-        //EventBus.Emit("tutorial_crouch", Player.player); 
         ChangeSubState(CrouchState);
     }
 

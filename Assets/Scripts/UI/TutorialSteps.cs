@@ -12,9 +12,12 @@ public enum TutorialStep
     JumpMediumAttack,
     JumpHeavyAttack,
 
-    CrouchLightAttack,
+    /*CrouchLightAttack,
     CrouchMediumAttack,
     CrouchHeavyAttack,
+
+    //SpecialAttack,
+    */
 
     Complete
 }
