@@ -39,6 +39,8 @@ namespace Character
 
         [field: SerializeField, Header("Movement Settings")]public float MoveSpeed { get; set; } = 1.5f;
         [field: SerializeField] public float JumpForce { get; set; } = 25f;
+        public float ForwardMultiplier { get; }
+        public float BackwardMultiplier { get; }
         [HideInInspector] public bool CanFlip { get; set; } = true;
         public bool IsFacingRight { get; set; }
         public bool IsGrounded { get; }

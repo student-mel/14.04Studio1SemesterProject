@@ -13,4 +13,6 @@ public interface IMoveable
     
     float MoveSpeed { get; }
     float JumpForce { get; }
+    float ForwardMultiplier { get; }
+    float BackwardMultiplier { get; }
 }

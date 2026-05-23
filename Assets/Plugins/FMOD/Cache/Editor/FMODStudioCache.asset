@@ -155,6 +155,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 10368
   Exists: 1
+--- !u!114 &-7794838225478501830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MainMenu/Selected
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/MainMenu/Selected
+  Guid:
+    Data1: -1207056413
+    Data2: 1334247646
+    Data3: -1928288892
+    Data4: -640642966
+  Banks:
+  - {fileID: 2600207646959841236}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &-7438440860519925812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,7 +1054,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Attack.bank
   Name: Attack
   StudioPath: bank:/Attack
-  lastModified: 639136896061329989
+  lastModified: 639151925582646710
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -1050,6 +1077,7 @@ MonoBehaviour:
   - {fileID: 1148326074857737818}
   - {fileID: 7652595867898731880}
   - {fileID: -1589386499479198084}
+  - {fileID: 2600207646959841236}
   EditorEvents:
   - {fileID: 7213788652098972894}
   - {fileID: -5088767562088899131}
@@ -1062,13 +1090,16 @@ MonoBehaviour:
   - {fileID: -1834351694894834709}
   - {fileID: -4357811639425886272}
   - {fileID: 5724062893464403153}
+  - {fileID: 419613086261650958}
+  - {fileID: 7856440717084601714}
+  - {fileID: -7794838225478501830}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1148326074857737818}
   StringsBanks:
   - {fileID: 8532514220461156958}
   cacheVersion: 131859
-  cacheTime: 639151628267398284
+  cacheTime: 639151925583058679
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -1112,6 +1143,33 @@ MonoBehaviour:
   - Name: 
     Value: 894
   Exists: 1
+--- !u!114 &419613086261650958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MainMenu/Buttons
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/MainMenu/Buttons
+  Guid:
+    Data1: 1236858148
+    Data2: 1329066047
+    Data3: -729305924
+    Data4: -1199959997
+  Banks:
+  - {fileID: 2600207646959841236}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
 --- !u!114 &477564861590453972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1330,6 +1388,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 485
+--- !u!114 &2600207646959841236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/MainMenu.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/new/Build/Desktop/MainMenu.bank
+  Name: MainMenu
+  StudioPath: bank:/MainMenu
+  lastModified: 639151925582910806
+  FileSizes: []
+  Exists: 1
 --- !u!114 &2618366509489730702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2064,9 +2140,36 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639136896061770881
+  lastModified: 639151925583058679
   FileSizes: []
   Exists: 1
+--- !u!114 &7856440717084601714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MainMenu/MainMenu
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/MainMenu/MainMenu
+  Guid:
+    Data1: -1299364301
+    Data2: 1150685388
+    Data3: -662872677
+    Data4: -1123548489
+  Banks:
+  - {fileID: 2600207646959841236}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 118000
 --- !u!114 &8054229900923478452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2129,10 +2232,10 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639151628267398284
+  lastModified: 639151925582947376
   FileSizes:
   - Name: 
-    Value: 1392
+    Value: 1578
   Exists: 1
 --- !u!114 &8847324849852662130
 MonoBehaviour:
@@ -2149,7 +2252,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Jump.bank
   Name: Jump
   StudioPath: bank:/Jump
-  lastModified: 639136896061485484
+  lastModified: 639151925582682328
   FileSizes: []
   Exists: 1
 --- !u!114 &8881837592999423142

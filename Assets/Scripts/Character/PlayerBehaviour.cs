@@ -26,7 +26,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     [Header("Ground Check")]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float checkDist = 0.2f;
-    public bool IsGrounded => Physics.Raycast(transform.position, Vector3.down, checkDist);
+    public bool IsGrounded => Physics.Raycast(transform.position, Vector3.down, checkDist, groundMask);
     public bool IsRising => RB.linearVelocity.y > 0f;
     public bool IsFalling => RB.linearVelocity.y < 0f;
     
@@ -35,18 +35,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     
     [field: SerializeField, Header("Movement Settings")]public float MoveSpeed { get; set; } = 1.5f;
     [field: SerializeField] public float JumpForce { get; set; } = 25f;
-    
-    public void CheckRelativeDir()
-    {
-        if (opponent == null) return;
-
-        bool shouldFaceRight = opponent.transform.position.x > transform.position.x;
-
-        if (shouldFaceRight != IsFacingRight)
-        {
-            Flip();
-        }
-    }
+    [field: SerializeField] public float ForwardMultiplier { get; } = 1f;
+    [field: SerializeField] public float BackwardMultiplier { get; } = 0.7f;
     #endregion
 
     #region  IDamageable Block
@@ -74,6 +64,9 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     
     private StateMachine FSM;
     private Vector3 spawnPosition;
+    
+    private static readonly int MoveForward = Animator.StringToHash("moveForward");
+    private static readonly int MoveBackward = Animator.StringToHash("moveBackward");
 
     private void Awake()
     {
@@ -174,6 +167,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     
     private void OnHurt(object obj)
     {
+        FSM.ChangeState<StunState>();
     }
 
     private void OnAttack(object obj)
@@ -209,20 +203,31 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         return 1f;
     }
 
-    public void Jump()
+    public void Crouch()
     {
-        Vector3 force = Vector3.up;
-        AudioManager.Instance?.PlayJump(gameObject);
-        if (MoveDir.x < 0)
-            force.x = -0.5f;
-        else
-            force.x = 0.5f;
-        RB.AddForce(force * JumpForce, ForceMode.Impulse);
-    }    
+        
+    }
+
+    public void Idle()
+    {
+        
+    }
     
     public void Die()
     {
         animator.SetTrigger("die");
+    }
+    
+    public void CheckRelativeDir()
+    {
+        if (opponent == null) return;
+
+        bool shouldFaceRight = opponent.transform.position.x > transform.position.x;
+
+        if (shouldFaceRight != IsFacingRight)
+        {
+            Flip();
+        }
     }
     
     void Flip(bool isFlipping = true)
