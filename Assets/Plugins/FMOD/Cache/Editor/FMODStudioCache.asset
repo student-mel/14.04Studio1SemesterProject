@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Attack.bank
   Name: Attack
   StudioPath: bank:/Attack
-  lastModified: 639151683345038347
+  lastModified: 639151714648883277
   FileSizes: []
   Exists: 1
 --- !u!114 &-8008535641924177937
@@ -78,7 +78,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 639151683346341140
+  lastModified: 639151714649064350
   FileSizes: []
   Exists: 1
 --- !u!114 &-6488004760190615201
@@ -96,7 +96,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639151683345806095
+  lastModified: 639151714649149771
   FileSizes: []
   Exists: 1
 --- !u!114 &-6229086756332532772
@@ -204,7 +204,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Jump.bank
   Name: Jump
   StudioPath: bank:/Jump
-  lastModified: 639151683345457907
+  lastModified: 639151714648903524
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -249,7 +249,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4326235207764835123}
   cacheVersion: 131859
-  cacheTime: 639151683346341140
+  cacheTime: 639151714649149771
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -429,7 +429,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639151609210272303
+  lastModified: 639151714649074405
   FileSizes:
   - Name: 
     Value: 1578
