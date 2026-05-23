@@ -16279,10 +16279,10 @@ AnimationClip:
     m_LoopBlend: 0
     m_LoopBlendOrientation: 1
     m_LoopBlendPositionY: 1
-    m_LoopBlendPositionXZ: 0
+    m_LoopBlendPositionXZ: 1
     m_KeepOriginalOrientation: 1
     m_KeepOriginalPositionY: 0
-    m_KeepOriginalPositionXZ: 0
+    m_KeepOriginalPositionXZ: 1
     m_HeightFromFeet: 1
     m_Mirror: 0
   m_EditorCurves:
@@ -30986,7 +30986,7 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 13
+    intParameter: 16
     messageOptions: 0
   - time: 0
     functionName: UpdateMovesetHits
@@ -30995,24 +30995,24 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 0.25
-    functionName: UpdateFightingBoxes
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 15
-    messageOptions: 0
   - time: 0.3828125
     functionName: UpdateFightingBoxes
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 16
+    intParameter: 17
+    messageOptions: 0
+  - time: 0.5
+    functionName: UpdateFightingBoxes
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 18
     messageOptions: 0
   - time: 0.625
     functionName: UpdateFightingBoxes
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 13
+    intParameter: 15
     messageOptions: 0

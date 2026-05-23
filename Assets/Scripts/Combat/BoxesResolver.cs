@@ -26,9 +26,42 @@ public class BoxesResolver : MonoBehaviour
 
     private void FixedGameUpdate(object frame)
     {
+        CheckProximity();
         CheckOverlaps();
     }
     
+    private void CheckProximity()
+    {
+        Boxes p1Boxes = player1.ToWorld();
+        Boxes p2Boxes = player2.ToWorld();
+        
+        if(p1Boxes == null || p2Boxes == null) return;
+        
+        if(p1Boxes.proximityboxes != null && p2Boxes.hurtboxes != null)
+            if(p1Boxes.proximityboxes.Length > 0 && p2Boxes.hurtboxes.Length > 0)
+                foreach (Box proximitybox in p1Boxes.proximityboxes)
+                foreach (Box hurtbox in p2Boxes.hurtboxes)
+                {
+                    if (Overlaps(proximitybox, hurtbox))
+                    {
+                        EventBus.Emit("p2_anticipate", player1.currMove.Name);
+                        Debug.Log("p2_anticipate");
+                        goto Next;
+                    }
+                }
+        Next:
+        if(p1Boxes.hurtboxes != null && p2Boxes.proximityboxes != null)
+            if(p1Boxes.hurtboxes.Length > 0 && p2Boxes.proximityboxes.Length > 0)
+                foreach (Box proximitybox in p2Boxes.proximityboxes)
+                foreach (Box hurtbox in p1Boxes.hurtboxes)
+                {
+                    if (Overlaps(proximitybox, hurtbox))
+                    {
+                        EventBus.Emit("p1_anticipate", player2.currMove.Name);
+                        Debug.Log("p1_anticipate");
+                    }
+                }
+    }
     private void CheckOverlaps()
     {
         Boxes p1Boxes = player1.ToWorld();
@@ -46,7 +79,7 @@ public class BoxesResolver : MonoBehaviour
                             {
                                 player1.SetActiveHits(player1.activeHits - 1);
                                 EventBus.Emit("p2_hurt", player1.currMove.Name);
-                                Debug.Log(player1.currMove.Name);
+                                //Debug.Log(player1.currMove.Name);
                                 goto Next;
                             }
                     }
@@ -61,7 +94,7 @@ public class BoxesResolver : MonoBehaviour
                             {
                                 player2.SetActiveHits(player2.activeHits - 1);
                                 EventBus.Emit("p1_hurt", player2.currMove.Name);
-                                Debug.Log(player2.currMove.Name);
+                                //Debug.Log(player2.currMove.Name);
                                 return;
                             }
                     }
