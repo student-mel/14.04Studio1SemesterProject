@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Attack.bank
   Name: Attack
   StudioPath: bank:/Attack
-  lastModified: 639146670882660475
+  lastModified: 639151621189040509
   FileSizes: []
   Exists: 1
 --- !u!114 &-8008535641924177937
@@ -33,7 +33,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Walk.bank
   Name: Walk
   StudioPath: bank:/Walk
-  lastModified: 639146670884068904
+  lastModified: 639151618890779098
   FileSizes: []
   Exists: 1
 --- !u!114 &-7821150772972491998
@@ -78,7 +78,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 639151602416176784
+  lastModified: 639151609228376526
   FileSizes: []
   Exists: 1
 --- !u!114 &-6488004760190615201
@@ -96,7 +96,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639146670883821228
+  lastModified: 639151621441317622
   FileSizes: []
   Exists: 1
 --- !u!114 &-6229086756332532772
@@ -132,7 +132,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639151591968278302
+  lastModified: 639151609210262310
   FileSizes: []
   Exists: 1
 --- !u!114 &-5415316959238209994
@@ -204,7 +204,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Jump.bank
   Name: Jump
   StudioPath: bank:/Jump
-  lastModified: 639146670883369464
+  lastModified: 639151609210111242
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -249,7 +249,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4326235207764835123}
   cacheVersion: 131859
-  cacheTime: 639151602416176784
+  cacheTime: 639151621441317622
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -429,7 +429,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639151591968293503
+  lastModified: 639151609210272303
   FileSizes:
   - Name: 
     Value: 1578
