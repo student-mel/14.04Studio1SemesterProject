@@ -59,7 +59,15 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         fsm = new StateMachine();
         RB = GetComponent<Rigidbody>();
 
-        
+        var movement = new MovementState(this, fsm);
+        var attack = new AttackState(this, fsm);
+        var stun = new StunState(this, fsm);
+
+        fsm.AddState(movement);
+        fsm.AddState(attack);
+        fsm.AddState(stun);
+
+        fsm.ChangeState<MovementState>();
     }
 
     private void Update()
@@ -77,7 +85,12 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         RB.MovePosition(RB.position + direction * speed * Time.fixedDeltaTime);
     }
 
-  
+    public void ApplyHit(float stunDuration)
+    {
+        fsm.ChangeState<StunState>();
+        (fsm.CurrentState as StunState)?.SetStun(stunDuration);
+    }
+
     float GetDamageMult(string result)
     {
         switch (result)

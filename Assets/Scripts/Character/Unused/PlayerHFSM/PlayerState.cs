@@ -21,7 +21,6 @@ namespace Character.PlayerHFSM
         {
             Debug.Log($"Entering {ToString()}");
             StateMachine.CurrentSubState = _currentSubState;
-            
         }
 
         public virtual void ExitState()
