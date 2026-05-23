@@ -39,7 +39,7 @@ namespace Character
 
         [field: SerializeField, Header("Movement Settings")]public float MoveSpeed { get; set; } = 1.5f;
         [field: SerializeField] public float JumpForce { get; set; } = 25f;
-        [HideInInspector] public bool canFlip = true;
+        [HideInInspector] public bool canFlip { get; set; } = true;
         public bool IsFacingRight { get; set; }
         public Vector3 RelativeDir {get; private set;}
         public Vector2 MoveDir {get; private set;}
