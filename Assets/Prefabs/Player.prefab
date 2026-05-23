@@ -2649,7 +2649,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehaviour
   player: 0
   animator: {fileID: 6479140539949859780}
+  playerColl: {fileID: 687125655594154285}
   opponent: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  checkDist: 0.2
   <MoveSpeed>k__BackingField: 1.5
   <JumpForce>k__BackingField: 60
   <MaxHealth>k__BackingField: 100

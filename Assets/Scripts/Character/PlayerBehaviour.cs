@@ -13,15 +13,23 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         PlayerTwo
     };
     public Animator animator;
-    [SerializeField, Header("Opponent")] public PlayerBehaviour opponent;
+    public CapsuleCollider playerColl;
+    [SerializeField, Header("Opponent")] 
+    public PlayerBehaviour opponent;
 
     #region  IMoveable Block
     public Rigidbody RB { get; private set; }
 
     public bool IsFacingRight { get; set; }
     [HideInInspector] public bool CanFlip { get; set; }  = true;
-    public bool IsGrounded { get; set; } = true;
-
+    
+    [Header("Ground Check")]
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float checkDist = 0.2f;
+    public bool IsGrounded => Physics.Raycast(transform.position, Vector3.down, checkDist);
+    public bool IsRising => RB.linearVelocity.y > 0f;
+    public bool IsFalling => RB.linearVelocity.y < 0f;
+    
     public Vector3 RelativeDir { get; private set; }
     public Vector2 MoveDir { get; set; } =  Vector2.zero;
     
@@ -104,29 +112,31 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         FSM.FixedUpdate();
     }
 
-    void SubscribeInputEvents()
-    {
-        string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
-            
-        EventBus.Subscribe($"{p}dirinput_vector", OnMove);
-        EventBus.Subscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
-        EventBus.Subscribe($"{p}attack", OnAttack);
-        EventBus.Subscribe($"{p}hurt", OnHurt);
-        EventBus.Subscribe("actionResult", GetActionResult);
-    }
-    
-    void UnsubscribeInputEvents()
-    {
-        string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
+    #region Initialise Events
+        void SubscribeInputEvents()
+        {
+            string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
+                
+            EventBus.Subscribe($"{p}dirinput_vector", OnMove);
+            EventBus.Subscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
+            EventBus.Subscribe($"{p}attack", OnAttack);
+            EventBus.Subscribe($"{p}hurt", OnHurt);
+            EventBus.Subscribe("actionResult", GetActionResult);
+        }
         
-        EventBus.Unsubscribe($"{p}dirinput_vector", OnMove);
-        EventBus.Unsubscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
-        EventBus.Unsubscribe($"{p}attack", OnAttack);
-        EventBus.Unsubscribe($"{p}hurt", OnHurt);
-        EventBus.Unsubscribe("actionResult", GetActionResult);
-    }
-    
-    
+        void UnsubscribeInputEvents()
+        {
+            string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
+            
+            EventBus.Unsubscribe($"{p}dirinput_vector", OnMove);
+            EventBus.Unsubscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
+            EventBus.Unsubscribe($"{p}attack", OnAttack);
+            EventBus.Unsubscribe($"{p}hurt", OnHurt);
+            EventBus.Unsubscribe("actionResult", GetActionResult);
+        }
+    #endregion
+
+    #region Initialise Player and StateMachine 
     public void InitialisePlayer()
     {
         CurrentHealth = MaxHealth;
@@ -144,9 +154,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         fsm.AddState(new MovementState(this, fsm));
         fsm.AddState(new AttackState(this, fsm));
         fsm.AddState(new StunState(this, fsm));
-
     }
-
+    #endregion
 
     private void OnMove(object obj)
     {
@@ -199,6 +208,17 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         
         return 1f;
     }
+
+    public void Jump()
+    {
+        Vector3 force = Vector3.up;
+        AudioManager.Instance?.PlayJump(gameObject);
+        if (MoveDir.x < 0)
+            force.x = -0.5f;
+        else
+            force.x = 0.5f;
+        RB.AddForce(force * JumpForce, ForceMode.Impulse);
+    }    
     
     public void Die()
     {
@@ -215,10 +235,5 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         Quaternion rot = Quaternion.Euler(0, 90 * (IsFacingRight? 1 : -1), 0);
         RelativeDir = IsFacingRight ? Vector3.right : -Vector3.right;
         transform.GetChild(0).localRotation = rot;
-    }
-
-    void CheckGrounded()
-    {
-        
     }
 }
