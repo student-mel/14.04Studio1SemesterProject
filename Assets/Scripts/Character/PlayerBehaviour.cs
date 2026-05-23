@@ -59,6 +59,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         fsm = new StateMachine();
         RB = GetComponent<Rigidbody>();
 
+        
     }
 
     private void Update()
@@ -68,7 +69,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
 
     private void FixedUpdate()
     {
-        
+        fsm.FixedUpdate();
     }
 
     public void Move(Vector3 direction, float speed)
@@ -77,7 +78,6 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     }
 
   
-
     float GetDamageMult(string result)
     {
         switch (result)
