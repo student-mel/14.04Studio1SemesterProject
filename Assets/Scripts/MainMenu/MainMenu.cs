@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void PlayGame()
+    public void Play()
     {
         SceneManager.LoadScene("Mel");
     }
@@ -25,7 +25,17 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("AA Tutorial");
     }
 
-    public void ExitGame()
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void MainMenuLoad()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Exit()
     {
         Application.Quit();
 
