@@ -223,7 +223,7 @@ namespace Character
                 return;
             attackName = move?.Name;
 
-                // tutorial emits
+            // tutorial emit
             EventBus.Emit("player_attack", attackName);
 
             StateMachine.ChangeState(AttackState);

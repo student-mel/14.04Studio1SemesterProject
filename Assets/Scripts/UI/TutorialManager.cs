@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour
     {
         EventBus.Subscribe("p1_dirinput_vector", OnMove);
         EventBus.Subscribe("p1_jump", OnJump);
+        EventBus.Subscribe("tutorial_crouch", OnCrouch);
 
         EventBus.Subscribe("p1_attack", OnAttack);
 
@@ -24,6 +25,7 @@ public class TutorialManager : MonoBehaviour
     {
         EventBus.Unsubscribe("p1_dirinput_vector", OnMove);
         EventBus.Unsubscribe("p1_jump", OnJump);
+        EventBus.Unsubscribe("tutorial_crouch", OnCrouch);
 
         EventBus.Unsubscribe("p1_attack", OnAttack);
 
@@ -52,6 +54,14 @@ public class TutorialManager : MonoBehaviour
     void OnJump(object obj)
     {
         if (currentStep != TutorialStep.Jump)
+            return;
+
+        NextStep();
+    }
+
+    void OnCrouch(object obj)
+    {
+        if (currentStep != TutorialStep.Crouch)
             return;
 
         NextStep();
@@ -159,6 +169,10 @@ public class TutorialManager : MonoBehaviour
 
             case TutorialStep.Jump:
                 tutorialText.text = "Jump";
+                break;
+
+            case TutorialStep.Crouch:
+                tutorialText.text = "Crouch";
                 break;
 
             case TutorialStep.LightAttack:

@@ -2,6 +2,7 @@ public enum TutorialStep
 {
     Move,
     Jump,
+    Crouch,
     LightAttack,
     MediumAttack,
     HeavyAttack,
