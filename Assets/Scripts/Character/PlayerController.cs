@@ -249,8 +249,8 @@ namespace Character
             {
                 case "Perfect":
                     return 1.75f;
-                case "Great":
-                    return 1.3f;
+                /*case "Great":
+                    return 1.3f;*/  
                 /*case "Good":
                     return 1.15f;*/
                 case "Syncopated":

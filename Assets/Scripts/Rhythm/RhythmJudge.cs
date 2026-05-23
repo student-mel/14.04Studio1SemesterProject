@@ -32,10 +32,10 @@ public class RhythmJudge : MonoBehaviour
         {
             result = "Perfect";
         }
-        else if (beatOffset <= greatWindow)
+        /*else if (beatOffset <= greatWindow)
         {
             result = "Great";
-        }
+        }*/
         //else if (beatOffset <= goodWindow)
         //{
             //result = "Good";
