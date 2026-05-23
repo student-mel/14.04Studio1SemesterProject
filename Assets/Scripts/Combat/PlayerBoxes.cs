@@ -77,6 +77,7 @@ public class PlayerBoxes : MonoBehaviour
 
         Box[] worldHitboxes = new Box[activeBoxes.hitboxes.Length];
         Box[] worldHurtboxes = new Box[activeBoxes.hurtboxes.Length];
+        Box[] worldProximityboxes = new Box[activeBoxes.proximityboxes.Length];
 
         if (activeBoxes.hitboxes.Length > 0)
             for(int i = 0; i < activeBoxes.hitboxes.Length; i++)
@@ -89,11 +90,18 @@ public class PlayerBoxes : MonoBehaviour
             {
                 worldHurtboxes[i] = activeBoxes.hurtboxes[i].ToWorld(transform);
             }
+        
+        if (activeBoxes.proximityboxes.Length > 0) 
+            for(int i = 0; i < activeBoxes.proximityboxes.Length; i++)
+            {
+                worldProximityboxes[i] = activeBoxes.proximityboxes[i].ToWorld(transform);
+            }
 
         return new Boxes
         {
             hitboxes = worldHitboxes,
-            hurtboxes = worldHurtboxes
+            hurtboxes = worldHurtboxes,
+            proximityboxes = worldProximityboxes
         };
     }
 
@@ -139,7 +147,12 @@ public class PlayerBoxes : MonoBehaviour
     {
         Boxes worldBoxes = ToWorld();
         if (worldBoxes == null) return;
-        
+        Gizmos.color = new Color(1f, 1f, 0f, 0.5f);
+        foreach (Box box in worldBoxes.proximityboxes)
+        {
+            Vector3 center = new Vector3(box.center.x, box.center.y, -1f);
+            Gizmos.DrawCube(center, box.size);
+        }
         Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
         foreach (Box box in worldBoxes.hitboxes)
         {

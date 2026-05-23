@@ -55,6 +55,7 @@ public class Boxes
 
     public Box[] hitboxes;
     public Box[] hurtboxes;
+    public Box[] proximityboxes;
 
     public void OnValidate()
     {
@@ -68,6 +69,11 @@ public class Boxes
         {
             int index = Array.IndexOf(hurtboxes, hurtbox) + 1;
             hurtbox.name = $"Hurtbox {index}";
+        }
+        foreach (Box proximitybox in proximityboxes)
+        {
+            int index = Array.IndexOf(proximityboxes, proximitybox) + 1;
+            proximitybox.name = $"Proximitybox {index}";
         }
     }
 }

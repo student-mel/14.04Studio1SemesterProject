@@ -13049,7 +13049,7 @@ AnimationClip:
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
     m_StopTime: 0.375
-    m_OrientationOffsetY: 0
+    m_OrientationOffsetY: -90
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
@@ -24542,7 +24542,7 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 13
+    intParameter: 24
     messageOptions: 0
   - time: 0
     functionName: UpdateMovesetHits
@@ -24556,12 +24556,12 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 19
+    intParameter: 25
     messageOptions: 0
   - time: 0.25
     functionName: UpdateFightingBoxes
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 13
+    intParameter: 15
     messageOptions: 0

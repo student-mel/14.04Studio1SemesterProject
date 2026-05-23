@@ -33974,7 +33974,7 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 13
+    intParameter: 19
     messageOptions: 0
   - time: 0
     functionName: UpdateMovesetHits
@@ -33988,12 +33988,12 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 14
+    intParameter: 20
     messageOptions: 0
   - time: 0.375
     functionName: UpdateFightingBoxes
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 13
+    intParameter: 15
     messageOptions: 0
