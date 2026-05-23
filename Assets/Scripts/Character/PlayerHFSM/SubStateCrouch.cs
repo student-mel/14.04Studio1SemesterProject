@@ -38,6 +38,7 @@ public class SubStateCrouch : PlayerState
 
     void AnimateBlock()
     {
+        //EventBus.Emit("p1_block", Player.player);
         Player.animator.SetTrigger(Block);
     }
 }
