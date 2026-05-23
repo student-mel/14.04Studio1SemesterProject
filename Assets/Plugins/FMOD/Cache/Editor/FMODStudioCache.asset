@@ -1068,7 +1068,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 8532514220461156958}
   cacheVersion: 131859
-  cacheTime: 639136896061890904
+  cacheTime: 639151628267398284
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -2129,7 +2129,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639136896061515514
+  lastModified: 639151628267398284
   FileSizes:
   - Name: 
     Value: 1392

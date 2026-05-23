@@ -1,16 +1,25 @@
 using UnityEngine;
 
-public class MovementState : MonoBehaviour
+public class MovementState : BaseState, IState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public MovementState(PlayerBehaviour pb, StateMachine fsm) : base(pb, fsm)
+    {
+    }
+
+    public void Enter()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+    }
+
+    public void FixedUpdate()
+    {
+    }
+
+    public void Exit()
+    {
     }
 }

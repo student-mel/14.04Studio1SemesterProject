@@ -6,14 +6,8 @@ public class AttackState : BaseState, IState
     {
     }
 
-    void Start()
-    {
-        
-    }
-
     public void Enter()
     {
-        throw new System.NotImplementedException();
     }
 
     public void Update()
