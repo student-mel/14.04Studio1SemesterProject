@@ -191,7 +191,14 @@ namespace Character
         {
             if (GameManager.InputLocked) return;
             MoveDir = (Vector2)obj;
-            
+
+            // tutorial movement event
+            if (MoveDir.x > 0.1f)
+                EventBus.Emit("player_move_right", player);
+
+            else if (MoveDir.x < -0.1f)
+                EventBus.Emit("player_move_left", player);
+
             return;
             //Moveset move = obj as Moveset;
             //nextMove = move?.Name;
@@ -215,6 +222,10 @@ namespace Character
             if (!StateMachine.CurrentSubState.canAttack)
                 return;
             attackName = move?.Name;
+
+                // tutorial emits
+            EventBus.Emit("player_attack", attackName);
+
             StateMachine.ChangeState(AttackState);
         }
         

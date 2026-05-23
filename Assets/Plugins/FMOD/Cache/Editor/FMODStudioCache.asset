@@ -278,7 +278,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Walk.bank
   Name: Walk
   StudioPath: bank:/Walk
-  lastModified: 639140522105605073
+  lastModified: 639140499162674754
   FileSizes: []
   Exists: 1
 --- !u!114 &-6822273981962444035
@@ -911,7 +911,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639140522105479590
+  lastModified: 639140499162584755
   FileSizes: []
   Exists: 1
 --- !u!114 &-3250257786063800425
@@ -929,7 +929,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Hit.bank
   Name: Hit
   StudioPath: bank:/Hit
-  lastModified: 639140522105420315
+  lastModified: 639140499162429650
   FileSizes: []
   Exists: 1
 --- !u!114 &-3201975955832566567
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639140522105504669
+  lastModified: 639140499162594775
   FileSizes:
   - Name: 
     Value: 1392
@@ -1171,7 +1171,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Attack.bank
   Name: Attack
   StudioPath: bank:/Attack
-  lastModified: 639140522105420315
+  lastModified: 639140499162409889
   FileSizes: []
   Exists: 1
 --- !u!114 &-1589386499479198084
@@ -1349,7 +1349,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -2412944718178187410}
   cacheVersion: 131859
-  cacheTime: 639140522105605073
+  cacheTime: 639140499162674754
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -1752,7 +1752,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639140522105571658
+  lastModified: 639140499162664782
   FileSizes: []
   Exists: 1
 --- !u!114 &3476097655517539951
@@ -2080,7 +2080,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Jump.bank
   Name: Jump
   StudioPath: bank:/Jump
-  lastModified: 639140522105455129
+  lastModified: 639140499162544763
   FileSizes: []
   Exists: 1
 --- !u!114 &5338432945724669772
