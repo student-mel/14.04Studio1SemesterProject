@@ -39,11 +39,12 @@ namespace Character
 
         [field: SerializeField, Header("Movement Settings")]public float MoveSpeed { get; set; } = 1.5f;
         [field: SerializeField] public float JumpForce { get; set; } = 25f;
-        [HideInInspector] public bool canFlip { get; set; } = true;
+        [HideInInspector] public bool CanFlip { get; set; } = true;
         public bool IsFacingRight { get; set; }
+        public bool IsGrounded { get; }
         public Vector3 RelativeDir {get; private set;}
-        public Vector2 MoveDir {get; private set;}
         private Vector3 spawnPosition;
+        public Vector2 MoveDir {get; private set;}
         
         public Rigidbody RB { get; private set; }
         [SerializeField, Header("Opponent")] public PlayerController opponent;
@@ -177,7 +178,7 @@ namespace Character
         
         void Flip(bool isFlipping = true)
         {
-            if (!canFlip) return;
+            if (!CanFlip) return;
             
             if (isFlipping)
                 IsFacingRight = !IsFacingRight;

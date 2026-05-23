@@ -2521,11 +2521,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6826736137250854753}
-  - component: {fileID: 1823053627152457160}
   - component: {fileID: 4420268442901444532}
   - component: {fileID: 687125655594154285}
   - component: {fileID: 5911025178639106048}
   - component: {fileID: 1105547358198283727}
+  - component: {fileID: 3882662152446285963}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2549,30 +2549,6 @@ Transform:
   - {fileID: 1306329005557833141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1823053627152457160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6577604146464603138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6755de08f03b6a42934a661a3301e74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterController
-  player: 0
-  <MaxHealth>k__BackingField: 100
-  moveenum: 0
-  nextAttack: Null
-  nextReaction: Null
-  animator: {fileID: 0}
-  hitboxDebugAnimator: {fileID: 5911025178639106048}
-  <MoveSpeed>k__BackingField: 1.5
-  <JumpForce>k__BackingField: 60
-  canFlip: 1
-  opponent: {fileID: 0}
-  rhythmResults: 
 --- !u!54 &4420268442901444532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2659,6 +2635,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBounds
   minX: -4.8
   maxX: 4.8
+--- !u!114 &3882662152446285963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577604146464603138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8a81c0326542d46bdd03b16eb1b027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBehaviour
+  player: 0
+  animator: {fileID: 6479140539949859780}
+  opponent: {fileID: 0}
+  <MoveSpeed>k__BackingField: 1.5
+  <JumpForce>k__BackingField: 60
+  <MaxHealth>k__BackingField: 100
+  rhythmResults: 
 --- !u!1 &6591070291961735456
 GameObject:
   m_ObjectHideFlags: 0

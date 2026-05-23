@@ -10,6 +10,10 @@ public class StunState : BaseState, IState
     {
         
     }
+    
+    public void SetStun(float duration)
+    {
+    }
 
     public void Update()
     {

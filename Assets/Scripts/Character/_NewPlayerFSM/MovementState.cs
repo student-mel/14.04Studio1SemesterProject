@@ -8,7 +8,7 @@ public class MovementState : BaseState, IState
 
     public void Enter()
     {
-        
+        pb.CanFlip = true;
     }
 
     public void Update()
@@ -17,6 +17,7 @@ public class MovementState : BaseState, IState
 
     public void FixedUpdate()
     {
+        
     }
 
     public void Exit()

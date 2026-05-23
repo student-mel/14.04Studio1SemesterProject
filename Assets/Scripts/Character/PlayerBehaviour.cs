@@ -1,3 +1,6 @@
+using System;
+using RPGCharacterAnims.Actions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
@@ -16,15 +19,25 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     public Rigidbody RB { get; private set; }
 
     public bool IsFacingRight { get; set; }
-    [HideInInspector] public bool canFlip { get; set; }  = true;
+    [HideInInspector] public bool CanFlip { get; set; }  = true;
+    public bool IsGrounded { get; set; } = true;
 
-    public Vector3 RelativeDir { get; }
+    public Vector3 RelativeDir { get; private set; }
+    public Vector2 MoveDir { get; set; } =  Vector2.zero;
     
     [field: SerializeField, Header("Movement Settings")]public float MoveSpeed { get; set; } = 1.5f;
     [field: SerializeField] public float JumpForce { get; set; } = 25f;
     
     public void CheckRelativeDir()
     {
+        if (opponent == null) return;
+
+        bool shouldFaceRight = opponent.transform.position.x > transform.position.x;
+
+        if (shouldFaceRight != IsFacingRight)
+        {
+            Flip();
+        }
     }
     #endregion
 
@@ -51,45 +64,126 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
 
     [Header("Rhythm")] public string rhythmResults;
     
-    private StateMachine fsm;
+    private StateMachine FSM;
     private Vector3 spawnPosition;
 
     private void Awake()
     {
-        fsm = new StateMachine();
         RB = GetComponent<Rigidbody>();
+        InitialiseStateMachine(new StateMachine());
 
-        var movement = new MovementState(this, fsm);
-        var attack = new AttackState(this, fsm);
-        var stun = new StunState(this, fsm);
+        FSM.ChangeState<MovementState>();
+    }
 
-        fsm.AddState(movement);
-        fsm.AddState(attack);
-        fsm.AddState(stun);
+    private void OnEnable()
+    {
+        SubscribeInputEvents();
+    }
 
-        fsm.ChangeState<MovementState>();
+    private void OnDisable()
+    {
+        UnsubscribeInputEvents();
+    }
+    
+    private void Start()
+    {
+        spawnPosition = transform.position;
+        
+        InitialisePlayer();
+        EventBus.Emit("set_maxhealth", MaxHealth);
     }
 
     private void Update()
     {
-        fsm.Update();
+        CheckRelativeDir();
+        FSM.Update();
     }
 
     private void FixedUpdate()
     {
-        fsm.FixedUpdate();
+        FSM.FixedUpdate();
     }
 
-    public void Move(Vector3 direction, float speed)
+    void SubscribeInputEvents()
     {
-        RB.MovePosition(RB.position + direction * speed * Time.fixedDeltaTime);
+        string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
+            
+        EventBus.Subscribe($"{p}dirinput_vector", OnMove);
+        EventBus.Subscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
+        EventBus.Subscribe($"{p}attack", OnAttack);
+        EventBus.Subscribe($"{p}hurt", OnHurt);
+        EventBus.Subscribe("actionResult", GetActionResult);
+    }
+    
+    void UnsubscribeInputEvents()
+    {
+        string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
+        
+        EventBus.Unsubscribe($"{p}dirinput_vector", OnMove);
+        EventBus.Unsubscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
+        EventBus.Unsubscribe($"{p}attack", OnAttack);
+        EventBus.Unsubscribe($"{p}hurt", OnHurt);
+        EventBus.Unsubscribe("actionResult", GetActionResult);
+    }
+    
+    
+    public void InitialisePlayer()
+    {
+        CurrentHealth = MaxHealth;
+        transform.position = spawnPosition;
+        CheckRelativeDir();
+            
+        IsFacingRight = opponent.transform.position.x > transform.position.x;
+        Flip(false);
+        EventBus.Emit($"p{(int)player+1}_set_currenthealth", CurrentHealth);
     }
 
-    public void ApplyHit(float stunDuration)
+    void InitialiseStateMachine(StateMachine fsm)
+    {
+        FSM = fsm;  
+        fsm.AddState(new MovementState(this, fsm));
+        fsm.AddState(new AttackState(this, fsm));
+        fsm.AddState(new StunState(this, fsm));
+
+    }
+
+
+    private void OnMove(object obj)
+    {
+        if (GameManager.InputLocked)
+        {
+            MoveDir = Vector2.zero;
+            return;
+        }
+        MoveDir = (Vector2)obj;
+    }
+
+    private void OnMoveCancelled(object obj)
+    {
+        MoveDir = Vector2.zero;
+    }
+    
+    private void OnHurt(object obj)
+    {
+    }
+
+    private void OnAttack(object obj)
+    {
+    }
+
+    void GetActionResult(object obj)
+    {
+        PlayerResult result = (PlayerResult)obj;
+        if (result.Index != (int)player) return;
+
+        this.rhythmResults = result.Result;
+    }
+    
+    /*public void ApplyHit(float stunDuration)
     {
         fsm.ChangeState<StunState>();
         (fsm.CurrentState as StunState)?.SetStun(stunDuration);
-    }
+    }*/
 
     float GetDamageMult(string result)
     {
@@ -109,5 +203,22 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     public void Die()
     {
         animator.SetTrigger("die");
+    }
+    
+    void Flip(bool isFlipping = true)
+    {
+        if (!CanFlip) return;
+            
+        if (isFlipping)
+            IsFacingRight = !IsFacingRight;
+
+        Quaternion rot = Quaternion.Euler(0, 90 * (IsFacingRight? 1 : -1), 0);
+        RelativeDir = IsFacingRight ? Vector3.right : -Vector3.right;
+        transform.GetChild(0).localRotation = rot;
+    }
+
+    void CheckGrounded()
+    {
+        
     }
 }
