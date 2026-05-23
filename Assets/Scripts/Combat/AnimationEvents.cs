@@ -22,6 +22,12 @@ public class AnimationEvents : MonoBehaviour
     }
     public void OnAttackEnded()
     {
+        EventBus.Emit($"{player}_end_strings_window", null);
         EventBus.Emit($"{player}_attack_ended", null);
+    }
+
+    public void EndStringsWindow()
+    {
+        EventBus.Emit($"{player}_end_strings_window", null);
     }
 }
