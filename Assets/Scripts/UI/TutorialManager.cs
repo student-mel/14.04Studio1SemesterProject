@@ -8,8 +8,6 @@ public class TutorialManager : MonoBehaviour
 
     private TutorialStep currentStep;
 
-    private bool hasMoved;
-
     private void OnEnable()
     {
         EventBus.Subscribe("p1_dirinput_vector", OnMove);
@@ -77,67 +75,49 @@ public class TutorialManager : MonoBehaviour
         switch (currentStep)
         {
             case TutorialStep.LightAttack:
-
                 if (move.Name == "Light Attack")
                     NextStep();
-
                 break;
 
             case TutorialStep.MediumAttack:
-
                 if (move.Name == "Medium Attack")
                     NextStep();
-
                 break;
 
             case TutorialStep.HeavyAttack:
-
                 if (move.Name == "Heavy Attack")
                     NextStep();
-
                 break;
 
-            /*case TutorialStep.JumpLightAttack:
-
-                if (move.Name == "Jump Light Attack")
-                    NextStep();
-
-                break;
-
-            case TutorialStep.JumpMediumAttack:
-
-                if (move.Name == "Jump Medium Attack")
-                    NextStep();
-
-                break;
-
-            case TutorialStep.JumpHeavyAttack:
-
-                if (move.Name == "Jump Heavy Attack")
-                    NextStep();
-
-                break;
-
-            /*case TutorialStep.LightAttack:
-
+            case TutorialStep.CrouchLightAttack:
                 if (move.Name == "Crouch Light Attack")
                     NextStep();
-
                 break;
 
             case TutorialStep.CrouchMediumAttack:
-
                 if (move.Name == "Crouch Medium Attack")
                     NextStep();
-
                 break;
 
             case TutorialStep.CrouchHeavyAttack:
-
                 if (move.Name == "Crouch Heavy Attack")
                     NextStep();
+                break;
 
-                break;*/
+            case TutorialStep.JumpLightAttack:
+                if (move.Name == "Jump Light Attack")
+                    NextStep();
+                break;
+
+            case TutorialStep.JumpMediumAttack:
+                if (move.Name == "Jump Medium Attack")
+                    NextStep();
+                break;
+
+            case TutorialStep.JumpHeavyAttack:
+                if (move.Name == "Jump Heavy Attack")
+                    NextStep();
+                break;
         }
     }
 
@@ -191,7 +171,7 @@ public class TutorialManager : MonoBehaviour
                 tutorialText.text = "Block";
                 break;
 
-            /*case TutorialStep.JumpLightAttack:
+            case TutorialStep.JumpLightAttack:
                 tutorialText.text = "Perform a Jump Light Attack";
                 break;
 
@@ -201,7 +181,19 @@ public class TutorialManager : MonoBehaviour
 
             case TutorialStep.JumpHeavyAttack:
                 tutorialText.text = "Perform a Jump Heavy Attack";
-                break;*/
+                break;
+
+            case TutorialStep.CrouchLightAttack:
+                tutorialText.text = "Perform a Crouch Light Attack";
+                break;
+
+            case TutorialStep.CrouchMediumAttack:
+                tutorialText.text = "Perform a Crouch Medium Attack";
+                break;
+
+            case TutorialStep.CrouchHeavyAttack:
+                tutorialText.text = "Perform a Crouch Heavy Attack";
+                break;
 
             case TutorialStep.Complete:
                 tutorialText.text = "Tutorial Complete!";
