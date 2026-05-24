@@ -121,11 +121,12 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             EventBus.Subscribe($"{p}dirinput_vector", OnMove);
             EventBus.Subscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
             EventBus.Subscribe($"{p}attack", OnAttack);
+            EventBus.Subscribe($"{p}attack_ended", OnAttackEnded);
             EventBus.Subscribe($"{p}hurt", OnHurt);
-            EventBus.Subscribe("actionResult", GetActionResult);
+            EventBus.Subscribe($"{p}hurt_ended", OnHurtEnded);
             EventBus.Subscribe($"{p}anticipate", OnAnticipate);
             EventBus.Subscribe($"{p}anticipate_cancel", OnAnticipateCancel);
-            EventBus.Subscribe($"{p}attack_ended", OnAttackEnded);
+            EventBus.Subscribe("actionResult", GetActionResult);
         }
 
         void UnsubscribeInputEvents()
@@ -135,11 +136,12 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             EventBus.Unsubscribe($"{p}dirinput_vector", OnMove);
             EventBus.Unsubscribe($"{p}dirinput_cancelled" , OnMoveCancelled);
             EventBus.Unsubscribe($"{p}attack", OnAttack);
+            EventBus.Unsubscribe($"{p}attack_ended", OnAttackEnded);
             EventBus.Unsubscribe($"{p}hurt", OnHurt);
-            EventBus.Unsubscribe("actionResult", GetActionResult);
+            EventBus.Unsubscribe($"{p}hurt_ended", OnHurtEnded);
             EventBus.Unsubscribe($"{p}anticipate", OnAnticipate);
             EventBus.Unsubscribe($"{p}anticipate_cancel", OnAnticipateCancel);
-            EventBus.Unsubscribe($"{p}attack_ended", OnAttackEnded);
+            EventBus.Unsubscribe("actionResult", GetActionResult);
         }
     #endregion
 
@@ -181,7 +183,12 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     
     private void OnHurt(object obj)
     {
-        FSM.ChangeState<StunState>();
+        FSM.ChangeState<StunState>(obj);
+    }
+    
+    private void OnHurtEnded(object obj)
+    {
+        FSM.ChangeState<MovementState>(obj);
     }
 
     private void OnAttack(object obj)
@@ -203,7 +210,10 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     private void OnAnticipate(object obj)
     {
         if (canBlock)
+        {
             IsBlocking = true;
+            EventBus.Emit("p1_block", player);
+        }
     }
     
     private void OnAnticipateCancel(object obj)

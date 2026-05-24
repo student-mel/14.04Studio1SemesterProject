@@ -9,8 +9,8 @@ public class AttackState : BaseState, IState
     public AttackState(PlayerBehaviour pb, StateMachine fsm) : base(pb, fsm)
     {
     }
-    
-    public readonly Dictionary<string, int> AttackType = new()
+
+    private readonly Dictionary<string, int> _attackType = new()
     {
         { "Light Attack", 1 },
         { "Medium Attack", 2 },
@@ -20,9 +20,9 @@ public class AttackState : BaseState, IState
     public void Enter(object data = null)
     {
         Moveset moveset = data as Moveset;
-        int attType = AttackType[moveset.Name];
         if (moveset != null)
         {
+            int attType = _attackType[moveset.Name];
             pb.animator.SetFloat(Attack, attType);
             pb.animator.SetTrigger(Action);
             AudioManager.Instance?.PlayAttack(attType, pb.gameObject);
@@ -39,5 +39,6 @@ public class AttackState : BaseState, IState
 
     public void Exit()
     {
+        pb.animator.SetFloat(Attack, 0);
     }
 }

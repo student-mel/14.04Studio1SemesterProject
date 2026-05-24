@@ -42,7 +42,9 @@ public class MovementState : BaseState, IState
     {
         /*pb.animator.SetBool(MoveForward, !isCrouching);
         pb.animator.SetBool(MoveBackward, !isCrouching);*/
-        
+        if (pb.IsCrouching)
+            EventBus.Emit("tutorial_crouch", pb.player);
+            
         pb.CanFlip = !pb.IsCrouching;
         pb.animator.SetBool(Crouching, pb.IsCrouching);
     }
