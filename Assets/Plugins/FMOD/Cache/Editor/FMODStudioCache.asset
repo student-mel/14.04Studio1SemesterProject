@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Walk.bank
   Name: Walk
   StudioPath: bank:/Walk
-  lastModified: 639136896061890904
+  lastModified: 639151618890779098
   FileSizes: []
   Exists: 1
 --- !u!114 &-8344276893876756176
@@ -87,7 +87,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639151925582947376
+  lastModified: 639152547822101107
   FileSizes:
   - Name: 
     Value: 1578
@@ -107,7 +107,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639151925583058679
+  lastModified: 639152547822420060
   FileSizes: []
   Exists: 1
 --- !u!114 &-3466081597656480154
@@ -152,7 +152,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Jump.bank
   Name: Jump
   StudioPath: bank:/Jump
-  lastModified: 639151925582682328
+  lastModified: 639152547803951135
   FileSizes: []
   Exists: 1
 --- !u!114 &-1820031263081284511
@@ -170,7 +170,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639136896061505519
+  lastModified: 639152547822085677
   FileSizes: []
   Exists: 1
 --- !u!114 &-1349591801194442092
@@ -215,7 +215,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 639151925582910806
+  lastModified: 639152547821984873
   FileSizes: []
   Exists: 1
 --- !u!114 &-1291217438724325752
@@ -314,7 +314,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -6513672708898195549}
   cacheVersion: 131859
-  cacheTime: 639151925583058679
+  cacheTime: 639152547822420060
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -440,7 +440,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Hit.bank
   Name: Hit
   StudioPath: bank:/Hit
-  lastModified: 639136896061340002
+  lastModified: 639146670883028523
   FileSizes: []
   Exists: 1
 --- !u!114 &2995747051664826136
@@ -512,7 +512,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Attack.bank
   Name: Attack
   StudioPath: bank:/Attack
-  lastModified: 639151925582646710
+  lastModified: 639152547803379984
   FileSizes: []
   Exists: 1
 --- !u!114 &7753221520461770047
