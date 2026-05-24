@@ -336,11 +336,16 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
     public void AddStreak()
     {
         Streak++;
+        Debug.Log("Add " + Streak);
+        EventBus.Emit($"p{(int)player+1}_add_streak", Streak);
     }
 
     public void BreakStreak()
     {
         Streak = 0;
+        Debug.Log("Break " + Streak);
+        
+        EventBus.Emit($"p{(int)player+1}_add_streak", Streak);
     }
 
 
