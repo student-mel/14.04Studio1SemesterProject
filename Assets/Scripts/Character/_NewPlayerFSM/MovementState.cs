@@ -5,9 +5,10 @@ public class MovementState : BaseState, IState
     private static readonly int MoveForward = Animator.StringToHash("moveForward");
     private static readonly int MoveBackward = Animator.StringToHash("moveBackward");
     private static readonly int JumpTrigger = Animator.StringToHash("jump");
-    //private static readonly int LandTrigger = Animator.StringToHash("fall");
+    private static readonly int Crouching = Animator.StringToHash("crouching");
     private bool jumpConsumed = false;
     private bool collisionIgnored = false;
+    private bool isCrouching = false;
 
     public MovementState(PlayerBehaviour pb, StateMachine fsm) : base(pb, fsm)
     {
@@ -21,6 +22,9 @@ public class MovementState : BaseState, IState
 
     public void Update()
     {
+        if (pb.RB.linearVelocity.y <= 0)
+            jumpConsumed = false;
+        
         if (pb.IsGrounded)
         {
             if (pb.MoveDir.y > 0 && !jumpConsumed)
@@ -29,12 +33,19 @@ public class MovementState : BaseState, IState
                 jumpConsumed = true;
                 return;
             }
-        }
-        
-        if (pb.RB.linearVelocity.y <= 0)
-            jumpConsumed = false;
 
-        Debug.Log(collisionIgnored);
+            Crouch();
+        }
+    }
+
+    private void Crouch()
+    {
+        isCrouching = pb.MoveDir.y < 0;
+        /*pb.animator.SetBool(MoveForward, !isCrouching);
+        pb.animator.SetBool(MoveBackward, !isCrouching);*/
+        
+        pb.CanFlip = !isCrouching;
+        pb.animator.SetBool(Crouching, isCrouching);
     }
 
     public void FixedUpdate()
@@ -47,11 +58,14 @@ public class MovementState : BaseState, IState
         
         if (collisionIgnored && pb.RB.linearVelocity.y <= 0)
         {
-            pb.animator.SetTrigger(LandTrigger);
+            pb.animator.SetBool(JumpTrigger, false);
             Physics.IgnoreCollision(pb.playerColl, pb.opponent.playerColl, false);
             collisionIgnored = false;
             pb.CanFlip = true;
         }
+        
+        if (isCrouching)
+            return;
         
         float x = pb.MoveDir.x;
         SetWalkAnimation();
@@ -91,12 +105,11 @@ public class MovementState : BaseState, IState
 
         // tutorial emits
         EventBus.Emit("p1_jump", pb.player);
-
         AudioManager.Instance?.PlayJump(pb.gameObject);
-        pb.animator.SetTrigger(JumpTrigger);
+        pb.animator.SetBool(JumpTrigger, true);
 
         Vector3 force = Vector3.up;
-        force.x = pb.MoveDir.x < 0 ? -0.5f : 0.5f;
+        force.x = pb.MoveDir.x < 0 ? -0.25f : 0.25f;
         force.x = pb.MoveDir.x == 0 ? 0 : force.x;
 
         pb.RB.linearVelocity = force * pb.JumpForce;
