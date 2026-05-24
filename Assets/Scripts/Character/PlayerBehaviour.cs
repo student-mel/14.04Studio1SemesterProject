@@ -196,7 +196,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         if (GameManager.InputLocked) return;
         if (IsFalling) return;
         if (FSM.CurrentState.GetType() == typeof(StunState)) return;
-        // if (FSM.CurrentState.GetType() == typeof(AttackState) && insert global bool here) return;
+        if (FSM.CurrentState.GetType() == typeof(AttackState) && (player == PlayerEnum.PlayerOne? !StringsMaster.p1CanString : !StringsMaster.p2CanString)) return;
         {
             FSM.ChangeState<AttackState>(obj);
         }

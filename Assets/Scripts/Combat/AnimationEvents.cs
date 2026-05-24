@@ -30,4 +30,8 @@ public class AnimationEvents : MonoBehaviour
     {
         EventBus.Emit($"{player}_end_strings_window", null);
     }
+    public void EndHurt()
+    {
+        EventBus.Emit($"{player}_hurt_ended", null);
+    }
 }
