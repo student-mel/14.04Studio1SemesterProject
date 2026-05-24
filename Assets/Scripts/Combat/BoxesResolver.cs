@@ -81,7 +81,9 @@ public class BoxesResolver : MonoBehaviour
                 foreach (Box hitbox in p1Boxes.hitboxes)
                     foreach (Box hurtbox in p2Boxes.hurtboxes)
                     {
-                        if(Overlaps(hitbox,  hurtbox))
+                        if (Overlaps(hitbox, hurtbox))
+                        {
+                            EventBus.Emit("p2_hurt_point", IntersectBoxes(hitbox,  hurtbox));
                             if (player1.activeHits > 0)
                             {
                                 player1.SetActiveHits(player1.activeHits - 1);
@@ -89,6 +91,7 @@ public class BoxesResolver : MonoBehaviour
                                 //Debug.Log(player1.currMove.Name);
                                 goto Next;
                             }
+                        }
                     }
         Next:
         if(p1Boxes.hurtboxes != null && p2Boxes.hitboxes != null)
@@ -96,7 +99,9 @@ public class BoxesResolver : MonoBehaviour
                 foreach (Box hitbox in p2Boxes.hitboxes)
                     foreach (Box hurtbox in p1Boxes.hurtboxes)
                     {
-                        if(Overlaps(hitbox,  hurtbox))
+                        if (Overlaps(hitbox, hurtbox))
+                        {
+                            EventBus.Emit("p1_hurt_point", IntersectBoxes(hitbox,  hurtbox));
                             if (player2.activeHits > 0)
                             {
                                 player2.SetActiveHits(player2.activeHits - 1);
@@ -104,6 +109,7 @@ public class BoxesResolver : MonoBehaviour
                                 //Debug.Log(player2.currMove.Name);
                                 return;
                             }
+                        }
                     }
     }
 
@@ -111,5 +117,40 @@ public class BoxesResolver : MonoBehaviour
     {
         return Mathf.Abs(a.center.x - b.center.x) < (a.size.x + b.size.x) * 0.5f &&
                Mathf.Abs(a.center.y - b.center.y) < (a.size.y + b.size.y) * 0.5f;
+    }
+
+    private Box IntersectBoxes(Box a, Box b)
+    {
+        
+        Vector2 minA = a.center - a.size * 0.5f;
+        Vector2 maxA = a.center + a.size * 0.5f;
+
+        Vector2 minB = b.center - b.size * 0.5f;
+        Vector2 maxB = b.center + b.size * 0.5f;
+        
+        
+        Vector2 minOverlap = new Vector2(
+            Mathf.Max(minA.x, minB.x),
+            Mathf.Max(minA.y, minB.y)
+        );
+        
+        
+        Vector2 maxOverlap = new Vector2(
+            Mathf.Min(maxA.x, maxB.x),
+            Mathf.Min(maxA.y, maxB.y)
+        );
+        
+        if (minOverlap.x > maxOverlap.x || minOverlap.y > maxOverlap.y)
+        {
+            return null;
+        }
+        
+        Box result = new Box
+        {
+            center = (minOverlap + maxOverlap) * 0.5f, 
+            size = maxOverlap - minOverlap,
+        };
+        
+        return result;
     }
 }
