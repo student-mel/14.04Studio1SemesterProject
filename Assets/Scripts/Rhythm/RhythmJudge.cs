@@ -36,12 +36,10 @@ public class RhythmJudge : MonoBehaviour
             EventBus.Emit("perfect_action", obj);
 
         }
-        else if (beatOffset <= greatWindow)
+        /*else if (beatOffset <= greatWindow)
         {
             result = "Great";
-            EventBus.Emit("great_action", obj);
-
-        }
+        }*/
         //else if (beatOffset <= goodWindow)
         //{
         //result = "Good";

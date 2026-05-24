@@ -22,7 +22,7 @@ public class StateAirborne : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        Player.canFlip = false;
+        Player.CanFlip = false;
         ChangeSubState(RiseState);
         isFalling = false;
         

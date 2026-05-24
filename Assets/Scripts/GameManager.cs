@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     /*public Health player1;
     public Health player2;*/
-    public PlayerController player1, player2;
+    public PlayerBehaviour player1, player2;
 
     public int player1Rounds;
     public int player2Rounds;
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void EndRound(PlayerController winner)
+    void EndRound(PlayerBehaviour winner)
     {
         roundActive = false;
         //InputLocked = true;

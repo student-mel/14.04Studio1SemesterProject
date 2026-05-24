@@ -58,6 +58,22 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot(jumpEvent);
     }
 
+    public void PlayAttack(int type, GameObject target)
+    {
+        switch (type)
+        {
+            case 1:
+                PlayLightAttack(target);
+                break;
+            case 2:
+                PlayMediumAttack(target);
+                break;
+            case 3:
+                PlayHeavyAttack(target);
+                break;
+        }
+    }
+
     public void PlayLightAttack(GameObject target)
     {
         RuntimeManager.PlayOneShot(lightAttackEvent);

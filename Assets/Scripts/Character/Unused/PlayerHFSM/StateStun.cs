@@ -49,6 +49,7 @@ public class StateStun : PlayerState
         
         a.SetFloat(Reaction, (int)i);
         Player.nextReaction = "Null";
+        
         ApplyKnockback(f);
     }
 
