@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: e01bbb2c450fc9341a8c5681b9068b94
   - enabled: 1
     path: Assets/Scenes/DevScenes/AA Tutorial.unity
-    guid: 0163931336d8586458c758bafb3640e3
+    guid: 6e3e08bd43d9ee0478cb18be24cd23c8
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: e75765a47247f154f9615b67e2da0ff6
@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: 09e36c29f377c6941be363b8eb4c9a11
+  - enabled: 0
+    path: Assets/Scenes/DevScenes/Old AA Tutorial.unity
+    guid: 0163931336d8586458c758bafb3640e3
   - enabled: 0
     path: Assets/Scenes/DevScenes/Mel.unity
     guid: 36ec17fdf5e022044a83a1bf9fb42b9a
