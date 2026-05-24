@@ -125,7 +125,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             EventBus.Subscribe("actionResult", GetActionResult);
             EventBus.Subscribe($"{p}anticipate", OnAnticipate);
             EventBus.Subscribe($"{p}anticipate_cancel", OnAnticipateCancel);
-            EventBus.Subscribe($"{p}_attack_ended", OnAttackEnded);
+            EventBus.Subscribe($"{p}attack_ended", OnAttackEnded);
         }
 
         void UnsubscribeInputEvents()
@@ -139,7 +139,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             EventBus.Unsubscribe("actionResult", GetActionResult);
             EventBus.Unsubscribe($"{p}anticipate", OnAnticipate);
             EventBus.Unsubscribe($"{p}anticipate_cancel", OnAnticipateCancel);
-            EventBus.Unsubscribe($"{p}_attack_ended", OnAttackEnded);
+            EventBus.Unsubscribe($"{p}attack_ended", OnAttackEnded);
         }
     #endregion
 
