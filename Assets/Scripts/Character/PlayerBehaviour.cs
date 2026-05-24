@@ -104,7 +104,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     private void FixedUpdate()
     {
         FSM.FixedUpdate();
-        if (CollisionIgnored && RB.linearVelocity.y <= 0)
+        if (CollisionIgnored && RB.linearVelocity.y <= 0 && IsGrounded)
         {
             animator.SetBool(JumpTrigger, false);
             Physics.IgnoreCollision(playerColl, opponent.playerColl, false);
@@ -137,6 +137,9 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             EventBus.Unsubscribe($"{p}attack", OnAttack);
             EventBus.Unsubscribe($"{p}hurt", OnHurt);
             EventBus.Unsubscribe("actionResult", GetActionResult);
+            EventBus.Unsubscribe($"{p}anticipate", OnAnticipate);
+            EventBus.Unsubscribe($"{p}anticipate_cancel", OnAnticipateCancel);
+            EventBus.Unsubscribe($"{p}_attack_ended", OnAttackEnded);
         }
     #endregion
 

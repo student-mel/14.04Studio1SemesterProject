@@ -25,8 +25,10 @@ public class MovementState : BaseState, IState
         
         if (pb.IsGrounded)
         {
-            if (pb.MoveDir.y > 0 && !jumpConsumed)
+            if (pb.MoveDir.y > 0)
             {
+                if (jumpConsumed) return;
+                
                 Jump();
                 jumpConsumed = true;
                 return;
