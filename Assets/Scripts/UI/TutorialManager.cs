@@ -27,7 +27,7 @@ public class TutorialManager : MonoBehaviour
 
         EventBus.Unsubscribe("p1_attack", OnAttack);
 
-        EventBus.Unsubscribe("p1_block", OnBlock);
+        EventBus.Unsubscribe("p1_block_end", OnBlock);
     }
 
     private void Start()
@@ -89,33 +89,39 @@ public class TutorialManager : MonoBehaviour
                     NextStep();
                 break;
 
-            case TutorialStep.CrouchLightAttack:
-                if (move.Name == "Crouch Light Attack")
-                    NextStep();
-                break;
-
-            case TutorialStep.CrouchMediumAttack:
-                if (move.Name == "Crouch Medium Attack")
-                    NextStep();
-                break;
-
-            case TutorialStep.CrouchHeavyAttack:
-                if (move.Name == "Crouch Heavy Attack")
-                    NextStep();
-                break;
-
             case TutorialStep.JumpLightAttack:
-                if (move.Name == "Jump Light Attack")
+                if (move.Name == "Light Attack")
+                    //if (move.Name == "Jump Light Attack")
                     NextStep();
                 break;
 
             case TutorialStep.JumpMediumAttack:
-                if (move.Name == "Jump Medium Attack")
+                if (move.Name == "Medium Attack")
+                    //if (move.Name == "Jump Medium Attack")
                     NextStep();
                 break;
 
             case TutorialStep.JumpHeavyAttack:
-                if (move.Name == "Jump Heavy Attack")
+                if (move.Name == "Heavy Attack")
+                    //if (move.Name == "Jump Heavy Attack")
+                    NextStep();
+                break;
+
+            case TutorialStep.CrouchLightAttack:
+                if (move.Name == "Light Attack")
+                    //if (move.Name == "Crouch Light Attack")
+                    NextStep();
+                break;
+
+            case TutorialStep.CrouchMediumAttack:
+                if (move.Name == "Medium Attack")
+                    //if (move.Name == "Crouch Medium Attack")
+                    NextStep();
+                break;
+
+            case TutorialStep.CrouchHeavyAttack:
+                if (move.Name == "Heavy Attack")
+                    //if (move.Name == "Crouch Heavy Attack")
                     NextStep();
                 break;
         }

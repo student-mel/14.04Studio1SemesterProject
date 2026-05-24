@@ -55,6 +55,9 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
         {
             _isBlocking = value;
             animator.SetBool(Block, value);
+
+            //tutorial check
+            EventBus.Emit("p1_block", player);
         }
     }
 
@@ -221,12 +224,14 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
         if (canBlock)
         {
             IsBlocking = true;
+            
         }
     }
     
     private void OnAnticipateCancel(object obj)
     {
         IsBlocking = false;
+
     }
 
     void GetActionResult(object obj)
