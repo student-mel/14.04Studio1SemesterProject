@@ -23,7 +23,8 @@ public class PlayerStreakDisplay : MonoBehaviour
 
     private void UpdateStreak(object obj)
     {
-        text[0].text = obj.ToString();
-        text[1].text = 
+        StreakClass streak = (StreakClass)obj;
+        text[0].text = streak.streak.ToString();
+        text[1].text = streak.result;
     }
 }
