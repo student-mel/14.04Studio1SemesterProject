@@ -49,7 +49,7 @@ public class RhythmJudge : MonoBehaviour
             result = "Miss";
             EventBus.Emit("miss_action", obj);
         }
-
+        Debug.Log("Rhythm:"  + result);
         EventBus.Emit("actionResult", new PlayerResult((int)obj, result));
         //RhythmStore.Instance.result = result;
         //Debug.Log($"Result = {result}");

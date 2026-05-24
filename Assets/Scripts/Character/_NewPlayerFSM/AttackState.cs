@@ -19,6 +19,7 @@ public class AttackState : BaseState, IState
 
     public void Enter(object data = null)
     {
+        EventBus.Emit("start_action", (int)pb.player);
         pb.HitOpponent = false;
         
         Moveset moveset = data as Moveset;
