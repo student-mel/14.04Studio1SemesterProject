@@ -228,6 +228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStreakDisplay
   player: 1
+  text:
+  - {fileID: 310239943067599829}
+  - {fileID: 6530880934992866611}
 --- !u!1 &8208822053068552021
 GameObject:
   m_ObjectHideFlags: 0
