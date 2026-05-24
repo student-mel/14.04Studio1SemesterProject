@@ -254,10 +254,10 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     private void CheckBlock()
     {
         // if grounded and moving or crouching and moving backwards
-        if (IsGrounded && MoveDir.y <= 0)
+        if (IsGrounded && MoveDir.y <= 0 && MoveDir.x != 0)
         {
-            /*canBlock = MoveDir.x > 0 ^ IsFacingRight;*/
-            canBlock = animator.GetBool("moveBackward");
+            canBlock = MoveDir.x > 0 ^ IsFacingRight;
+            //canBlock = animator.GetBool("moveBackward");
             Debug.Log($"{player}: {canBlock}");
         }
         else
