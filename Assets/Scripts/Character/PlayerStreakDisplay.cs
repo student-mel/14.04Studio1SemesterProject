@@ -5,11 +5,10 @@ using UnityEngine;
 public class PlayerStreakDisplay : MonoBehaviour
 {
     public int player = 1;
-    TextMeshProUGUI text;
+    [SerializeField]TextMeshProUGUI[] text;
 
     private void Awake()
     {
-        text = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void OnEnable()
@@ -24,6 +23,7 @@ public class PlayerStreakDisplay : MonoBehaviour
 
     private void UpdateStreak(object obj)
     {
-        text.text = obj.ToString();
+        text[0].text = obj.ToString();
+        text[1].text = 
     }
 }

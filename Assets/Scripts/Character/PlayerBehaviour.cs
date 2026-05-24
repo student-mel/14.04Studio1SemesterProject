@@ -317,7 +317,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
         opponent.HitOpponent = true;
         
         if (oppResult == "Perfect" || oppResult == "Syncopated")
-            opponent.AddStreak();
+            opponent.AddStreak(oppResult);
         else
             opponent.BreakStreak();
         
@@ -332,12 +332,12 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
             Die();
         }
     }
-
-    public void AddStreak()
+    
+    public void AddStreak(string result)
     {
         Streak++;
         Debug.Log("Add " + Streak);
-        EventBus.Emit($"p{(int)player+1}_add_streak", Streak);
+        EventBus.Emit($"p{(int)player+1}_add_streak", new StreakClass(Streak, result));
     }
 
     public void BreakStreak()
@@ -345,7 +345,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
         Streak = 0;
         Debug.Log("Break " + Streak);
         
-        EventBus.Emit($"p{(int)player+1}_add_streak", Streak);
+        EventBus.Emit($"p{(int)player+1}_add_streak", new StreakClass(Streak, "Break"));
     }
 
 
@@ -396,4 +396,16 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
         shadow.position = pos;
     }
 
+}
+
+[System.Serializable]
+public class StreakClass
+{
+    public StreakClass(int streak, string result)
+    {
+        this.streak = streak;
+        this.result = result;
+    }
+    public int streak;
+    public string result;
 }
