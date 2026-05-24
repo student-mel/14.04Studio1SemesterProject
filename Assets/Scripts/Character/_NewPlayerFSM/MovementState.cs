@@ -13,7 +13,7 @@ public class MovementState : BaseState, IState
     {
     }
 
-    public void Enter()
+    public void Enter(object data = null)
     {
         pb.CanFlip = true;
         jumpConsumed = false;
@@ -67,6 +67,7 @@ public class MovementState : BaseState, IState
         
         float x = pb.MoveDir.x;
         SetWalkAnimation();
+        AudioManager.Instance?.PlayWalk();
         
         if (Mathf.Abs(x) < 0.1f)
             return;

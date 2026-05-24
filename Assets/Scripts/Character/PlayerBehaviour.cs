@@ -175,6 +175,13 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
 
     private void OnAttack(object obj)
     {
+        if (GameManager.InputLocked) return;
+        if (IsFalling) return;
+        if (FSM.CurrentState.GetType() == typeof(StunState)) return;
+        // if (FSM.CurrentState.GetType() == typeof(AttackState) && insert global bool here) return;
+        {
+            FSM.ChangeState<AttackState>(obj);
+        }
     }
 
     private void OnAnticipate(object obj)
@@ -217,11 +224,6 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         return 1f;
     }
 
-    public void Idle()
-    {
-        
-    }
-    
     private void CheckBlock()
     {
         // if grounded and moving or crouching and moving backwards
