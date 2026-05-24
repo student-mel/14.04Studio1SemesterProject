@@ -72,6 +72,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
     private static readonly int Block = Animator.StringToHash("block");
     private static readonly int JumpTrigger = Animator.StringToHash("jump");
     private static readonly int DieTrigger = Animator.StringToHash("die");
+    private static readonly int Hurt = Animator.StringToHash("hurt");
 
     private void Awake()
     {
@@ -193,6 +194,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
     
     private void OnHurtEnded(object obj)
     {
+        animator.SetBool(Hurt, false);
         FSM.ChangeState<MovementState>(obj);
     }
 
@@ -219,7 +221,6 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
         if (canBlock)
         {
             IsBlocking = true;
-            EventBus.Emit("p1_block", player);
         }
     }
     
@@ -246,9 +247,11 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
     private void CheckBlock()
     {
         // if grounded and moving or crouching and moving backwards
-        if (IsGrounded && MoveDir.y <= 0)
+        if (IsGrounded && MoveDir.y <= 0 && MoveDir.x != 0)
         {
             canBlock = MoveDir.x > 0 ^ IsFacingRight;
+            //canBlock = animator.GetBool("moveBackward");
+            Debug.Log($"{player}: {canBlock}");
         }
         else
             canBlock = false;
