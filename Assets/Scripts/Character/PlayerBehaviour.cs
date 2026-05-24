@@ -148,6 +148,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
             EventBus.Subscribe($"{p}attack_ended", OnAttackEnded);
             EventBus.Subscribe($"{p}hurt", OnHurt);
             EventBus.Subscribe($"{p}hurt_ended", OnHurtEnded);
+            EventBus.Subscribe($"{p}hurt_reset", OnHurtReset);
             EventBus.Subscribe($"{p}anticipate", OnAnticipate);
             EventBus.Subscribe($"{p}anticipate_cancel", OnAnticipateCancel);
             EventBus.Subscribe("actionResult", GetActionResult);
@@ -163,6 +164,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
             EventBus.Unsubscribe($"{p}attack_ended", OnAttackEnded);
             EventBus.Unsubscribe($"{p}hurt", OnHurt);
             EventBus.Unsubscribe($"{p}hurt_ended", OnHurtEnded);
+            EventBus.Unsubscribe($"{p}hurt_reset", OnHurtReset);
             EventBus.Unsubscribe($"{p}anticipate", OnAnticipate);
             EventBus.Unsubscribe($"{p}anticipate_cancel", OnAnticipateCancel);
             EventBus.Unsubscribe("actionResult", GetActionResult);
@@ -172,6 +174,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
     #region Initialise Player and StateMachine 
     public void InitialisePlayer()
     {
+        animator.SetBool(DieTrigger, false);
         CurrentHealth = MaxHealth;
         transform.position = spawnPosition;
         CheckRelativeDir();
@@ -214,6 +217,11 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
     {
         animator.SetBool(Hurt, false);
         FSM.ChangeState<MovementState>(obj);
+    }
+
+    private void OnHurtReset(object obj)
+    {
+        animator.SetBool(Hurt, false);
     }
 
     private void OnAttack(object obj)
@@ -329,7 +337,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
 
     public void Die()
     {
-        animator.SetTrigger(DieTrigger);
+        animator.SetBool(DieTrigger, true);
     }
     
     public void CheckRelativeDir()

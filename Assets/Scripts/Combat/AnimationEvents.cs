@@ -34,4 +34,9 @@ public class AnimationEvents : MonoBehaviour
     {
         EventBus.Emit($"{player}_hurt_ended", null);
     }
+
+    public void ResetHurt()
+    {
+        EventBus.Emit($"{player}_hurt_reset", null);
+    }
 }
