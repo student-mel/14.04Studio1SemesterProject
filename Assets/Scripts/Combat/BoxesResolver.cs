@@ -83,9 +83,9 @@ public class BoxesResolver : MonoBehaviour
                     {
                         if (Overlaps(hitbox, hurtbox))
                         {
-                            EventBus.Emit("p2_hurt_point", IntersectBoxes(hitbox,  hurtbox));
                             if (player1.activeHits > 0)
                             {
+                                EventBus.Emit("p2_hurt_point", IntersectBoxes(hitbox,  hurtbox));
                                 player1.SetActiveHits(player1.activeHits - 1);
                                 EventBus.Emit("p2_hurt", player1.currMove);
                                 //Debug.Log(player1.currMove.Name);
@@ -101,9 +101,9 @@ public class BoxesResolver : MonoBehaviour
                     {
                         if (Overlaps(hitbox, hurtbox))
                         {
-                            EventBus.Emit("p1_hurt_point", IntersectBoxes(hitbox,  hurtbox));
                             if (player2.activeHits > 0)
                             {
+                                EventBus.Emit("p1_hurt_point", IntersectBoxes(hitbox,  hurtbox));
                                 player2.SetActiveHits(player2.activeHits - 1);
                                 EventBus.Emit("p1_hurt", player2.currMove);
                                 //Debug.Log(player2.currMove.Name);
