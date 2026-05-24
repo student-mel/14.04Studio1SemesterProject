@@ -9938,6 +9938,50 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.30070248
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0070364214
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.08863027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.94956475
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -9.936
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 2.324
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -215.345
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026957274193234333, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4326367368427637287, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
       propertyPath: m_Name
       value: StreakUI (1)
@@ -10088,6 +10132,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6391345073438815361, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530880934992866611, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530880934992866611, guid: c1a8ec4298f98dd49b55c22f28983022, type: 3}
+      propertyPath: m_HorizontalAlignment
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
