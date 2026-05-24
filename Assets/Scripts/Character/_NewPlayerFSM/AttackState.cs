@@ -27,6 +27,18 @@ public class AttackState : BaseState, IState
             int attType = _attackType[moveset.Name];
             pb.animator.SetFloat(Attack, attType);
             pb.animator.SetTrigger(Action);
+            switch (moveset.Name)
+            {
+                case "Light Attack":
+                    pb.RB.AddForce(pb.RelativeDir * 20f, ForceMode.Impulse);
+                    break;
+                case "Medium Attack":
+                    pb.RB.AddForce(pb.RelativeDir * 20f, ForceMode.Impulse);
+                    break;
+                case "Heavy Attack":
+                    pb.RB.AddForce(pb.RelativeDir * 50f + Vector3.up * 50f, ForceMode.Impulse);
+                    break;
+            }
             AudioManager.Instance?.PlayAttack(attType, pb.gameObject);
 
             if (pb.animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))

@@ -255,8 +255,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
         if (IsGrounded && MoveDir.y <= 0 && MoveDir.x != 0)
         {
             canBlock = MoveDir.x > 0 ^ IsFacingRight;
-            //canBlock = animator.GetBool("moveBackward");
-            Debug.Log($"{player}: {canBlock}");
+            //Debug.Log($"{player}: {canBlock}");
         }
         else
             canBlock = false;

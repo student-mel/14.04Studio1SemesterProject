@@ -27,6 +27,9 @@ public class StunState : BaseState, IState
     {
         Animator a =  pb.animator;
         int attType = _attackType[move.Name];
+        
+        a.SetBool(Hurt, false);
+        
         float f = 20 + (attType - 1) * 10;
         pb.TakeDamage(move.damage);
         a.SetBool(Hurt, true);
@@ -35,8 +38,6 @@ public class StunState : BaseState, IState
         if (pb.IsBlocking)
             f *= 1.5f;
         ApplyKnockback(f);
-        Debug.Log(attType + " " + f);
-        Debug.Log(pb.IsBlocking);
     }
     
     void ApplyKnockback(float force)

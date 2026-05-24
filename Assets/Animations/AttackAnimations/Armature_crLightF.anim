@@ -23768,14 +23768,14 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 1
+    intParameter: 6
     messageOptions: 0
   - time: 0
     functionName: UpdateMovesetHits
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 6
+    intParameter: 1
     messageOptions: 0
   - time: 0
     functionName: EndStringsWindow
