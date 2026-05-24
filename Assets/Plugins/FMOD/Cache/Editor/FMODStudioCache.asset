@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Attack.bank
   Name: Attack
   StudioPath: bank:/Attack
-  lastModified: 639152063094068244
+  lastModified: 639152148200745663
   FileSizes: []
   Exists: 1
 --- !u!114 &-8008535641924177937
@@ -33,7 +33,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Walk.bank
   Name: Walk
   StudioPath: bank:/Walk
-  lastModified: 639152063094420741
+  lastModified: 639140499162674754
   FileSizes: []
   Exists: 1
 --- !u!114 &-7821150772972491998
@@ -78,7 +78,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/MainMenu.bank
   Name: MainMenu
   StudioPath: bank:/MainMenu
-  lastModified: 639152063094296545
+  lastModified: 639152148201232459
   FileSizes: []
   Exists: 1
 --- !u!114 &-6488004760190615201
@@ -96,7 +96,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Theme.bank
   Name: Theme
   StudioPath: bank:/Theme
-  lastModified: 639152063094410706
+  lastModified: 639152148201830622
   FileSizes: []
   Exists: 1
 --- !u!114 &-6229086756332532772
@@ -114,7 +114,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Hit.bank
   Name: Hit
   StudioPath: bank:/Hit
-  lastModified: 639152063094082539
+  lastModified: 639140499162429650
   FileSizes: []
   Exists: 1
 --- !u!114 &-5973284120243351926
@@ -132,7 +132,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639152063094321488
+  lastModified: 639140499162584755
   FileSizes: []
   Exists: 1
 --- !u!114 &-5415316959238209994
@@ -204,7 +204,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Jump.bank
   Name: Jump
   StudioPath: bank:/Jump
-  lastModified: 639152063094103009
+  lastModified: 639152148200770794
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -249,7 +249,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4326235207764835123}
   cacheVersion: 131859
-  cacheTime: 639152063094420741
+  cacheTime: 639152148201830622
   SerializableEventsDict:
   - key: event:/Attack/Light
     index: 0
@@ -429,7 +429,7 @@ MonoBehaviour:
   Path: Assets/new/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639152063094331559
+  lastModified: 639152148201730328
   FileSizes:
   - Name: 
     Value: 1578
