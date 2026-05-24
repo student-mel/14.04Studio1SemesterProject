@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Character;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     private bool roundActive = false;
     public static bool InputLocked = true;
+
+    public GameObject playerinputObj;
 
     void Start()
     {
@@ -57,6 +60,11 @@ public class GameManager : MonoBehaviour
         else if (player2.CurrentHealth <= 0)
         {
             EndRound(player1);
+        }
+
+        if (Keyboard.current.backquoteKey.wasPressedThisFrame)
+        {
+            playerinputObj.SetActive(!playerinputObj.activeSelf);
         }
     }
 
