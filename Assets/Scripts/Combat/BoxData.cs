@@ -90,7 +90,7 @@ public class Box
         if (!parent)
             return this;
         
-        float alignment = Vector3.Dot(parent.right, Vector3.right);
+        float alignment = Vector3.Dot(parent.forward, Vector3.right);
         Vector2 flipped = alignment < -0.7f ? 
             new Vector2(-center.x, center.y) :
             center;

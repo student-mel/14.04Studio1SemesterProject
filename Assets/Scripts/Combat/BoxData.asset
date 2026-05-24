@@ -15,7 +15,7 @@ MonoBehaviour:
   Presets:
   - name: 'Preset 1: Crouch Idle'
     presetName: Crouch Idle
-    Preview: 0
+    Preview: 1
     needsUpdate: 0
     hitboxes: []
     hurtboxes:
@@ -333,7 +333,7 @@ MonoBehaviour:
       size: {x: 1.75, y: 0.4}
   - name: 'Preset 25: Stand Light String End Attack'
     presetName: Stand Light String End Attack
-    Preview: 1
+    Preview: 0
     needsUpdate: 0
     hitboxes:
     - name: Hitbox 1

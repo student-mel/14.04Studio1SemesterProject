@@ -4,6 +4,7 @@ using UnityEngine;
 public class StunState : BaseState, IState
 {
     private static readonly int Reaction = Animator.StringToHash("reaction");
+    private static readonly int Hurt = Animator.StringToHash("hurt");
 
     public StunState(PlayerBehaviour pb, StateMachine fsm) : base(pb, fsm)
     {
@@ -28,11 +29,11 @@ public class StunState : BaseState, IState
         int attType = _attackType[move.Name];
         float f = 20 + (attType - 1) * 10;
         pb.TakeDamage(move.damage);
-        
+        a.SetTrigger(Hurt);
         a.SetFloat(Reaction, (int)attType);
-
+        
         if (pb.IsBlocking)
-            f *= 3;
+            f *= 1.5f;
         ApplyKnockback(f);
     }
     

@@ -30995,6 +30995,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
+  - time: 0
+    functionName: EndStringsWindow
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.3828125
     functionName: UpdateFightingBoxes
     data: 
@@ -31015,4 +31022,11 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 15
+    messageOptions: 0
+  - time: 0.625
+    functionName: OnAttackEnded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
     messageOptions: 0
