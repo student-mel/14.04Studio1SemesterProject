@@ -36,6 +36,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
 
     public Vector3 RelativeDir { get; private set; }
     public Vector2 MoveDir { get; set; } =  Vector2.zero;
+
+    public bool CanJump { get; set; } = true;
     
     [field: SerializeField, Header("Movement Settings")]public float MoveSpeed { get; set; } = 1.5f;
     [field: SerializeField] public float JumpForce { get; set; } = 25f;
@@ -115,11 +117,24 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
         FSM.FixedUpdate();
         if (CollisionIgnored && RB.linearVelocity.y <= 0 && IsGrounded)
         {
+            StartJumpCooldown();
             animator.SetBool(JumpTrigger, false);
             Physics.IgnoreCollision(playerColl, opponent.playerColl, false);
             CollisionIgnored = false;
             CanFlip = true;
         }
+    }
+
+    public void StartJumpCooldown()
+    {
+        StartCoroutine(JumpCooldown());
+    }
+
+    IEnumerator JumpCooldown()
+    {
+        CanJump = false;
+        yield return new WaitForSeconds(0.25f);
+        CanJump = true;
     }
 
     #region Initialise Events

@@ -28,7 +28,7 @@ public class MovementState : BaseState, IState
             if (pb.MoveDir.y > 0)
             {
                 if (jumpConsumed) return;
-                
+                if (!pb.CanJump) return;
                 Jump();
                 jumpConsumed = true;
                 return;
@@ -113,5 +113,6 @@ public class MovementState : BaseState, IState
 
         Physics.IgnoreCollision(pb.playerColl, pb.opponent.playerColl, true);
         pb.CollisionIgnored = true;
+        pb.CanJump = false;
     }
 }
