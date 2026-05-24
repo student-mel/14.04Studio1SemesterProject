@@ -85,7 +85,7 @@ public class BoxesResolver : MonoBehaviour
                             if (player1.activeHits > 0)
                             {
                                 player1.SetActiveHits(player1.activeHits - 1);
-                                EventBus.Emit("p2_hurt", player1.currMove.Name);
+                                EventBus.Emit("p2_hurt", player1.currMove);
                                 //Debug.Log(player1.currMove.Name);
                                 goto Next;
                             }
@@ -100,7 +100,7 @@ public class BoxesResolver : MonoBehaviour
                             if (player2.activeHits > 0)
                             {
                                 player2.SetActiveHits(player2.activeHits - 1);
-                                EventBus.Emit("p1_hurt", player2.currMove.Name);
+                                EventBus.Emit("p1_hurt", player2.currMove);
                                 //Debug.Log(player2.currMove.Name);
                                 return;
                             }

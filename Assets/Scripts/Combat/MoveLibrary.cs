@@ -15,6 +15,8 @@ public class Moveset
     [Tooltip("Inputs in sequence for this move to be valid")]
     public InputType[] inputString;
 
+    public float damage;
+
     [HideInInspector] public int priority;
 }
 

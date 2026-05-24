@@ -10,14 +10,14 @@ public class StateMachine
     {
         states[state.GetType()] = state;
     }
-
-    public void ChangeState<T>() where T : IState
+    
+    public void ChangeState<T>(object data = null) where T : IState
     {
         if (CurrentState != null)
             CurrentState.Exit();
 
         CurrentState = states[typeof(T)];
-        CurrentState.Enter();
+        CurrentState.Enter(data);
     }
 
     public void Update() => CurrentState?.Update();

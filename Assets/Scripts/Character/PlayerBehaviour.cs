@@ -30,7 +30,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     public bool IsRising => RB.linearVelocity.y > 0f;
     public bool IsFalling => RB.linearVelocity.y < 0f;
     public bool IsCrouching => MoveDir.y < 0f;
-    
+    public bool CollisionIgnored { get; set; }
+
     public Vector3 RelativeDir { get; private set; }
     public Vector2 MoveDir { get; set; } =  Vector2.zero;
     
@@ -43,7 +44,19 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     #region  IDamageable Block
     [field: SerializeField, Header("Health")] public float MaxHealth { get; set; } = 100f;
     public float CurrentHealth { get; private set; }
-    public bool IsBlocking { get; private set; }
+
+    private bool _isBlocking = false;
+    public bool IsBlocking
+    {
+        get  => _isBlocking;
+        private set
+        {
+            _isBlocking = value;
+            animator.SetBool(Block, value);
+        }
+    }
+
+    private bool canBlock = false;
 
     #endregion
 
@@ -52,8 +65,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     private StateMachine FSM;
     private Vector3 spawnPosition;
     
-    private static readonly int MoveForward = Animator.StringToHash("moveForward");
-    private static readonly int MoveBackward = Animator.StringToHash("moveBackward");
+    private static readonly int Block = Animator.StringToHash("block");
+    private static readonly int JumpTrigger = Animator.StringToHash("jump");
 
     private void Awake()
     {
@@ -84,12 +97,20 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     private void Update()
     {
         CheckRelativeDir();
+        CheckBlock();
         FSM.Update();
     }
 
     private void FixedUpdate()
     {
         FSM.FixedUpdate();
+        if (CollisionIgnored && RB.linearVelocity.y <= 0)
+        {
+            animator.SetBool(JumpTrigger, false);
+            Physics.IgnoreCollision(playerColl, opponent.playerColl, false);
+            CollisionIgnored = false;
+            CanFlip = true;
+        }
     }
 
     #region Initialise Events
@@ -104,6 +125,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             EventBus.Subscribe("actionResult", GetActionResult);
             EventBus.Subscribe($"{p}anticipate", OnAnticipate);
             EventBus.Subscribe($"{p}anticipate_cancel", OnAnticipateCancel);
+            EventBus.Subscribe($"{p}_attack_ended", OnAttackEnded);
         }
 
         void UnsubscribeInputEvents()
@@ -161,6 +183,29 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
 
     private void OnAttack(object obj)
     {
+        if (GameManager.InputLocked) return;
+        if (IsFalling) return;
+        if (FSM.CurrentState.GetType() == typeof(StunState)) return;
+        // if (FSM.CurrentState.GetType() == typeof(AttackState) && insert global bool here) return;
+        {
+            FSM.ChangeState<AttackState>(obj);
+        }
+    }
+    
+    private void OnAttackEnded(object obj)
+    {
+        FSM.ChangeState<MovementState>();
+    }
+
+    private void OnAnticipate(object obj)
+    {
+        if (canBlock)
+            IsBlocking = true;
+    }
+    
+    private void OnAnticipateCancel(object obj)
+    {
+        IsBlocking = false;
     }
 
     void GetActionResult(object obj)
@@ -176,7 +221,6 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         fsm.ChangeState<StunState>();
         (fsm.CurrentState as StunState)?.SetStun(stunDuration);
     }*/
-
     float GetDamageMult(string result)
     {
         switch (result)
@@ -186,25 +230,22 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             case "Syncopated":
                 return 2f;
             case "Miss":
+    
                 return 0.5f;
         }
         
         return 1f;
     }
 
-    public void Idle()
+    private void CheckBlock()
     {
-        
-    }
-    
-    private void OnAnticipate(object obj)
-    {
-        IsBlocking = true;
-    }
-    
-    private void OnAnticipateCancel(object obj)
-    {
-        IsBlocking = false;
+        // if grounded and moving or crouching and moving backwards
+        if (IsGrounded && MoveDir.y <= 0)
+        {
+            canBlock = MoveDir.x > 0 ^ IsFacingRight;
+        }
+        else
+            canBlock = false;
     }
     
     public void TakeDamage(float dmg)

@@ -6,7 +6,7 @@ public class StunState : BaseState, IState
     {
     }
 
-    public void Enter()
+    public void Enter(object data = null)
     {
         
     }
