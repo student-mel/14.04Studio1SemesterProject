@@ -21,7 +21,7 @@ public class StateGrounded : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        Player.canFlip = true;
+        Player.CanFlip = true;
         ChangeSubState(IdleState);
         //jumped = false;
     }

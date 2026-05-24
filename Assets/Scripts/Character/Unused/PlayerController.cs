@@ -39,11 +39,15 @@ namespace Character
 
         [field: SerializeField, Header("Movement Settings")]public float MoveSpeed { get; set; } = 1.5f;
         [field: SerializeField] public float JumpForce { get; set; } = 25f;
-        [HideInInspector] public bool canFlip = true;
+        public float ForwardMultiplier { get; }
+        public float BackwardMultiplier { get; }
+        [HideInInspector] public bool CanFlip { get; set; } = true;
         public bool IsFacingRight { get; set; }
+        public bool IsGrounded { get; }
+        public bool IsCrouching { get; }
         public Vector3 RelativeDir {get; private set;}
-        public Vector2 MoveDir {get; private set;}
         private Vector3 spawnPosition;
+        public Vector2 MoveDir {get; private set;}
         
         public Rigidbody RB { get; private set; }
         [SerializeField, Header("Opponent")] public PlayerController opponent;
@@ -177,7 +181,7 @@ namespace Character
         
         void Flip(bool isFlipping = true)
         {
-            if (!canFlip) return;
+            if (!CanFlip) return;
             
             if (isFlipping)
                 IsFacingRight = !IsFacingRight;
@@ -251,6 +255,8 @@ namespace Character
             }
         }
 
+        public bool IsBlocking { get; }
+
         public void Die()
         {
             animator.SetTrigger("die");
@@ -262,8 +268,8 @@ namespace Character
             {
                 case "Perfect":
                     return 1.75f;
-                case "Great":
-                    return 1.3f;
+                /*case "Great":
+                    return 1.3f;*/  
                 /*case "Good":
                     return 1.15f;*/
                 case "Syncopated":
