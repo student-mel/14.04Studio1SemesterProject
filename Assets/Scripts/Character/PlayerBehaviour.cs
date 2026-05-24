@@ -29,6 +29,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     public bool IsGrounded => Physics.Raycast(transform.position, Vector3.down, checkDist, groundMask);
     public bool IsRising => RB.linearVelocity.y > 0f;
     public bool IsFalling => RB.linearVelocity.y < 0f;
+    public bool IsCrouching => MoveDir.y < 0f;
     
     public Vector3 RelativeDir { get; private set; }
     public Vector2 MoveDir { get; set; } =  Vector2.zero;
@@ -42,22 +43,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     #region  IDamageable Block
     [field: SerializeField, Header("Health")] public float MaxHealth { get; set; } = 100f;
     public float CurrentHealth { get; private set; }
-    
-    public void TakeDamage(float dmg)
-    {
-        int otherPlayer = player ==  PlayerEnum.PlayerOne ? 1 : 0;
-        string oppResult = opponent.rhythmResults;
-        EventBus.Emit("hit_result", new PlayerResult(otherPlayer, oppResult, true));
-            
-        CurrentHealth -= dmg * GetDamageMult(oppResult);
-        AudioManager.Instance?.PlayHit(gameObject);
+    public bool IsBlocking { get; private set; }
 
-        EventBus.Emit($"p{(int)player+1}_set_currenthealth", CurrentHealth);
-        if (CurrentHealth <= 0f)
-        {
-            Die();
-        }
-    }
     #endregion
 
     [Header("Rhythm")] public string rhythmResults;
@@ -115,8 +102,10 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             EventBus.Subscribe($"{p}attack", OnAttack);
             EventBus.Subscribe($"{p}hurt", OnHurt);
             EventBus.Subscribe("actionResult", GetActionResult);
+            EventBus.Subscribe($"{p}anticipate", OnAnticipate);
+            EventBus.Subscribe($"{p}anticipate_cancel", OnAnticipateCancel);
         }
-        
+
         void UnsubscribeInputEvents()
         {
             string p = player ==  PlayerEnum.PlayerOne ? "p1_" : "p2_";
@@ -203,16 +192,37 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         return 1f;
     }
 
-    public void Crouch()
-    {
-        
-    }
-
     public void Idle()
     {
         
     }
     
+    private void OnAnticipate(object obj)
+    {
+        IsBlocking = true;
+    }
+    
+    private void OnAnticipateCancel(object obj)
+    {
+        IsBlocking = false;
+    }
+    
+    public void TakeDamage(float dmg)
+    {
+        int otherPlayer = player ==  PlayerEnum.PlayerOne ? 1 : 0;
+        string oppResult = opponent.rhythmResults;
+        EventBus.Emit("hit_result", new PlayerResult(otherPlayer, oppResult, true));
+        float totalDamage = dmg * GetDamageMult(oppResult);
+        CurrentHealth -= IsBlocking ? totalDamage * 0.1f : totalDamage;
+        AudioManager.Instance?.PlayHit(gameObject);
+
+        EventBus.Emit($"p{(int)player+1}_set_currenthealth", CurrentHealth);
+        if (CurrentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
     public void Die()
     {
         animator.SetTrigger("die");

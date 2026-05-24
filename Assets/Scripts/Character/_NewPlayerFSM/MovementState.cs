@@ -8,7 +8,6 @@ public class MovementState : BaseState, IState
     private static readonly int Crouching = Animator.StringToHash("crouching");
     private bool jumpConsumed = false;
     private bool collisionIgnored = false;
-    private bool isCrouching = false;
 
     public MovementState(PlayerBehaviour pb, StateMachine fsm) : base(pb, fsm)
     {
@@ -40,12 +39,11 @@ public class MovementState : BaseState, IState
 
     private void Crouch()
     {
-        isCrouching = pb.MoveDir.y < 0;
         /*pb.animator.SetBool(MoveForward, !isCrouching);
         pb.animator.SetBool(MoveBackward, !isCrouching);*/
         
-        pb.CanFlip = !isCrouching;
-        pb.animator.SetBool(Crouching, isCrouching);
+        pb.CanFlip = !pb.IsCrouching;
+        pb.animator.SetBool(Crouching, pb.IsCrouching);
     }
 
     public void FixedUpdate()
@@ -64,7 +62,7 @@ public class MovementState : BaseState, IState
             pb.CanFlip = true;
         }
         
-        if (isCrouching)
+        if (pb.IsCrouching)
             return;
         
         float x = pb.MoveDir.x;

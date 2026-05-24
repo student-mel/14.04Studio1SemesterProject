@@ -44,6 +44,7 @@ namespace Character
         [HideInInspector] public bool CanFlip { get; set; } = true;
         public bool IsFacingRight { get; set; }
         public bool IsGrounded { get; }
+        public bool IsCrouching { get; }
         public Vector3 RelativeDir {get; private set;}
         private Vector3 spawnPosition;
         public Vector2 MoveDir {get; private set;}
@@ -253,6 +254,8 @@ namespace Character
                 Die();
             }
         }
+
+        public bool IsBlocking { get; }
 
         public void Die()
         {
