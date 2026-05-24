@@ -97,7 +97,7 @@ public class TutorialManager : MonoBehaviour
 
                 break;
 
-            case TutorialStep.JumpLightAttack:
+            /*case TutorialStep.JumpLightAttack:
 
                 if (move.Name == "Jump Light Attack")
                     NextStep();
@@ -191,7 +191,7 @@ public class TutorialManager : MonoBehaviour
                 tutorialText.text = "Block";
                 break;
 
-            case TutorialStep.JumpLightAttack:
+            /*case TutorialStep.JumpLightAttack:
                 tutorialText.text = "Perform a Jump Light Attack";
                 break;
 
@@ -201,7 +201,7 @@ public class TutorialManager : MonoBehaviour
 
             case TutorialStep.JumpHeavyAttack:
                 tutorialText.text = "Perform a Jump Heavy Attack";
-                break;
+                break;*/
 
             case TutorialStep.Complete:
                 tutorialText.text = "Tutorial Complete!";
