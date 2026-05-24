@@ -62,7 +62,7 @@ MonoBehaviour:
     moveType: 0
     inputString: 07000000
     damage: 0
-    priority: 0
+    priority: 1
   - Name: Light Attack
     moveType: 1
     inputString: 08000000
@@ -77,14 +77,4 @@ MonoBehaviour:
     moveType: 1
     inputString: 0a000000
     damage: 8
-    priority: 1
-  - Name: Special 1 Right
-    moveType: 1
-    inputString: 07000000050000000300000008000000
-    damage: 4
-    priority: 0
-  - Name: Special 1 Left
-    moveType: 1
-    inputString: 07000000020000000000000008000000
-    damage: 4
     priority: 0

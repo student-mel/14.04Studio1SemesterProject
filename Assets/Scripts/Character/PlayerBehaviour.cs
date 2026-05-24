@@ -31,7 +31,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
     public bool IsGrounded => Physics.Raycast(transform.position, Vector3.down, checkDist, groundMask);
     public bool IsRising => RB.linearVelocity.y > 0f;
     public bool IsFalling => RB.linearVelocity.y < 0f;
-    public bool IsCrouching => MoveDir.y < 0f;
+    public bool IsCrouching => Vector2.Dot(MoveDir, Vector2.up) < -0.25f;
     public bool CollisionIgnored { get; set; }
 
     public Vector3 RelativeDir { get; private set; }

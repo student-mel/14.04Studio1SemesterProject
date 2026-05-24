@@ -196,7 +196,7 @@ public class InputBuffer : MonoBehaviour
         ClearExpiredInputs();
     }
 
-    private InputType GetDirectionalInputType(Vector2 dir)
+    public static InputType GetDirectionalInputType(Vector2 dir)
     {
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         InputType dirInput = InputType.None;

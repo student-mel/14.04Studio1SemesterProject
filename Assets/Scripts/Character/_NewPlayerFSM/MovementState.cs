@@ -25,7 +25,8 @@ public class MovementState : BaseState, IState
         
         if (pb.IsGrounded)
         {
-            if (pb.MoveDir.y > 0)
+            float dot = Vector2.Dot(pb.MoveDir, Vector2.up);
+            if (dot > 0.25 && pb.MoveDir.magnitude > 0.1f)
             {
                 if (jumpConsumed) return;
                 if (!pb.CanJump) return;
@@ -33,7 +34,6 @@ public class MovementState : BaseState, IState
                 jumpConsumed = true;
                 return;
             }
-
             Crouch();
         }
     }
@@ -105,9 +105,10 @@ public class MovementState : BaseState, IState
         AudioManager.Instance?.PlayJump(pb.gameObject);
         pb.animator.SetBool(JumpTrigger, true);
 
+        float dot = Vector2.Dot(pb.MoveDir, Vector2.up);
+        
         Vector3 force = Vector3.up;
-        force.x = pb.MoveDir.x < 0 ? -0.25f : 0.25f;
-        force.x = pb.MoveDir.x == 0 ? 0 : force.x;
+        if (dot <= 0.75f) { force.x = pb.MoveDir.x < -0.1f ? -0.25f : 0.25f; }
 
         pb.RB.linearVelocity = force * pb.JumpForce;
 
