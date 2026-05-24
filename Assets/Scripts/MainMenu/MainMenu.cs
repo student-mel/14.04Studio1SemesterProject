@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Mel");
+        SceneManager.LoadScene("Tia Background");
     }
 
     public void Tutorial()
