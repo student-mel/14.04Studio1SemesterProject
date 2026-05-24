@@ -20,10 +20,12 @@ public class AttackState : BaseState, IState
     public void Enter(object data = null)
     {
         Moveset moveset = data as Moveset;
+        int attType = AttackType[moveset.Name];
         if (moveset != null)
         {
-            pb.animator.SetFloat(Attack, AttackType[moveset.Name]);
+            pb.animator.SetFloat(Attack, attType);
             pb.animator.SetTrigger(Action);
+            AudioManager.Instance?.PlayAttack(attType, pb.gameObject);
         }
     }
     

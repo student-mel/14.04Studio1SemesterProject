@@ -30,7 +30,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     public bool IsRising => RB.linearVelocity.y > 0f;
     public bool IsFalling => RB.linearVelocity.y < 0f;
     public bool IsCrouching => MoveDir.y < 0f;
-    
+    public bool CollisionIgnored { get; set; }
+
     public Vector3 RelativeDir { get; private set; }
     public Vector2 MoveDir { get; set; } =  Vector2.zero;
     
@@ -64,9 +65,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     private StateMachine FSM;
     private Vector3 spawnPosition;
     
-    private static readonly int MoveForward = Animator.StringToHash("moveForward");
-    private static readonly int MoveBackward = Animator.StringToHash("moveBackward");
     private static readonly int Block = Animator.StringToHash("block");
+    private static readonly int JumpTrigger = Animator.StringToHash("jump");
 
     private void Awake()
     {
@@ -104,6 +104,13 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     private void FixedUpdate()
     {
         FSM.FixedUpdate();
+        if (CollisionIgnored && RB.linearVelocity.y <= 0)
+        {
+            animator.SetBool(JumpTrigger, false);
+            Physics.IgnoreCollision(playerColl, opponent.playerColl, false);
+            CollisionIgnored = false;
+            CanFlip = true;
+        }
     }
 
     #region Initialise Events
@@ -118,6 +125,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             EventBus.Subscribe("actionResult", GetActionResult);
             EventBus.Subscribe($"{p}anticipate", OnAnticipate);
             EventBus.Subscribe($"{p}anticipate_cancel", OnAnticipateCancel);
+            EventBus.Subscribe($"{p}_attack_ended", OnAttackEnded);
         }
 
         void UnsubscribeInputEvents()
@@ -182,6 +190,11 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         {
             FSM.ChangeState<AttackState>(obj);
         }
+    }
+    
+    private void OnAttackEnded(object obj)
+    {
+        FSM.ChangeState<MovementState>();
     }
 
     private void OnAnticipate(object obj)

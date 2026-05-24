@@ -7,7 +7,6 @@ public class MovementState : BaseState, IState
     private static readonly int JumpTrigger = Animator.StringToHash("jump");
     private static readonly int Crouching = Animator.StringToHash("crouching");
     private bool jumpConsumed = false;
-    private bool collisionIgnored = false;
 
     public MovementState(PlayerBehaviour pb, StateMachine fsm) : base(pb, fsm)
     {
@@ -53,14 +52,6 @@ public class MovementState : BaseState, IState
         
         if (jumpConsumed)
             return;
-        
-        if (collisionIgnored && pb.RB.linearVelocity.y <= 0)
-        {
-            pb.animator.SetBool(JumpTrigger, false);
-            Physics.IgnoreCollision(pb.playerColl, pb.opponent.playerColl, false);
-            collisionIgnored = false;
-            pb.CanFlip = true;
-        }
         
         if (pb.IsCrouching)
             return;
@@ -114,6 +105,6 @@ public class MovementState : BaseState, IState
         pb.RB.linearVelocity = force * pb.JumpForce;
 
         Physics.IgnoreCollision(pb.playerColl, pb.opponent.playerColl, true);
-        collisionIgnored = true;
+        pb.CollisionIgnored = true;
     }
 }
