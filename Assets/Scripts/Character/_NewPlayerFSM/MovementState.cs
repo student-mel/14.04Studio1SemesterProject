@@ -62,11 +62,11 @@ public class MovementState : BaseState, IState
         
         float x = pb.MoveDir.x;
         SetWalkAnimation();
-        AudioManager.Instance?.PlayWalk();
         
         if (Mathf.Abs(x) < 0.1f)
             return;
         
+        AudioManager.Instance?.PlayWalk();
         pb.RB.linearVelocity = new Vector3(x * pb.MoveSpeed, pb.RB.linearVelocity.y, 0);
     }
 

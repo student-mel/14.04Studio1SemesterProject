@@ -1523,6 +1523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4059873983958809550}
   - component: {fileID: 828205427316487747}
+  - component: {fileID: 5432815525406928096}
   m_Layer: 0
   m_Name: RhythmStore
   m_TagString: Untagged
@@ -1557,7 +1558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6b095f650314b4abcdea99ad2c4d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RhythmStore
-  bgm: {fileID: 0}
+  bgm: {fileID: 11400000, guid: 50bd04a646115f94788b9b59791df2f2, type: 2}
   beatDuration: 0
   musicTimeMs: 0
   isPlaying: 0
@@ -1575,6 +1576,19 @@ MonoBehaviour:
   currentMovePhaseBeat: 0
   currentMovePhase: 
   lastActionJudgement: 
+--- !u!114 &5432815525406928096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634677127725694267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72c8b045acef6b429036d983023d266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RhythmAnimationSync
+  pbs: []
 --- !u!1 &5874631776581893410
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using RPGCharacterAnims.Actions;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
+public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStreak
 {
     [Header("References")]
     public PlayerEnum player;
@@ -61,12 +63,15 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     #endregion
 
     [Header("Rhythm")] public string rhythmResults;
+    public int Streak { get; set; }
+    public bool HitOpponent = false;
     
     private StateMachine FSM;
     private Vector3 spawnPosition;
     
     private static readonly int Block = Animator.StringToHash("block");
     private static readonly int JumpTrigger = Animator.StringToHash("jump");
+    private static readonly int DieTrigger = Animator.StringToHash("die");
 
     private void Awake()
     {
@@ -204,6 +209,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     
     private void OnAttackEnded(object obj)
     {
+        if (!HitOpponent)
+            BreakStreak();
         FSM.ChangeState<MovementState>();
     }
 
@@ -234,21 +241,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         fsm.ChangeState<StunState>();
         (fsm.CurrentState as StunState)?.SetStun(stunDuration);
     }*/
-    float GetDamageMult(string result)
-    {
-        switch (result)
-        {
-            case "Perfect":
-                return 1.75f;
-            case "Syncopated":
-                return 2f;
-            case "Miss":
     
-                return 0.5f;
-        }
-        
-        return 1f;
-    }
 
     private void CheckBlock()
     {
@@ -261,12 +254,36 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             canBlock = false;
     }
     
+    float GetDamageMult()
+    {
+        /*switch (result)
+        {
+            case "Perfect":
+                return 1.75f;
+            case "Syncopated":
+                return 2f;
+            case "Miss":
+
+                return 0.5f;
+        }
+
+        return 1f;*/
+
+        return 1 + Streak * 0.1f;
+    }
+    
     public void TakeDamage(float dmg)
     {
-        int otherPlayer = player ==  PlayerEnum.PlayerOne ? 1 : 0;
         string oppResult = opponent.rhythmResults;
-        EventBus.Emit("hit_result", new PlayerResult(otherPlayer, oppResult, true));
-        float totalDamage = dmg * GetDamageMult(oppResult);
+        opponent.HitOpponent = true;
+        
+        if (oppResult == "Perfect" || oppResult == "Syncopated")
+            opponent.AddStreak();
+        else
+            opponent.BreakStreak();
+        
+        //EventBus.Emit("hit_result", new PlayerResult(otherPlayer, oppResult, true));
+        float totalDamage = dmg * GetDamageMult();
         CurrentHealth -= IsBlocking ? totalDamage * 0.1f : totalDamage;
         AudioManager.Instance?.PlayHit(gameObject);
 
@@ -277,9 +294,20 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         }
     }
 
+    public void AddStreak()
+    {
+        Streak++;
+    }
+
+    public void BreakStreak()
+    {
+        Streak = 0;
+    }
+
+
     public void Die()
     {
-        animator.SetTrigger("die");
+        animator.SetTrigger(DieTrigger);
     }
     
     public void CheckRelativeDir()
@@ -305,4 +333,5 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         RelativeDir = IsFacingRight ? Vector3.right : -Vector3.right;
         transform.GetChild(0).localRotation = rot;
     }
+
 }
