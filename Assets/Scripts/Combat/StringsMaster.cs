@@ -6,11 +6,11 @@ public class StringsMaster : MonoBehaviour
     public static bool p1CanString = false;
     public static bool p2CanString = false;
 
-    private void Update()
-    {
-        Debug.Log($"p1CanString: {p1CanString}");
-        Debug.Log($"p2CanString: {p2CanString}");
-    }
+    // private void Update()
+    // {
+    //     Debug.Log($"p1CanString: {p1CanString}");
+    //     Debug.Log($"p2CanString: {p2CanString}");
+    // }
 
     private void OnEnable()
     {
