@@ -43,7 +43,19 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     #region  IDamageable Block
     [field: SerializeField, Header("Health")] public float MaxHealth { get; set; } = 100f;
     public float CurrentHealth { get; private set; }
-    public bool IsBlocking { get; private set; }
+
+    private bool _isBlocking = false;
+    public bool IsBlocking
+    {
+        get  => _isBlocking;
+        private set
+        {
+            _isBlocking = value;
+            animator.SetBool(Block, value);
+        }
+    }
+
+    private bool canBlock = false;
 
     #endregion
 
@@ -54,6 +66,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     
     private static readonly int MoveForward = Animator.StringToHash("moveForward");
     private static readonly int MoveBackward = Animator.StringToHash("moveBackward");
+    private static readonly int Block = Animator.StringToHash("block");
 
     private void Awake()
     {
@@ -166,14 +179,13 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
 
     private void OnAnticipate(object obj)
     {
-        IsBlocking = true;
-        animator.SetBool("block", IsBlocking);
+        if (canBlock)
+            IsBlocking = true;
     }
     
     private void OnAnticipateCancel(object obj)
     {
         IsBlocking = false;
-        animator.SetBool("block", IsBlocking);
     }
 
     void GetActionResult(object obj)
@@ -210,17 +222,16 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         
     }
     
-    /*private void CheckBlock()
+    private void CheckBlock()
     {
         // if grounded and moving or crouching and moving backwards
         if (IsGrounded && MoveDir.y <= 0)
         {
-            if (MoveDir.x > 0 ^ IsFacingRight)
-            {
-                
-            }
+            canBlock = MoveDir.x > 0 ^ IsFacingRight;
         }
-    }*/
+        else
+            canBlock = false;
+    }
     
     public void TakeDamage(float dmg)
     {
