@@ -79,6 +79,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
     private static readonly int DieTrigger = Animator.StringToHash("die");
     private static readonly int Hurt = Animator.StringToHash("hurt");
 
+    [Header("Shadow")] public Transform shadow;
+
     private void Awake()
     {
         RB = GetComponent<Rigidbody>();
@@ -102,6 +104,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
         spawnPosition = transform.position;
         
         InitialisePlayer();
+        InitialiseShadow();
         EventBus.Emit("set_maxhealth", MaxHealth);
     }
 
@@ -109,6 +112,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
     {
         CheckRelativeDir();
         CheckBlock();
+        
         FSM.Update();
     }
 
@@ -123,6 +127,11 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
             CollisionIgnored = false;
             CanFlip = true;
         }
+    }
+
+    private void LateUpdate()
+    {
+        UpdateShadow();
     }
 
     public void StartJumpCooldown()
@@ -362,6 +371,24 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable, IRhythmStr
         Quaternion rot = Quaternion.Euler(0, 90 * (IsFacingRight? 1 : -1), 0);
         RelativeDir = IsFacingRight ? Vector3.right : -Vector3.right;
         transform.GetChild(0).localRotation = rot;
+    }
+
+    private float shadowStartScale = 0.15f;
+    void InitialiseShadow()
+    {
+        shadow.transform.parent = null;
+    }
+
+    void UpdateShadow()
+    {
+        Vector3 pos =  transform.position;
+        pos.y = shadow.position.y;
+        
+        float height = transform.position.y - shadow.position.y;
+        float scale = 1 / (1 + height * 0.5f);
+
+        shadow.transform.localScale = Vector3.one * scale * 0.15f;
+        shadow.position = pos;
     }
 
 }

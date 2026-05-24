@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923e93264e89dc34386eb65adabbad5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationEvents
-  PlayerIndex: 0
+  PlayerIndex: 1
 --- !u!1 &285077232754430344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,6 +2673,8 @@ MonoBehaviour:
   <JumpForce>k__BackingField: 10
   <MaxHealth>k__BackingField: 100
   rhythmResults: 
+  HitOpponent: 0
+  shadow: {fileID: 5643245577817676012}
 --- !u!1 &6591070291961735456
 GameObject:
   m_ObjectHideFlags: 0
