@@ -84,6 +84,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     private void Update()
     {
         CheckRelativeDir();
+        CheckBlock();
         FSM.Update();
     }
 
@@ -163,6 +164,18 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
     {
     }
 
+    private void OnAnticipate(object obj)
+    {
+        IsBlocking = true;
+        animator.SetBool("block", IsBlocking);
+    }
+    
+    private void OnAnticipateCancel(object obj)
+    {
+        IsBlocking = false;
+        animator.SetBool("block", IsBlocking);
+    }
+
     void GetActionResult(object obj)
     {
         PlayerResult result = (PlayerResult)obj;
@@ -176,7 +189,6 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         fsm.ChangeState<StunState>();
         (fsm.CurrentState as StunState)?.SetStun(stunDuration);
     }*/
-
     float GetDamageMult(string result)
     {
         switch (result)
@@ -186,6 +198,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
             case "Syncopated":
                 return 2f;
             case "Miss":
+    
                 return 0.5f;
         }
         
@@ -197,15 +210,17 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable, IMoveable
         
     }
     
-    private void OnAnticipate(object obj)
+    /*private void CheckBlock()
     {
-        IsBlocking = true;
-    }
-    
-    private void OnAnticipateCancel(object obj)
-    {
-        IsBlocking = false;
-    }
+        // if grounded and moving or crouching and moving backwards
+        if (IsGrounded && MoveDir.y <= 0)
+        {
+            if (MoveDir.x > 0 ^ IsFacingRight)
+            {
+                
+            }
+        }
+    }*/
     
     public void TakeDamage(float dmg)
     {
