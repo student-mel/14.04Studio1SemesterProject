@@ -5766,6 +5766,10 @@ PrefabInstance:
       propertyPath: countdownUI
       value: 
       objectReference: {fileID: 707602992}
+    - target: {fileID: 5616113444433399237, guid: b7e16e41d39a51e47a89f2640987ee72, type: 3}
+      propertyPath: playerinputObj
+      value: 
+      objectReference: {fileID: 1623896820}
     - target: {fileID: 5763855262014781033, guid: b7e16e41d39a51e47a89f2640987ee72, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -18703,7 +18707,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1941834652496413726, guid: cf0e4e4b00ac39d4daa46717edafd5ad, type: 3}
       propertyPath: field of view
-      value: 20.575157
+      value: 20.575039
       objectReference: {fileID: 0}
     - target: {fileID: 2631731321847841184, guid: cf0e4e4b00ac39d4daa46717edafd5ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18711,11 +18715,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631731321847841184, guid: cf0e4e4b00ac39d4daa46717edafd5ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75261796
+      value: 1.0770777
       objectReference: {fileID: 0}
     - target: {fileID: 2631731321847841184, guid: cf0e4e4b00ac39d4daa46717edafd5ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.287012
+      value: -13.992868
       objectReference: {fileID: 0}
     - target: {fileID: 2631731321847841184, guid: cf0e4e4b00ac39d4daa46717edafd5ad, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19932,6 +19936,14 @@ PrefabInstance:
     - target: {fileID: 4981720452559480151, guid: 82176f483befb4cef81c62dce4b80977, type: 3}
       propertyPath: m_text
       value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981720452559480151, guid: 82176f483befb4cef81c62dce4b80977, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981720452559480151, guid: 82176f483befb4cef81c62dce4b80977, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6200554700568342129, guid: 82176f483befb4cef81c62dce4b80977, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
@@ -38898,8 +38910,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af5e02884083cbb4fb1c18c5ae8e75fe, type: 2}
+  m_sharedMaterial: {fileID: 8919077548342302669, guid: af5e02884083cbb4fb1c18c5ae8e75fe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -38923,13 +38935,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.92
-  m_fontSizeBase: 38.92
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -38992,8 +39004,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.45318604, y: 196.35004}
-  m_SizeDelta: {x: 715.9487, y: 49.998}
+  m_AnchoredPosition: {x: 0.000000029802, y: 161.26}
+  m_SizeDelta: {x: 715.9487, y: 80.1927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1455253920
 PrefabInstance:
@@ -43033,6 +43045,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6045183190236070691, guid: dc1e69ceb84f6604388a0507c7b1ffa9, type: 3}
   m_PrefabInstance: {fileID: 3073770826620691482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1623896820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2274365426744744921, guid: 4d61b0bbcc982974488e076137855699, type: 3}
+  m_PrefabInstance: {fileID: 1893853044}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1626731851
 PrefabInstance:
