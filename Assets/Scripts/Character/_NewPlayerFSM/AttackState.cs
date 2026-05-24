@@ -19,6 +19,8 @@ public class AttackState : BaseState, IState
 
     public void Enter(object data = null)
     {
+        pb.HitOpponent = false;
+        
         Moveset moveset = data as Moveset;
         if (moveset != null)
         {
@@ -26,7 +28,17 @@ public class AttackState : BaseState, IState
             pb.animator.SetFloat(Attack, attType);
             pb.animator.SetTrigger(Action);
             AudioManager.Instance?.PlayAttack(attType, pb.gameObject);
+
+            if (pb.animator.GetCurrentAnimatorStateInfo(0).IsTag("attack"))
+            {
+                
+            }
         }
+    }
+
+    void ApplyBpmSpeed()
+    {
+        
     }
     
     public void Update()
